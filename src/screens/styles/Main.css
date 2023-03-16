@@ -7,39 +7,30 @@
     color: #262626;
 }
 
-.WrapSearch{
-    text-align: center;
-}
 
-.Mainsearch{
 
-    border-radius : 5px;
-   
-    width: 700px;
-    height: 50px;
-    box-sizing: border-box;
-    padding: 0 20px;
-    border: 5px solid #911F27;
-    background-color: #ffffff;
-   
-}
-
-.Rank {
-    text-align :center;
-    margin-top : 30px;
-    
-    font-size: 15px;
-    font-weight: 700;
-    color: #262626;
-}
-
-.RankBox {
-    margin : auto;
-    box-sizing: border-box;
-	width: 400px;
-	height: 300px;
-	
-	background-color: #FCF0C8;
+.Ranking {
+    position : absolute;
+    left:1300px;
+    top:300px;
+	width: 200px;
+	height: 380px;
+	background-color: rgb(255, 255, 255);
+    border : 2px solid black;
     border-radius: 20px;
+
 }
+
+.Ranking-Text {
+    position : absolute;
+    left:1370px;
+    top:250px;
+    font-weight: bold;
+    
+}
+
+.Ranking {
+    color : #000
+}
+
 

@@ -1,4 +1,4 @@
-.WrapConcert {
+.ReviewWrite-ContentWrap {
     position : absolute;
     top: 150px;
     bottom: 100px;
@@ -20,35 +20,20 @@
     flex-direction: column;
 }
 
-.WrapConcertCT {
-    
-}
-
-.WrapConcertTT {
+.RW-CW {
    height: 70px;
 }
 
-.TitleP {
+.RW-DT {
+    height : 70px;
+}
+
+.ReviewWrite-Title {
     margin-left : 3px;
     font-weight: bold;
-    vertical-align :-40%;
-    
 }
 
-.Date {
-    
-    font-weight: bold;
-}
-
-.ContentLabel {
-    
-    
-    margin-left : 3px;
-    font-weight: bold;
-    vertical-align: top;
-}
-
-.CTtitle {
+.ReviewWrite-Input {
     margin-left:31px;
     width : 80%;
     margin-top:40px;
@@ -62,7 +47,19 @@
     text-transform: 5px;
 }
 
-.CTcontent {
+.ReviewWrite-Date {
+    font-weight: bold;
+    text-align : inherit;
+}
+
+.ReviewWrite-Label {
+    margin-left : 3px;
+    font-weight: bold;
+    vertical-align: top;
+}
+
+
+.ReviewWrite-Text {
     margin-left:30px;
     width : 80%;
     margin-top: 7px;
@@ -81,11 +78,10 @@
        
 }
 
-.ReviewUpload {
+.ReviewWrite-Upload {
     position : absolute;
     left: 50%;
-    transform: translate(-50%, 0);
-    margin-top : 600px;
+    transform: translateX(-50%);
     border: none;
     border-radius: 10px;
     background-color: #000000;
@@ -93,14 +89,23 @@
     font-weight: bold;
     width : 10%;
     height : 40px;
+    margin-top : 80px
 }
 
-.MyDatePicker {
-    background-color : #e2dede;
-    border : none;
-    border-radius : 5px;
-    width : 100px;
-    margin-left : 95px;
-    height : 40px;
-    margin-top : -20px;
+.tag_btn {
+    border: none;
+    border-radius: 5px;
+    background-color: #e2dede;
+    margin-right: 15px;
+    font-weight: 400;
+    font-family : 'Raleway', sans-serif;
+}
+
+
+.tag_btns {
+    margin-left:30px;
+}
+
+.tag {
+    display: flex;
 }

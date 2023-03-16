@@ -10,10 +10,11 @@ import {CgProfile} from 'react-icons/cg';
 const Header = (props) =>
 {
   const [modal, setmodal]= useState(false);
+  
   return(
-    <div className='content'>
-      <nav className='nav'>
-      <div className='nav-item'>
+    <div className='HeaderContent'>
+      <nav className='HeaderNav'>
+      <div className='Header-nav-item'>
         <Sidebar width={280}></Sidebar>
         <Link to="/">
         <h3 className = "HeaderLogo">Logo</h3>
@@ -21,7 +22,7 @@ const Header = (props) =>
         <button className='btn_mypage' onClick={()=>setmodal(!modal)}><CgProfile size="35"/></button>
         {modal && (
           <Modal closeModal={()=>setmodal(!modal)}>
-            <h3>모달창</h3>
+            
           </Modal>
         )}
       </div>  

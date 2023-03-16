@@ -1,15 +1,9 @@
-.content {
+.HeaderContent {
   height: 10vh;
   width: 10vh;
 }
 
-.HeaderLogo {
-  text-align:center; 
-  
-  left : 20%;
- 
-}
-.nav{
+.HeaderNav{
   background-color: #911F27;
   width: 100%;
   color : white;
@@ -21,18 +15,17 @@
   align-items: center;
 }
 
-.nav-item{
+.Header-nav-item{
   display: flex;
   justify-content: space-between;
   width: 1500px;
   margin-top: 5px;
 }
 
-.btn_bar {
-  background-color: transparent;
-  color: #FFFFFF;
-  border: none;
+.HeaderLogo {
+  margin-left:60%;
 }
+
 
 .btn_mypage {
   background-color: transparent; 
@@ -41,7 +34,3 @@
   margin-right : -23px;
 } 
 
-h3 {
-  color: #FFFFFF;
-  text-decoration: none;
-}

@@ -6,11 +6,11 @@ function Signup () {
     return (
                 
         <div>
-        <h4 className="titleName2">시작하기</h4>
+        <h4 className="Signup-Title">시작하기</h4>
         
-        <div className="page2">
+        <div className="Signup-Page">
         
-        <div className="contentWrap">
+        <div className="Signup-ContentWrap">
         
         
         <input className="signupinput" placeholder='Name' />

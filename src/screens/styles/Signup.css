@@ -1,4 +1,4 @@
-.titleName2 {
+.Signup-Title {
     text-align:center;
     margin-top :60px;
     font-size: 26px;
@@ -6,7 +6,7 @@
     color: #262626;
   }
   
-  .page2 {
+  .Signup-Page {
       position : absolute;
       top:140px;
       bottom: 220px;
@@ -35,7 +35,7 @@
       color: #262626;
     }
     
-    .contentWrap {
+    .Signup-ContentWrap {
       margin-top: 40px;
       flex: 1;
     }

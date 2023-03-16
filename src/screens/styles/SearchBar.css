@@ -1,0 +1,34 @@
+.Main-Search-Bar {
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    border-radius : 5px;
+    padding: 0.5rem;
+    width: 30%;
+    height:24px;
+    margin:auto;
+    
+  }
+  
+  .Main-Search-Bar-input {
+    border: 2px solid #000000;
+    outline: none;
+    width: 400%;
+    height: 30px;
+    border-radius : 20px;
+    margin-right: 0.5rem;
+    text-align:center;
+    margin:auto;
+    
+  }
+  
+  .Main-Search-Bar button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    outline: none;
+    font-size: 1.5rem;
+    color: #000000;
+    margin:auto;
+    height:14px;
+  }

@@ -1,0 +1,67 @@
+.Matzip-Container{
+    position: absolute;
+    top : 150px;
+    left: 50%; 
+    transform: translateX(-50%); 
+}
+
+.Matzip_SearchBar {
+    height : 30px;
+    width : 500px;
+    border-radius : 15px;
+    margin-top : 20px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.Matzip_Search {
+    margin-top:12px;
+    margin-left:670px;
+    height: 50px;
+    width: 30px;
+}
+
+.tab_bar {
+    color : #000000;
+    background-color: transparent;
+    width : 300px;
+    position: inherit;
+    
+}
+
+.tabs {
+    background-color: rgb(255, 255, 255);
+    position: absolute;
+    display: flex;
+    top : 130px;
+    width : 800px;
+    line-height: 5%;
+    padding:8px 19px 8px 16px;
+}
+
+.Matzip-Wrap {
+    background-color: aquamarine;
+    height : 500px;
+}
+
+.Matzip-Nav-item {
+    line-height: 5%;
+    width : 200px;
+    margin-left : 10px;
+}
+
+.Matziphr {
+    margin-top: 50px;
+    height : 2px;
+    width:800px;
+    background : #000;
+}
+
+
+.tabs {
+    align-self: center;   
+    left: 50%; 
+    transform: translateX(-50%);  
+}
+

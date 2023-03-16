@@ -6,11 +6,11 @@ function Login () {
     return (
         
         <div>
-        <h4 className="titleName">SEEnema에 다시 오신걸 환영해요!</h4>
+        <h4 className="LoginTitle">SEEnema에 다시 오신걸 환영해요!</h4>
     
-        <div className="page">
+        <div className="Loginpage">
     
-        <div className="contentWrap">
+        <div className="Login-contentWrap">
     
            
             <input className="loginidinput" placeholder='Email'/>
