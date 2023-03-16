@@ -26,15 +26,6 @@ function ReviewWrite () {
 
             <p></p>
 
-            <div className = "RW-DT">
-                <label className = 'ReviewWrite-Date'>관람일</label>
-                <DatePicker
-                    className = "MyDatePicker"
-                    dataFormat = "yyyy-MM-dd" />
-            </div>
-
-            <p></p>
-
             <div className='ReviewWrite-Content'>
                 <label className = 'ReviewWrite-Label'>
                 내용</label>

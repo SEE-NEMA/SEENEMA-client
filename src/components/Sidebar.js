@@ -52,15 +52,18 @@ const Sidebar = ({width=400, children}) => {
                         <li><a href="/musical">뮤지컬</a></li>
                         <li><a href="/concert">콘서트</a></li>
                     </ul>
+
                     <br/><br/>
+                    
+                    <ul> <a href="/facility">주변 시설</a></ul>
+                   
+                   
+                    <br/><br/>
+                    
                     <ul>후기 모아보기
                         <li><a href="/seeya">시야 후기</a></li>
                         <li><a href="/Review">공연장 후기</a></li>
                         
-                    </ul>
-                    <br/><br/>
-                    <ul>주변 시설
-                        <li><a href="/Review"></a></li>
                     </ul>
                 </div>
             </div>

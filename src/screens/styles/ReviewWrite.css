@@ -47,10 +47,6 @@
     text-transform: 5px;
 }
 
-.ReviewWrite-Date {
-    font-weight: bold;
-    text-align : inherit;
-}
 
 .ReviewWrite-Label {
     margin-left : 3px;
@@ -67,7 +63,7 @@
     border : none;
     background-color: #e2dede;
 
-    height : 250px;
+    height : 300px;
     font-size : 16px;
     font-weight : 400;
 
