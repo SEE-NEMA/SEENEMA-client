@@ -15,12 +15,14 @@ import Musical from './screens/SB_Components/Musical';
 import Concert from './screens/SB_Components/Concert';
 import MyPage from './screens/My_Page/MyPage';
 import Facility from './screens/SB_Components/Facility';
+import SeeyaMain from './screens/seeya/SeeyaMain';
 
 function App ()
 {
   return(
     <BrowserRouter>
       <Routes>
+
         <Route path={"/"} element={<Main/>}></Route>
         <Route path={"/Login"} element={<Login/>}></Route>
         <Route path={"/Signup"} element={<Signup/>}></Route>
@@ -32,6 +34,8 @@ function App ()
         <Route path={"/concert"} element={<Concert/>}/>
         <Route path={"/mypage"} element={<MyPage/>}/>
         <Route path={"/facility"} element={<Facility/>}/>
+        <Route path={"/seeyamain"} element={<SeeyaMain/>}/>
+
       </Routes>
     </BrowserRouter>
   )

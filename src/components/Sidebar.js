@@ -61,7 +61,7 @@ const Sidebar = ({width=400, children}) => {
                     <br/><br/>
                     
                     <ul>후기 모아보기
-                        <li><a href="/seeya">시야 후기</a></li>
+                        <li><a href="/seeyamain">시야 후기</a></li>
                         <li><a href="/Review">공연장 후기</a></li>
                         
                     </ul>

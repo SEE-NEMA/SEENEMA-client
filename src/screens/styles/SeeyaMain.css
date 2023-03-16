@@ -1,0 +1,29 @@
+.SeeyaMain-Wrap {
+    margin-top : 100px;
+    text-align: center;
+}
+
+
+.SeeyaMain-Search {
+    position: absolute;
+    background-color: transparent;
+    border: none;
+    margin-top: 20px;
+    margin-left: 10px;
+}
+
+.SeeyaMain-input {
+    margin-top: 20px;
+    vertical-align: middle;
+    width: 600px;
+    height:30px;
+    border-radius: 20px;
+    border: 1px #911F27 solid;
+}
+
+.SeeyaMain-hr {
+    margin-top: 50px;
+    height : 2px;
+    width:800px;
+    background : #000;
+}
