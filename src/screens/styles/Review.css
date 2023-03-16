@@ -41,3 +41,20 @@ input::placeholder {
     width:800px;
     background : #000;
 }
+
+.Review-Content ul {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    margin-left: 0%;
+    margin-right: 0%;
+}
+
+li {
+    color : #000;
+    list-style: none;
+    width: 1000px;
+    font-weight: 300;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
