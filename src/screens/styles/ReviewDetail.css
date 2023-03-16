@@ -1,0 +1,15 @@
+.RVDT-Content {
+    width :initial
+}
+
+.RVDT-Detail {
+    display: flex;
+    flex-direction: row;
+}
+
+.RVDT-Detail h6 {
+    color : #c9c9c9;
+    padding-right: 20px;
+    font-weight :300;
+    font-style: normal;
+}

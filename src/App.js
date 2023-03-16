@@ -15,6 +15,8 @@ import Musical from './screens/SB_Components/Musical';
 import Concert from './screens/SB_Components/Concert';
 import MyPage from './screens/My_Page/MyPage';
 import Facility from './screens/SB_Components/Facility';
+import ReviewDetail from './screens/Review/ReviewDetail';
+import ReviewEdit from './screens/Review/ReviewEdit';
 
 function App ()
 {
@@ -31,7 +33,8 @@ function App ()
         <Route path={"/musical"} element={<Musical/>}/>
         <Route path={"/concert"} element={<Concert/>}/>
         <Route path={"/mypage"} element={<MyPage/>}/>
-        <Route path={"/facility"} element={<Facility/>}/>
+        <Route exact path={"/facility"} element={<Facility/>}/>
+        <Route exact path={"/Review/:postNo"} element={<ReviewDetail/>}/>
       </Routes>
     </BrowserRouter>
   )

@@ -1,5 +1,5 @@
 .Review-WrapContent {
-    margin-top : 100px;
+    margin-top : 80px;
     text-align: center;
 }
 
@@ -38,7 +38,7 @@ input::placeholder {
 .Review-hr {
     margin-top: 50px;
     height : 2px;
-    width:800px;
+    width:900px;
     background : #000;
 }
 
@@ -48,13 +48,27 @@ input::placeholder {
     flex-direction: column;
     margin-left: 0%;
     margin-right: 0%;
+    align-content: center;
 }
 
-li {
+.Review-Content li {
     color : #000;
     list-style: none;
-    width: 1000px;
+    width: 800px;
     font-weight: 300;
     margin-top: 20px;
     margin-bottom: 50px;
+    text-align: left;
+    padding-left: 50%;
+    padding-right: 50%;
+}
+
+.showMore_btn {
+    position: absolute;
+    bottom: 15px;
+    background-color: transparent;
+    font-weight: bold;
+    border: none;
+    width: 30px;
+    height : 30px;
 }

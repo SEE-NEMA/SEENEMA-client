@@ -10,6 +10,7 @@ import axios from "axios";
 function ReviewWrite () {
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
+    const [tag, setTag] =useState('')
     const navigate = useNavigate();
 
     const handleSubmit = (event) => {
@@ -17,7 +18,7 @@ function ReviewWrite () {
         axios.post('http://43.200.58.174:8080/api/v1/theater-review/upload', {
             title : title,
             content : content,
-            tags : [{tagId : 1}]
+            tags : [{tag}]
         })
         .then((response) => {
             console.log(response)
@@ -57,7 +58,16 @@ function ReviewWrite () {
              </form>
  
              <p></p>
-             <button value="1">맛집</button>
+            
+             <div className="tag">
+             <label className="ReviewWrite-Title">태그</label>
+             <div className="tag_btns">
+                <button className="tag_btn">맛집</button>
+                <button className="tag_btn">주차장</button>
+                <button className="tag_btn">대여</button>
+                <button className="tag_btn">물품 보관소</button>
+             </div>
+             </div>
              </div>
  
          </div>

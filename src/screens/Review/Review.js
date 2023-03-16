@@ -6,6 +6,7 @@ import Header from "../../Header";
 import '../styles/Review.css';
 import {FaSearch} from "react-icons/fa";
 import axios from "axios";
+import {AiFillCaretDown} from 'react-icons/ai';
 
 
 const Review = () =>
@@ -44,15 +45,17 @@ const Review = () =>
             <div className="Review-Content">
                 <ul>
                 {review.slice(0, showAllReviews ? review.length : 5).map(reviews => (
-                    <li key={reviews.id}>
-                        <span style={{marginRight : '20px'}}>{reviews.title}</span>
-                        <span style={{marginRight : '20px'}}>{reviews.createdAt}</span>
-                        <span style={{marginRight : '20px'}}>{reviews.nickname}</span>
+                    <li key={reviews.post_no}>
+                        <Link to={`/Review/${reviews.post_no}`}>
+                        <span style={{marginRight : '20px', color:'#000'}}>{reviews.title}</span>
+                        <span style={{marginRight : '20px', color:'#000'}}>{reviews.createdAt}</span>
+                        <span style={{marginRight : '20px', color:'#000'}}>{reviews.nickname}</span>
+                        </Link>
                     </li>
                 ))}
                 </ul>
                 {!showAllReviews && (
-                    <button onClick={toggleShowAllReviews}>더보기</button>
+                    <AiFillCaretDown className="showMore_btn" onClick={toggleShowAllReviews}>더보기</AiFillCaretDown>
                 )}
             </div>
             </div>
