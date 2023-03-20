@@ -17,7 +17,7 @@ function SeeyaMain() {
     }
   
     const handleButtonClick = () => {
-      axios.get(`http://43.200.58.174:8080/api/v1/view-review/search?q={theaterName}`)
+      axios.get(`http://43.200.58.174:8080/api/v1/view-review/search?q=${theaterName}`)
         .then(response => {
           console.log(response.data);
         })
