@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate, useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import Header from '../../Header'
 import "../styles/ReviewDetail.css"
 
@@ -22,10 +22,22 @@ const ReviewDetail = () => {
         });
     }, [postNo]);
   
+    const handleEditClick = (event) => {
+      event.preventDefault();
+      axios
+      .then((response) => {
+        console.log(response);
+        navigate(`/review/${postNo}`);
+      })
+      .catch((error) => {
+         console.log(error);
+      })
+    }
+
     return (
       <div>
         <Header/>
-        <div className="RVDT-Content">
+        <div className="RVDT-Wrap">
         <h2 className="RVDT-title">{review.title}</h2>
         <div className="RVDT-Detail">
             <h6 className="RVDT-nickname">작성자 : {review.nickName}</h6>
@@ -36,7 +48,7 @@ const ReviewDetail = () => {
         <p>태그 : {review.tagId}</p>
 
         <div>
-            <button>수정</button>
+            <button onClick={handleEditClick}>수정</button>
             <button>삭제</button>
         </div>
       </div>
