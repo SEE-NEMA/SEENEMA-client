@@ -1,5 +1,6 @@
-.RVDT-Content {
-    width :initial
+.RVDT-Wrap {
+    position: absolute;
+    align-items: center;
 }
 
 .RVDT-Detail {

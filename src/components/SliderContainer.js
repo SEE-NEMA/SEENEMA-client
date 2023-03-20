@@ -45,7 +45,7 @@ export default function SliderContainer() {
         {items.map((item, idx) => {
           return (
             <SwiperSlide key={idx}>
-              <img src={item.src} alt="승훈이 사진"/>
+              <img src={item.src} alt="포스터 사진"/>
             </SwiperSlide>
           );
         })}
