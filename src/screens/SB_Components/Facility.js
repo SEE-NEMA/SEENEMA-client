@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Header from "../../Header";
 import "../styles/Facility.css"
 import { NavLink } from "react-router-dom";
-import Dropdown from 'react-dropdown';
 
 function Facility() {
    
@@ -19,10 +18,7 @@ function Facility() {
     return (
         <div>
             <Header/>
-            <div className = "dropdown-wrapper">
-            <h1>React Dropdown Example</h1>
-                <Dropdown options={options} onChange={handleDropdownChange} value={selectedOption} placeholder="Select an option" />
-            </div>
+           
         </div>
     )
 }
