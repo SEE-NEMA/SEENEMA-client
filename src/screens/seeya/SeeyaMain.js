@@ -9,9 +9,9 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
 
-function SeeyaMain() {
 
-const Review = () =>
+
+const SeeyaMain = () =>
 {
     const [review, setReview] = useState([]);
     const [showAllReviews, setShowAllReviews] = useState(false);
@@ -42,7 +42,7 @@ const Review = () =>
                 </button>
                 <hr className = "SeeyaMain-hr"/>
             </div>
-            <div className="Review-Content">
+            <div className="SeeyaMain-Content">
                 <ul>
                 {review.slice(0, showAllReviews ? review.length : 5).map(reviews => (
                     <li key={reviews.id}>
@@ -60,6 +60,6 @@ const Review = () =>
         </div>
     )
 }
-}
+
 
 export default SeeyaMain;
