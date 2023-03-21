@@ -33,12 +33,13 @@ function SeeyaMain() {
                 </button>
                 <hr className = "SeeyaMain-hr"/>
             </div>
-
-            <ul className='SeeyaMain-ul'>
-            {items.map((item, index) => (
-             <li key={index}>{item.theaterName}</li>
+            <div className = "SeeyaMain-itemWrap">
+            <ul>
+            {items.map(item => (
+            <li className='SeeyaMain-li' key={item.id}>{item.theaterName}</li>
             ))}
-            </ul>
+      </ul>
+      </div>
         </div>
         
     )
