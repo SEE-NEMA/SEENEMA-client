@@ -18,7 +18,7 @@ function ReviewWrite () {
         axios.post('http://43.200.58.174:8080/api/v1/theater-review/upload', {
             title : title,
             content : content,
-            tags : [{tag}]
+            tags : [{tagId : 1}]
         })
         .then((response) => {
             console.log(response)
