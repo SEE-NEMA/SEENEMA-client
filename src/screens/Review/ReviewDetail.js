@@ -21,16 +21,19 @@ const ReviewDetail = () => {
           console.log(error);
         });
     }, [postNo]);
-  
-    const handleEditClick = (event) => {
-      event.preventDefault();
-      axios
+
+    const handleEditClick = () => {
+      navigate(`/reviewEdit/${postNo}`);
+    }
+
+    const handleDeleteClick = () => {
+      axios.delete(`http://43.200.58.174:8080/api/v1/theater-review/${postNo}`)
       .then((response) => {
-        console.log(response);
-        navigate(`/review/${postNo}`);
+         console.log(response.data);
+         navigate("/review")
       })
       .catch((error) => {
-         console.log(error);
+        console.log(error);
       })
     }
 
@@ -49,7 +52,7 @@ const ReviewDetail = () => {
 
         <div>
             <button onClick={handleEditClick}>수정</button>
-            <button>삭제</button>
+            <button onClick={handleDeleteClick}>삭제</button>
         </div>
       </div>
       </div>

@@ -35,6 +35,7 @@ function App ()
         <Route path={"/mypage"} element={<MyPage/>}/>
         <Route exact path={"/facility"} element={<Facility/>}/>
         <Route exact path={"/Review/:postNo"} element={<ReviewDetail/>}/>
+        <Route exact path={"/reviewEdit/:postNo"} element={<ReviewEdit/>}/>
       </Routes>
     </BrowserRouter>
   )
