@@ -23,3 +23,9 @@
     position: absolute;
     align-content: center;
 }
+
+.RVDT-Comment {
+    color: #000;
+    display: flex;
+    flex-direction: column;
+}
