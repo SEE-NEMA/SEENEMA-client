@@ -8,6 +8,7 @@ const ReviewDetail = () => {
     const {postNo} = useParams();
     const [review, setReview] = useState({});
     const [content, setContent] = useState("");
+    const [comments, setComments] = useState("");
     const navigate = useNavigate();
   
     useEffect(() => {
@@ -37,6 +38,8 @@ const ReviewDetail = () => {
       })
     }
 
+  
+
     return (
       <div>
         <Header/>
@@ -46,14 +49,17 @@ const ReviewDetail = () => {
             <h6 className="RVDT-nickname">작성자 : {review.nickName}</h6>
             <h6 className="RVDT-createdAt">작성 일자 : {review.createdAt}</h6>
             <h6 className="RVDT-viewCount">조회수 : {review.viewCount}</h6>
-        <div className="RVDT-content">{review.content}</div>
         </div>
+        <p/>
+        <div className="RVDT-content">{review.content}</div>
         <p>태그 : {review.tagId}</p>
 
         <div>
             <button onClick={handleEditClick}>수정</button>
             <button onClick={handleDeleteClick}>삭제</button>
         </div>
+        <div>
+    </div>
       </div>
       </div>
     );
