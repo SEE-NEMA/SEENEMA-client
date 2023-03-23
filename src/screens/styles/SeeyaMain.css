@@ -39,19 +39,21 @@
 
 .SeeyaMain-li {
     width : 200px;
-    color:black;
     text-align: left;
-    
     line-height : 50px;
 }
 
 .SeeyaMain-itemWrap {
     background-color:#ffffff;
     width : 600px;
-    border : 2px solid rgb(184, 184, 184);
-    border-radius : 20px;
+    height : 350px;
+    border : 3px solid rgb(184, 184, 184);
+    border-radius : 0px;
     margin-left : 450px;
-    text-align:center;
     margin-top : 50px;
+}
 
+.SeeyaMain-Link {
+    color : black;
+    font-style: sans-serif;
 }

@@ -1,5 +1,3 @@
-/* 시야 페이지 진입 시 메인화면 */
-
 import {Link} from 'react-router-dom';
 import Header from "../../Header";
 import '../styles/SeeyaMain.css';
@@ -23,6 +21,7 @@ function SeeyaMain() {
           console.error(error);
         }, []);
     }
+
     return (
         <div>
            <Header/>
@@ -33,18 +32,20 @@ function SeeyaMain() {
                 </button>
                 <hr className = "SeeyaMain-hr"/>
             </div>
-            <div className = "SeeyaMain-itemWrap">
+
+            <div className = "SeeyaMain-itemWrap" >
             <ul>
             {items.map(item => (
-            <li className='SeeyaMain-li' key={item.id}>{item.theaterName}</li>
-            ))}
-      </ul>
-      </div>
+           <li className='SeeyaMain-li' key={item.id}>
+            <Link to={`/api/v1/view-review/${item.theaterId}`}>{item.theaterName}</Link>
+          </li>
+))}
+            </ul>
+
+          </div>
         </div>
         
     )
-
-
 }
 
 export default SeeyaMain;
