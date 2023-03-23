@@ -37,9 +37,9 @@ function SeeyaMain() {
             <ul>
             {items.map(item => (
            <li className='SeeyaMain-li' key={item.id}>
-            <Link to={`/api/v1/view-review/${item.theaterId}`}>{item.theaterName}</Link>
+            <Link to={`/api/v1/view-review/${item.theaterId}`} className='SeeyaMain-Link'>{item.theaterName}</Link>
           </li>
-))}
+            ))}
             </ul>
 
           </div>
