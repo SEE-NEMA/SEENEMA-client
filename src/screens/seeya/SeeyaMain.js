@@ -36,9 +36,9 @@ function SeeyaMain() {
             <div className = "SeeyaMain-itemWrap" >
             <ul>
             {items.map(item => (
-           <li className='SeeyaMain-li' key={item.id}>
-            <Link to={`/api/v1/view-review/${item.theaterId}`} className='SeeyaMain-Link'>{item.theaterName}</Link>
-          </li>
+        <Link to={`http://43.200.58.174:8080/api/view-review/${item.theaterId}`} className="SeeyaMain-Link">
+        <li className='SeeyaMain-li' key={item.id}>{item.theaterName}</li>
+      </Link>
             ))}
             </ul>
 
