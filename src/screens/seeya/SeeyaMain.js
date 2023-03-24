@@ -7,8 +7,6 @@ import axios from 'axios';
 
 
 function SeeyaMain() {
-    
-  
     const [theaterName, settheaterName] = useState("");
     const [items, setItems] = useState([]);
   
@@ -35,10 +33,10 @@ function SeeyaMain() {
 
             <div className = "SeeyaMain-itemWrap" >
             <ul>
-            {items.map(item => (
-        <Link to={`http://43.200.58.174:8080/api/view-review/${item.theaterId}`} className="SeeyaMain-Link">
-        <li className='SeeyaMain-li' key={item.id}>{item.theaterName}</li>
-      </Link>
+            {items.map((item, index) => (
+               <Link to={`/view-review/${item.theaterId}`} className="SeeyaMain-Link" key={index}>
+                 <li className='SeeyaMain-li'>{item.theaterName}</li>
+               </Link>
             ))}
             </ul>
 

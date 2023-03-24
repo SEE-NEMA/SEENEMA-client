@@ -16,6 +16,7 @@ import Concert from './screens/SB_Components/Concert';
 import MyPage from './screens/My_Page/MyPage';
 import Facility from './screens/SB_Components/Facility';
 import SeeyaMain from './screens/seeya/SeeyaMain';
+import SeeyaDetail from './screens/seeya/SeeyaDetail';
 
 function App ()
 {
@@ -35,7 +36,7 @@ function App ()
         <Route path={"/mypage"} element={<MyPage/>}/>
         <Route path={"/facility"} element={<Facility/>}/>
         <Route path={"/seeyamain"} element={<SeeyaMain/>}/>
-
+        <Route path="/view-review/:theaterId" element={<SeeyaDetail />} />
       </Routes>
     </BrowserRouter>
   )
