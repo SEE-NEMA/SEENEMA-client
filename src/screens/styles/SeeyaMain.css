@@ -38,7 +38,7 @@
 }
 
 .SeeyaMain-li {
-    width : 200px;
+    width : 400px;
     text-align: left;
     line-height : 50px;
     font-weight: bold;
@@ -46,7 +46,7 @@
 
 .SeeyaMain-itemWrap {
     background-color:#ffffff;
-    width : 600px;
+    width : 1000px;
     height : 350px;
     border : none;
     border-radius : 0px;
