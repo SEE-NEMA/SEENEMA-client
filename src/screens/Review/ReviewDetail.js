@@ -6,10 +6,10 @@ import "../styles/ReviewDetail.css"
 
 const ReviewDetail = () => {
     const {postNo} = useParams();
-    const {commentId} = useParams();
     const [review, setReview] = useState({});
     const [content, setContent] = useState("");
     const [comments, setComments] = useState("");
+    const [commentId, setCommentId] = useState({})
     const navigate = useNavigate();
     const [hoveredComment, setHoveredComment] = useState(null);
   
@@ -43,7 +43,10 @@ const ReviewDetail = () => {
     const addComments = () => {
       axios
         .post(`http://43.200.58.174:8080/api/v1/theater-review/${postNo}/comment`,
-        {content : comments}
+        {
+          content : comments,
+          commentId : commentId
+        }
         )
         .then((response) => {
           console.log(response);
@@ -54,31 +57,16 @@ const ReviewDetail = () => {
         });
     }
 
-    // const deleteComments = () => {
-    //   axios
-    //   .delete(`http://43.200.58.174:8080/api/v1/theater-review/${postNo}/${commentId}`)
-    //   .then((response) => {
-    //     console.log(response.data);
-    //     setReview((prevReview) => ({
-    //       ...prevReview,
-    //       comments : prevReview.comments.filter((comment) => comment.commentId !== commentId),
-    //     }));
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
-    // }
-
-    // const editComments = () => {
-    //   axios
-    //   .put(`http://43.200.58.174:8080/api/v1/theater-review/${postNo}/${commentId}`)
-    //   .then((response) => {
-    //     console.log(response);
-    //   })
-    //   .catch((error) => {
-    //     console.log(error)
-    //   })
-    // }
+    const deleteComments = () => {
+      axios.delete(`http://43.200.58.174:8080/api/v1/theater-review/${commentId}`)
+        .then(response => {
+          console.log(response.data);
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    };
+    
 
     return (
       <div>
@@ -98,14 +86,14 @@ const ReviewDetail = () => {
             {review.comments && review.comments.map(comment => (
               <li key={comment.commentId} className="RVDT-Comment">
                 <span>{comment.content}</span>
-                {/* <button onClick={deleteComments}>삭제</button> */}
+                <button onClick={deleteComments(commentId)}>삭제</button> 
               </li>
             ))}
           </ul>
-        {/* <div>
+        <div>
             <button onClick={handleEditClick}>수정</button>
             <button onClick={handleDeleteClick}>삭제</button>
-        </div> */}
+        </div>
         <form onSubmit={addComments}>
         <div>
           댓글

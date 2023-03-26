@@ -1,0 +1,60 @@
+.SeeyaMain-Wrap {
+    margin-top : 100px;
+    text-align: center;
+}
+
+
+.SeeyaMain-Search {
+    position: absolute;
+    background-color: transparent;
+    border: none;
+    margin-top: 22px;
+    margin-left: 10px;
+}
+
+.SeeyaMain-input {
+    margin-top: 20px;
+    vertical-align: middle;
+    width: 600px;
+    height:30px;
+    border-radius: 20px;
+    border: 2px #911F27 solid;
+}
+
+.SeeyaMain-hr {
+    margin-top: 50px;
+    height : 2px;
+    width:800px;
+    background : #000;
+}
+
+.SeeyaMain-Content {
+    width: 200px;
+}
+
+.SeeyaMain-Search-Concert {
+    width : 200px;
+    margin-left : 300px;
+}
+
+.SeeyaMain-li {
+    width : 200px;
+    text-align: left;
+    line-height : 50px;
+    font-weight: bold;
+}
+
+.SeeyaMain-itemWrap {
+    background-color:#ffffff;
+    width : 600px;
+    height : 350px;
+    border : none;
+    border-radius : 0px;
+    margin-left : 600px;
+    margin-top : 50px;
+}
+
+.SeeyaMain-Link {
+    color : black;
+    font-style: sans-serif;
+}
