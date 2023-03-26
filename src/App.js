@@ -9,7 +9,6 @@ import Login from './screens/Login';
 import Review from './screens/Review/Review';
 import Perform_Review from './screens/Review/ReviewWrite';
 import Signup from './screens/Signup'
-import Seeya from './screens/SB_Components/Seeya';
 import Matzip from './screens/SB_Components/Matzip';
 import Musical from './screens/SB_Components/Musical';
 import Concert from './screens/SB_Components/Concert';
@@ -17,6 +16,8 @@ import MyPage from './screens/My_Page/MyPage';
 import Facility from './screens/SB_Components/Facility';
 import ReviewDetail from './screens/Review/ReviewDetail';
 import ReviewEdit from './screens/Review/ReviewEdit';
+import SeeyaMain from './screens/seeya/SeeyaMain';
+import SeeyaDetail from './screens/seeya/SeeyaDetail';
 
 function App ()
 {
@@ -27,7 +28,8 @@ function App ()
         <Route path={"/Login"} element={<Login/>}></Route>
         <Route path={"/Signup"} element={<Signup/>}></Route>
         <Route path={"/Review"} element={<Review/>}></Route>
-        <Route path={"/seeya"} element={<Seeya/>}/>
+        <Route path={"/seeya"} element={<SeeyaMain/>}/>
+        <Route path={"/Seeya/:theaterId"} element={<SeeyaDetail/>}/>
         <Route path={"/matzip"} element={<Matzip/>}/>
         <Route path={"/perform_review"} element={<Perform_Review/>}/>
         <Route path={"/musical"} element={<Musical/>}/>
