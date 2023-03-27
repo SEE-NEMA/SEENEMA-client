@@ -65,5 +65,6 @@
 
 .rank {
     font-size: small;
-    align-items: center;
+    text-align : center;
+    line-height : 18px;
 }
