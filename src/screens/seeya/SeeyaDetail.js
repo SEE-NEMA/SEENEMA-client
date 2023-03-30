@@ -4,10 +4,14 @@ import axios from 'axios';
 import Header from "../../Header";
 import '../styles/SeeyaDetail.css';
 import {FaSearch} from "react-icons/fa";
+import {Link} from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom'; 
+import SeeyaUpload from './SeeyaUpload';
 
 function SeeyaDetail() {
   const { theaterId } = useParams();
   const [reviews, setReviews] = useState([]);
+  
 
   useEffect(() => {
     axios.get(`http://43.200.58.174:8080/api/v1/view-review/${theaterId}`)
@@ -30,6 +34,11 @@ function SeeyaDetail() {
           </button>
           <hr className="SeeyaMain-hr" />
         </div>
+        <div>
+        <Link to={`/api/v1/view-review/${theaterId}/upload`} className = "SeeyaDetail-link">
+        <button className = "SeeyaDetail-button">글쓰기</button>
+        </Link>
+        </div>
         <div className="SeeyaDetail-Container">
           {reviews.map((review, index) => (
             <div key={index} className="SeeyaDetail-Wrap">
@@ -38,6 +47,9 @@ function SeeyaDetail() {
             </div>
           ))}
         </div>
+
+       
+
       </div>
     );
 }

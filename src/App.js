@@ -17,6 +17,7 @@ import MyPage from './screens/My_Page/MyPage';
 import Facility from './screens/SB_Components/Facility';
 import SeeyaMain from './screens/seeya/SeeyaMain';
 import SeeyaDetail from './screens/seeya/SeeyaDetail';
+import SeeyaUpload from './screens/seeya/SeeyaUpload';
 
 function App ()
 {
@@ -37,6 +38,8 @@ function App ()
         <Route path={"/facility"} element={<Facility/>}/>
         <Route path={"/seeyamain"} element={<SeeyaMain/>}/>
         <Route path="/view-review/:theaterId" element={<SeeyaDetail />} />
+        <Route path="/view-review/:theaterId/upload" element = {<SeeyaUpload/>} />
+     
       </Routes>
     </BrowserRouter>
   )
