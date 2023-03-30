@@ -12,6 +12,7 @@ function SeeyaUpload() {
     const [content, setContent] = useState("");
 
     const { theaterId } = useParams();
+
     const navigate = useNavigate();
 
     const handleSubmit = (event) => {
@@ -31,6 +32,7 @@ function SeeyaUpload() {
           )
           .then((response) => {
             console.log(response.data);
+            navigate('/seeyamain');
           })
           .catch((error) => {
             console.log(error);
