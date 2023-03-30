@@ -34,11 +34,13 @@ function SeeyaDetail() {
           </button>
           <hr className="SeeyaMain-hr" />
         </div>
+
         <div>
-        <Link to={`/api/v1/view-review/${theaterId}/upload`} className = "SeeyaDetail-link">
-        <button className = "SeeyaDetail-button">글쓰기</button>
-        </Link>
+          <Link to={`/SeeyaUpload/${theaterId}`} className = "SeeyaDetail-link">
+          <button className = "SeeyaDetail-button">글쓰기</button>
+          </Link>
         </div>
+        
         <div className="SeeyaDetail-Container">
           {reviews.map((review, index) => (
             <div key={index} className="SeeyaDetail-Wrap">

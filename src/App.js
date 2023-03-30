@@ -38,7 +38,7 @@ function App ()
         <Route path={"/facility"} element={<Facility/>}/>
         <Route path={"/seeyamain"} element={<SeeyaMain/>}/>
         <Route path="/view-review/:theaterId" element={<SeeyaDetail />} />
-        <Route path="/view-review/:theaterId/upload" element = {<SeeyaUpload/>} />
+        <Route path={`/SeeyaUpload/:theaterId`} element = {<SeeyaUpload/>} />
      
       </Routes>
     </BrowserRouter>
