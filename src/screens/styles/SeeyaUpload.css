@@ -9,7 +9,7 @@
     width: 700px;
     height: 500px;
     margin-top : 60px;
-    border : 2px solid #830d15;
+    border : 4px solid #830d15;
     border-radius : 10px;
     background-color: white;
   }
@@ -21,7 +21,8 @@
     margin-top : 20px;
     margin-left : 40px;
     padding: 10px;
-    border: 1px solid gray;
+    border: none;
+    background-color: rgb(202, 202, 202);
     border-radius: 10px;
     font-size: 16px;
     width: 80%;
@@ -32,7 +33,7 @@
   .SeeyaUpload-form input::placeholder,
   .SeeyaUpload-form textarea::placeholder {
     text-align: left;
-    color : rgb(180, 177, 177);
+    color : rgb(0, 0, 0);
   }
   
   .SeeyaUpload-form textarea {
@@ -40,7 +41,8 @@
     margin-top : 10px;
     margin-left : 90px;
     padding: 10px;
-    border: 1px solid gray;
+    border: none;
+    background-color: rgb(202, 202, 202);
     border-radius: 10px;
     font-size: 16px;
     width: 80%;
