@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
 import Header from "../../Header";
 import '../styles/SeeyaDetail.css';
-import {FaSearch} from "react-icons/fa";
-import {Link} from 'react-router-dom';
-import { Switch, Route } from 'react-router-dom'; 
-import SeeyaUpload from './SeeyaUpload';
+import { FaSearch } from "react-icons/fa";
 
 function SeeyaDetail() {
   const { theaterId } = useParams();
@@ -35,38 +32,39 @@ function SeeyaDetail() {
   };
 
   return (
-    
-      <div>
-        <Header />
-        <div className="SeeyaMain-Wrap">
-          <input 
-            className="SeeyaMain-input" 
-            placeholder="공연장 이름을 검색해주세요" 
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-          />
-          <button className="SeeyaMain-Search" onClick={handleSearch}>
-            <FaSearch size="30" />
-          </button>
-          <hr className="SeeyaMain-hr" />
-        </div>
-
-        <div>
-          <Link to={`/SeeyaUpload/${theaterId}`} className = "SeeyaDetail-link">
-          <button className = "SeeyaDetail-button">글쓰기</button>
-          </Link>
-        </div>
-        
-        <div className="SeeyaDetail-Container">
-          {reviews.map((review, index) => (
-            <div key={index} className="SeeyaDetail-Wrap">
-              <p className="SeeyaDetail-title">{review.title}</p>
-              <p className="SeeyaDetail-createdAt">{review.createdAt} {review.nickName}</p>
-            </div>
-          ))}
-        </div>
+    <div>
+      <Header />
+      <div className="SeeyaMain-Wrap">
+        <input 
+          className="SeeyaMain-input" 
+          placeholder="좌석 검색 (ex:1층, 1층5열)" 
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
+        <button className="SeeyaMain-Search" onClick={handleSearch}>
+          <FaSearch size="30" />
+        </button>
+        <hr className="SeeyaMain-hr" />
       </div>
-    );
+
+      <div>
+        <Link to={`/SeeyaUpload/${theaterId}`} className="SeeyaDetail-link">
+          <button className="SeeyaDetail-button">글쓰기</button>
+        </Link>
+      </div>
+
+      <div className="SeeyaDetail-Container">
+        {reviews.map((review, index) => (
+          <div key={index} className="SeeyaDetail-Wrap">
+            <Link to={`/view-review/${theaterId}/${review.viewNo}`} className="SeeyaDetail-title">
+              <p className="SeeyaDetail-title">{review.title}</p>
+            </Link>
+            <p className="SeeyaDetail-createdAt">{review.createdAt} {review.nickName}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 }
 
 export default SeeyaDetail;

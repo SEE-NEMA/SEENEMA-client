@@ -18,6 +18,7 @@ import Facility from './screens/SB_Components/Facility';
 import SeeyaMain from './screens/seeya/SeeyaMain';
 import SeeyaDetail from './screens/seeya/SeeyaDetail';
 import SeeyaUpload from './screens/seeya/SeeyaUpload';
+import SeeyaReview from './screens/seeya/SeeyaReview';
 
 function App ()
 {
@@ -39,7 +40,8 @@ function App ()
         <Route path={"/seeyamain"} element={<SeeyaMain/>}/>
         <Route path="/view-review/:theaterId" element={<SeeyaDetail />} />
         <Route path={`/SeeyaUpload/:theaterId`} element = {<SeeyaUpload/>} />
-     
+        <Route path="/view-review/:theaterId/:viewNo" element = {<SeeyaReview/>} />
+
       </Routes>
     </BrowserRouter>
   )
