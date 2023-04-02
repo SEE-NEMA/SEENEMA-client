@@ -4,6 +4,7 @@ import axios from 'axios';
 import Header from "../../Header";
 import '../styles/SeeyaDetail.css';
 import { FaSearch } from "react-icons/fa";
+import Seeya from '../SB_Components/Seeya';
 
 function SeeyaDetail() {
   const { theaterId } = useParams();
@@ -13,12 +14,14 @@ function SeeyaDetail() {
   useEffect(() => {
     axios.get(`http://43.200.58.174:8080/api/v1/view-review/${theaterId}`)
       .then(response => {
+        console.log(response);
         setReviews(response.data);
       })
       .catch(error => {
         console.error(error);
       });
   }, [theaterId]);
+
 
   const handleSearch = () => {
     const encodedSearchQuery = encodeURIComponent(searchQuery);
@@ -55,9 +58,9 @@ function SeeyaDetail() {
 
       <div className="SeeyaDetail-Container">
         {reviews.map((review, index) => (
-          <div key={index} className="SeeyaDetail-Wrap">
+          <div key={index} className="SeeyaDetail-Wrap"> 
             <Link to={`/view-review/${theaterId}/${review.viewNo}`} className="SeeyaDetail-title">
-              <p className="SeeyaDetail-title">{review.title}</p>
+              {review.title}
             </Link>
             <p className="SeeyaDetail-createdAt">{review.createdAt} {review.nickName}</p>
           </div>
