@@ -18,6 +18,7 @@ import ReviewDetail from './screens/Review/ReviewDetail';
 import ReviewEdit from './screens/Review/ReviewEdit';
 import SeeyaMain from './screens/seeya/SeeyaMain';
 import SeeyaDetail from './screens/seeya/SeeyaDetail';
+import MusicalDetail from './screens/SB_Components/MusicalDetail';
 
 function App ()
 {

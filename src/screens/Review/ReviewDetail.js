@@ -57,15 +57,15 @@ const ReviewDetail = () => {
         });
     }
 
-    const deleteComments = () => {
-      axios.delete(`http://43.200.58.174:8080/api/v1/theater-review/${commentId}`)
-        .then(response => {
-          console.log(response.data);
-        })
-        .catch(error => {
-          console.log(error);
-        });
-    };
+    // const deleteComments = (commentId) => {
+    //   axios.delete(`http://43.200.58.174:8080/api/v1/theater-review/${postNo}/${commentId}`)
+    //   .then(response => {
+    //     console.log(response.data);
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   })
+    // }
     
 
     return (
@@ -85,8 +85,8 @@ const ReviewDetail = () => {
         <ul>
             {review.comments && review.comments.map(comment => (
               <li key={comment.commentId} className="RVDT-Comment">
-                <span>{comment.content}</span>
-                <button onClick={deleteComments(commentId)}>삭제</button> 
+                <span>{comment.content} Id : {comment.commentId}</span>
+                {/* <button onClick={deleteComments(comment.commentId)}>삭제</button>  */}
               </li>
             ))}
           </ul>
