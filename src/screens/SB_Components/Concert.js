@@ -1,34 +1,52 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../../Header";
-import "../styles/Concert.css"
+import "../styles/Musical.css"
 import { FaSearch } from "react-icons/fa";
 import {Nav} from "react-bootstrap";
 import {TabContent} from 'react-bootstrap';
-import { NavLink } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import axios from "axios";
 
 function Concert () {
+    const {no} = useParams();
+    
+    const [musical, setMusical] = useState([]);
+
+    useEffect(() => {
+        axios({
+            method:"GET",
+            url : "http://43.200.58.174:8080/api/v1/concerts"
+        })
+        .then((response) => {
+            setMusical(response.data);
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+    })
 
     return (
         <div>
         <Header/>
-
-            <div className = "Musical-Image"> </div>
-           
-
-            <div className = "Musical-Detail-Info">
-                <div className = "Musical-T">
-                    <p className = "Musical-Catecory">카테고리</p>
-                    <p className = "Musical-Title">콘서트 제목</p>
-                </div>
-
-                <div className = "MusicalST">
-                    <p className = "Musical-Place">장소</p>
-                    <p className = "Musical-Rate">공연장 총평</p>
-                    <p className = "Musical-Date">기간</p>
-                    <p className = "Musical-RunningTime">러닝타임</p>
-                </div>
+        <div className="musical-WrapContent">
+            <input className="musical_searchbar" placeholder="뮤지컬 제목을 입력하세요"></input>
+            <hr className="Musical_hr"/>
+            <div className="MusicalList">
+            {musical.map((musicals) => (
+            <li key={musicals.no} className="musicalItem">
+            <div className="musical_img">
+                <Link to={`/musical/${musicals.no}`}>
+                <img src={musicals.imgUrl} alt={musicals.title} />
+                </Link>
             </div>
-
+            <div className="musical_content">
+                <h4>{musicals.title}</h4>
+                <h6>{musicals.place}</h6>
+            </div>
+            </li>
+            ))}
+            </div>
+        </div>
         </div>
     )
 }

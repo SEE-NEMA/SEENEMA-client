@@ -1,12 +1,31 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../../Header";
 import "../styles/Musical.css"
 import { FaSearch } from "react-icons/fa";
 import {Nav} from "react-bootstrap";
 import {TabContent} from 'react-bootstrap';
-import { NavLink } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
+import axios from "axios";
 
-function Musical () {
+function MusicalDetail () {
+    const {no} = useParams();
+    const [title, setTitle] = useState("");
+    const [place, setPlace] = useState("");
+    const [imgUrl, setImgUrl] = useState({});
+
+    useEffect(() => {
+        axios
+        .get(`http://43.200.58.174:8080/api/v1/musicals/${no}`)
+        .then((response) => {
+            setTitle(response.title);
+            setPlace(response.place);
+            setImgUrl(response.imgUrl);
+            console.log(response.title)
+        })
+        .catch((error) => {
+            console.log(error)
+        }, [no])
+    })
 
     return (
         <div>
@@ -19,6 +38,7 @@ function Musical () {
                 <div className = "Musical-T">
                     <p className = "Musical-Catecory">카테고리</p>
                     <p className = "Musical-Title">뮤지컬 제목</p>
+                    <p>{title}</p>
                 </div>
 
                 <div className = "MusicalST">
@@ -33,4 +53,4 @@ function Musical () {
     )
 }
 
-export default Musical;
+export default MusicalDetail;

@@ -9,9 +9,22 @@ const ReviewDetail = () => {
     const [review, setReview] = useState({});
     const [content, setContent] = useState("");
     const [comments, setComments] = useState("");
-    const [commentId, setCommentId] = useState({})
+    const [commentId, setCommentId] = useState({});
+    const [editCommentId, setEditCommentId] = useState(null);
+    const [editCommentContent, setEditCommentContent] = useState("");
     const navigate = useNavigate();
-    const [hoveredComment, setHoveredComment] = useState(null);
+
+    const openEditModal = (commentId, content) => {
+      setEditCommentId(commentId);
+      setEditCommentContent(content);
+    };
+
+    const closeEditModal = () => {
+      setEditCommentId(null);
+      setEditCommentContent("");
+    }
+
+
   
     useEffect(() => {
       axios
@@ -43,10 +56,7 @@ const ReviewDetail = () => {
     const addComments = () => {
       axios
         .post(`http://43.200.58.174:8080/api/v1/theater-review/${postNo}/comment`,
-        {
-          content : comments,
-          commentId : commentId
-        }
+        {content : comments}
         )
         .then((response) => {
           console.log(response);
@@ -56,17 +66,35 @@ const ReviewDetail = () => {
           console.log(error);
         });
     }
-
-    // const deleteComments = (commentId) => {
-    //   axios.delete(`http://43.200.58.174:8080/api/v1/theater-review/${postNo}/${commentId}`)
-    //   .then(response => {
-    //     console.log(response.data);
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   })
-    // }
     
+    const deleteComment = (commentId) => {
+      axios
+        .delete(`http://43.200.58.174:8080/api/v1/theater-review/${postNo}/${commentId}`)
+        .then((response) => {
+          console.log(response);
+          setReview(prevReview => ({
+            ...prevReview,
+            comments: prevReview.comments.filter(comment => comment.commentId !== commentId)
+          }))
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+
+    const editComment = (commentId) => {
+      axios
+    .put(`http://43.200.58.174:8080/api/v1/theater-review/${postNo}/${commentId}`, 
+    { content: editCommentContent })
+    .then((response) => {
+      console.log(response);
+      closeEditModal();
+      navigate(`/review/${postNo}`);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+    }
 
     return (
       <div>
@@ -86,10 +114,24 @@ const ReviewDetail = () => {
             {review.comments && review.comments.map(comment => (
               <li key={comment.commentId} className="RVDT-Comment">
                 <span>{comment.content} Id : {comment.commentId}</span>
-                {/* <button onClick={deleteComments(comment.commentId)}>삭제</button>  */}
+                <button onClick={() => openEditModal(comment.commentId, comment.content)}>수정</button>
+                <button onClick={() => deleteComment(comment.commentId)}>삭제</button>
               </li>
             ))}
           </ul>
+
+          {editCommentId !== null && (
+              <div className="RVDT-EditModal">
+              <div className="RVDT-EditModalContent">
+              <button className="RVDT-CloseEditModal" onClick={closeEditModal}>
+                 X
+              </button>
+              <h3>댓글 수정</h3>
+              <textarea value={editCommentContent} onChange={(e) => setEditCommentContent(e.target.value)} />
+              <button onClick={editComment}>수정하기</button>
+              </div>
+              </div>
+          )}
         <div>
             <button onClick={handleEditClick}>수정</button>
             <button onClick={handleDeleteClick}>삭제</button>

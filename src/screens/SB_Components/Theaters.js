@@ -7,7 +7,7 @@ import {TabContent} from 'react-bootstrap';
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 
-function Musical () {
+function Theaters () {
     const {no} = useParams();
     
     const [musical, setMusical] = useState([]);
@@ -15,7 +15,7 @@ function Musical () {
     useEffect(() => {
         axios({
             method:"GET",
-            url : "http://43.200.58.174:8080/api/v1/musicals"
+            url : "http://43.200.58.174:8080/api/v1/theaters"
         })
         .then((response) => {
             setMusical(response.data);
@@ -34,13 +34,8 @@ function Musical () {
             <div className="MusicalList">
             {musical.map((musicals) => (
             <li key={musicals.no} className="musicalItem">
-            <div className="musical_img">
-                <Link to={`/musical/${musicals.no}`}>
-                <img src={musicals.imgUrl} alt={musicals.title} />
-                </Link>
-            </div>
             <div className="musical_content">
-                <h4>{musicals.title}</h4>
+                <h4>{musicals.theaterName}</h4>
                 <h6>{musicals.place}</h6>
             </div>
             </li>
@@ -51,4 +46,4 @@ function Musical () {
     )
 }
 
-export default Musical;
+export default Theaters;
