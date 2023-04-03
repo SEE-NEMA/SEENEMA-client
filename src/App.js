@@ -18,6 +18,8 @@ import ReviewDetail from './screens/Review/ReviewDetail';
 import ReviewEdit from './screens/Review/ReviewEdit';
 import SeeyaMain from './screens/seeya/SeeyaMain';
 import SeeyaDetail from './screens/seeya/SeeyaDetail';
+import MusicalDetail from './screens/SB_Components/MusicalDetail';
+import Theaters from './screens/SB_Components/Theaters';
 
 function App ()
 {
@@ -36,8 +38,10 @@ function App ()
         <Route path={"/concert"} element={<Concert/>}/>
         <Route path={"/mypage"} element={<MyPage/>}/>
         <Route exact path={"/facility"} element={<Facility/>}/>
+        <Route exact path={"/theaters"} element={<Theaters/>}/>
         <Route exact path={"/Review/:postNo"} element={<ReviewDetail/>}/>
         <Route exact path={"/reviewEdit/:postNo"} element={<ReviewEdit/>}/>
+        <Route exact path={"/musical/:no"} element={<MusicalDetail/>}/>
       </Routes>
     </BrowserRouter>
   )

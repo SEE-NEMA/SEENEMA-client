@@ -51,6 +51,7 @@ const Sidebar = ({width=400, children}) => {
                     <ul>공연
                         <li><a href="/musical">뮤지컬</a></li>
                         <li><a href="/concert">콘서트</a></li>
+                        <li><a href="/theaters">공연장</a></li>
                     </ul>
                     <br/><br/>
                     <ul>후기 모아보기
