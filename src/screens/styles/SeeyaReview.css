@@ -93,10 +93,11 @@
 
 
 .Modify-Wrap {
-    background-color: bisque;
+    background-color: rgb(218, 218, 218);
     height : 400px;
     line-height : 65px;
     margin-top : 50px;
+    border-radius:10px;
 }
 
 .Modify-Wrap label {
