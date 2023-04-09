@@ -3,7 +3,6 @@ import {Link} from 'react-router-dom';
 import Sidebar from './components/Sidebar';
 import Modal from './components/Modal';
 import Main  from './screens/Main';
-import Login from './screens/Login';
 import './screens/styles/Header.css';
 import {CgProfile} from 'react-icons/cg';
 
