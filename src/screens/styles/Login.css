@@ -1,4 +1,4 @@
-.LoginTitle {
+.Login-Title {
   text-align:center;
   margin-top : 110px;
   font-size: 26px;
@@ -6,7 +6,7 @@
   color: #262626;
 }
 
-.Loginpage {
+.Login-page {
     position : absolute;
     top: 200px;
     bottom: 300px;
@@ -27,37 +27,13 @@
     flex-direction: column;
   }
   
-
-  .titleWrap {
-    margin-top : 87px;
-    font-size: 26px;
-    font-weight: 700;
-    color: #262626;
-  }
-  
   .Login-contentWrap {
     margin-top: 48px;
     flex: 1;
   }
+
   
-  .inputTitle {
-    margin-left : 2px;
-    margin-top: 80px;
-    font-size: 12px;
-    font-weight : bold;
-    color : #000000;
-  }
-  
-  .inputWrap {
-    display: flex;
-    border-radius: 8px;
-    padding : 16px;
-    margin-top : 5px;
-    background-color: white;
-    border : 1px solid #e2e0e0;
-  }
-  
-  .loginidinput {
+  .Login-input {
     margin-left:30px;
     width : 80%;
     margin-top: 10px;
@@ -70,18 +46,12 @@
     font-weight : 400;
   }
 
-  .loginidinput::placeholder {
+  .Login-input::placeholder {
     text-align: left;
   }
 
-  
-  
-  
-  .input::placeholder {
-    color : #dadada;
-  }
-  
-  .bottomButton {
+
+  .Login-certify {
     position : absolute;
     top: 500px;
     bottom: 200px;

@@ -18,6 +18,7 @@ import SeeyaDetail from './screens/seeya/SeeyaDetail';
 import SeeyaUpload from './screens/seeya/SeeyaUpload';
 import SeeyaReview from './screens/seeya/SeeyaReview';
 import Signup from './screens/signup/Signup';
+import Login from './screens/signup/Login';
 
 function App ()
 {
@@ -27,6 +28,7 @@ function App ()
 
         <Route path={"/"} element={<Main/>}></Route>
         <Route path={"/signup"} element={<Signup/>}></Route>
+        <Route path={"/login"} element={<Login/>}></Route>
         <Route path={"/Review"} element={<Review/>}></Route>
         <Route path={"/seeya"} element={<Seeya/>}/>
         <Route path={"/matzip"} element={<Matzip/>}/>

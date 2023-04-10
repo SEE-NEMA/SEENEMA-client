@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import '../styles/Signup.css';
 import SignupModal from '../../SignupModal';
+import Login from './Login';
 
 function Signup() {
   const [email, setEmail] = useState('');
@@ -71,7 +72,7 @@ function Signup() {
 
       <h3 className="Signup-QuestionText">
         이미 회원이신가요?
-        <a href="/Login" className="Signup-LinktoLogin">
+        <a href="/login" className="Signup-LinktoLogin">
           로그인
         </a>
       </h3>
