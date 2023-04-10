@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import '../styles/Signup.css';
+import SignupModal from '../../SignupModal';
 
 function Signup() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalMessage, setModalMessage] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -16,13 +19,20 @@ function Signup() {
 
     try {
       const response = await axios.post(
-        'http://43.200.58.174:8080/signup',
+        'http://43.200.58.174:8080/api/v1/user/signup',
         data
       );
-      console.log(response.data);
+      setModalMessage(response.data.message);
+      setIsModalOpen(true);
     } catch (error) {
       console.error(error);
+      setModalMessage('회원가입에 실패하였습니다.');
+      setIsModalOpen(true);
     }
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
   };
 
   return (
@@ -38,7 +48,6 @@ function Signup() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-            <button className="emailCT">중복확인</button>
           </div>
 
           <p></p>
@@ -65,6 +74,12 @@ function Signup() {
           로그인
         </a>
       </h3>
+
+      <SignupModal
+        isOpen={isModalOpen}
+        content={modalMessage}
+        onClose={closeModal}
+      />
     </div>
   );
 }
