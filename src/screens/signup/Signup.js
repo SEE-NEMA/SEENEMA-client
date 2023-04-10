@@ -11,23 +11,24 @@ function Signup() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     const data = {
       email: email,
       password: password,
     };
-
+  
     try {
       const response = await axios.post(
         'http://43.200.58.174:8080/api/v1/user/signup',
         data
       );
-      setModalMessage(response.data.message);
       setIsModalOpen(true);
+      setModalMessage(response.data);
+      console.log(response.data);
     } catch (error) {
       console.error(error);
-      setModalMessage('회원가입에 실패하였습니다.');
       setIsModalOpen(true);
+      setModalMessage('회원가입에 실패하였습니다.');
     }
   };
 
@@ -37,13 +38,13 @@ function Signup() {
 
   return (
     <div>
-      <h4 className="Signup-titlename">시작하기</h4>
+      <h4 className="Signup-titlename">seeNEMA에 오신걸 환영합니다!</h4>
 
       <div className="Signup-Page">
         <div className="Signup-ContentWrap">
           <div className="EmailWrap">
             <input
-              className="Signup-input"
+              className="Signup-ID"
               placeholder="ID"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -53,7 +54,7 @@ function Signup() {
           <p></p>
 
           <input
-            className="Signup-input"
+            className="Signup-PW"
             placeholder="Password"
             type="password"
             value={password}
@@ -63,14 +64,14 @@ function Signup() {
       </div>
 
       <div>
-        <button className="bottomButton2" onClick={handleSubmit}>
+        <button className="Signup-Button" onClick={handleSubmit}>
           회원가입
         </button>
       </div>
 
-      <h3 className="QuestionText2">
+      <h3 className="Signup-QuestionText">
         이미 회원이신가요?
-        <a href="/Login" className="link_login">
+        <a href="/Login" className="Signup-LinktoLogin">
           로그인
         </a>
       </h3>

@@ -2,6 +2,8 @@ import ReactModal from 'react-modal';
 import './screens/styles/SignupModal.css';
 
 function SignupModal({ isOpen, content, onClose }) {
+  ReactModal.setAppElement('#root'); // 이 부분 추가
+
   return (
     <ReactModal
       isOpen={isOpen}

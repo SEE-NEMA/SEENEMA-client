@@ -1,6 +1,6 @@
   .Signup-titlename {
     text-align:center;
-    margin-top :60px;
+    margin-top :100px;
     font-size: 26px;
     font-weight: 700;
     color: #262626;
@@ -8,8 +8,9 @@
   
   .Signup-Page {
       position : absolute;
-      top:140px;
+      top:200px;
       bottom: 220px;
+      height : 300px;
       width: 25%;
       max-width: 500px;
       padding: 0 20px;
@@ -28,43 +29,32 @@
     }
     
   
-    .titleWrap {
-      margin-top : 87px;
-      font-size: 26px;
-      font-weight: 700;
-      color: #262626;
-    }
-    
+ 
     .Signup-ContentWrap {
-      margin-top: 110px;
+      margin-top: 80px;
       flex: 1;
     }
     
-    .inputTitle {
-      font-size: 12px;
-      font-weight : 600;
-      color : #262626;
-    }
-
-   
-    .inputWrap {
-      display: flex;
-      border-radius: 8px;
-      padding : 16px;
-      margin-top : 10px;
-      background-color: white;
-      border : 1px solid #e2e0e0;
-    }
+  
     
-    .inputWrap:focus-within {
-      border : 1px solid #911F27;
-    }
-    
-    .Signup-input {
+    .Signup-ID {
       
         margin-left:30px;
         width : 80%;
-        margin-top: 10px;
+        margin-top: -60px;
+        outline : none;
+        border : none;
+        border-radius:0;
+        border-bottom: 3px solid rgb(198, 196, 196);
+        height : 40px;
+        font-size : 14px;
+        font-weight : 400;
+      }
+
+      .Signup-PW {
+        margin-left:30px;
+        width : 80%;
+        margin-top: 30px;
         outline : none;
         border : none;
         border-radius:0;
@@ -74,29 +64,18 @@
         font-weight : 400;
       }
     
-    .Signup-input::placeholder {
+    .Signup-ID::placeholder {
         text-align: left;
       }
     
-    .emailCT {
-      margin-left: 50px;
-      position : absolute;
-      background-color: #911F27;
-      color : white;
-      border-radius : 5px;
-      height : 30px;
-      border : none;
-      font-weight : bold;
-      width : 20%;
-      top : 32%;
-      left : 50%;
-      bottom : 60%;
-    }
+    .Signup-PW::placeholder {
+        text-align: left;
+      }
 
     
-    .bottomButton2 {
+    .Signup-Button {
       position : absolute;
-      top: 600px;
+      top: 550px;
       bottom: 100px;
       width: 50%;
       max-width: 500px;
@@ -118,14 +97,15 @@
       text-align: center;
     }
   
-    .QuestionText2 {
+    .Signup-QuestionText {
       text-align: center;
-      margin-top : 600px;
+      margin-top : 500px;
       font-size: 12px;
       color:gray;
     }
 
-    .link_login {
+    .Signup-LinktoLogin {
       color: blue;
       text-decoration-line: underline;
+      margin-left : 10px;
     }
