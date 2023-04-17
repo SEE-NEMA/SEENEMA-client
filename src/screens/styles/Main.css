@@ -1,33 +1,8 @@
-.MainTitle {
-    text-align :center;
-    margin-top : 80px;
-    
-    font-size: 26px;
-    font-weight: 700;
-    color: #262626;
-}
 
 
 
-.Ranking {
-    position : absolute;
-    left:1300px;
-    top:300px;
-	width: 200px;
-	height: 380px;
-	background-color: rgb(255, 255, 255);
-    border : 2px solid black;
-    border-radius: 20px;
 
-}
 
-.Ranking-Text {
-    position : absolute;
-    left:1370px;
-    top:250px;
-    font-weight: bold;
-    
-}
 
 
 

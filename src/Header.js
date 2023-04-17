@@ -1,55 +1,61 @@
 import React, { useState } from 'react';
 import './screens/styles/Header.css';
 
-
 function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isReviewOpen, setIsReviewOpen] = useState(false);
+  const [showPerformances, setShowPerformances] = useState(false);
+  const [showReviews, setShowReviews] = useState(false);
 
- 
-  function toggleMenu() {
-    setIsMenuOpen(!isMenuOpen);
-    setIsReviewOpen(false);
+  function handlePerformancesMouseOver() {
+    setShowPerformances(true);
   }
 
-  function toggleReview() {
-    setIsReviewOpen(!isReviewOpen);
+  function handlePerformancesMouseLeave() {
+    setShowPerformances(false);
+  }
+
+  function handleReviewsMouseOver() {
+    setShowReviews(true);
+  }
+
+  function handleReviewsMouseLeave() {
+    setShowReviews(false);
   }
 
   return (
     <div className="header">
-      <p classNAme="menu-logo">seeNEMA</p>
-      <div
-        className="menu-item"
-        onMouseEnter={toggleReview}
-        onMouseLeave={toggleReview}
-      >
-        공연
-        {isReviewOpen && (
-          <div className="menu-dropdown review-dropdown">
-            <div className="menu-dropdownitem">뮤지컬</div>
-            <div className="menu-dropdownitem">콘서트</div>
+      <div className="header-item">
+        <a href="#" onMouseOver={handlePerformancesMouseOver} onMouseLeave={handlePerformancesMouseLeave}>
+          공연
+        </a>
+        {showPerformances && (
+          <div className="dropdown">
+            <a href="#">뮤지컬</a>
+            <a href="#">콘서트</a>
           </div>
         )}
       </div>
-      <div className="menu-item" onClick={toggleMenu}>
-        주변시설
+      <div className="header-item">
+        <a href="#">주변시설</a>
       </div>
-      <div
-        className="menu-item"
-        onMouseEnter={toggleReview}
-        onMouseLeave={toggleReview}
-      >
-        후기 모아보기
-        {isReviewOpen && (
-          <div className="menu-dropdown review-dropdown">
-            <div className="menu-dropdownitem">시야 후기</div>
-            <div className="menu-dropdownitem">공연장 후기</div>
+      <div className="header-item">
+        <a href="/facility" className="Header-Logo">
+          SEE-NEMA
+        </a>
+      </div>
+      <div className="header-item">
+        <a href="#" onMouseOver={handleReviewsMouseOver} onMouseLeave={handleReviewsMouseLeave}>
+          후기
+        </a>
+        {showReviews && (
+          <div className="dropdown">
+            <a href="#">공연장 후기</a>
+            <a href="#">시야 후기</a>
           </div>
         )}
       </div>
-
-    
+      <div className="header-item">
+        <a href="#">마이페이지</a>
+      </div>
     </div>
   );
 }

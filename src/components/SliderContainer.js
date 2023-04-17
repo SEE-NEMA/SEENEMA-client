@@ -29,7 +29,7 @@ export default function SliderContainer() {
   ];
   return (
     <>
-      <Swiper
+      <Swiper 
         effect={"fade"}
         autoplay={{
           delay: 3000,
@@ -42,6 +42,7 @@ export default function SliderContainer() {
         className="mySwiper"
         loop={true}
       >
+        <p className="Rank">실시간 랭킹</p>
         {items.map((item, idx) => {
           return (
             <SwiperSlide key={idx}>
@@ -49,6 +50,7 @@ export default function SliderContainer() {
             </SwiperSlide>
           );
         })}
+
       </Swiper>
     </>
   );

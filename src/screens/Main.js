@@ -18,10 +18,9 @@ function Main ()
     return (
         <div>
         <Header/>
-       <SliderContainer/>
-       
-       
+        <SliderContainer/>
         
+       
        
         </div>
 
