@@ -18,7 +18,7 @@ function Main ()
     return (
         <div>
         <Header/>
-       
+       <SliderContainer/>
        
        
         
