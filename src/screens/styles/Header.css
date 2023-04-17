@@ -1,36 +1,78 @@
-.HeaderContent {
-  height: 10vh;
-  width: 10vh;
-}
-
-.HeaderNav{
-  background-color: #911F27;
-  width: 100%;
-  color : white;
-  padding: 0px;
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  align-items: center;
-}
-
-.Header-nav-item{
+.header {
   display: flex;
   justify-content: space-between;
-  width: 1500px;
-  margin-top: 5px;
+  align-items: center;
+  height: 80px;
+  padding: 0 40px;
+  background-color: #ffffff;
 }
 
-.HeaderLogo {
-  margin-left:60%;
+.menu-logo {
+  color:black;
+  font-weight: bold;
+  font-size:20px;
 }
 
+.menu-item {
+  position: relative;
+  margin-right: 200px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+}
 
-.btn_mypage {
-  background-color: transparent; 
-  color: #FFFFFF;
-  border: none;
-  margin-right : -23px;
-} 
+.menu-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  display: none;
+  flex-direction: column;
+  width: 200px;
+  padding: 20px;
+  background-color: #ffffff;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
 
+.menu-item:hover .menu-dropdown {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+}
+
+.menu-item:hover .menu-dropdown .menu-item {
+  margin-right: 0;
+  margin-bottom: 10px;
+}
+
+.review-dropdown {
+  position: absolute;
+  top: 200%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: none;
+  flex-direction: column;
+  width: 200px;
+  padding: 20px;
+  background-color: #ffffff;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.review-item {
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.menu-item:hover ~ .review-dropdown {
+  display: flex;
+}
+
+.review-dropdown:hover {
+  display: flex;
+}
+
+.review-item:hover {
+  text-decoration: underline;
+}
