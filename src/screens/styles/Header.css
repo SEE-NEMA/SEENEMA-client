@@ -1,32 +1,116 @@
 .header {
   display: flex;
-  justify-content: space-between;
+  margin-left: 270px; /* SEE-NEMA 로고를 화면 가운데에 배치 */
   align-items: center;
-  height:70px;
+  height: 70px;
   background-color: #ffffff;
   padding: 8px;
-  margin-top : 20px;
+  margin-top: 20px;
+}
+
+.Header-Play {
+  margin-left: 30px;
+  margin-right: 90px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.Header-Play a {
+  color: black;
+}
+
+.Header-Facility {
+  margin-left: -60px;
+  margin-right: 150px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.Header-Facility a {
+  color: black;
+}
+
+.Header-Review {
+  margin-left: 30px;
+  margin-right: 150px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.Header-Review a {
+  color: black;
+}
+
+.Header-Mypage {
+  margin-left: -30px;
+  margin-right: 150px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.Header-Mypage a {
+  color: black;
 }
 
 .header-item {
-  margin-right: 20px;
-  margin-left:150px;
+  margin-left: 30px;
+  margin-right: 150px;
   font-weight: bold;
-  font-size:20px;
-   
+  font-size: 18px;
 }
 
 .header-item:last-child {
-  margin-right: 180px;
+  margin-right: 40px; /* 마지막 요소에 오른쪽 마진 제거 */
 }
 
 .header-item a {
-  color:black;
+  color: black;
 }
 
-.Header-Logo{
-  font-size:40px;
-  font-weight:bold;
+.Header-Logo {
+  font-size: 40px;
+  font-weight: bold;
   box-shadow: inset 0 -10px 0 #ea545467;
+  margin-left: -100px; 
 }
 
+.Header-User {
+  width: 60px;
+  height: 60px;
+  border: none;
+  background-color: white;
+}
+
+.Header-Dropdown {
+  position: absolute;
+  width:200px;
+  top: 80px;
+  left: 40;
+  z-index: 1;
+  background-color: white;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+
+.Header-Dropdown ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.Header-Dropdown ul li {
+  padding: 10px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.Header-Dropdown ul li:hover {
+  background-color: #ffc0c07b;
+}
+
+.Header-Dropdown ul li a {
+  color: black;
+}
+
+.Header-Dropdown ul li:last-child {
+  border-bottom: none;
+}

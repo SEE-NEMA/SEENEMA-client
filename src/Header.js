@@ -1,63 +1,69 @@
 import React, { useState } from 'react';
 import './screens/styles/Header.css';
+import { RxGear } from "react-icons/rx";
+import Modal from './components/Modal';
 
-function Header() {
-  const [showPerformances, setShowPerformances] = useState(false);
-  const [showReviews, setShowReviews] = useState(false);
+const Header = (props) => {
+const [modal, setmodal]= useState(false);
+const [showPlayDropdown, setShowPlayDropdown] = useState(false);
+const [showReviewDropdown, setShowReviewDropdown] = useState(false);
 
-  function handlePerformancesMouseOver() {
-    setShowPerformances(true);
-  }
+const togglePlayDropdown = () => {
+setShowPlayDropdown(!showPlayDropdown);
+}
 
-  function handlePerformancesMouseLeave() {
-    setShowPerformances(false);
-  }
+const toggleReviewDropdown = () => {
+setShowReviewDropdown(!showReviewDropdown);
+}
 
-  function handleReviewsMouseOver() {
-    setShowReviews(true);
-  }
-
-  function handleReviewsMouseLeave() {
-    setShowReviews(false);
-  }
-
-  return (
-    <div className="header">
-      <div className="header-item">
-        <a href="#" onMouseOver={handlePerformancesMouseOver} onMouseLeave={handlePerformancesMouseLeave}>
-          공연
-        </a>
-        {showPerformances && (
-          <div className="dropdown">
-            <a href="#">뮤지컬</a>
-            <a href="#">콘서트</a>
-          </div>
-        )}
+return (
+<div className="header">
+<div className="Header-Play" onMouseEnter={togglePlayDropdown} onMouseLeave={togglePlayDropdown}>
+<a href="#">공연</a>
+{showPlayDropdown && (
+<div className="Header-Dropdown">
+<ul>
+<li><a href="#">뮤지컬</a></li>
+<li><a href="#">콘서트</a></li>
+</ul>
+</div>
+)}
+</div>
+<div className="Header-Review" onMouseEnter={toggleReviewDropdown} onMouseLeave={toggleReviewDropdown}>
+    <a href="#">후기 모아보기</a>
+    {showReviewDropdown && (
+      <div className="Header-Dropdown">
+        <ul>
+          <li><a href="#">시야후기</a></li>
+          <li><a href="#">공연 후기</a></li>
+        </ul>
       </div>
-      <div className="header-item">
-        <a href="#">주변시설</a>
-      </div>
-      <div className="header-item">
-        <a href="/facility" className="Header-Logo">
-          SEE-NEMA
-        </a>
-      </div>
-      <div className="header-item">
-        <a href="#" onMouseOver={handleReviewsMouseOver} onMouseLeave={handleReviewsMouseLeave}>
-          후기
-        </a>
-        {showReviews && (
-          <div className="dropdown">
-            <a href="#">공연장 후기</a>
-            <a href="#">시야 후기</a>
-          </div>
-        )}
-      </div>
-      <div className="header-item">
-        <a href="#">마이페이지</a>
-      </div>
-    </div>
-  );
+    )}
+  </div>
+
+  <div className="header-item">
+    <a href="/facility" className="Header-Logo">
+      SEE-NEMA
+    </a>
+  </div>
+
+  <div className="Header-Facility">
+    <a href="#">주변시설</a>
+  </div>
+  
+  <div className="Header-Mypage">
+    <a href="#">마이페이지</a>
+  </div>
+
+  <button className="Header-User" onClick={() => setmodal(!modal)}>
+    <RxGear size="30"/>
+  </button>
+
+  {modal && (
+    <Modal closeModal={() => setmodal(!modal)}></Modal>
+  )}
+</div>
+);
 }
 
 export default Header;
