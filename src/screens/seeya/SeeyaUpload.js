@@ -10,6 +10,7 @@ function SeeyaUpload() {
     const [seat, setSeat] = useState("");
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
+    const [image, setImage] = useState(null);
 
     const { theaterId } = useParams();
 
@@ -17,18 +18,23 @@ function SeeyaUpload() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-      
-        const data = {
-          play: play,
-          seat: seat,
-          title: title,
-          content: content
-        };
-      
+        
+        const formData = new FormData();
+        formData.append("play", play);
+        formData.append("seat", seat);
+        formData.append("title", title);
+        formData.append("content", content);
+        formData.append("images", image);
+        
         axios
           .post(
             `http://43.200.58.174:8080/api/v1/view-review/${theaterId}/upload`,
-            data
+            formData,
+            {
+              headers: {
+                'Content-Type': 'multipart/form-data'
+              }
+            }
           )
           .then((response) => {
             console.log(response.data);
@@ -37,57 +43,72 @@ function SeeyaUpload() {
           .catch((error) => {
             console.log(error);
           });
-      };
+    };
     
-  return (
-    <div>
-        <div className="SeeyaUpload-container">
+    const handleImageChange = (event) => {
+      setImage(event.target.files[0]);
+    };
+    
+    return (
+      <div>
         <Header/>
-
-        <form onSubmit={handleSubmit} className = "SeeyaUpload-form">
-
+        <div className="SeeyaUpload-container">
+          <form onSubmit={handleSubmit} className = "SeeyaUpload-form">
             <label htmlFor="play"className="SeeyaUpload-label">극장</label>
-            <input className = "SeeyaUpload-play"
-            placeholder="극장 이름을 입력해주세요"
-            type="text" 
-            value={play} 
-            onChange={(event) => setPlay(event.target.value)} />
+            <input 
+              className="SeeyaUpload-play"
+              placeholder="극장 이름을 입력해주세요"
+              type="text" 
+              value={play} 
+              onChange={(event) => setPlay(event.target.value)} 
+            />
             
-
             <p></p>
-
+            
             <label htmlFor="seat"className="SeeyaUpload-label" >좌석</label>
-            <input className = "SeeyaUpload-play"
-            placeholder="좌석을 입력해주세요"
-            type="text"
-            value={seat}
-            onChange={(event) => setSeat(event.target.value)}
+            <input 
+              className="SeeyaUpload-play"
+              placeholder="좌석을 입력해주세요"
+              type="text"
+              value={seat}
+              onChange={(event) => setSeat(event.target.value)}
             />
-
-            <p></p>
-
-            <label htmlFor="title" className="SeeyaUpload-label">제목</label>
-            <input className = "SeeyaUpload-play"
-            type="text"
-            value={title}
-            onChange={(event) => setTitle(event.target.value)}
-            placeholder="극장 이름 + 좌석 정보"
             
-            />
-
             <p></p>
-
-           
-            <textarea className = "SeeyaUpload-play"
-            value={content}
-            onChange={(event) => setContent(event.target.value)}
+            
+            <label htmlFor="title" className="SeeyaUpload-label">제목</label>
+            <input 
+              className="SeeyaUpload-play"
+              type="text"
+              value={title}
+              onChange={(event) => setTitle(event.target.value)}
+              placeholder="극장 이름 + 좌석 정보"
+            />
+            
+            <p></p>
+            
+            <textarea 
+              className="SeeyaUpload-play"
+              value={content}
+              onChange={(event) => setContent(event.target.value)}
             ></textarea>
+            
+            <p></p>
+            
+            <label htmlFor="image" className="SeeyaUpload-label">사진</label>
+            <input 
+              className="SeeyaUpload-Image"
+              type="file"
+              onChange={handleImageChange}
+            />
+            
+            <p></p>
+            
             <button type="submit">작성 완료</button>
-
-      </form>
+          </form>
+        </div>
       </div>
-    </div>
-  );
+    );
 }
 
 export default SeeyaUpload;
