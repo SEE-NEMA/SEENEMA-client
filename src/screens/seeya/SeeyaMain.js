@@ -24,6 +24,7 @@ function SeeyaMain() {
         <div>
            <Header/>
            <div className = "SeeyaMain-Wrap">
+            
             <input className="SeeyaMain-input" placeholder="공연장 이름을 검색해주세요" type="text" value={theaterName} onChange={e => settheaterName(e.target.value)}></input>
                 <button onClick={searchHandler} className="SeeyaMain-Search">
                     <FaSearch size="30"/>

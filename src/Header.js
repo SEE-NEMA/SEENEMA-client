@@ -16,6 +16,11 @@ const toggleReviewDropdown = () => {
 setShowReviewDropdown(!showReviewDropdown);
 }
 
+const handleMusicalClick = (event) => {
+  event.stopPropagation();
+  // 뮤지컬 항목 클릭 시 수행할 작업
+}
+
 return (
 <div className="header">
 <div className="Header-Play" onMouseEnter={togglePlayDropdown} onMouseLeave={togglePlayDropdown}>
@@ -23,8 +28,8 @@ return (
 {showPlayDropdown && (
 <div className="Header-Dropdown">
 <ul>
-<li><a href="#">뮤지컬</a></li>
-<li><a href="#">콘서트</a></li>
+<li><a href="/musical" onClick={handleMusicalClick}>뮤지컬</a></li>
+<li><a href="/concert" onClick={handleMusicalClick}>콘서트</a></li>
 </ul>
 </div>
 )}
@@ -34,21 +39,21 @@ return (
     {showReviewDropdown && (
       <div className="Header-Dropdown">
         <ul>
-          <li><a href="#">시야후기</a></li>
-          <li><a href="#">공연 후기</a></li>
+          <li><a href="/seeyamain">시야후기</a></li>
+          <li><a href="/Review">공연 후기</a></li>
         </ul>
       </div>
     )}
   </div>
 
   <div className="header-item">
-    <a href="/facility" className="Header-Logo">
+    <a href="/" className="Header-Logo">
       SEE-NEMA
     </a>
   </div>
 
   <div className="Header-Facility">
-    <a href="#">주변시설</a>
+    <a href="/facility">주변시설</a>
   </div>
   
   <div className="Header-Mypage">

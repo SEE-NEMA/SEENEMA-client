@@ -23,6 +23,10 @@
   .SeeyaDetail-link {
     margin-left : 1100px;
   }
+
+  .SeeyaDetail-link:hover {
+    margin-left : 1100px;
+  }
   
   .SeeyaDetail-button {
     border : none;

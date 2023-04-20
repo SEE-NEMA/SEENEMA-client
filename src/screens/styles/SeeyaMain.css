@@ -1,7 +1,18 @@
+@font-face {
+    font-family: "Kim";
+    font-weight: 50;
+    src: url("KimjungchulGothic-Light.ttf") format("truetype");
+  }
+  
+*{
+    font-family:"kim";
+}
+
 .SeeyaMain-Wrap {
     margin-top : 100px;
     text-align: center;
 }
+
 
 
 .SeeyaMain-Search {
@@ -15,17 +26,19 @@
 .SeeyaMain-input {
     margin-top: 20px;
     vertical-align: middle;
-    width: 600px;
+    width: 500px;
     height:30px;
     border-radius: 20px;
-    border: 2px #911F27 solid;
+    border: 2px #000000 solid;
+    text-align: center; 
 }
 
 .SeeyaMain-hr {
     margin-top: 50px;
-    height : 2px;
+    height : 1px;
     width:800px;
     background : #000;
+    
 }
 
 .SeeyaMain-Content {
@@ -57,4 +70,8 @@
 .SeeyaMain-Link {
     color : black;
     font-style: sans-serif;
+}
+
+.SeeyaMain-Link:hover {
+    color:rgb(203, 114, 114);
 }
