@@ -1,32 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from '../Header';
-import {BrowserRouter} from 'react-router-dom';
 import './styles/Main.css'
-import './styles/SearchBar.css'
-import {FaSearch} from "react-icons/fa";
 import SliderContainer from "../components/SliderContainer";
-import SearchBar from '../components/SearchBar';
+import axios from 'axios';
+import RankingSlider from '../components/RankingSlider';
+import ConcertRankingSlider from '../components/ConcertRankingSlider';
 
+function Main () {
+ 
 
-function Main ()
-{
-    
-    const handleSearch = (searchTerm) => {
-        console.log(`Search for "${searchTerm}"`);
-    }
+  return (
+    <div>
 
-    return (
-        <div>
-        <Header/>
-        <SliderContainer/>
-        
-       
-       
+      <Header/>
+
+        <div className="Main-Rank">
+        <p className="Main-Rank-title">실시간 랭킹</p>
+        <RankingSlider/>
+        <ConcertRankingSlider/>
         </div>
 
-      
-      
-    )
-}
+        <SliderContainer/>
+
+    </div>
+  )
+}  
 
 export default Main;

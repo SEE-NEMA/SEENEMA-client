@@ -1,14 +1,14 @@
 img {
-    width: 600px;
-    height: 350px;
-    margin-top: 50px;
-    margin-left: 480px;
+    width: 650px;
+    height: 370px;
+    margin-top: 10px;
+    margin-left: 450px;
     
   }
   
   .mySlider {
     background-color: rgb(255, 255, 255);
-    height: 450px;
-    margin-top: 100px;
+    height: 440px;
+    margin-top: 10px;
     overflow-x: hidden; /* 스크롤바 제거 */
   }

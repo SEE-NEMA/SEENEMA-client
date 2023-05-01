@@ -24,7 +24,7 @@
 
 .header {
   display: flex;
-  margin-left: 280px; /* SEE-NEMA 로고를 화면 가운데에 배치 */
+  margin-left: 260px; /* SEE-NEMA 로고를 화면 가운데에 배치 */
   align-items: center;
   height: 70px;
   background-color: #ffffff;
