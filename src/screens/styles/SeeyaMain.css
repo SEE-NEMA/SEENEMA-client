@@ -1,11 +1,11 @@
 @font-face {
-    font-family: "Kim";
+    font-family: "Gmarket";
     font-weight: 50;
-    src: url("KimjungchulGothic-Light.ttf") format("truetype");
+    src: url("GmarketSansTTFBold.ttf") format("truetype");
   }
   
 *{
-    font-family:"kim";
+    font-family:"Gmarket";
 }
 
 .SeeyaMain-Wrap {
