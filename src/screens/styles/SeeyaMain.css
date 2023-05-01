@@ -1,13 +1,3 @@
-@font-face {
-    font-family: "Gmarket";
-    font-weight: 50;
-    src: url("GmarketSansTTFBold.ttf") format("truetype");
-  }
-  
-*{
-    font-family:"Gmarket";
-}
-
 .SeeyaMain-Wrap {
     margin-top : 100px;
     text-align: center;
