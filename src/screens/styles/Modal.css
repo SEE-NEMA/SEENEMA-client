@@ -95,3 +95,7 @@
     color: #636363;
     font-weight: 200;
   }
+
+  .modal_username {
+    top: -60px;
+  }
