@@ -5,8 +5,6 @@ import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 
 function MusicalList () {
-    const {no} = useParams();
-    
     const [musical, setMusical] = useState([]);
 
     useEffect(() => {
@@ -16,11 +14,12 @@ function MusicalList () {
         })
         .then((response) => {
           setMusical(response.data);
+          console.log(response.data);
         })
         .catch((error) => {
           console.log(error);
         });
-      }, [musical]);
+      }, []);
 
     return (
         <div>
@@ -42,8 +41,6 @@ function MusicalList () {
             </div>
             
             </div>
-
-            
             </li>
             ))}
             </div>

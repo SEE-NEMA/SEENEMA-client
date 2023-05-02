@@ -26,11 +26,12 @@ function MusicalDetail () {
             setCast(response.data.cast);
             setImgUrl(response.data.imgUrl);
             console.log(response.data.title)
+            console.log(no)
         })
         .catch((error) => {
             console.log(error)
-        }, [])
-    })
+        });
+    }, [no]);
 
     return (
         <div>
