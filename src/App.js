@@ -10,7 +10,7 @@ import ReviewDetail from './screens/Review/ReviewDetail';
 import ReviewEdit from './screens/Review/ReviewEdit';
 import ReviewPost from './screens/Review/ReviewPost';
 import MusicalList from './screens/SB_Components/MusicalList';
-import Musical from './screens/SB_Components/Musical';
+import MusicalDetail from './screens/SB_Components/MusicalDetail';
 import Concert from './screens/SB_Components/Concert';
 import ConcertList from './screens/SB_Components/ConcertList';
 import MyPage from './screens/My_Page/MyPage';
@@ -37,7 +37,7 @@ function App ()
         <Route path={"/reviewEdit/:postNo"} element={<ReviewEdit/>}/>
         <Route path={"/ReviewPost"} element={<ReviewPost/>}/>
         <Route path={"/musicallist"} element={<MusicalList/>}/>
-        <Route path={"/musical/:no"} element={<Musical/>}/>
+        <Route path={"/musicaldetail/:no"} element={<MusicalDetail/>}/>
         <Route path={"/concert"} element={<Concert/>}/>
         <Route path={"/concertlist"} element={<ConcertList/>}/>
         <Route path={"/mypage"} element={<MyPage/>}/>

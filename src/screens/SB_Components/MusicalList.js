@@ -11,16 +11,16 @@ function MusicalList () {
 
     useEffect(() => {
         axios({
-            method:"GET",
-            url : "http://43.200.58.174:8080/api/v1/musicals"
+          method: "GET",
+          url: "http://43.200.58.174:8080/api/v1/musicals"
         })
         .then((response) => {
-            setMusical(response.data);
+          setMusical(response.data);
         })
         .catch((error) => {
-            console.log(error);
-        })
-    })
+          console.log(error);
+        });
+      }, [musical]);
 
     return (
         <div>
@@ -28,10 +28,11 @@ function MusicalList () {
         <div className="musical-WrapContent">
             
             <div className="MusicalList">
+
             {musical.map((musicals) => (
             <li key={musicals.no} className="musicalItem">
             <div className="musical_img">
-                <Link to={`/musical/${musicals.no}`}>
+                <Link to={`/musicaldetail/${musicals.no}`}>
                 <img src={musicals.imgUrl} alt={musicals.title} />
                 </Link>
 

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Header from "../../Header";
-import "../styles/Musical.css"
+import "../styles/MusicalDetail.css"
 import { NavLink, useParams } from "react-router-dom";
 import axios from "axios";
 
-function Musical () {
+function MusicalDetail () {
     const {no} = useParams();
     const [content, setContent] = useState("");
     const [title, setTitle] = useState("");
@@ -29,22 +29,20 @@ function Musical () {
         })
         .catch((error) => {
             console.log(error)
-        }, [no])
+        }, [])
     })
 
     return (
         <div>
         <Header/>
-
-            
             <img className="Musical-Image" src={imgUrl} alt="Musical Image"/>
           
             <div className = "Musical-Detail-Info">
                 <div className = "Musical-T">
-                    <p className = "Musical-Catecory">카테고리 : 
+                    <p className = "Musical-Catecory">
                     {genre}
                     </p>
-                    <p className = "Musical-Title">뮤지컬 제목 : 
+                    <p className = "Musical-Title">
                     {title}
                     </p>
                 </div>
@@ -60,4 +58,4 @@ function Musical () {
     )
 }
 
-export default Musical;
+export default MusicalDetail;
