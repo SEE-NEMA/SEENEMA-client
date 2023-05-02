@@ -35,7 +35,7 @@ function App ()
         <Route path={"/Review"} element={<Review/>}></Route>
         <Route path={"/Review/:postNo"} element={<ReviewDetail/>}/>
         <Route path={"/reviewEdit/:postNo"} element={<ReviewEdit/>}/>
-        <Route path={"theater-review/upload"} element={<ReviewPost/>}/>
+        <Route path={"/ReviewPost"} element={<ReviewPost/>}/>
         <Route path={"/seeya"} element={<Seeya/>}/>
         <Route path={"/matzip"} element={<Matzip/>}/>
         <Route path={"/musical"} element={<Musical/>}/>

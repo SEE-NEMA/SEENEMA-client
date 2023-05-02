@@ -25,11 +25,23 @@ function SeeyaMain() {
            <Header/>
            <div className = "SeeyaMain-Wrap">
             
-            <input className="SeeyaMain-input" placeholder="공연장 이름을 검색해주세요" type="text" value={theaterName} onChange={e => settheaterName(e.target.value)}></input>
-                <button onClick={searchHandler} className="SeeyaMain-Search">
-                    <FaSearch size="30"/>
-                </button>
-                <hr className = "SeeyaMain-hr"/>
+           <input
+            className="SeeyaMain-input"
+            placeholder="공연장 이름을 검색해주세요"
+            type="text"
+            value={theaterName}
+            onChange={(e) => settheaterName(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                searchHandler();
+              }
+            }}
+            ></input>
+
+            <button onClick={searchHandler} className="SeeyaMain-Search">
+            <FaSearch size="30"/></button>
+
+            <hr className = "SeeyaMain-hr"/>
             </div>
 
             <div className = "SeeyaMain-itemWrap" >

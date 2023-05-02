@@ -52,11 +52,16 @@ const Review = () => {
             className="Review-Input"
             placeholder="공연 혹은 공연장 이름을 검색해주세요"
             onChange={(e) => setSearchTitle(e.target.value)}
+            onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  searchHandler();
+                }
+              }}
           ></input>
           <button className="Review-Search" onClick={searchHandler}>
             <FaSearch size="30" />
           </button>
-          <Link to="theater-review/upload">
+          <Link to="/ReviewPost">
             <button className="Review-WriteBtn">글쓰기</button>
           </Link>
           <hr className="Review-hr" />

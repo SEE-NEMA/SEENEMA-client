@@ -62,8 +62,6 @@ const ReviewEdit = () => {
         <p></p>
 
         <div className='ReviewWrite-Content'>
-            <label className = 'ReviewWrite-Label'>
-            내용</label>
             <textarea className = 'ReviewWrite-Text' 
             name='content' value={content} onChange={(event)=>setContent(event.target.value)}
             ></textarea>
@@ -73,15 +71,6 @@ const ReviewEdit = () => {
 
         <p></p>
        
-        <div className="tag">
-        <label className="ReviewWrite-Title">태그</label>
-        <div className="tag_btns">
-           <button className="tag_btn">맛집</button>
-           <button className="tag_btn">주차장</button>
-           <button className="tag_btn">대여</button>
-           <button className="tag_btn">물품 보관소</button>
-        </div>
-        </div>
         </div>
 
     </div>
