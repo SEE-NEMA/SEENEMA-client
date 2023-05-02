@@ -9,10 +9,10 @@ import Review from './screens/Review/Review';
 import ReviewDetail from './screens/Review/ReviewDetail';
 import ReviewEdit from './screens/Review/ReviewEdit';
 import ReviewPost from './screens/Review/ReviewPost';
-import Seeya from './screens/SB_Components/Seeya';
-import Matzip from './screens/SB_Components/Matzip';
+import MusicalList from './screens/SB_Components/MusicalList';
 import Musical from './screens/SB_Components/Musical';
 import Concert from './screens/SB_Components/Concert';
+import ConcertList from './screens/SB_Components/ConcertList';
 import MyPage from './screens/My_Page/MyPage';
 import Facility from './screens/SB_Components/Facility';
 import SeeyaMain from './screens/seeya/SeeyaMain';
@@ -36,10 +36,10 @@ function App ()
         <Route path={"/Review/:postNo"} element={<ReviewDetail/>}/>
         <Route path={"/reviewEdit/:postNo"} element={<ReviewEdit/>}/>
         <Route path={"/ReviewPost"} element={<ReviewPost/>}/>
-        <Route path={"/seeya"} element={<Seeya/>}/>
-        <Route path={"/matzip"} element={<Matzip/>}/>
+        <Route path={"/musicallist"} element={<MusicalList/>}/>
         <Route path={"/musical"} element={<Musical/>}/>
         <Route path={"/concert"} element={<Concert/>}/>
+        <Route path={"/concertlist"} element={<ConcertList/>}/>
         <Route path={"/mypage"} element={<MyPage/>}/>
         <Route path={"/facility"} element={<Facility/>}/>
         <Route path={"/seeyamain"} element={<SeeyaMain/>}/>

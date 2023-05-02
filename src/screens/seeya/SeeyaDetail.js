@@ -4,7 +4,6 @@ import axios from 'axios';
 import Header from "../../Header";
 import '../styles/SeeyaDetail.css';
 import { FaSearch } from "react-icons/fa";
-import Seeya from '../SB_Components/Seeya';
 
 function SeeyaDetail() {
   const { theaterId } = useParams();
