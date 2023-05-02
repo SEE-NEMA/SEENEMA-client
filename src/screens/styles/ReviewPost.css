@@ -47,6 +47,10 @@
     text-transform: 5px;
 }
 
+.ReviewWrite-Date {
+    font-weight: bold;
+    text-align : inherit;
+}
 
 .ReviewWrite-Label {
     margin-left : 3px;
@@ -63,7 +67,7 @@
     border : none;
     background-color: #e2dede;
 
-    height : 300px;
+    height : 250px;
     font-size : 16px;
     font-weight : 400;
 
@@ -77,8 +81,7 @@
 .ReviewWrite-Upload {
     position : absolute;
     left: 50%;
-    transform: translate(-50%, 0);
-    margin-top : 600px;
+    transform: translateX(-50%);
     border: none;
     border-radius: 10px;
     background-color: #000000;
@@ -86,14 +89,23 @@
     font-weight: bold;
     width : 10%;
     height : 40px;
+    margin-top : 80px
 }
 
-.MyDatePicker {
-    background-color : #e2dede;
-    border : none;
-    border-radius : 5px;
-    width : 15%;
-    margin-left : 65px;
-    height : 40px;
-   
+.tag_btn {
+    border: none;
+    border-radius: 5px;
+    background-color: #e2dede;
+    margin-right: 15px;
+    font-weight: 400;
+    font-family : 'Raleway', sans-serif;
+}
+
+
+.tag_btns {
+    margin-left:30px;
+}
+
+.tag {
+    display: flex;
 }

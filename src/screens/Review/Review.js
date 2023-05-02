@@ -56,7 +56,7 @@ const Review = () => {
           <button className="Review-Search" onClick={searchHandler}>
             <FaSearch size="30" />
           </button>
-          <Link to="/perform_review">
+          <Link to="theater-review/upload">
             <button className="Review-WriteBtn">글쓰기</button>
           </Link>
           <hr className="Review-hr" />
