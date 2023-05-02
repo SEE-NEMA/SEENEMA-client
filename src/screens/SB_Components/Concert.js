@@ -7,10 +7,10 @@ import {TabContent} from 'react-bootstrap';
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 
-function Concert () {
+function Musical () {
     const {no} = useParams();
     
-    const [musical, setMusical] = useState([]);
+    const [concert, setConcert] = useState([]);
 
     useEffect(() => {
         axios({
@@ -18,7 +18,7 @@ function Concert () {
             url : "http://43.200.58.174:8080/api/v1/concerts"
         })
         .then((response) => {
-            setMusical(response.data);
+            setConcert(response.data);
         })
         .catch((error) => {
             console.log(error);
@@ -32,16 +32,16 @@ function Concert () {
             <input className="musical_searchbar" placeholder="뮤지컬 제목을 입력하세요"></input>
             <hr className="Musical_hr"/>
             <div className="MusicalList">
-            {musical.map((musicals) => (
-            <li key={musicals.no} className="musicalItem">
+            {concert.map((concerts) => (
+            <li key={concerts.no} className="musicalItem">
             <div className="musical_img">
-                <Link to={`/musical/${musicals.no}`}>
-                <img src={musicals.imgUrl} alt={musicals.title} />
+                <Link to={`/concert/${concerts.no}`}>
+                <img src={concerts.imgUrl} alt={concerts.title} />
                 </Link>
             </div>
             <div className="musical_content">
-                <h4>{musicals.title}</h4>
-                <h6>{musicals.place}</h6>
+                <h4>{concerts.title}</h4>
+                <h6>{concerts.place}</h6>
             </div>
             </li>
             ))}
@@ -51,4 +51,4 @@ function Concert () {
     )
 }
 
-export default Concert;
+export default Musical;

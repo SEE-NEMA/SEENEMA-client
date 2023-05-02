@@ -20,6 +20,7 @@ import SeeyaMain from './screens/seeya/SeeyaMain';
 import SeeyaDetail from './screens/seeya/SeeyaDetail';
 import MusicalDetail from './screens/SB_Components/MusicalDetail';
 import Theaters from './screens/SB_Components/Theaters';
+import ConcertDetail from './screens/SB_Components/ConcertDetail';
 
 function App ()
 {
@@ -42,6 +43,7 @@ function App ()
         <Route exact path={"/Review/:postNo"} element={<ReviewDetail/>}/>
         <Route exact path={"/reviewEdit/:postNo"} element={<ReviewEdit/>}/>
         <Route exact path={"/musical/:no"} element={<MusicalDetail/>}/>
+        <Route exact path={"/concert/:no"} element={<ConcertDetail/>}/>
       </Routes>
     </BrowserRouter>
   )
