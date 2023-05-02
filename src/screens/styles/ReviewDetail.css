@@ -1,10 +1,11 @@
 .RVDT-Wrap {
     position: absolute;
-    left : 60%;
+    left : 57%;
     transform: translateX(-50%);
     top : 160px;
-    width: 1000px;
+    width: 800px;
 }
+
 
 .RVDT-Modify {
     height:25px;
@@ -20,13 +21,12 @@
 .RVDT-Detail {
     display: flex;
     flex-direction: row;
-    text-align: center;
-    margin-left:170px;
+    margin-left:120px;
 }
 
 .RVDT-Detail h6 {
     color : #c9c9c9;
-    padding-right: 20px;
+    padding-right: 40px;
     font-weight :300;
     font-style: normal;
 }
@@ -34,7 +34,7 @@
 .RVDT-hr {
     height:1px;
     width:720px;
-    margin-left:-20px;
+    margin-left:-80px;
     margin-top:60px;
 }
 
@@ -46,12 +46,14 @@
 .RVDT-Co {
     color:rgb(197, 197, 197);
     font-size:14px; 
+    margin-left:-60px;
 }
 
 .RVDT-Comment {
-    margin-left:-40px;
+    margin-left:-60px;
     color:rgb(0, 0, 0);
     font-size:15px;
+    width:600px;
 }
 
 .RVDT-button {
@@ -70,7 +72,7 @@
 
 .RVDT-comments {
     margin-top:40px;
-   
+   margin-left:-70px;
 }
 
 .RVDT-input {
