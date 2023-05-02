@@ -1,17 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Header from './Header';
 import { AiOutlineBars } from 'react-icons/ai';
-import {CgProfile} from 'react-icons/cg';
+import { CgProfile } from 'react-icons/cg';
 import Sidebar from './components/Sidebar';
 import Main from './screens/Main';
-import {BrowserRouter,Switch, Route, Routes} from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Review from './screens/Review/Review';
 import ReviewDetail from './screens/Review/ReviewDetail';
-import ReviewEdit from './screens/Review/ReviewEdit';
-import ReviewPost from './screens/Review/ReviewPost';
-import MusicalList from './screens/SB_Components/MusicalList';
-import MusicalDetail from './screens/SB_Components/MusicalDetail';
-import ConcertDetail from './screens/SB_Components/ConcertDetail';
 import ConcertList from './screens/SB_Components/ConcertList';
 import MyPage from './screens/My_Page/MyPage';
 import Facility from './screens/SB_Components/Facility';
@@ -20,15 +15,19 @@ import SeeyaDetail from './screens/seeya/SeeyaDetail';
 import SeeyaUpload from './screens/seeya/SeeyaUpload';
 import SeeyaReview from './screens/seeya/SeeyaReview';
 import Signup from './screens/signup/Signup';
+import ReviewEdit from './screens/Review/ReviewEdit';
 import Login from './screens/signup/Login';
+import { AuthProvider } from './contexts/AuthContext';
+import ReviewPost from "./screens/Review/ReviewPost";
+import MusicalList from "./screens/SB_Components/MusicalList";
+import ConcertDetail from "./screens/SB_Components/ConcertDetail";
+import MusicalDetail from "./screens/SB_Components/MusicalDetail";
 
-
-function App ()
-{
-  return(
-    <BrowserRouter>
-      <Routes>
-
+function App() {
+  return (
+    <AuthProvider>
+      <Router>
+        <Routes>
         <Route path={"/"} element={<Main/>}></Route>
         <Route path={"/signup"} element={<Signup/>}></Route>
         <Route path={"/login"} element={<Login/>}></Route>
@@ -46,10 +45,10 @@ function App ()
         <Route path="/view-review/:theaterId" element={<SeeyaDetail />} />
         <Route path={`/SeeyaUpload/:theaterId`} element = {<SeeyaUpload/>} />
         <Route path="/view-review/:theaterId/:viewNo" element = {<SeeyaReview/>} />
-       
-      </Routes>
-    </BrowserRouter>
-  )
+        </Routes>
+      </Router>
+    </AuthProvider>
+  );
 }
 
 export default App;

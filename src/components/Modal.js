@@ -1,8 +1,13 @@
-import React, { Component } from "react";
+import React, { useContext, useState } from 'react';
 import Header from '../Header';
 import '../screens/styles/Modal.css';
+import { AuthContext } from '../contexts/AuthContext';
 
 function Modal(props) {
+    const {user} = useContext(AuthContext);
+    
+    console.log(user);
+
     function closeModal() {
         props.closeModal();
     }
@@ -12,7 +17,8 @@ function Modal(props) {
     }
 
     function gotoSignup(e) {
-        window.location.href = "/signup"
+        localStorage.removeItem('user');
+        window.location.href = "/signup";
     }
 
     return (
@@ -21,6 +27,7 @@ function Modal(props) {
                 <div>
                     <button id="modalCloseBtn" onClick={closeModal}>X</button>
                     <button className="profile_circle"></button>
+                    <h4 className='modal_username'>{user}</h4>
                     <hr className="hr_modal"/>
                     <hr className="hr_modal2"/>
                     <button className="modal_mypage" onClick={handleClick}>마이페이지</button>
