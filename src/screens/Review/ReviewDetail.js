@@ -107,8 +107,10 @@ const ReviewDetail = () => {
             <h6 className="RVDT-viewCount">조회수 : {review.viewCount}</h6>
         </div>
         <p/>
+
         <div className="RVDT-content">{review.content}</div>
-        <p>태그 : {review.tagId}</p>
+       
+       <hr className="RVDT-hr"></hr>
         
         <ul>
             {review.comments && review.comments.map(comment => (

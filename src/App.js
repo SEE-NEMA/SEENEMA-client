@@ -42,7 +42,7 @@ function App ()
         <Route path="/view-review/:theaterId" element={<SeeyaDetail />} />
         <Route path={`/SeeyaUpload/:theaterId`} element = {<SeeyaUpload/>} />
         <Route path="/view-review/:theaterId/:viewNo" element = {<SeeyaReview/>} />
-
+        <Route path={"/Review/:postNo"} element={<ReviewDetail/>}/>
       </Routes>
     </BrowserRouter>
   )
