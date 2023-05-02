@@ -37,7 +37,7 @@ function App ()
         <Route path={"/reviewEdit/:postNo"} element={<ReviewEdit/>}/>
         <Route path={"/ReviewPost"} element={<ReviewPost/>}/>
         <Route path={"/musicallist"} element={<MusicalList/>}/>
-        <Route path={"/musical"} element={<Musical/>}/>
+        <Route path={"/musical/:no"} element={<Musical/>}/>
         <Route path={"/concert"} element={<Concert/>}/>
         <Route path={"/concertlist"} element={<ConcertList/>}/>
         <Route path={"/mypage"} element={<MyPage/>}/>
