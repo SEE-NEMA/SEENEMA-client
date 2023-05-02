@@ -6,6 +6,7 @@ import Sidebar from './components/Sidebar';
 import Main from './screens/Main';
 import {BrowserRouter,Switch, Route, Routes} from "react-router-dom";
 import Review from './screens/Review/Review';
+import ReviewDetail from './screens/Review/ReviewDetail';
 import Perform_Review from './screens/Review/ReviewWrite';
 import Seeya from './screens/SB_Components/Seeya';
 import Matzip from './screens/SB_Components/Matzip';
