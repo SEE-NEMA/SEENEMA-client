@@ -24,28 +24,24 @@ function MusicalList () {
     return (
         <div>
         <Header/>
-        <div className="musical-WrapContent">
+            <div className="musical-WrapContent">
             
-            <div className="MusicalList">
-
             {musical.map((musicals) => (
-            <li key={musicals.no} className="musicalItem">
-            <div className="musical_img">
-                <Link to={`/musicaldetail/${musicals.no}`}>
-                <img src={musicals.imgUrl} alt={musicals.title} />
-                </Link>
+             
+            <li key={musicals.no}>
 
-                <div className="musical_content">
-                <h4>{musicals.title}</h4>
-                <h6>{musicals.place}</h6>
-            </div>
+            <Link to={`/musicals/${musicals.no}`} key={musicals.no}>
+            <img src={musicals.imgUrl} alt={musicals.no} />
+            <h4>{musicals.title}</h4>
+            <h6>{musicals.place}</h6>
+            </Link>
             
-            </div>
             </li>
             ))}
+            
             </div>
         </div>
-        </div>
+       
     )
 }
 

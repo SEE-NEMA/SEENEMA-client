@@ -6,7 +6,6 @@ import axios from "axios";
 
 function ConcertList () {
     const {no} = useParams();
-    
     const [musical, setMusical] = useState([]);
 
     useEffect(() => {
@@ -25,25 +24,24 @@ function ConcertList () {
     return (
         <div>
         <Header/>
-        <div className="musical-WrapContent">
+            <div className="musical-WrapContent">
           
-            <div className="MusicalList">
             {musical.map((musicals) => (
-            <li key={musicals.no} className="musicalItem">
-            <div className="musical_img">
-                <Link to={`/musical/${musicals.no}`}>
-                <img src={musicals.imgUrl} alt={musicals.title} />
-                </Link>
-            </div>
-            <div className="concert_content">
-                <h4>{musicals.title}</h4>
-                <h6>{musicals.place}</h6>
-            </div>
+
+            <li key={musicals.no} >
+        
+            <Link to={`/concerts/${musicals.no}`}>
+            <img src={musicals.imgUrl} alt={musicals.title} />
+            <h4>{musicals.title}</h4>
+            <h6>{musicals.place}</h6>
+            </Link>
+
             </li>
             ))}
+           
             </div>
         </div>
-        </div>
+        
     )
 }
 
