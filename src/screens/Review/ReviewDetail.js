@@ -3,6 +3,7 @@ import axios from "axios";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import Header from '../../Header'
 import "../styles/ReviewDetail.css"
+import { AuthContext } from "../../contexts/AuthContext";
 
 const ReviewDetail = () => {
     const {postNo} = useParams();

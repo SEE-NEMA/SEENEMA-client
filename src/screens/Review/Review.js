@@ -1,48 +1,77 @@
-import React, { useEffect, useState } from "react";
-import {Link} from 'react-router-dom';
+import React, { useContext, useEffect, useState } from "react";
+import { Link } from 'react-router-dom';
 import Header from "../../Header";
 import '../styles/Review.css';
-import {FaSearch} from "react-icons/fa";
+import { FaSearch } from "react-icons/fa";
 import axios from "axios";
-import {AiFillCaretDown} from 'react-icons/ai';
-
+import { AiFillCaretDown } from 'react-icons/ai';
+import { AuthContext } from "../../contexts/AuthContext";
 
 const Review = () => {
-    const [review, setReview] = useState([]);
-    const [showAllReviews, setShowAllReviews] = useState(false);
-    const [searchTitle, setSearchTitle] = useState("");
-  
-    useEffect(() => {
-      axios({
-        method: "GET",
-        url: "http://43.200.58.174:8080/api/v1/theater-review/",
-      }).then((response) => {
+  const [review, setReview] = useState([]);
+  const [showAllReviews, setShowAllReviews] = useState(false);
+  const [searchTitle, setSearchTitle] = useState("");
+
+  const {authenticated} = useContext(AuthContext);
+
+  const token = localStorage.getItem('token');
+
+  const validateUser = async () => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        "X-AUTH-TOKEN": token
+      }
+    };
+    if (!authenticated) {
+      alert("로그인이 필요한 기능입니다.");
+      return;
+    }
+
+    try {
+      const response = await axios.post('http://43.200.58.174:8080/api/v1/user/test/resource',  config);
+      if (response.data === 'hi') {
+        window.location.href = "/ReviewPost";
+      } else {
+        alert("로그인 한 사용자만 작성 가능합니다");
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  useEffect(() => {
+    axios({
+      method: "GET",
+      url: "http://43.200.58.174:8080/api/v1/theater-review/",
+    }).then((response) => {
+      const sortedReview = response.data.sort(
+        (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+      );
+      setReview(sortedReview);
+      console.log(localStorage);
+    });
+  }, []);
+
+  const toggleShowAllReviews = () => {
+    setShowAllReviews(!showAllReviews);
+  };
+
+  const searchHandler = () => {
+    axios
+      .get(
+        `http://43.200.58.174:8080/api/v1/theater-review/search?q=${searchTitle}`
+      )
+      .then((response) => {
         const sortedReview = response.data.sort(
           (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
         );
         setReview(sortedReview);
+      })
+      .catch((error) => {
+        console.error(error);
       });
-    }, []);
-  
-    const toggleShowAllReviews = () => {
-      setShowAllReviews(!showAllReviews);
-    };
-  
-    const searchHandler = () => {
-      axios
-        .get(
-          `http://43.200.58.174:8080/api/v1/theater-review/search?q=${searchTitle}`
-        )
-        .then((response) => {
-          const sortedReview = response.data.sort(
-            (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
-          );
-          setReview(sortedReview);
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-    };
+  };
   
     return (
       <div>
@@ -61,9 +90,7 @@ const Review = () => {
           <button className="Review-Search" onClick={searchHandler}>
             <FaSearch size="30" />
           </button>
-          <Link to="/ReviewPost">
-            <button className="Review-WriteBtn">글쓰기</button>
-          </Link>
+          <button className="Review-WriteBtn" onClick={validateUser}>글쓰기</button>
           <hr className="Review-hr" />
           <div className="Review-Content">
             <ul>

@@ -96,6 +96,16 @@
     font-weight: 200;
   }
 
+  .modal_login {
+    position: absolute;
+    top: 135px;
+    right: 50px;
+    background: transparent;
+    border : 0;
+    color: #636363;
+    font-weight: 200;
+  }
+
   .modal_username {
     top: -60px;
   }

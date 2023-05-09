@@ -6,6 +6,8 @@ import axios from 'axios';
 import RankingSlider from '../components/RankingSlider';
 import ConcertRankingSlider from '../components/ConcertRankingSlider';
 
+const token = localStorage.getItem('token');
+
 function Main () {
  
 

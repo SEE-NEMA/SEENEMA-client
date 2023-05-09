@@ -17,7 +17,7 @@ import SeeyaReview from './screens/seeya/SeeyaReview';
 import Signup from './screens/signup/Signup';
 import ReviewEdit from './screens/Review/ReviewEdit';
 import Login from './screens/signup/Login';
-import { AuthProvider } from './contexts/AuthContext';
+import { AuthProvider, AuthContext } from './contexts/AuthContext';
 import ReviewPost from "./screens/Review/ReviewPost";
 import MusicalList from "./screens/SB_Components/MusicalList";
 import ConcertDetail from "./screens/SB_Components/ConcertDetail";
@@ -45,6 +45,7 @@ function App() {
         <Route path="/view-review/:theaterId" element={<SeeyaDetail />} />
         <Route path={`/SeeyaUpload/:theaterId`} element = {<SeeyaUpload/>} />
         <Route path="/view-review/:theaterId/:viewNo" element = {<SeeyaReview/>} />
+
         </Routes>
       </Router>
     </AuthProvider>
