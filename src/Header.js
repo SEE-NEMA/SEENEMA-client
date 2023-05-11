@@ -40,6 +40,7 @@ return (
       <div className="Header-Dropdown">
         <ul>
           <li><a href="/seeyamain">시야후기</a></li>
+          <li><a href="/SeeyaSeat">좌석 보기</a></li>
           <li><a href="/Review">공연 후기</a></li>
         </ul>
       </div>

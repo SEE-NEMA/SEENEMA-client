@@ -10,6 +10,7 @@ import ReviewDetail from './screens/Review/ReviewDetail';
 import ConcertList from './screens/SB_Components/ConcertList';
 import MyPage from './screens/My_Page/MyPage';
 import Facility from './screens/SB_Components/Facility';
+import SeeyaSeat from './screens/seeya/SeeyaSeat';
 import SeeyaMain from './screens/seeya/SeeyaMain';
 import SeeyaDetail from './screens/seeya/SeeyaDetail';
 import SeeyaUpload from './screens/seeya/SeeyaUpload';
@@ -42,6 +43,7 @@ function App() {
         <Route path={"/mypage"} element={<MyPage/>}/>
         <Route path={"/facility"} element={<Facility/>}/>
         <Route path={"/seeyamain"} element={<SeeyaMain/>}/>
+        <Route path={"/seeyaSeat"} element={<SeeyaSeat/>}/>
         <Route path="/view-review/:theaterId" element={<SeeyaDetail />} />
         <Route path={`/SeeyaUpload/:theaterId`} element = {<SeeyaUpload/>} />
         <Route path="/view-review/:theaterId/:viewNo" element = {<SeeyaReview/>} />
