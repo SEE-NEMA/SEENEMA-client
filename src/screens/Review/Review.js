@@ -23,14 +23,10 @@ const Review = () => {
         "X-AUTH-TOKEN": token
       }
     };
-    if (!authenticated) {
-      alert("로그인이 필요한 기능입니다.");
-      return;
-    }
 
     try {
-      const response = await axios.post('http://43.200.58.174:8080/api/v1/user/test/resource',  config);
-      if (response.data === 'hi') {
+      const response = await axios.get('http://43.200.58.174:8080/api/v1/user/test/resource',  config);
+      if (response === 'success') {
         window.location.href = "/ReviewPost";
       } else {
         alert("로그인 한 사용자만 작성 가능합니다");
