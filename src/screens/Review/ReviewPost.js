@@ -1,7 +1,7 @@
 import Header from "../../Header";
 import '../styles/ReviewPost.css'
 import React, {useState} from 'react';
-import { useNavigate, Link} from 'react-router-dom';
+import { useNavigate, Link, useParams} from 'react-router-dom';
 import axios from "axios";
 import { AuthContext } from "../../contexts/AuthContext";
 
@@ -13,39 +13,40 @@ function ReviewPost () {
     const navigate = useNavigate();
     const token = localStorage.getItem('token');
     
-    
+    const postNo = useParams();
+    const tagId = 1;
 
     const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
     formData.append('title', title);
     formData.append('content', content);
-    formData.append('tags', 1);
-    // for (let i = 0; i < tags.length; i++) {
-    //     formData.append('tags', tags[i]);
-    //   }
+    formData.append('tags', tagId);
+    for (let i = 0; i < images.length; i++) {
+        formData.append(`images[${i}]`, images[i]); // 이미지 파일 여러 개 전달
+      }
 
-    // 이미지 파일들도 FormData에 추가
-    formData.append('images', images);
-
-    try {
-        axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('token')}`;
-        const response = await axios.post('http://43.200.58.174:8080/api/v1/theater-review/upload', formData, {
-            headers : {
-                'Content-Type' : 'multipart/form-data'
-            }
-        });
+    axios.post (`http://43.200.58.174:8080/api/v1/theater-review/upload`, 
+    formData,
+    {
+        headers: {
+            'Content-Type' : 'multipart/form-data',
+            "X-AUTH-TOKEN" : token
+        }
+    })
+    .then((response) => {
         console.log(response.data);
-        navigate('/Review');
-    } 
-    catch(error) {
-        console.error(error);
-    }
-    
+        navigate(`Review/${postNo}`);
+    })
     };
 
     const handleImageChange = (event) => {
-        setImages(event.target.files[0]);
+        const fileList = event.target.files;
+    const newImages = [];
+    for (let i = 0; i < fileList.length; i++) {
+      newImages.push(fileList[i]);
+    }
+    setImages(newImages);
     }
  
     return(

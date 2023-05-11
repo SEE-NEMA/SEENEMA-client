@@ -20,7 +20,7 @@ export const AuthProvider = ({ children }) => {
 
   const logout = () => {
     setAuthenticated(false);
-    setToken("");
+    setToken(null);
     setEmail(null);
     localStorage.removeItem('email');
   };

@@ -5,7 +5,7 @@ import { AuthContext } from '../contexts/AuthContext';
 
 function Modal(props) {
     const [email, setEmail] = useState(localStorage.getItem('email'));
-    const { isAuthenticated, logout } = useContext(AuthContext);
+    const { authenticated, logout } = useContext(AuthContext);
 
     console.log(email);
 
@@ -18,9 +18,8 @@ function Modal(props) {
     }
 
     function handleLogout(e) {
-        logout();
-        localStorage.removeItem('email');
-        window.location.href = "/";
+        localStorage.clear()
+        window.location.replace('http://localhost:3000/')
     }
 
     function handleLogin(e) {
@@ -36,7 +35,7 @@ function Modal(props) {
                     <h4 className='modal_username'>{email}</h4>
                     <hr className="hr_modal"/>
                     <hr className="hr_modal2"/>
-                    {isAuthenticated ? (
+                    {email ? (
                       <>
                         <button className="modal_mypage" onClick={handleClick}>마이페이지</button>
                         <button className="modal_logout" onClick={handleLogout}>로그아웃</button>

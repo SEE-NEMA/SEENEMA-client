@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Header from "../../Header";
 import '../styles/Review.css';
 import { FaSearch } from "react-icons/fa";
@@ -13,28 +13,31 @@ const Review = () => {
   const [searchTitle, setSearchTitle] = useState("");
 
   const {authenticated} = useContext(AuthContext);
-
-  const token = localStorage.getItem('token');
+  const navigate = useNavigate();
 
   const validateUser = async () => {
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-        "X-AUTH-TOKEN": token
-      }
-    };
+    const token = localStorage.getItem('token');
 
     try {
-      const response = await axios.get('http://43.200.58.174:8080/api/v1/user/test/resource',  config);
-      if (response === 'success') {
-        window.location.href = "/ReviewPost";
+      const response = await axios.post('http://43.200.58.174:8080/api/v1/theater-review/auth', null, {
+        headers: {
+          "Content-Type": "application/json",
+          "X-AUTH-TOKEN": token
+        }
+      });
+      
+      console.log(response);
+
+      if (response.data === 'SUCCESS') {
+        navigate("/ReviewPost");
       } else {
-        alert("로그인 한 사용자만 작성 가능합니다");
+        alert("로그인 한 사용자만 작성 가능합니다.");
       }
     } catch (error) {
       console.error(error);
+      alert("서버 오류가 발생했습니다.");
     }
-  }
+  };
 
   useEffect(() => {
     axios({
@@ -47,7 +50,7 @@ const Review = () => {
       setReview(sortedReview);
       console.log(localStorage);
     });
-  }, []);
+  }, [authenticated]);
 
   const toggleShowAllReviews = () => {
     setShowAllReviews(!showAllReviews);
