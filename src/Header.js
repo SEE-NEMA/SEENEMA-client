@@ -58,7 +58,7 @@ return (
   </div>
   
   <div className="Header-Mypage">
-    <a href="#">마이페이지</a>
+    <a href="/mypage">마이페이지</a>
   </div>
 
   <button className="Header-User" onClick={() => setmodal(!modal)}>
