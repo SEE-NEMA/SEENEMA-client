@@ -36,7 +36,7 @@ function ReviewPost () {
     })
     .then((response) => {
         console.log(response.data);
-        navigate(`Review/${postNo}`);
+        navigate(`/Review`);
     })
     };
 

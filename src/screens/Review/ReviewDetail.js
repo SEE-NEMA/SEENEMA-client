@@ -6,6 +6,7 @@ import "../styles/ReviewDetail.css"
 import { AuthContext } from "../../contexts/AuthContext";
 
 const ReviewDetail = () => {
+
     const {postNo} = useParams();
     const [review, setReview] = useState({});
     const [content, setContent] = useState("");
@@ -14,6 +15,11 @@ const ReviewDetail = () => {
     const [editCommentId, setEditCommentId] = useState(null);
     const [editCommentContent, setEditCommentContent] = useState("");
     const navigate = useNavigate();
+    const token = localStorage.getItem('token');
+    const headers = {
+      'Content-Type' : 'application/json',
+      'X-AUTH-TOKEN' : token
+    };
 
     const openEditModal = (commentId, content) => {
       setEditCommentId(commentId);
@@ -39,20 +45,30 @@ const ReviewDetail = () => {
         });
     }, [postNo]);
 
+
     const handleEditClick = () => {
       navigate(`/reviewEdit/${postNo}`);
     }
 
     const handleDeleteClick = () => {
-      axios.delete(`http://43.200.58.174:8080/api/v1/theater-review/${postNo}`)
-      .then((response) => {
-         console.log(response.data);
-         navigate("/review")
-      })
-      .catch((error) => {
-        console.log(error);
-      })
+      axios.post(`http://43.200.58.174:8080/api/v1/theater-review/${postNo}/auth`, headers)
+        .then((response) => {
+          if (response.data === "success") {
+            axios.delete(`http://43.200.58.174:8080/api/v1/theater-review/${postNo}`, { headers })
+              .then((response) => {
+                console.log(response.data);
+                navigate("/review")
+              })
+              .catch((error) => {
+                console.log(error);
+              })
+          } 
+          else {
+            console.log(response.data);
+          }
+        })
     }
+    
 
     const addComments = () => {
       axios
