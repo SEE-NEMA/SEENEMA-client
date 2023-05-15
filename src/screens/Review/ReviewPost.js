@@ -42,7 +42,7 @@ function ReviewPost () {
     })
     .catch((error) => {
       console.error(error);
-    });
+    });   
   };
   
 

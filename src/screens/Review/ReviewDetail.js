@@ -15,6 +15,7 @@ const ReviewDetail = () => {
     const [editCommentId, setEditCommentId] = useState(null);
     const [editCommentContent, setEditCommentContent] = useState("");
     const [imageUrls, setImageUrls] = useState([]);
+    const token = localStorage.getItem('token');
 
     const navigate = useNavigate();
 
@@ -48,14 +49,22 @@ const ReviewDetail = () => {
     }
 
     const handleDeleteClick = () => {
-      axios.delete(`http://43.200.58.174:8080/api/v1/theater-review/${postNo}`)
-      .then((response) => {
-         console.log(response.data);
-         navigate("/review")
-      })
-      .catch((error) => {
-        console.log(error);
-      })
+      axios.post(`http://43.200.58.174:8080/api/v1/theater-review/${postNo}/auth`, {}, {headers: {'X-AUTH-TOKEN': token}})
+        .then((response) => {
+          if (response.data === "SUCCESS") {
+            axios.delete(`http://43.200.58.174:8080/api/v1/theater-review/${postNo}`, {headers: {'X-AUTH-TOKEN': token}})
+              .then((response) => {
+                console.log(response.data);
+                navigate("/review");
+              })
+              .catch((error) => {
+                console.log(error);
+              })
+          } 
+          else {
+            console.log(response.data);
+          }
+        });
     }
 
     const addComments = () => {
