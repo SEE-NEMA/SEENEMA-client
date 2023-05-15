@@ -9,7 +9,7 @@ function MyPage() {
     return(
         <div>
             <Header/>
-            <hr className = "Mypage-hr"></hr>
+           
 
             <div className = "Mypage-profile-wrap">
               <div className = "profile-wrap">
@@ -23,7 +23,10 @@ function MyPage() {
               <p className = "Mypage-Info">아이디 : </p>
               </table>
               </div>
+              
             </div>
+
+            <hr className = "Mypage-hr"></hr>
         </div>
 
 
