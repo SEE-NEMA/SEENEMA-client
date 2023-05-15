@@ -54,10 +54,10 @@ function SeeyaUpload() {
         <Header/>
         <div className="SeeyaUpload-container">
           <form onSubmit={handleSubmit} className = "SeeyaUpload-form">
-            <label htmlFor="play"className="SeeyaUpload-label">극장</label>
+            <label htmlFor="play"className="SeeyaUpload-label">공연</label>
             <input 
               className="SeeyaUpload-play"
-              placeholder="극장 이름을 입력해주세요"
+              placeholder="공연명을 입력해주세요"
               type="text" 
               value={play} 
               onChange={(event) => setPlay(event.target.value)} 
@@ -82,7 +82,7 @@ function SeeyaUpload() {
               type="text"
               value={title}
               onChange={(event) => setTitle(event.target.value)}
-              placeholder="극장 이름 + 좌석 정보"
+              placeholder="공연명 + 좌석 정보"
             />
             
             <p></p>

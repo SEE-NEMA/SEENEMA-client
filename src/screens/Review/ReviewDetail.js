@@ -14,12 +14,15 @@ const ReviewDetail = () => {
     const [commentId, setCommentId] = useState({});
     const [editCommentId, setEditCommentId] = useState(null);
     const [editCommentContent, setEditCommentContent] = useState("");
+    const [imageUrls, setImageUrls] = useState([]);
+
     const navigate = useNavigate();
     const token = localStorage.getItem('token');
     const headers = {
-      'Content-Type' : 'application/json',
       'X-AUTH-TOKEN' : token
     };
+
+    console.log(token);
 
     const openEditModal = (commentId, content) => {
       setEditCommentId(commentId);
@@ -51,13 +54,13 @@ const ReviewDetail = () => {
     }
 
     const handleDeleteClick = () => {
-      axios.post(`http://43.200.58.174:8080/api/v1/theater-review/${postNo}/auth`, headers)
+      axios.post(`http://43.200.58.174:8080/api/v1/theater-review/${postNo}/auth`, {}, {headers: {'X-AUTH-TOKEN': token}})
         .then((response) => {
-          if (response.data === "success") {
-            axios.delete(`http://43.200.58.174:8080/api/v1/theater-review/${postNo}`, { headers })
+          if (response.data === "SUCCESS") {
+            axios.delete(`http://43.200.58.174:8080/api/v1/theater-review/${postNo}`, {headers: {'X-AUTH-TOKEN': token}})
               .then((response) => {
                 console.log(response.data);
-                navigate("/review")
+                navigate("/review");
               })
               .catch((error) => {
                 console.log(error);
@@ -66,7 +69,7 @@ const ReviewDetail = () => {
           else {
             console.log(response.data);
           }
-        })
+        });
     }
     
 
@@ -131,9 +134,14 @@ const ReviewDetail = () => {
         <p/>
 
         <div className="RVDT-content">{review.content}</div>
-       
+        <div>
+  {imageUrls.map(url => (
+    <img src={url} alt="" />
+  ))}
+</div>
+
        <hr className="RVDT-hr"></hr>
-        
+
         <p className="RVDT-Co">comment</p>
         <ul>
             {review.comments && review.comments.map(comment => (
