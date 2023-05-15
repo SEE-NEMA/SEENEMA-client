@@ -37,8 +37,8 @@ function ReviewPost () {
       }
     )
     .then((response) => {
-      console.log(response.data);
-      navigate(`/Review`);
+        console.log(response.data);
+        navigate(`Review/${postNo}`);
     })
     .catch((error) => {
       console.error(error);
