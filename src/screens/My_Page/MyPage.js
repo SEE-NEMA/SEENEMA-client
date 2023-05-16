@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, useRef } from "react";
 import { Link } from 'react-router-dom';
 import Header from "../../Header";
 import { AuthContext } from '../../contexts/AuthContext';
@@ -12,7 +12,8 @@ function MyPage() {
     const [nickname, setNickname] = useState("");
     const [email, setEmail] = useState("");
     const [userInfo, setUserInfo] = useState(null);
-    
+    const [checkNicknameResponse, setCheckNicknameResponse] = useState(null);
+    const modalRef = useRef(null);
 
     const token = localStorage.getItem('token');
 
@@ -33,24 +34,25 @@ function MyPage() {
 
     const handleUpdateNickname = () => {
         axios.put('http://43.200.58.174:8080/api/v1/user/profile', {nickname}, {
-            headers: {
-                "X-AUTH-TOKEN" : token
-            }
+          headers: {
+            "X-AUTH-TOKEN" : token
+          }
         })
         .then((response) => {
-            console.log(response.data);
-            setShowModal(false);
-            setUserInfo({...userInfo, nickname: nickname});
-            setUserInfo({...userInfo, email: email});
-            setEmail("");
-            setNickname("");
+          console.log(response.data);
+          setShowModal(false);
+          setUserInfo({...userInfo, nickname: nickname});
+          setUserInfo({...userInfo, email: email});
+          setEmail("");
+          setNickname("");
         })
         .catch((error) => {
-            console.log(error);
+          console.log(error);
         });
-    }
+      }
+    
 
-    const handleCheckNickname = () => {
+      const handleCheckNickname = () => {
         axios.post('http://43.200.58.174:8080/api/v1/user/profile/check-nickname', {nickname}, {
             headers: {
                 "X-AUTH-TOKEN" : token
@@ -58,11 +60,25 @@ function MyPage() {
         })
         .then((response) => {
             console.log(response.data);
+            setCheckNicknameResponse(response.data);
         })
         .catch((error) => {
             console.log(error);
         });
     }
+
+
+    const closeModal = () => {
+        setShowModal(false);
+      }
+    
+      const handleModalClick = (e) => {
+        e.stopPropagation();
+      }
+    
+      const handleEditButtonClick = () => {
+        setShowModal(true);
+      }
 
     return(
         <div>
@@ -84,14 +100,18 @@ function MyPage() {
             </div>
 
             {showModal ? (
-                <div className="Profile-edit-modal">
-                    <div className="Profile-edit-modal-content">
-                        <input type="text" value={nickname} onChange={(e) => setNickname(e.target.value)} />
-                        <button onClick={handleCheckNickname}>중복확인</button>
-                        <button onClick={handleUpdateNickname}>수정</button>
-                    </div>
-                </div>
-            ) : null}
+        <div className="Profile-edit-modal" onClick={closeModal}>
+          <div className="Profile-edit-modal-content" onClick={handleModalClick} ref={modalRef}>
+            <p className="Profile-edit-title">닉네임 수정</p>
+            <p className="Profile-edit-alert">*중복확인 먼저 해주세요</p>
+            <p className="Profile-edit-check">{checkNicknameResponse}</p>
+            <input className="Profile-edit-input" type="text" placeholder="수정할 닉네임을 입력해주세요" value={nickname} onChange={(e) => setNickname(e.target.value)} />
+            <button className="Profile-edit-button1" onClick={handleCheckNickname}>중복확인</button>
+            <button className="Profile-edit-button2" onClick={handleUpdateNickname}>수정완료</button>
+          </div>
+        </div>
+      ) : null}
+
 
         </div>
     )
