@@ -144,13 +144,13 @@ const ReviewDetail = () => {
 
         <div className="RVDT-Content">{review.content}</div>
         <div>
-    <img src={imageUrls} alt="" key={imageUrls} />
-</div>
+        <img src={imageUrls} className="RVDT-Image" alt="" key={imageUrls} />
+        </div>
 
 
        <hr className="RVDT-hr"></hr>
 
-        <p className="RVDT-Content">comment</p>
+        <p className="RVDT-comment">comment</p>
         <ul>
             {review.comments && review.comments.map(comment => (
               <li key={comment.commentId} className="RVDT-Comment">

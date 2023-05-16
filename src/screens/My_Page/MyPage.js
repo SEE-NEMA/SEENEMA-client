@@ -87,14 +87,14 @@ function MyPage() {
 
             <div className="Mypage-profile-wrap">
                 <div className="profile-wrap">
-                    <div className="profile-Image"></div>
+                   
                     <button className="profile-edit" onClick={() => setShowModal(true)}>프로필 편집</button>
                 </div>
                 
                 <div className="Info-wrap">
                     <table>
                         <p className="Mypage-Info">{userInfo ? `${userInfo.nickname} 님, 안녕하세요!` : null}</p> 
-                        <p className="Mypage-Info">{userInfo ? `아이디 : ${userInfo.email}` : null}</p>
+                        <p className="Mypage-Info-ID">{userInfo ? `아이디 : ${userInfo.email}` : null}</p>
                     </table>
                 </div>
             </div>

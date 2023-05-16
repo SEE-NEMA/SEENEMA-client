@@ -74,11 +74,13 @@ function ReviewPost () {
                  name='content' value={content} onChange={(event)=>setContent(event.target.value)}
                  ></textarea>
 
-            <label htmlFor="image">사진</label>
-            <input 
-              type="file"
-              onChange={handleImageChange}
-            />
+             
+                <input 
+                className="ReviewWrite-Image-Upload"
+                type="file"
+                onChange={handleImageChange}
+                />
+
              </div>
             <button className = "ReviewWrite-Upload"  type="submit">업로드</button>
              </form>
