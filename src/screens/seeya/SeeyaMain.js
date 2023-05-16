@@ -75,13 +75,7 @@ function SeeyaMain() {
           ))}
         </ul>
       </div>
-      {authenticated && (
-        <div className="SeeyaMain-writeButtonWrap">
-          <Link to="/write-review">
-            <button className="SeeyaMain-writeButton">글쓰기</button>
-          </Link>
-        </div>
-      )}
+      
     </div>
   );
 }
