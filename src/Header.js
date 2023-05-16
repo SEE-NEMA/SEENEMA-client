@@ -39,7 +39,8 @@ return (
     {showReviewDropdown && (
       <div className="Header-Dropdown">
         <ul>
-          <li><a href="/seeyamain">시야 후기</a></li>
+          <li><a href="/seeyamain">시야후기</a></li>
+          <li><a href="/SeeyaSeat">좌석 보기</a></li>
           <li><a href="/Review">공연 후기</a></li>
         </ul>
       </div>
@@ -57,7 +58,7 @@ return (
   </div>
   
   <div className="Header-Mypage">
-    <a href="#">마이페이지</a>
+    <a href="/mypage">마이페이지</a>
   </div>
 
   <button className="Header-User" onClick={() => setmodal(!modal)}>
