@@ -51,7 +51,7 @@ input::placeholder {
     margin-left: 40px;
     margin-right: 0%;
     align-content: center;
-    margin-top:60px;
+    margin-top:80px;
 }
 
 .Review-Content li {
@@ -69,4 +69,10 @@ input::placeholder {
 .showMore_btn {
     position: absolute;
     bottom : 80px;
+}
+
+.Review-PageBtn {
+    background-color: transparent;
+    border: none;
+    margin-right:  5px;
 }

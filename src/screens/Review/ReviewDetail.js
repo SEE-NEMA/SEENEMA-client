@@ -16,6 +16,7 @@ const ReviewDetail = () => {
     const [editCommentContent, setEditCommentContent] = useState("");
     const [imageUrls, setImageUrls] = useState([]);
     const token = localStorage.getItem('token');
+    const [tags, setTags] = useState([]);
 
     const navigate = useNavigate();
 
@@ -29,14 +30,17 @@ const ReviewDetail = () => {
       setEditCommentContent("");
     }
 
-
   
     useEffect(() => {
       axios
         .get(`http://43.200.58.174:8080/api/v1/theater-review/${postNo}`)
         .then((response) => {
+          console.log(response.data);
           setReview(response.data);
           setContent(response.data.content);
+          const urls = response.data.image.map((image) => image.imgUrl);
+           setImageUrls(urls);
+           console.log(response.data.tags);
         })
         .catch((error) => {
           console.log(error);
@@ -45,7 +49,17 @@ const ReviewDetail = () => {
 
 
     const handleEditClick = () => {
-      navigate(`/reviewEdit/${postNo}`);
+      axios.post(`http://43.200.58.174:8080/api/v1/theater-review/${postNo}/auth`, {}, {headers: {'X-AUTH-TOKEN': token}})
+        .then((response) => {
+          if (response.data === "SUCCESS") {
+            navigate(`/ReviewEdit/${postNo}`);
+          } 
+          else {
+            console.log(response.data);
+            alert("본인이 작성한 게시물만 수정할 수 있습니다");
+          }
+        }
+        )
     }
 
     const handleDeleteClick = () => {
@@ -55,6 +69,7 @@ const ReviewDetail = () => {
             axios.delete(`http://43.200.58.174:8080/api/v1/theater-review/${postNo}`, {headers: {'X-AUTH-TOKEN': token}})
               .then((response) => {
                 console.log(response.data);
+                alert("게시물 삭제가 완료되었습니다!");
                 navigate("/review");
               })
               .catch((error) => {
@@ -119,7 +134,7 @@ const ReviewDetail = () => {
             <h6 className="RVDT-nickname">작성자 : {review.nickName}</h6>
             <h6 className="RVDT-createdAt">작성 일자 : {review.createdAt}</h6>
             <h6 className="RVDT-viewCount">조회수 : {review.viewCount}</h6>
-
+            {review.tagId}
            
             <button className="RVDT-Modify" onClick={handleEditClick}>수정</button>
             <button className="RVDT-Modify" onClick={handleDeleteClick}>삭제</button>
@@ -127,16 +142,15 @@ const ReviewDetail = () => {
         </div>
         <p/>
 
-        <div className="RVDT-content">{review.content}</div>
+        <div className="RVDT-Content">{review.content}</div>
         <div>
-  {imageUrls.map(url => (
-    <img src={url} alt="" />
-  ))}
+    <img src={imageUrls} alt="" key={imageUrls} />
 </div>
+
 
        <hr className="RVDT-hr"></hr>
 
-        <p className="RVDT-Co">comment</p>
+        <p className="RVDT-Content">comment</p>
         <ul>
             {review.comments && review.comments.map(comment => (
               <li key={comment.commentId} className="RVDT-Comment">
