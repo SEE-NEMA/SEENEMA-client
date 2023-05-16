@@ -17,6 +17,25 @@ function MyPage() {
 
     const token = localStorage.getItem('token');
 
+    const [myreview, setMyreview] = useState([]);
+    
+
+    useEffect(() => {
+      axios.get ('http://43.200.58.174:8080/api/v1/user/my-review/theater', {
+          headers: {
+              "X-AUTH-TOKEN" : token
+          }
+      })
+      .then((response) => {
+          console.log(response.data);
+          setMyreview(response.data);
+      })
+      .catch((error) => {
+          console.log(error);
+      });
+  }, [token]);
+
+
     useEffect(() => {
         axios.get ('http://43.200.58.174:8080/api/v1/user/mypage', {
             headers: {
@@ -112,7 +131,15 @@ function MyPage() {
         </div>
       ) : null}
 
-
+          <div>
+            <p>내가 작성한 공연장 후기글</p>
+          {myreview.map((review) => (
+                <div key={review.post_no}>
+                    <p>{review.title}</p>
+                    <p>{review.createdAt}</p>
+                </div>
+            ))}
+          </div>
         </div>
     )
 }
