@@ -102,8 +102,7 @@ function MyPage() {
     return(
         <div>
             <Header/>
-            <hr className="Mypage-hr"></hr>
-
+          
             <div className="Mypage-profile-wrap">
                 <div className="profile-wrap">
                    
@@ -131,15 +130,33 @@ function MyPage() {
         </div>
       ) : null}
 
-          <div>
-            <p>내가 작성한 공연장 후기글</p>
-          {myreview.map((review) => (
+              <hr className = "My-hr-wrap"></hr>
+          <div className = "My-Post-Wrap">
+            <p className="My-Post">내가 작성한 공연장 후기글</p>
+              {myreview.map((review) => (
                 <div key={review.post_no}>
                     <p>{review.title}</p>
                     <p>{review.createdAt}</p>
                 </div>
             ))}
           </div>
+
+          <div className = "My-Post-Wrap">
+            <p className="My-Post-comment">내가 작성한 댓글</p>
+          </div>
+
+          <div className = "My-Seeya-Wrap">
+            <p className="My-Seeya">내가 작성한 시야 후기</p>
+          </div>
+
+          <div className = "My-Like-Musical-Wrap">
+            <p className="My-Like-Musical">좋아요한 공연 후기</p>
+          </div>
+
+          <div className = "My-Like-Seeya-Wrap">
+            <p className="My-Like-Seeya">좋아요한 시야 후기</p>
+          </div>
+
         </div>
     )
 }
