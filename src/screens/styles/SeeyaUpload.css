@@ -1,0 +1,76 @@
+.SeeyaUpload-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 600px;
+  }
+  
+  .SeeyaUpload-form {
+    width: 700px;
+    height: 500px;
+    margin-top : 10px;
+    border : none;
+    border-radius : 20px;
+    background-color: rgba(225, 225, 225, 0.718);
+  }
+  
+  
+  .SeeyaUpload-form input{
+    margin-bottom: 5px;
+    margin-top : 10px;
+    margin-left : 40px;
+    padding: 10px;
+    border: none;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    font-size: 16px;
+    width: 80%;
+    font-family: 'Raleway', sans-serif;
+    resize:none;
+  }
+
+  .SeeyaUpload-form input::placeholder,
+  .SeeyaUpload-form textarea::placeholder {
+    text-align: left;
+    color : rgb(188, 187, 187);
+    font-size:15px;
+  }
+  
+  .SeeyaUpload-form textarea {
+    margin-bottom: 20px;
+    margin-top : 10px;
+    margin-left : 90px;
+    padding: 10px;
+    border: none;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    font-size: 16px;
+    width: 80%;
+    height : 120px;
+    font-family: 'Raleway', sans-serif;
+    resize:none;
+  }
+  
+  .SeeyaUpload-form button[type="submit"] {
+    background-color: #000000;
+    margin-left : 270px;
+    margin-top : 30px;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 20%;
+  }
+  
+  .SeeyaUpload-form button[type="submit"]:hover {
+    background-color: #737373;
+  }
+  
+  .SeeyaUpload-label {
+    margin-bottom: 10px;
+    margin-left : 20px;
+    font-weight: bold;
+  }
+

@@ -8,17 +8,18 @@
     position: absolute;
     background-color: transparent;
     border: none;
-    margin-top: 20px;
+    margin-top: 22px;
     margin-left: 10px;
 }
 
 .Review-Input {
     margin-top: 20px;
     vertical-align: middle;
-    width: 600px;
+    width: 500px;
     height:30px;
     border-radius: 20px;
-    border: 1px #911F27 solid;
+    border: 2px #000000 solid;
+    text-align: center; 
 }
 
 input::placeholder {
@@ -28,8 +29,9 @@ input::placeholder {
 
 .Review-WriteBtn {
     position: absolute;
+    margin-left:90px;
     margin-top: 120px;
-    margin-right: -50px;
+    margin-left: 50px;
     background-color: transparent;
     font-weight: bold;
     border: none;
@@ -38,32 +40,6 @@ input::placeholder {
 .Review-hr {
     margin-top: 50px;
     height : 2px;
-    width:900px;
+    width:800px;
     background : #000;
-}
-
-.Review-Content ul {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    margin-left: 0%;
-    margin-right: 0%;
-    align-content: center;
-}
-
-.Review-Content li {
-    color : #000;
-    list-style: none;
-    width: 800px;
-    font-weight: 300;
-    margin-top: 0px;
-    margin-bottom: 40px;
-    text-align: left;
-    padding-left: 50%;
-    padding-right: 50%;
-}
-
-.showMore_btn {
-    position: absolute;
-    bottom : 150px;
 }

@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+
+.Musical-Image {
+    background-color: rgb(255, 255, 255);
+    height : 300px;
+    width : 400px;
+    border : none;
+    border-radius : 20px;
+    margin-top : 150px;
+    margin-left : 180px;
+}
+
+.Musical-Detail-Info {
+    margin-left : 650px;
+    margin-top : -300px;
+}
+
+.Musical-T {
+    line-height: 5px;
+    
+}
+
+.Musical-Catecory {
+    color :rgb(169, 167, 167);
+    font-size : 15px;
+    
+}
+
+.Musical-Title {
+    font-weight: bold;
+    font-size : 25px;
+   
+}
+
+.MusicalST {
+    margin-top : 40px;
+    line-height: 45px;
+    font-family: 'Nanum Gothic', sans-serif;
+}
+
+.Musical-RunningTime {
+    width:600px;
+}

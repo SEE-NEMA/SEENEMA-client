@@ -1,0 +1,172 @@
+.SeeyaReview-Container {
+    margin : auto;
+    margin-top : 70px;
+    height: 500px; 
+    width : 700px;/* 화면 전체 높이 */
+    line-height: 20px;
+    
+}
+
+.SeeyaReview-Review {
+    font-weight: bold;
+    font-size : 30px;
+    text-align: center;
+    color : rgb(0, 0, 0);
+}
+
+.SeeyaReview-Container hr {
+    border : 1px solid rgb(191, 191, 191);
+    width : 250px;
+}
+
+.SeeyaReview-title {
+    font-weight: bold;
+    text-align : center;
+    font-size : 15px;
+}
+
+.SeeyaReview-Contents {
+    background-color: rgba(225, 225, 225, 0.718);
+    border-radius : 20px;
+    border: none;
+    height : 250px;
+    margin-top : 40px;
+    padding-top : 50px;
+}
+.SeeyaReview-content {
+    margin-top : -20px;
+    margin-left : 20px;
+    
+    height : 200px;
+    width : 650px;
+    font-weight: bold;
+
+}
+
+.SeeyaReview-nickName {
+    margin-left : 20px;
+    margin-top : 20px;
+    color : gray;
+    font-size : 12px;
+}
+
+.SeeyaReview-modify {
+    width : 100px;
+    height : 30px;
+    color : white;
+    background-color: rgb(101, 101, 101);
+    border : none;
+    border-radius : 20px;
+    margin-left : 220px;
+    margin-top : 30px;
+}
+
+.SeeyaReview-modify:hover {
+    background-color : black;
+}
+
+.SeeyaReview-delete {
+    width : 100px;
+    height : 30px;
+    color : white;
+    background-color: rgb(101, 101, 101);
+    border : none;
+    border-radius : 20px;
+    margin-left : 20px;
+}
+
+.SeeyaReview-delete:hover {
+    background-color: black;
+}
+
+.SeeyaReview-register {
+    width : 150px;
+    height : 30px;
+    color : white;
+    background-color: black;
+    border : none;
+    border-radius : 20px;
+    margin-left : 20px;
+}
+
+
+
+.Modify-Wrap {
+    background-color: rgba(225, 225, 225, 0.718);
+    height : 430px;
+    line-height : 65px;
+    margin-top : 50px;
+    border-radius:10px;
+}
+
+.Modify-Wrap label {
+    font-weight: bold;
+    margin-left : 20px;
+}
+
+.Modify-title {
+    border : none;
+    border-radius:10px;
+    width : 600px;
+    height : 50px;
+    margin-top:30px;
+    margin-left : 30px;
+}
+
+.Modify-play {
+    border: none;
+    border-radius : 10px;
+    width : 600px;
+    height : 50px;
+    margin-left : 30px;
+}
+
+.Modify-seat {
+    border: none;
+    border-radius : 10px;
+    width : 600px;
+    height : 50px;
+    margin-left : 30px;
+}
+
+.Modify-content {
+    resize:none;
+    border: none;
+    border-radius:10px;
+    width : 600px;
+    height : 100px;
+    margin-top : 13px;
+    margin-left : 77px;
+    font-family: 'Raleway', sans-serif;
+}
+
+.modify-save {
+    margin-left : 260px;
+    border : none;
+    background-color: #000000;
+    color : white;
+    border-radius : 10px;
+    width : 70px;
+    height : 30px;
+    font-weight: bold;
+}
+
+.modify-save:hover {
+    background-color: gray;
+}
+
+.modify-cancel {
+    margin-top : -40px;
+    margin-left : 20px;
+    border : none;
+    background-color: #000000;
+    color : white;
+    border-radius : 10px;
+    width : 70px;
+    height : 30px;
+    font-weight: bold;
+}
+
+.modify-cancel:hover {
+    background-color: gray;
+}

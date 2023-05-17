@@ -1,0 +1,45 @@
+
+.SignupModal {
+    position: fixed;
+    top: 45%;
+    left: 50%;
+    width : 200px;
+    height : 50px;
+    border : none;
+    background-color: rgb(195, 195, 195);
+    
+    transform: translate(-50%, -50%);
+    z-index: 999;
+    padding: 20px;
+    border-radius: 20px;
+  }
+  
+
+  .SignupModal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 998;
+  }
+  
+  .SignupModal-message {
+    color:black;
+    margin-top : 15px;
+    text-align : center;
+    font-weight: bold;
+  }
+
+  .SignupModal-closeButton {
+    margin-top : 50px;
+    margin-left : 50px;
+    border : none;
+    background-color: black;
+    color : white;
+    width : 100px;
+    height : 30px;
+    border-radius : 10px;
+  }
+

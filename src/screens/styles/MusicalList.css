@@ -1,0 +1,26 @@
+.musical-WrapContent {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width : 80%;
+  margin-left : 170px;
+}
+
+
+.musical-WrapContent img {
+  width: 200px;
+  height: auto;
+  margin-bottom: 10px;
+  margin-left : -30px;
+}
+
+.musical-WrapContent li {
+  list-style: none;
+}
+
+.musical-WrapContent h4,h6 {
+  color:black;
+  margin-left:-20px;
+  width:400px;
+}
+

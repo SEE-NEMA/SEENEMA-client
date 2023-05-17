@@ -7,17 +7,13 @@
     color: #262626;
 }
 
-.WrapSlider {
-    position: relative;
-    margin-right: 800px;
-    margin-top: 100px;
-}
 
-.Ranking-Wrap1 {
+
+.Ranking {
     position : absolute;
-    left: 1200px;
-    top:350px;
-	width: 250px;
+    left:1300px;
+    top:300px;
+	width: 200px;
 	height: 380px;
 	background-color: rgb(255, 255, 255);
     border : 2px solid black;
@@ -27,29 +23,12 @@
 
 .Ranking-Text {
     position : absolute;
-    left:80px;
-    top: -50px;
+    left:1370px;
+    top:250px;
     font-weight: bold;
+    
 }
 
-.Ranking1 {
-    position: absolute;
-    top : 5px;
-    left: 10%;
-    right: 10%;
-    align-items: center;
-}
-
-.Ranking-Wrap2 {
-    position : absolute;
-    left: 640px;
-    top : 350px;
-	width: 500px;
-	height: 380px;
-	background-color: rgb(255, 255, 255);
-    border : 2px solid black;
-    border-radius: 20px;
-}
 
 .Ranking-Text2 {
     position : absolute;
