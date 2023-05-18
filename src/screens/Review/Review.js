@@ -12,6 +12,7 @@ const Review = () => {
   const [searchTitle, setSearchTitle] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  const [selectedTag, setSelectedTag] = useState(null);
 
   const { authenticated } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -45,9 +46,13 @@ const Review = () => {
   }, [authenticated, currentPage]);
 
   const fetchData = () => {
+    const url = selectedTag
+    ? `http://43.200.58.174:8080/api/v1/theater-review/tags?tagId=${selectedTag}`
+    : `http://43.200.58.174:8080/api/v1/theater-review/`
+
     axios({
       method: "GET",
-      url: `http://43.200.58.174:8080/api/v1/theater-review/`,
+      url: url,
     })
       .then((response) => {
         const sortedReview = response.data.sort(
@@ -55,7 +60,6 @@ const Review = () => {
         );
         setReview(sortedReview);
         setTotalPages(Math.ceil(sortedReview.length / 5));
-        console.log(localStorage);
       })
       .catch((error) => {
         console.error(error);
@@ -89,6 +93,13 @@ const Review = () => {
     return reviews.slice(startIndex, endIndex);
   };
 
+  const handleTagClick = (tagId) => {
+    setSelectedTag(tagId);
+    setCurrentPage(1);
+    fetchData();
+    console.log(tagId);
+  };
+
   return (
     <div>
       <Header />
@@ -106,6 +117,14 @@ const Review = () => {
                 <button className="Review-Search" onClick={searchHandler}>
           <FaSearch size="30" />
         </button>
+        <div className="tag-buttons">
+        <button onClick={() => handleTagClick(1)}>맛집</button>
+        <button onClick={() => handleTagClick(2)}>카페</button>
+        <button onClick={() => handleTagClick(3)}>대여</button>
+        <button onClick={() => handleTagClick(4)}>물품 보관소</button>
+        <button onClick={() => handleTagClick(5)}>주차장</button>
+        <button onClick={() => handleTagClick(6)}>화장실</button>
+      </div>
         <button className="Review-WriteBtn" onClick={validateUser}>
           글쓰기
         </button>
