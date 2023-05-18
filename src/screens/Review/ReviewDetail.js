@@ -20,11 +20,11 @@ const ReviewDetail = () => {
 
     const navigate = useNavigate();
 
-    const openEditModal = (commentId, content) => {
-      console.log(commentId);
+    const openEditModal = (commentId, commentContent) => {
       setEditCommentId(commentId);
-      setEditCommentContent(content);
+      setEditCommentContent(commentContent);
     };
+    
 
     const closeEditModal = () => {
       setEditCommentId(null);
@@ -153,6 +153,9 @@ const ReviewDetail = () => {
     };
     
     const editComment = (commentId) => {
+      const editedContent = "수정된 댓글 내용"; // 수정할 댓글 내용
+    
+      // POST 요청을 보내어 댓글 수정 모달창을 띄워줍니다.
       axios
         .post(
           `http://43.200.58.174:8080/api/v1/theater-review/${postNo}/${commentId}/auth`,
@@ -160,39 +163,22 @@ const ReviewDetail = () => {
           { headers: { "X-AUTH-TOKEN": token } }
         )
         .then((response) => {
-          if (response.status === 200) {
-            axios
-              .put(
-                `http://43.200.58.174:8080/api/v1/theater-review/${postNo}/${commentId}`,
-                { content: editCommentContent },
-                { headers: { "X-AUTH-TOKEN": token } }
-              )
-              .then((response) => {
-                console.log(response);
-                closeEditModal();
-                // Update the review state with the updated comment
-                setReview((prevReview) => {
-                  const updatedComments = prevReview.comments.map((comment) => {
-                    if (comment.commentId === commentId) {
-                      return { ...comment, content: editCommentContent };
-                    }
-                    return comment;
-                  });
-                  return { ...prevReview, comments: updatedComments };
-                });
-              })
-              .catch((error) => {
-                console.log(error);
-              });
+          if (response.data === "SUCCESS") {
+            
+          } else if (response.data === "FAIL") {
+            console.log(response.data);
+            alert("댓글 수정에 실패했습니다.");
           } else {
             console.log(response.data);
           }
+        })
+        .catch((error) => {
+          console.log(error);
         });
     };
     
     
     
-
     return (
       <div>
         <Header/>
@@ -237,17 +223,21 @@ const ReviewDetail = () => {
           </ul>
 
           {editCommentId !== null && (
-              <div className="RVDT-EditModal">
-              <div className="RVDT-EditModalContent">
-              <button className="RVDT-CloseEditModal" onClick={closeEditModal}>
-                 X
-              </button>
-              <h3>댓글 수정</h3>
-              <textarea value={editCommentContent} onChange={(e) => setEditCommentContent(e.target.value)} />
-              <button onClick={editComment}>수정하기</button>
-              </div>
-              </div>
-          )}
+          <div className="RVDT-EditModal">
+          <div className="RVDT-EditModalContent">
+          <button className="RVDT-CloseEditModal" onClick={closeEditModal}>
+              X
+          </button>
+          <h3>댓글 수정</h3>
+          <textarea
+            value={editCommentContent}
+            onChange={(e) => setEditCommentContent(e.target.value)}
+          />
+          <button onClick={() => editComment(editCommentId)}>수정하기</button>
+      </div>
+  </div>
+)}
+
 
         
         <form onSubmit={addComments}>
