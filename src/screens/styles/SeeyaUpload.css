@@ -7,8 +7,8 @@
   
   .SeeyaUpload-form {
     width: 700px;
-    height: 500px;
-    margin-top : 10px;
+    height: 700px;
+    margin-top : 200px;
     border : none;
     border-radius : 20px;
     background-color: rgba(225, 225, 225, 0.718);
@@ -16,7 +16,7 @@
   
   
   .SeeyaUpload-form input{
-    margin-bottom: 5px;
+    
     margin-top : 10px;
     margin-left : 40px;
     padding: 10px;
@@ -46,7 +46,7 @@
     border-radius: 10px;
     font-size: 16px;
     width: 80%;
-    height : 120px;
+    height : 80px;
     font-family: 'Raleway', sans-serif;
     resize:none;
   }
@@ -69,8 +69,75 @@
   }
   
   .SeeyaUpload-label {
-    margin-bottom: 10px;
     margin-left : 20px;
     font-weight: bold;
   }
 
+  .SeeyaUpload-Image-label {
+    margin-top : -60px;
+    margin-left : 20px;
+    font-weight: bold;
+  }
+
+  .SeeyaUpload-Image {
+    margin-top : -50px;
+    margin-bottom : 40px;
+  }
+
+  .star-icon {
+    color: #cfcfcf; 
+    cursor : pointer;
+    transition: color 0.25s;
+  }
+  
+  .star-icon.active {
+    color: yellow; 
+  }
+  
+  .star-rating {
+    display: flex;
+    align-items : center;
+  }
+
+  .StarRating-label {
+    display: inline-block;
+    width: 100px;
+    text-align: right;
+    margin-top : 10px;
+    margin-right: 10px;
+    margin-left : -19px;
+  }
+  
+  .StarRating-label:last-of-type {
+    margin-right: 0;
+  }
+  
+  .SeeyaUpload-rating {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left : 30px;
+  }
+
+  .Profile-edit-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+  }
+  
+  .Profile-edit-modal-content {
+    position: relative; 
+    width: 220px;
+    height: 150px;
+    padding: 40px;
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
+  }
