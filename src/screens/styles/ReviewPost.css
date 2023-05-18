@@ -110,3 +110,12 @@
 .tag {
     display: flex;
 }
+
+  
+
+  .tag-buttons button.selected {
+    /* Add your selected button styles here */
+    background-color: #ff0000; /* Set the background color to red for selected buttons */
+    color: #ffffff; /* Set the text color to white for selected buttons */
+  }
+  

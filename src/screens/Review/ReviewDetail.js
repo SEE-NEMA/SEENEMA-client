@@ -39,6 +39,7 @@ const ReviewDetail = () => {
           console.log(response.data);
           setReview(response.data);
           setContent(response.data.content);
+          setTags(response.data.tagId);
           const urls = response.data.image.map((image) => image.imgUrl);
            setImageUrls(urls);
            console.log(response.data.tags);
@@ -196,7 +197,9 @@ const ReviewDetail = () => {
         </div>
         <p/>
 
-        <div className="RVDT-Content">{review.content}</div>
+        <div className="RVDT-Content">{review.content}
+        {review.tagIs}
+        </div>
         <div>
         {imageUrls.length > 0 && (
   <div>

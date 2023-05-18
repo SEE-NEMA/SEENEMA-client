@@ -1,7 +1,7 @@
 import Header from "../../Header";
 import "../styles/ReviewPost.css";
 import React, { useState } from "react";
-import { useNavigate, Link, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { AuthContext } from "../../contexts/AuthContext";
 
@@ -14,16 +14,32 @@ function ReviewPost() {
   const token = localStorage.getItem("token");
 
   const postNo = useParams();
-  const [selectedTag, setSelectedTag] = useState(null);
+
+  const handleTagClick = (tagId) => {
+    if (tags.includes(tagId)) {
+      // 이미 선택된 태그인 경우 제거
+      setTags(tags.filter((tag) => tag !== tagId));
+    } else {
+      // 선택되지 않은 태그인 경우 추가
+      setTags([...tags, tagId]);
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (tags.length === 0) {
+      alert("태그를 선택해주세요.");
+      return;
+    }
+
     const formData = new FormData();
     formData.append("title", title);
     formData.append("content", content);
-    formData.append("tags", selectedTag);
+    tags.forEach((tag) => {
+      formData.append("tags[]", tag); // 선택된 태그들을 전송
+    });
     for (let i = 0; i < images.length; i++) {
-      formData.append(`images[${i}]`, images[i]);
+      formData.append(`images[${i}]`, images[i]); // 이미지 파일 여러 개 전달
     }
 
     axios
@@ -46,10 +62,6 @@ function ReviewPost() {
       newImages.push(fileList[i]);
     }
     setImages(newImages);
-  };
-
-  const handleTagChange = (event) => {
-    setSelectedTag(event.target.value);
   };
 
   return (
@@ -83,17 +95,51 @@ function ReviewPost() {
 
             <label htmlFor="image">사진</label>
             <input type="file" onChange={handleImageChange} />
+          </div>
 
-            <label htmlFor="tag">태그</label>
-            <select name="tag" value={selectedTag} onChange={handleTagChange}>
-              <option value="">태그 선택</option>
-              <option value="1">맛집</option>
-              <option value="2">카페</option>
-              <option value="3">대여</option>
-              <option value="4">물품 보관소</option>
-              <option value="5">주차장</option>
-              <option value="6">화장실</option>
-            </select>
+          <div className="tag-buttons">
+            <button
+              onClick={() => handleTagClick(1)}
+              className={tags.includes(1) ? "selected" : ""}
+              type="button" // Add type="button" to prevent form submission
+            >
+              맛집
+            </button>
+            <button
+              onClick={() => handleTagClick(2)}
+              className={tags.includes(2) ? "selected" : ""}
+              type="button" // Add type="button" to prevent form submission
+            >
+              카페
+            </button>
+            <button
+              onClick={() => handleTagClick(3)}
+              className={tags.includes(3) ? "selected" : ""}
+              type="button" // Add type="button" to prevent form submission
+            >
+              대여
+            </button>
+            <button
+              onClick={() => handleTagClick(4)}
+              className={tags.includes(4) ? "selected" : ""}
+              type="button" // Add type="button" to prevent form submission
+            >
+              물품 보관소
+            </button>
+            <button
+              onClick={() => handleTagClick(5)}
+              className={tags.includes(5) ? "selected" : ""}
+              type="button" // Add type="button" to prevent form submission
+            >
+              주차장
+            </button>
+            <button
+              onClick={() => handleTagClick(6)}
+              className={tags.includes(6) ? "selected" : ""}
+              type="button" // Add type="button" to prevent form submission
+            >
+              화장실
+            </button>
           </div>
 
           <button className="ReviewWrite-Upload" type="submit">
