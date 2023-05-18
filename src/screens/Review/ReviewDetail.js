@@ -21,6 +21,7 @@ const ReviewDetail = () => {
     const navigate = useNavigate();
 
     const openEditModal = (commentId, content) => {
+      console.log(commentId);
       setEditCommentId(commentId);
       setEditCommentContent(content);
     };
@@ -82,48 +83,115 @@ const ReviewDetail = () => {
         });
     }
 
-    const addComments = () => {
-      axios
-        .post(`http://43.200.58.174:8080/api/v1/theater-review/${postNo}/comment`,
-        {content : comments}
-        )
-        .then((response) => {
-          console.log(response);
-          navigate(`/review/${postNo}`)
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    }
+    const addComments = async () => {
+      try {
+        const response = await axios.post('http://43.200.58.174:8080/api/v1/theater-review/auth', {}, {
+          headers: {
+            "Content-Type": "application/json",
+            "X-AUTH-TOKEN": token
+          }
+        }
+        );
+  
+        console.log(response);
+  
+        if (response.data === "SUCCESS") {
+          axios
+            .post(
+              `http://43.200.58.174:8080/api/v1/theater-review/${postNo}/comment`,
+              { content: comments },
+              { headers: { "X-AUTH-TOKEN": token } }
+            )
+            .then((response) => {
+              console.log(response);
+              // navigate(`/review/${postNo}`);
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+        } else {
+          alert("로그인 한 사용자만 작성 가능합니다.");
+        }
+      } catch (error) {
+        console.error(error);
+        alert("서버 오류가 발생했습니다.");
+      }
+    };
+    
     
     const deleteComment = (commentId) => {
       axios
-        .delete(`http://43.200.58.174:8080/api/v1/theater-review/${postNo}/${commentId}`)
+        .post(
+          `http://43.200.58.174:8080/api/v1/theater-review/${postNo}/${commentId}/auth`,
+          {},
+          { headers: { 'X-AUTH-TOKEN': token } }
+        )
         .then((response) => {
-          console.log(response);
-          setReview(prevReview => ({
-            ...prevReview,
-            comments: prevReview.comments.filter(comment => comment.commentId !== commentId)
-          }))
-        })
-        .catch((error) => {
-          console.log(error);
+          if (response.data === 'SUCCESS') {
+            axios
+              .delete(
+                `http://43.200.58.174:8080/api/v1/theater-review/${postNo}/${commentId}`,
+                { headers: { 'X-AUTH-TOKEN': token } }
+              )
+              .then((response) => {
+                console.log(response.data);
+                setReview((prevReview) => ({
+                  ...prevReview,
+                  comments: prevReview.comments.filter(
+                    (comment) => comment.commentId !== commentId
+                  ),
+                }));
+              })
+              .catch((error) => {
+                console.log(error);
+              });
+              console.log(response);
+          } else {
+            console.log(response.data);
+          }
         });
-    }
-
+    };
+    
     const editComment = (commentId) => {
       axios
-    .put(`http://43.200.58.174:8080/api/v1/theater-review/${postNo}/${commentId}`, 
-    { content: editCommentContent })
-    .then((response) => {
-      console.log(response);
-      closeEditModal();
-      navigate(`/review/${postNo}`);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-    }
+        .post(
+          `http://43.200.58.174:8080/api/v1/theater-review/${postNo}/${commentId}/auth`,
+          {},
+          { headers: { "X-AUTH-TOKEN": token } }
+        )
+        .then((response) => {
+          if (response.status === 200) {
+            axios
+              .put(
+                `http://43.200.58.174:8080/api/v1/theater-review/${postNo}/${commentId}`,
+                { content: editCommentContent },
+                { headers: { "X-AUTH-TOKEN": token } }
+              )
+              .then((response) => {
+                console.log(response);
+                closeEditModal();
+                // Update the review state with the updated comment
+                setReview((prevReview) => {
+                  const updatedComments = prevReview.comments.map((comment) => {
+                    if (comment.commentId === commentId) {
+                      return { ...comment, content: editCommentContent };
+                    }
+                    return comment;
+                  });
+                  return { ...prevReview, comments: updatedComments };
+                });
+              })
+              .catch((error) => {
+                console.log(error);
+              });
+          } else {
+            console.log(response.data);
+          }
+        });
+    };
+    
+    
+    
 
     return (
       <div>
@@ -144,8 +212,18 @@ const ReviewDetail = () => {
 
         <div className="RVDT-Content">{review.content}</div>
         <div>
-        <img src={imageUrls} className="RVDT-Image" alt="" key={imageUrls} />
-        </div>
+
+
+        {imageUrls.length > 0 && (
+  <div>
+    {imageUrls.map((imageUrl, index) => (
+      <img key={index} src={imageUrl} alt="" />
+    ))}
+  </div>
+)}
+
+</div>
+
 
 
        <hr className="RVDT-hr"></hr>
