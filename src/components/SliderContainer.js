@@ -25,7 +25,7 @@ export default function SliderContainer() {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 1,
+    slidesToShow: 4,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 3000,
@@ -52,23 +52,25 @@ export default function SliderContainer() {
 
   return (
     <div className="mySlider">
+
       <div className="parallel-slider">
         <div className="ranking-container">
-          <h2>Concert Ranking</h2>
-          <Slider {...settings}>
-            {concertRanking.map((item, index) => (
-              <div key={index}>
-                <img src={item.imgUrl} alt={`concert-slide-${index}`} />
-              </div>
-            ))}
-          </Slider>
-        </div>
-        <div className="ranking-container">
-          <h2>Musical Ranking</h2>
+          <h2 className="ranking-container-h2">Musical Ranking</h2>
           <Slider {...settings}>
             {musicalRanking.map((item, index) => (
               <div key={index}>
                 <img src={item.imgUrl} alt={`musical-slide-${index}`} />
+              </div>
+            ))}
+          </Slider>
+        </div>
+
+        <div className="ranking-container-musical">
+          <h2 className="ranking-container-h2">Concert Ranking</h2>
+          <Slider {...settings}>
+            {concertRanking.map((item, index) => (
+              <div key={index}>
+                <img src={item.imgUrl} alt={`concert-slide-${index}`} />
               </div>
             ))}
           </Slider>
