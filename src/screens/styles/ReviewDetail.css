@@ -6,6 +6,10 @@
     width: 800px;
 }
 
+.RVDT-Modify-Wrap {
+    margin-left : 500px;
+    margin-top : -50px;
+}
 
 .RVDT-Modify {
     height:25px;
@@ -19,17 +23,17 @@
 }
 
 .RVDT-Detail {
-    display: flex;
-    flex-direction: row;
     margin-left:20px;
 }
 
 .RVDT-createdAt {
-    margin-left : -200px;
+    margin-left : 140px;
+    margin-top : -38px;
 }
 
 .RVDT-viewCount {
-    margin-left : -100px;
+    margin-left : 340px;
+    margin-top : -38px;
 }
 
 

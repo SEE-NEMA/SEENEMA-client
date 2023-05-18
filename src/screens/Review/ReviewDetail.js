@@ -190,9 +190,11 @@ const ReviewDetail = () => {
             <h6 className="RVDT-viewCount">조회수 : {review.viewCount}</h6>
             {review.tagId}
            
+            <div className="RVDT-Modify-Wrap">
             <button className="RVDT-Modify" onClick={handleEditClick}>수정</button>
             <button className="RVDT-Modify" onClick={handleDeleteClick}>삭제</button>
-        
+            </div>
+
         </div>
         <p/>
 
