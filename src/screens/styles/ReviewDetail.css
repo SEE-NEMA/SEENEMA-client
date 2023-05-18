@@ -1,17 +1,18 @@
 .RVDT-Wrap {
     position: absolute;
-    left : 60%;
+    left : 57%;
     transform: translateX(-50%);
     top : 160px;
-    width: 1000px;
+    width: 800px;
 }
+
 
 .RVDT-Modify {
     height:25px;
     margin-left:15px;
     margin-top:45px;
     border:none;
-    width:50px;
+    width:70px;
     border-radius: 10px;
     background-color: rgb(168, 168, 168);
     color:rgb(255, 255, 255);
@@ -20,38 +21,54 @@
 .RVDT-Detail {
     display: flex;
     flex-direction: row;
-    text-align: center;
-    margin-left:170px;
+    margin-left:20px;
 }
+
+.RVDT-createdAt {
+    margin-left : -200px;
+}
+
+.RVDT-viewCount {
+    margin-left : -100px;
+}
+
 
 .RVDT-Detail h6 {
     color : #c9c9c9;
-    padding-right: 20px;
+    padding-right: 10px;
     font-weight :300;
     font-style: normal;
 }
 
 .RVDT-hr {
     height:1px;
-    width:720px;
-    margin-left:-20px;
+    width:750px;
+    margin-left:-50px;
     margin-top:60px;
 }
 
 .RVDT-content {
     width:500px;
     margin-top:40px;
+    color : lightgray;
 }
 
 .RVDT-Co {
     color:rgb(197, 197, 197);
     font-size:14px; 
+    margin-left:-60px;
 }
 
 .RVDT-Comment {
-    margin-left:-40px;
+    margin-left:-60px;
     color:rgb(0, 0, 0);
     font-size:15px;
+    width:600px;
+}
+
+.RVDT-comment {
+    color:rgb(192, 192, 192);
+    margin-left : -40px;
 }
 
 .RVDT-button {
@@ -70,7 +87,7 @@
 
 .RVDT-comments {
     margin-top:40px;
-   
+   margin-left:-20px;
 }
 
 .RVDT-input {
@@ -87,4 +104,8 @@
     background-color: rgb(168, 168, 168);
     color:rgb(255, 255, 255);
     border-radius:10px;
+}
+
+.RVDT-Image {
+    margin-left : -0px;
 }

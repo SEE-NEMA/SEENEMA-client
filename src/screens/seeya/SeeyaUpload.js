@@ -1,8 +1,25 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState, useRef } from "react";
 import axios from "axios";
 import Header from "../../Header";
 import '../styles/SeeyaUpload.css';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams} from 'react-router-dom';
+import { FaStar } from "react-icons/fa";
+
+const StarRating = ({ value, onChange }) => {
+  const stars = [1, 2, 3, 4, 5];
+
+  return (
+    <div className="star-rating">
+      {stars.map((star) => (
+        <FaStar
+          key={star}
+          className={star <= value ? "star-icon active" : "star-icon"}
+          onClick={() => onChange(star)}
+        />
+      ))}
+    </div>
+  );
+};
 
 function SeeyaUpload() {
 
@@ -12,9 +29,36 @@ function SeeyaUpload() {
     const [content, setContent] = useState("");
     const [image, setImage] = useState(null);
 
-    const { theaterId } = useParams();
+    const [viewScore, setViewScore] = useState("");
+    const [seatScore, setSeatScore] = useState("");
+    const [lightScore, setLightScore] = useState("");
+    const [soundScore, setSoundScore] = useState("");
+
+    const [showModal, setShowModal] = useState(false);
+    const modalRef = useRef(null);
+
+    
+
+    const handleViewScoreChange = (value) => {
+      setViewScore(value.toString());
+    };
+  
+    const handleSeatScoreChange = (value) => {
+      setSeatScore(value.toString());
+    };
+  
+    const handleLightScoreChange = (value) => {
+      setLightScore(value.toString());
+    };
+  
+    const handleSoundScoreChange = (value) => {
+      setSoundScore(value.toString());
+    };
 
     const navigate = useNavigate();
+    const token = localStorage.getItem('token');
+
+    const { theaterId } = useParams();
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -25,14 +69,22 @@ function SeeyaUpload() {
         formData.append("title", title);
         formData.append("content", content);
         formData.append("images", image);
-        
-        axios
-          .post(
+
+        formData.append("viewScore", viewScore);
+        formData.append("seatScore", seatScore);
+        formData.append("lightScore", lightScore);
+        formData.append("soundScore", soundScore);
+
+       
+      
+
+        axios.post(
             `http://43.200.58.174:8080/api/v1/view-review/${theaterId}/upload`,
             formData,
             {
               headers: {
-                'Content-Type': 'multipart/form-data'
+                'Content-Type': 'multipart/form-data',
+                "X-AUTH-TOKEN" : token
               }
             }
           )
@@ -45,10 +97,22 @@ function SeeyaUpload() {
           });
     };
     
-    const handleImageChange = (event) => {
+      const handleImageChange = (event) => {
       setImage(event.target.files[0]);
     };
     
+    const closeModal = () => {
+      setShowModal(false);
+    }
+  
+    const handleModalClick = (e) => {
+      e.stopPropagation();
+    }
+  
+    const handleEditButtonClick = () => {
+      setShowModal(true);
+    }
+
     return (
       <div>
         <Header/>
@@ -93,9 +157,9 @@ function SeeyaUpload() {
               onChange={(event) => setContent(event.target.value)}
             ></textarea>
             
-            <p></p>
+           
             
-            <label htmlFor="image" className="SeeyaUpload-label">사진</label>
+            <label htmlFor="image" className="SeeyaUpload-Image-label">사진</label>
             <input 
               className="SeeyaUpload-Image"
               type="file"
@@ -103,7 +167,66 @@ function SeeyaUpload() {
             />
             
             <p></p>
+
+            {/* 별점 리스트 */}
+
+            <button className = "StarRating-Modal" onClick={() => setShowModal(true)}> 별점 후기 남기기 </button>
+
+
+            {showModal ? (
+            <div className="Profile-edit-modal" onClick={closeModal}>
+            <div className="Profile-edit-modal-content" onClick={handleModalClick} ref={modalRef}>
+            <div>
+            <label htmlFor="title" className="StarRating-label">
+              시야평점
+            </label>
+            <span className="SeeyaUpload-rating">
+              <StarRating value={parseInt(viewScore)} onChange={handleViewScoreChange} />
+            </span>
+            </div>
+
+          </div>
+        </div>
+      ) : null}
+
+
             
+            <p></p>
+
+            <div>
+            <label htmlFor="title" className="StarRating-label">
+              좌석평점
+            </label>
+            <span className="SeeyaUpload-rating">
+              <StarRating value={parseInt(seatScore)} onChange={handleSeatScoreChange} />
+            </span>
+            </div>
+
+            <p></p>
+
+            <div>
+            <label htmlFor="title" className="StarRating-label">
+              조명평점
+            </label>
+            <span className="SeeyaUpload-rating">
+              <StarRating value={parseInt(lightScore)} onChange={handleLightScoreChange} />
+            </span>
+            </div>
+
+            <p></p>
+
+            <div>
+            <label htmlFor="title" className="StarRating-label">
+              음향평점
+            </label>
+            <span className="SeeyaUpload-rating">
+              <StarRating value={parseInt(soundScore)} onChange={handleSoundScoreChange} />
+            </span>
+            </div>
+
+            {/* 별점 리스트 끝 */}
+
+
             <button type="submit">작성 완료</button>
           </form>
         </div>

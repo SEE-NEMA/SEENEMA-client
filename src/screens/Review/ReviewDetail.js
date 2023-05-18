@@ -201,6 +201,8 @@ const ReviewDetail = () => {
         {review.tagIs}
         </div>
         <div>
+
+
         {imageUrls.length > 0 && (
   <div>
     {imageUrls.map((imageUrl, index) => (
@@ -212,9 +214,10 @@ const ReviewDetail = () => {
 </div>
 
 
+
        <hr className="RVDT-hr"></hr>
 
-        <p className="RVDT-Content">comment</p>
+        <p className="RVDT-comment">comment</p>
         <ul>
             {review.comments && review.comments.map(comment => (
               <li key={comment.commentId} className="RVDT-Comment">

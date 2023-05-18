@@ -117,13 +117,13 @@ const Review = () => {
                 <button className="Review-Search" onClick={searchHandler}>
           <FaSearch size="30" />
         </button>
-        <div className="tag-buttons">
-        <button onClick={() => handleTagClick(1)}>맛집</button>
-        <button onClick={() => handleTagClick(2)}>카페</button>
-        <button onClick={() => handleTagClick(3)}>대여</button>
-        <button onClick={() => handleTagClick(4)}>물품 보관소</button>
-        <button onClick={() => handleTagClick(5)}>주차장</button>
-        <button onClick={() => handleTagClick(6)}>화장실</button>
+        <div className="tag-button-wrap">
+        <button className = "tag-button" onClick={() => handleTagClick(1)}>맛집</button>
+        <button className = "tag-button" onClick={() => handleTagClick(2)}>카페</button>
+        <button className = "tag-button" onClick={() => handleTagClick(3)}>대여</button>
+        <button className = "tag-button" onClick={() => handleTagClick(4)}>물품 보관소</button>
+        <button className = "tag-button" onClick={() => handleTagClick(5)}>주차장</button>
+        <button className = "tag-button" onClick={() => handleTagClick(6)}>화장실</button>
       </div>
         <button className="Review-WriteBtn" onClick={validateUser}>
           글쓰기
