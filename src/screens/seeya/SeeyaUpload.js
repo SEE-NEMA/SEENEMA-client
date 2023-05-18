@@ -32,12 +32,7 @@ function SeeyaUpload() {
     const [viewScore, setViewScore] = useState("");
     const [seatScore, setSeatScore] = useState("");
     const [lightScore, setLightScore] = useState("");
-    const [soundScore, setSoundScore] = useState("");
-
-    const [showModal, setShowModal] = useState(false);
-    const modalRef = useRef(null);
-
-    
+    const [soundScore, setSoundScore] = useState("");    
 
     const handleViewScoreChange = (value) => {
       setViewScore(value.toString());
@@ -101,17 +96,6 @@ function SeeyaUpload() {
       setImage(event.target.files[0]);
     };
     
-    const closeModal = () => {
-      setShowModal(false);
-    }
-  
-    const handleModalClick = (e) => {
-      e.stopPropagation();
-    }
-  
-    const handleEditButtonClick = () => {
-      setShowModal(true);
-    }
 
     return (
       <div>
@@ -170,12 +154,6 @@ function SeeyaUpload() {
 
             {/* 별점 리스트 */}
 
-            <button className = "StarRating-Modal" onClick={() => setShowModal(true)}> 별점 후기 남기기 </button>
-
-
-            {showModal ? (
-            <div className="Profile-edit-modal" onClick={closeModal}>
-            <div className="Profile-edit-modal-content" onClick={handleModalClick} ref={modalRef}>
             <div>
             <label htmlFor="title" className="StarRating-label">
               시야평점
@@ -185,12 +163,6 @@ function SeeyaUpload() {
             </span>
             </div>
 
-          </div>
-        </div>
-      ) : null}
-
-
-            
             <p></p>
 
             <div>
