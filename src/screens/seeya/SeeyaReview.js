@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Header from "../../Header";
 import '../styles/SeeyaReview.css';
 
 function SeeyaReview() {
   const { theaterId, viewNo } = useParams();
- 
+  
+  const token = localStorage.getItem("token");
+  const navigate = useNavigate();
+
   const [review, setReview] = useState({});
   const [isEditing, setIsEditing] = useState(false);
   const [editedReview, setEditedReview] = useState({

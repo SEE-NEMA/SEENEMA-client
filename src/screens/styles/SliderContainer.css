@@ -17,6 +17,9 @@ img {
   .ranking-container-h2 {
     text-align : center;
     margin-left : 20px;
+    font-size : 15px;
+    color : rgb(154, 154, 154);
+    font-weight : lighter;
   }
 
   .ranking-container-musical {
