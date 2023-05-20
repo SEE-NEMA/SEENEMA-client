@@ -16,6 +16,7 @@ const ReviewDetail = () => {
   const [imageUrls, setImageUrls] = useState([]);
   const token = localStorage.getItem("token");
   const [tags, setTags] = useState([]);
+  const [tagName, setTagName] = useState("");
   const [heartCount, setHeartCount] = useState();
   const [heartedYN, setHeartedYN] = useState(false);
 
@@ -38,11 +39,12 @@ const ReviewDetail = () => {
         console.log(response.data);
         setReview(response.data);
         setContent(response.data.content);
-        setTags(response.data.tagId);
+        setTags(response.data.tags);
         const urls = response.data.image.map((image) => image.imgUrl);
         setImageUrls(urls);
         setHeartedYN(response.data.setHeartYN);
-        console.log(response.data.tags);
+        setTagName(response.data.tagName);
+        console.log(response.data.tags.map(tag => tag.tagName));
       })
       .catch((error) => {
         console.log(error);
@@ -210,20 +212,35 @@ const ReviewDetail = () => {
       axios
         .post(
           `http://43.200.58.174:8080/api/v1/theater-review/${postNo}/${commentId}/auth`,
-          {content : editedCommentContent},
+          { content: editedCommentContent },
           { headers: { "X-AUTH-TOKEN": token } }
         )
         .then((response) => {
           if (response.data === "SUCCESS") {
-            axios.put(
-              `http://43.200.58.174:8080/api/v1/theater-review/${postNo}/${commentId}`,
-              {content : editedCommentContent},
-              {headers: {"X-AUTH-TOKEN" : token}}
-              
-            ).then((response) => {
-              console.log(response.data);
-              navigate(`/review/${postNo}`);
-            })
+            axios
+              .put(
+                `http://43.200.58.174:8080/api/v1/theater-review/${postNo}/${commentId}`,
+                { content: editedCommentContent },
+                { headers: { "X-AUTH-TOKEN": token } }
+              )
+              .then((response) => {
+                console.log(response.data);
+                const updatedComments = review.comments.map((comment) => {
+                  if (comment.commentId === commentId) {
+                    return { ...comment, content: editedCommentContent };
+                  }
+                  return comment;
+                });
+                setReview((prevReview) => ({
+                  ...prevReview,
+                  comments: updatedComments,
+                }));
+                closeEditModal(); // Close the edit modal
+                navigate(`/review/${postNo}`); // Navigate back to the original review page
+              })
+              .catch((error) => {
+                console.log(error);
+              });
           } else if (response.data === "FAIL") {
             console.log(response.data);
             alert("댓글 수정에 실패했습니다.");
@@ -235,6 +252,7 @@ const ReviewDetail = () => {
           console.log(error);
         });
     };
+    
     
     
     
@@ -262,8 +280,11 @@ const ReviewDetail = () => {
         </div>
         <p/>
 
-        <div className="RVDT-Content">{review.content}
-        {review.tagIs}
+        <div className="RVDT-Content">
+        {review.content}
+        {review.tags && review.tags.map(tag => (
+        <span key={tag.tagId}><h5># {tag.tagName}</h5></span>
+      ))}
         </div>
         <div>
 
