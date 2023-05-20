@@ -3,25 +3,57 @@ import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Header from "../../Header";
 import '../styles/SeeyaReview.css';
-
+import {AiOutlineQuestionCircle} from "react-icons/ai"
 function SeeyaReview() {
 
   const { theaterId, viewNo } = useParams();
   const [review, setReview] = useState({});
+  const [viewScore, setViewScore] = useState("");
+  const [seatScore, setSeatScore] = useState("");
+  const [lightScore,setLightScore] = useState("");
+  const [soundScore, setSoundScore] = useState("");
+  const [averageScore, setAverageScore] = useState(0);
+  const [showModal, setShowModal] = useState(false);
+
   const token = localStorage.getItem('token');
 
   const navigate = useNavigate();
+
+  const toggleModal = () => {
+    setShowModal(!showModal);
+  };
 
   useEffect(() => {
     axios.get(`http://43.200.58.174:8080/api/v1/view-review/${theaterId}/${viewNo}`)
       .then(response => {
         setReview(response.data);
+        setViewScore(response.data);
+        setSeatScore(response.data);
+        setLightScore(response.data);
+        setSoundScore(response.data);
+        
+        const scores = [response.data.viewScore, response.data.seatScore, response.data.lightScore, response.data.soundScore];
+        const totalScore = scores.reduce((sum, score) => sum + score, 0);
+        const average = totalScore / scores.length;
+        setAverageScore(average.toFixed(1));
+
         console.log(response);
       })
       .catch(error => {
         console.error(error);
       });
   }, [theaterId, viewNo]);
+
+  const handleHeartClick = () => {
+    axios.post('http://43.200.58.174:8080/api/v1/view-review/${theaterId}/${viewNo}/heart', {}, {headers : {'X-AUTH-TOKEN' : token}})
+    .then((response) => {
+      console.log(response.data);
+      if(response.data === "SUCCESS") {
+        
+      }
+    })
+  }
+
 
 
   const handleEditClick = () => {
@@ -69,6 +101,17 @@ function SeeyaReview() {
         <p className="SeeyaReview-title">"{review.title}"</p>
             <div className="SeeyaReview-Contents">
               <p className="SeeyaReview-content">{review.content}</p>
+              <p className="Average-Score">평균별점 : {averageScore} 
+              <AiOutlineQuestionCircle
+              className = "Question-Score"
+              onClick={toggleModal}
+              />
+                {showModal && (
+                <div className="Question-Modal">
+              <p className= "Question-text">시야, 좌석, 조명, 음향 평점의 평균값입니다.</p>
+            </div>
+          )} </p> 
+              
               <p className="SeeyaReview-nickName">닉네임 [ {review.nickName} ]</p>
             </div>
 

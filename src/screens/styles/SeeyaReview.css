@@ -4,7 +4,6 @@
     height: 500px; 
     width : 700px;/* 화면 전체 높이 */
     line-height: 20px;
-    
 }
 
 .SeeyaReview-Review {
@@ -30,13 +29,13 @@
     border-radius : 20px;
     border: none;
     height : 250px;
-    margin-top : 40px;
+    margin-top : 0px;
     padding-top : 50px;
 }
+
 .SeeyaReview-content {
-    margin-top : -20px;
+    margin-top : -30px;
     margin-left : 20px;
-    
     height : 200px;
     width : 650px;
     font-weight: bold;
@@ -45,7 +44,7 @@
 
 .SeeyaReview-nickName {
     margin-left : 20px;
-    margin-top : 20px;
+    margin-top : 10px;
     color : gray;
     font-size : 12px;
 }
@@ -169,4 +168,25 @@
 
 .modify-cancel:hover {
     background-color: gray;
+}
+
+.Average-Score {
+    margin-left : 20px;
+}
+
+.Question-Score {
+    margin-left :10px;
+    size : 10px;
+}
+
+.Question-Modal {
+    width : 200px;
+    height : 20px;
+    border : none;
+    background-color: rgba(255, 255, 255, 0.542);
+    font-size : 10px;
+    text-align : center;
+    margin-left : 130px;
+    margin-top : -30px;
+    border-radius : 20px;
 }

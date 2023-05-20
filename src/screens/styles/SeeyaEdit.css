@@ -1,0 +1,87 @@
+.SeeyaEdit-Content-Wrap {
+    width : 600px;
+    height : 550px;
+    border : none;
+    background-color : rgb(225, 225, 225);
+    display : block;
+    position : absolute;
+    left : 30%;
+    top : 17%;
+}
+
+.SeeyaEdit-Input {
+    border : none;
+    width : 500px;
+    height : 30px;
+    margin-top : 20px;
+    margin-left : 20px;
+    border-radius : 10px;
+}
+
+.SeeyaEdit-Input-Content {
+    border : none;
+    width : 500px;
+    height : 100px;
+    margin-top : 20px;
+    margin-left : 70px;
+    border-radius : 10px;
+    resize: none;
+}
+
+.SeeyaEdit-label {
+    margin-left : 20px;
+    font-weight: bold;
+}
+
+.SeeyaUpload-Image {
+    margin-left : 20px;
+}
+
+.star-icon {
+    color: #cfcfcf; 
+    cursor : pointer;
+    transition: color 0.25s;
+  }
+  
+  .star-icon.active {
+  color: yellow; 
+  }
+  
+.star-rating {
+    display: flex;
+    align-items : center;
+  }
+
+.SeeyaEdit-StarRating-label {
+    display: inline-block;
+    width: 100px;
+    text-align: right;
+    margin-right: 10px;
+    margin-left : -19px;
+  }
+  
+  .StarRating-label:last-of-type {
+    margin-right: 0;
+  }
+  
+  .SeeyaUpload-rating {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left : 30px;
+  }
+
+  .SeeyaEdit-Button {
+    border : none;
+    text-align : center;
+    width : 80px;
+    height : 30px;
+    border-radius : 20px;
+    background-color: black;
+    color : white;
+    margin-left : 250px;
+    margin-top : 30px;
+  }
+
+  .SeeyaEdit-Button:hover {
+    background-color: gray;
+  }
