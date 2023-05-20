@@ -1,7 +1,7 @@
 img {
     width: 330px;
-    height: 380px;
-    margin-top: 10px;
+    height: 360px;
+    margin-top: 0;
     margin-left: 420px;
     
   }
@@ -22,6 +22,27 @@ img {
     font-weight : lighter;
   }
 
-  .ranking-container-musical {
-    margin-top : 120px;
+  .ranking-container{
+    margin-top : 40px;
+  }
+
+  .tab-bar {
+   margin-top : 30px;
+   text-align : center;
+   margin-left : 15px;
+  }
+
+  .tab-bar button {
+    border:none;
+    background-color: white;
+    color : rgb(154,154,154);
+    border-right : 3px solid lightgray;
+  }
+
+  .tab-bar button:last-child {
+    border:none;
+  }
+
+  .tab-bar button:hover {
+    color : rgb(241, 159, 159);
   }
