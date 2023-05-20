@@ -5,19 +5,12 @@ import Header from "../../Header";
 import '../styles/SeeyaReview.css';
 
 function SeeyaReview() {
-  const { theaterId, viewNo } = useParams();
-  
-  const token = localStorage.getItem("token");
-  const navigate = useNavigate();
 
+  const { theaterId, viewNo } = useParams();
   const [review, setReview] = useState({});
-  const [isEditing, setIsEditing] = useState(false);
-  const [editedReview, setEditedReview] = useState({
-    title: "",
-    content: "",
-    play: "",
-    seat: "",
-  });
+  const token = localStorage.getItem('token');
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios.get(`http://43.200.58.174:8080/api/v1/view-review/${theaterId}/${viewNo}`)
@@ -30,49 +23,41 @@ function SeeyaReview() {
       });
   }, [theaterId, viewNo]);
 
-  const handleEditButton = () => {
-    setIsEditing(true);
-    setEditedReview({
-      title: review.title,
-      content: review.content,
-      play: review.play,
-      seat: review.seat,
-    });
-  };
 
-  const handleCancelEditButton = () => {
-    setIsEditing(false);
-  };
-
-  const handleSaveButton = () => {
-    axios.put(`http://43.200.58.174:8080/api/v1/view-review/${theaterId}/${viewNo}`, editedReview)
-      .then(response => {
+  const handleEditClick = () => {
+    axios.post(`http://43.200.58.174:8080/api/v1/view-review/${theaterId}/${viewNo}/auth`, {}, {headers: {'X-AUTH-TOKEN': token}})
+      .then((response) => {
         console.log(response.data);
-        setReview(response.data);
-        setIsEditing(false);
-      })
-      .catch(error => {
-        console.error(error);
-      });
-  };
+        if (response.data === "SUCCESS") {
+          navigate(`/seeyaedit/${theaterId}/${viewNo}`);
+        } 
+        else {
+          console.log(response.data);
+          alert("본인이 작성한 게시물만 수정할 수 있습니다");
+        }
+      }
+      )
+  }
 
-  const handleInputChange = (event) => {
-    setEditedReview({
-      ...editedReview,
-      [event.target.name]: event.target.value,
-    });
-  };
-
-  const handleDeleteButton = () => {
-    axios.delete(`http://43.200.58.174:8080/api/v1/view-review/${theaterId}/${viewNo}`)
-      .then(response => {
-        console.log(response.data);
-        
-      })
-      .catch(error => {
-        console.error(error);
+  const handleDeleteClick = () => {
+    axios.post(`http://43.200.58.174:8080/api/v1/view-review/${theaterId}/${viewNo}/auth`, {}, {headers: {'X-AUTH-TOKEN': token}})
+      .then((response) => {
+        if (response.data === "SUCCESS") {
+          axios.delete(`http://43.200.58.174:8080/api/v1/view-review/${theaterId}/${viewNo}`, {headers: {'X-AUTH-TOKEN': token}})
+            .then((response) => {
+              console.log(response.data);
+              alert("게시물 삭제가 완료되었습니다!");
+              navigate("/seeyamain");
+            })
+            .catch((error) => {
+              console.log(error);
+            })
+        } 
+        else {
+          console.log(response.data);
+        }
       });
-  };
+  }
 
   return (
     <div>
@@ -81,57 +66,15 @@ function SeeyaReview() {
         <p className="SeeyaReview-Review">극장 시야 후기</p>
         <hr />
 
-        {!isEditing ? (
-          <>
-            <p className="SeeyaReview-title">"{review.title}"</p>
+        <p className="SeeyaReview-title">"{review.title}"</p>
             <div className="SeeyaReview-Contents">
               <p className="SeeyaReview-content">{review.content}</p>
               <p className="SeeyaReview-nickName">닉네임 [ {review.nickName} ]</p>
             </div>
-            <button onClick={handleEditButton} className = "SeeyaReview-modify">수정</button>
-            <button onClick={handleDeleteButton} className = "SeeyaReview-delete">삭제</button>
-          </>
-        ) : (
-          <div className = "Modify-Wrap">
 
-            <label>제목</label>
-            <input
-              className = "Modify-title"
-              type="text"
-              name="title"
-              value={editedReview.title}
-              onChange={handleInputChange}
-            />
+            <button className="SeeyaReview-modify" onClick={handleEditClick}>수정</button>
+            <button className="SeeyaReview-delete" onClick={handleDeleteClick}>삭제</button>
 
-            <label className = "Modify-label">극장</label>
-            <input
-              className = "Modify-play"
-              type="text"
-              name="play"
-              value={editedReview.play}
-              onChange={handleInputChange}
-            />
-
-            <label>좌석</label>
-            <input
-              className = "Modify-seat"
-              type="text"
-              name="seat"
-              value={editedReview.seat}
-              onChange={handleInputChange}
-            />
-
-             
-             <textarea
-               className = "Modify-content"
-              name="content"
-              value={editedReview.content}
-              onChange={handleInputChange}
-            />
-            <button onClick={handleSaveButton} className = "modify-save">저장</button>
-            <button onClick={handleCancelEditButton} className = "modify-cancel">취소</button>
-          </div>
-        )}
       </div>
     </div>
   );

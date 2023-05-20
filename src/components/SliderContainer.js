@@ -8,6 +8,11 @@ import "../screens/styles/SliderContainer.css";
 export default function SliderContainer() {
   const [concertRanking, setConcertRanking] = useState([]);
   const [musicalRanking, setMusicalRanking] = useState([]);
+  const [activeTab, setActiveTab] = useState("musical");
+
+  const handleTabClick = (tab) => {
+    setActiveTab(tab);
+  };
 
   useEffect(() => {
     axios
@@ -50,31 +55,49 @@ export default function SliderContainer() {
     ],
   };
 
-  return (
+   return (
     <div className="mySlider">
+      <div className="tab-bar">
+        <button
+          className={activeTab === "musical" ? "active" : ""}
+          onClick={() => handleTabClick("musical")}
+        >
+          뮤지컬 랭킹
+        </button>
+        <button
+          className={activeTab === "concert" ? "active" : ""}
+          onClick={() => handleTabClick("concert")}
+        >
+          콘서트 랭킹
+        </button>
+      </div>
 
       <div className="parallel-slider">
-        <div className="ranking-container">
-          <h2 className="ranking-container-h2">Musical Ranking</h2>
-          <Slider {...settings}>
-            {musicalRanking.map((item, index) => (
-              <div key={index}>
-                <img src={item.imgUrl} alt={`musical-slide-${index}`} />
-              </div>
-            ))}
-          </Slider>
-        </div>
+        {activeTab === "musical" && ( // musical 탭이 선택된 경우에만 표시
+          <div className="ranking-container">
+            
+            <Slider {...settings}>
+              {musicalRanking.map((item, index) => (
+                <div key={index}>
+                  <img src={item.imgUrl} alt={`musical-slide-${index}`} />
+                </div>
+              ))}
+            </Slider>
+          </div>
+        )}
 
-        <div className="ranking-container-musical">
-          <h2 className="ranking-container-h2">Concert Ranking</h2>
-          <Slider {...settings}>
-            {concertRanking.map((item, index) => (
-              <div key={index}>
-                <img src={item.imgUrl} alt={`concert-slide-${index}`} />
-              </div>
-            ))}
-          </Slider>
-        </div>
+        {activeTab === "concert" && ( // concert 탭이 선택된 경우에만 표시
+          <div className="ranking-container">
+           
+            <Slider {...settings}>
+              {concertRanking.map((item, index) => (
+                <div key={index}>
+                  <img src={item.imgUrl} alt={`concert-slide-${index}`} />
+                </div>
+              ))}
+            </Slider>
+          </div>
+        )}
       </div>
     </div>
   );
