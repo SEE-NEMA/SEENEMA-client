@@ -16,6 +16,7 @@ import SeeyaUpload from './screens/seeya/SeeyaUpload';
 import SeeyaReview from './screens/seeya/SeeyaReview';
 import SeeyaSeat from './screens/seeya/SeeyaSeat';
 import SeeyaEdit from './screens/seeya/SeeyaEdit';
+
 import Signup from './screens/signup/Signup';
 import ReviewEdit from './screens/Review/ReviewEdit';
 import Login from './screens/signup/Login';
@@ -36,7 +37,6 @@ function App() {
         <Route path={"/Review"} element={<Review/>}></Route>
         <Route path={"/Review/:postNo"} element={<ReviewDetail/>}/>
         <Route path={"/reviewEdit/:postNo"} element={<ReviewEdit/>}/>
-        <Route path={"/seeyaEdit/:theaterId/:viewNo"} element={<SeeyaEdit/>}/>
         <Route path={"/ReviewPost"} element={<ReviewPost/>}/>
         <Route path={"/musicallist"} element={<MusicalList/>}/>
         <Route path={"/musicals/:no"} element={<MusicalDetail/>}/>
@@ -49,7 +49,7 @@ function App() {
         <Route path="/view-review/:theaterId" element={<SeeyaDetail />} />
         <Route path={`/SeeyaUpload/:theaterId`} element = {<SeeyaUpload/>} />
         <Route path="/view-review/:theaterId/:viewNo" element = {<SeeyaReview/>} />
-        
+        <Route path="seeyaedit/:theaterId/:viewNo" element = {<SeeyaEdit/>}/>
         </Routes>
       </Router>
     </AuthProvider>

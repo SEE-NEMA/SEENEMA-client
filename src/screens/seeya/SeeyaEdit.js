@@ -7,6 +7,7 @@ import axios from "axios";
 const SeeyaEdit = () => {
 
     const { theaterId, viewNo } = useParams();
+
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
     const [images, setImages] = useState([]);
@@ -25,6 +26,8 @@ const SeeyaEdit = () => {
         axios
           .get(`http://43.200.58.174:8080/api/v1/view-review/${theaterId}/${viewNo}`)
           .then((response) => {
+            console.log(response.data);
+
             setTitle(response.data.title);
             setSeat(response.data.seat);
             setContent(response.data.content);
@@ -57,13 +60,13 @@ const SeeyaEdit = () => {
         formData.append('soundScore', soundScore);
         
         for (let i = 0; i < images.length; i++) {
-            formData.append("images", images[i]); // Append each image to the FormData
+            formData.append("images", images[i]); 
         }
 
     axios
-      .put(`http://43.200.58.174:8080/api/v1/tview-review/${theaterId}/${viewNo}`, formData, {
+      .put(`http://43.200.58.174:8080/api/v1/view-review/${theaterId}/${viewNo}`, formData, {
         headers: {
-          "Content-Type": "multipart/form-data", // Set the content type to multipart/form-data
+          "Content-Type": "multipart/form-data", 
           "X-AUTH-TOKEN": token,
         },
       })
@@ -80,20 +83,7 @@ const SeeyaEdit = () => {
     return(
         <div>
             <Header/>
-            <div className="SeeyaEdit-Content-Wrap">
-                <form onSubmit = {handleSubmit}>
-                    <div className = "SeeyaEdit-Content">
-                        <label className="SeeyaEdit-Title">제목</label>
-                        <input
-                            className="SeeyaEdit-Input"
-                            placeholder="공연장+좌석을 입력해주세요"
-                            name="title"
-                            value={title}
-                            onChange={(event) => setTitle(event.target.value)}>
-                        </input>
-                    </div>
-                </form>
-            </div>
+         
         </div>
     );
 };
