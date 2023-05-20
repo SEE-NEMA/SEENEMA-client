@@ -190,3 +190,12 @@
     margin-top : -30px;
     border-radius : 20px;
 }
+
+.Heart {
+  color: red;
+}
+
+.noneHeart {
+    border : 1px;
+    background-color : transparent;
+}

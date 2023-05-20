@@ -143,9 +143,9 @@ function SeeyaReview() {
             )}
 
             {heartedYN ? (
-            <FaHeart onClick={handleHeartClick} />
+            <FaHeart className = "Heart" onClick={handleHeartClick} />
             ) : (
-            <FaRegHeart onClick={handleHeartClick} />
+            <FaRegHeart className = "noneHeart" onClick={handleHeartClick} />
             )}
             <p>좋아요 수: {heartCount}</p>
               <p className="SeeyaReview-content">{review.content}</p>
