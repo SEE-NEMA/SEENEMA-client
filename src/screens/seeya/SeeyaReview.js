@@ -4,6 +4,8 @@ import axios from 'axios';
 import Header from "../../Header";
 import '../styles/SeeyaReview.css';
 import {AiOutlineQuestionCircle} from "react-icons/ai"
+import { FaHeart, FaRegHeart } from 'react-icons/fa';
+
 function SeeyaReview() {
 
   const { theaterId, viewNo } = useParams();
@@ -14,6 +16,8 @@ function SeeyaReview() {
   const [soundScore, setSoundScore] = useState("");
   const [averageScore, setAverageScore] = useState(0);
   const [showModal, setShowModal] = useState(false);
+  const [heartCount, setHeartCount] = useState();
+  const [heartedYN, setHeartedYN] = useState(false);
 
   const token = localStorage.getItem('token');
 
@@ -45,17 +49,49 @@ function SeeyaReview() {
   }, [theaterId, viewNo]);
 
   const handleHeartClick = () => {
-    axios.post('http://43.200.58.174:8080/api/v1/view-review/${theaterId}/${viewNo}/heart', {}, {headers : {'X-AUTH-TOKEN' : token}})
+    axios.post('http://43.200.58.174:8080/api/v1/view-review/auth', {}, {headers : {'X-AUTH-TOKEN' : token}})
     .then((response) => {
-      console.log(response.data);
       if(response.data === "SUCCESS") {
-        
+        if(heartedYN) {
+          axios
+              .delete(
+                `http://43.200.58.174:8080/api/v1/view-review/${theaterId}/${viewNo}/heart`,
+                { headers: { "X-AUTH-TOKEN": token } }
+              )
+          .then((response) => {
+            console.log(response.data);
+            setHeartedYN(false);
+            setHeartCount(response.data.heartCount);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      } else {
+        // 좋아요 추가 요청
+        axios
+          .post(
+            `http://43.200.58.174:8080/api/v1/view-review/${theaterId}/${viewNo}/heart`,
+            {},
+            { headers: { "X-AUTH-TOKEN": token } }
+          )
+          .then((response) => {
+            console.log(response.data);
+            setHeartedYN(true);
+            setHeartCount(response.data.heartCount);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
       }
-    })
-  }
-
-
-
+    } else {
+      console.log(response.data);
+      // 실패 시 처리할 로직 추가
+    }
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+};
   const handleEditClick = () => {
     axios.post(`http://43.200.58.174:8080/api/v1/view-review/${theaterId}/${viewNo}/auth`, {}, {headers: {'X-AUTH-TOKEN': token}})
       .then((response) => {
@@ -100,6 +136,18 @@ function SeeyaReview() {
 
         <p className="SeeyaReview-title">"{review.title}"</p>
             <div className="SeeyaReview-Contents">
+            {heartedYN ? (
+            <button onClick={handleHeartClick}>좋아요 취소</button>
+            ) : (
+            <button onClick={handleHeartClick}>좋아요</button>
+            )}
+
+            {heartedYN ? (
+            <FaHeart onClick={handleHeartClick} />
+            ) : (
+            <FaRegHeart onClick={handleHeartClick} />
+            )}
+            <p>좋아요 수: {heartCount}</p>
               <p className="SeeyaReview-content">{review.content}</p>
               <p className="Average-Score">평균별점 : {averageScore} 
               <AiOutlineQuestionCircle
