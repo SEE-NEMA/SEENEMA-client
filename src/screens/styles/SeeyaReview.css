@@ -111,11 +111,11 @@
     border-radius : 20px;
 }
 
-.Heart {
-  color: red;
+.Heart-Filled {
+  color: rgb(255, 159, 159);
 }
 
-.noneHeart {
+.Heart-Empty {
     color : rgb(207, 204, 204);
 }
 
@@ -123,8 +123,8 @@
     margin-top: -32px;
     margin-left : 650px;
 }
-
-.Heart-Count {
+ 
+.Heart-Count{
     margin-left : 570px;
     margin-top : -32px;
     font-size : 12px;

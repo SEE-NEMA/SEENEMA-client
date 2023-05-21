@@ -4,6 +4,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import Header from '../../Header';
 import "../styles/ReviewDetail.css";
 import { AuthContext } from "../../contexts/AuthContext";
+import { FaHeart } from 'react-icons/fa';
 
 const ReviewDetail = () => {
   const { postNo } = useParams();
@@ -51,6 +52,11 @@ const ReviewDetail = () => {
       });
   }, [postNo]);
   
+  useEffect(() => {
+    setHeartCount(review.heartCount);
+    setHeartedYN(review.heartedYN);
+  }, [review]);
+
   const handleLikeClick = () => {
     axios
       .post(
@@ -265,11 +271,12 @@ const ReviewDetail = () => {
             <h6 className="RVDT-nickname">작성자 : {review.nickName}</h6>
             <h6 className="RVDT-createdAt">작성 일자 : {review.createdAt}</h6>
             <h6 className="RVDT-viewCount">조회수 : {review.viewCount}</h6>
-            {heartedYN ? (
-      <button onClick={handleLikeClick}>좋아요 취소</button>
-    ) : (
-      <button onClick={handleLikeClick}>좋아요</button>
-    )}
+
+      {heartedYN ? (
+                <FaHeart size="25" className="Heart-Filled" onClick={handleLikeClick} />
+              ) : (
+                <FaHeart size="25" className="Heart-Empty" onClick={handleLikeClick} />
+              )}
     <p>좋아요 수: {heartCount}</p>
            
             <div className="RVDT-Modify-Wrap">
