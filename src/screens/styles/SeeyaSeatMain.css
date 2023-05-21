@@ -1,0 +1,27 @@
+.SeeyaSeatMain-Wrap {
+    margin-top : 30px;
+    text-align: center;
+}
+
+.Pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .Pagination-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+  }
+  
+  .Pagination-buttons button {
+    padding: 5px 10px;
+    background-color: #f2f2f2;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .Pagination-buttons button.active {
+    background-color: #ccc;
+  }
