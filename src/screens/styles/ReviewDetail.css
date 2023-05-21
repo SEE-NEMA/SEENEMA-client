@@ -1,0 +1,90 @@
+.RVDT-Wrap {
+    position: absolute;
+    left : 60%;
+    transform: translateX(-50%);
+    top : 160px;
+    width: 1000px;
+}
+
+.RVDT-Modify {
+    height:25px;
+    margin-left:15px;
+    margin-top:45px;
+    border:none;
+    width:50px;
+    border-radius: 10px;
+    background-color: rgb(168, 168, 168);
+    color:rgb(255, 255, 255);
+}
+
+.RVDT-Detail {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    margin-left:170px;
+}
+
+.RVDT-Detail h6 {
+    color : #c9c9c9;
+    padding-right: 20px;
+    font-weight :300;
+    font-style: normal;
+}
+
+.RVDT-hr {
+    height:1px;
+    width:720px;
+    margin-left:-20px;
+    margin-top:60px;
+}
+
+.RVDT-content {
+    width:500px;
+    margin-top:40px;
+}
+
+.RVDT-Co {
+    color:rgb(197, 197, 197);
+    font-size:14px; 
+}
+
+.RVDT-Comment {
+    margin-left:-40px;
+    color:rgb(0, 0, 0);
+    font-size:15px;
+}
+
+.RVDT-button {
+    border:none;
+    font-size:12px;
+    margin-left:20px;
+}
+
+.RVDT-button:hover {
+    color:rgb(197, 135, 135);
+}
+.RVDT-Comment ul {
+    font-size:10px;
+}
+
+
+.RVDT-comments {
+    margin-top:40px;
+   
+}
+
+.RVDT-input {
+   margin-left:10px;
+   border-radius:10px;
+   width:570px;
+   height:30px;
+}
+
+.RVDT-comment-submit {
+    margin-left : 20px;
+    border:none;
+    height:30px;
+    background-color: rgb(168, 168, 168);
+    color:rgb(255, 255, 255);
+    border-radius:10px;
+}

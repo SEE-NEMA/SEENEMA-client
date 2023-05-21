@@ -1,5 +1,5 @@
 .Review-WrapContent {
-    margin-top : 80px;
+    margin-top : 30px;
     text-align: center;
 }
 
@@ -31,10 +31,14 @@ input::placeholder {
     position: absolute;
     margin-left:90px;
     margin-top: 120px;
-    margin-left: 50px;
+    margin-right: 40px;
     background-color: transparent;
     font-weight: bold;
     border: none;
+}
+
+.Review-WriteBtn:hover {
+    color : rgb(214, 143, 143);
 }
 
 .Review-hr {
@@ -42,4 +46,37 @@ input::placeholder {
     height : 2px;
     width:800px;
     background : #000;
+}
+
+.Review-Content ul {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    margin-left: 40px;
+    margin-right: 0%;
+    align-content: center;
+    margin-top:80px;
+}
+
+.Review-Content li {
+    color : #000;
+    list-style: none;
+    width: 800px;
+    font-weight: 300;
+    margin-top: 0px;
+    margin-bottom: 40px;
+    text-align: left;
+    padding-left: 50%;
+    padding-right: 50%;
+}
+
+.showMore_btn {
+    position: absolute;
+    bottom : 80px;
+}
+
+.Review-PageBtn {
+    background-color: transparent;
+    border: none;
+    margin-right:  5px;
 }

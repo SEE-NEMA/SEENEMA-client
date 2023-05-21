@@ -1,111 +1,113 @@
-/* modal창 외부화면 */
 .Modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 10;
-  }
-   
-  /* modal창 */
-  .modalBody {
-    position: fixed;
-    top : 90px;
-    right: 20px;
-    width: 220px;
-    height: 100px;
-    padding: 40px;
-    text-align: center;
-    background-color: rgb(255, 255, 255);
-    border-radius: 10px;
-    box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
-  }
-   
-  #modalCloseBtn {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    border: none;
-    color: rgba(0, 0, 0, 0.7);
-    background-color: transparent;
-    font-size: 15px;
-  }
-   
-  #modalCloseBtn:hover {
-    cursor: pointer;
-  }
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+ 
+/* modal창 */
+.modalBody {
+  position: fixed;
+  top : 90px;
+  right: 20px;
+  width: 300px;
+  height: 170px;
 
-  .profile_circle {
-    position: relative;
-    left: -90px;
-    top : -5px;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background-color: #cdcdcd;
-    border : none;
-  }
+  text-align: center;
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+  box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
+}
+ 
+#modalCloseBtn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  border: none;
+  color: rgba(0, 0, 0, 0.7);
+  background-color: transparent;
+  font-size: 15px;
+}
+ 
+#modalCloseBtn:hover {
+  cursor: pointer;
+}
 
-  .mypage {
-    position: absolute;
-    margin-top : 10px;
-  }
+.profile_circle {
+  position: relative;
+  left: -90px;
+  top : 30px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #cdcdcd;
+  border : none;
+}
 
- .hr_modal {
-    align-items: center;
-    margin-left: -10px;
-    margin-right: 15px;
-    margin-top: 20px;
-    height : 1px;
-    width: 250px;
-    background: #cdcdcd;
-    border: none;
-  }
+.mypage {
+  position: absolute;
+  margin-top : 10px;
+}
 
-  .hr_modal2 {
-    background: #cdcdcd;
-    height : 40px;
-    width: 1px;
-    border: none;
-    align-content: center;
-    margin-top: -8px;
-  }
+.hr_modal {
+  align-items: center;
+  margin-left: 20px;
+  margin-right: 15px;
+  margin-top: 70px;
+  height : 1px;
+  width: 250px;
+  background: #cdcdcd;
+  border: none;
+}
 
-  .modal_mypage {
-    position: absolute;
-    top: 135px;
-    left: 50px;
-    background: transparent;
-    border : 0;
-    color: #636363;
-    font-weight: 180;
-  }
+.hr_modal2 {
+  background: #cdcdcd;
+  height : 40px;
+  width: 1px;
+  border: none;
+  align-content: center;
+  margin-top: -8px;
+}
 
-  .modal_logout {
-    position: absolute;
-    top: 135px;
-    right: 50px;
-    background: transparent;
-    border : 0;
-    color: #636363;
-    font-weight: 200;
-  }
+.modal_mypage {
+  position: absolute;
+  top: 135px;
+  left: 50px;
+  background: transparent;
+  border : 0;
+  color: #636363;
+  font-weight: 180;
+}
 
-  .modal_login {
-    position: absolute;
-    top: 135px;
-    right: 50px;
-    background: transparent;
-    border : 0;
-    color: #636363;
-    font-weight: 200;
-  }
+.modal_logout {
+  position: absolute;
+  top: 135px;
+  right: 50px;
+  background: transparent;
+  border : 0;
+  color: #636363;
+  font-weight: 200;
+}
 
-  .modal_username {
-    top: -60px;
-  }
+.modal_username {
+  margin-top:-30px;
+  margin-left:-20px;
+}
+
+
+
+.modal_login {
+  position: absolute;
+  top: 135px;
+  right: 50px;
+  background: transparent;
+  border : 0;
+  color: #636363;
+  font-weight: 200;
+}

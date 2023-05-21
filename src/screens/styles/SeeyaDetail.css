@@ -1,0 +1,46 @@
+.SeeyaDetail-Wrap {
+  border-bottom: 1px solid #eeeeee;
+  display: flex;
+  justify-content: center; 
+  margin: 10px 0 20px; /* 단위(px) 추가 */
+  padding: 15px;
+  width: 1500px; 
+  
+}
+ 
+ 
+  .SeeyaDetail-title {
+    font-weight: bold;
+    color:black;
+    width : 400px;
+  }
+  
+  .SeeyaDetail-createdAt {
+    font-size: 17px;
+    color: #808080;
+    margin-left : 400px;
+  }
+
+  .SeeyaDetail-link {
+    margin-left : 1100px;
+  }
+
+  .SeeyaDetail-link:hover {
+    margin-left : 1100px;
+  }
+  
+  .SeeyaDetail-button {
+    border : none;
+    background-color: #000000;
+    color : white;
+    border-radius : 10px;
+    width : 70px;
+    height : 30px;
+    font-weight: bold;
+  }
+  
+  .SeeyaDetail-button:focus {
+    outline-color: transparent;
+    outline-style:solid;
+    box-shadow: 0 0 0 2px #911F27;
+}

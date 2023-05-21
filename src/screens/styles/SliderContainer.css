@@ -1,10 +1,14 @@
 img {
-    position: inherit;
-    top : 40px;
-    width: 800px;
-    height: 420px;
-    margin: 0px;
-    left: 50%;
-    transform: translateX(-50%);
-    border-radius:10px;
-}
+    width: 650px;
+    height: 370px;
+    margin-top: 10px;
+    margin-left: 450px;
+    
+  }
+  
+  .mySlider {
+    background-color: rgb(255, 255, 255);
+    height: 440px;
+    margin-top: 10px;
+    overflow-x: hidden; /* 스크롤바 제거 */
+  }

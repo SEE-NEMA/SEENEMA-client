@@ -5,6 +5,7 @@ import { AuthContext } from '../contexts/AuthContext';
 
 function Modal(props) {
     const [email, setEmail] = useState(localStorage.getItem('email'));
+    const [nickname,setNickname] = useState(localStorage.getItem('nickname'));
     const { authenticated, logout } = useContext(AuthContext);
 
     console.log(email);
@@ -33,6 +34,7 @@ function Modal(props) {
                     <button id="modalCloseBtn" onClick={closeModal}>X</button>
                     <button className="profile_circle"></button>
                     <h4 className='modal_username'>{email}</h4>
+                    <h4 className='modal_nickname'>{nickname}</h4>
                     <hr className="hr_modal"/>
                     <hr className="hr_modal2"/>
                     {email ? (

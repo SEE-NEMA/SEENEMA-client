@@ -4,7 +4,6 @@
     height: 500px; 
     width : 700px;/* 화면 전체 높이 */
     line-height: 20px;
-    
 }
 
 .SeeyaReview-Review {
@@ -33,10 +32,10 @@
     margin-top : 40px;
     padding-top : 50px;
 }
+
 .SeeyaReview-content {
-    margin-top : -20px;
+    margin-top : -30px;
     margin-left : 20px;
-    
     height : 200px;
     width : 650px;
     font-weight: bold;
@@ -45,7 +44,6 @@
 
 .SeeyaReview-nickName {
     margin-left : 20px;
-    margin-top : 20px;
     color : gray;
     font-size : 12px;
 }
@@ -89,84 +87,46 @@
     margin-left : 20px;
 }
 
-
-
-.Modify-Wrap {
-    background-color: rgba(225, 225, 225, 0.718);
-    height : 430px;
-    line-height : 65px;
-    margin-top : 50px;
-    border-radius:10px;
-}
-
-.Modify-Wrap label {
-    font-weight: bold;
+.Average-Score {
     margin-left : 20px;
+    font-size:13px;
+    color:gray;
+    margin-top : -68px;
 }
 
-.Modify-title {
+.Question-Score {
+    margin-left :10px;
+    size : 10px;
+}
+
+.Question-Modal {
+    width : 200px;
+    height : 20px;
     border : none;
-    border-radius:10px;
-    width : 600px;
-    height : 50px;
-    margin-top:30px;
-    margin-left : 30px;
+    background-color: rgba(255, 255, 255, 0.542);
+    font-size : 10px;
+    text-align : center;
+    margin-left : 130px;
+    margin-top : -30px;
+    border-radius : 20px;
 }
 
-.Modify-play {
-    border: none;
-    border-radius : 10px;
-    width : 600px;
-    height : 50px;
-    margin-left : 30px;
+.Heart-Filled {
+  color: rgb(255, 159, 159);
 }
 
-.Modify-seat {
-    border: none;
-    border-radius : 10px;
-    width : 600px;
-    height : 50px;
-    margin-left : 30px;
+.Heart-Empty {
+    color : rgb(207, 204, 204);
 }
 
-.Modify-content {
-    resize:none;
-    border: none;
-    border-radius:10px;
-    width : 600px;
-    height : 100px;
-    margin-top : 13px;
-    margin-left : 77px;
-    font-family: 'Raleway', sans-serif;
+.Heart-Wrap {
+    margin-top: -32px;
+    margin-left : 650px;
 }
-
-.modify-save {
-    margin-left : 260px;
-    border : none;
-    background-color: #000000;
-    color : white;
-    border-radius : 10px;
-    width : 70px;
-    height : 30px;
-    font-weight: bold;
-}
-
-.modify-save:hover {
-    background-color: gray;
-}
-
-.modify-cancel {
-    margin-top : -40px;
-    margin-left : 20px;
-    border : none;
-    background-color: #000000;
-    color : white;
-    border-radius : 10px;
-    width : 70px;
-    height : 30px;
-    font-weight: bold;
-}
-
-.modify-cancel:hover {
-    background-color: gray;
+ 
+.Heart-Count{
+    margin-left : 570px;
+    margin-top : -32px;
+    font-size : 12px;
+    color : gray;
 }

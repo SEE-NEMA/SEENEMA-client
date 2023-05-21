@@ -5,6 +5,7 @@ import "../screens/styles/ConcertRankingSlider.css";
 function ConcertRankingSlider() {
   const [ranking, setRanking] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [image, setImage] = useState()
 
   useEffect(() => {
     axios.get('http://43.200.58.174:8080/api/v1/')

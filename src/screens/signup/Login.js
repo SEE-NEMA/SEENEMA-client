@@ -39,6 +39,12 @@ function Login() {
     }
   };
 
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      handleLogin();
+    }
+  };
+
   return (
     <div>
       <h4 className="Login-Title">seeNEMA에 다시 오신걸 환영해요!</h4>
@@ -58,6 +64,7 @@ function Login() {
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            onKeyDown={handleKeyDown}
           />
         </div>
       </div>
