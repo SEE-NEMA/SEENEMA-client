@@ -25,6 +25,7 @@ function SeeyaSeatMain() {
       .get(`http://43.200.58.174:8080/api/v1/seats/search?q=${theaterName}`)
       .then((response) => {
         setItem(response.data);
+        console.log(response.data);
       })
       .catch((error) => {
         console.error(error);
