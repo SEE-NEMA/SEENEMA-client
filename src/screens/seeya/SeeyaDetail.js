@@ -10,6 +10,22 @@ function SeeyaDetail() {
   const [reviews, setReviews] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
 
+  const [currentPage, setCurrentPage] = useState(1); // 현재 페이지 번호
+  const itemsPerPage = 4; // 페이지당 항목 수
+
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const paginatedReviews = reviews.slice(startIndex, endIndex);
+
+  const maxPage = Math.ceil(reviews.length / itemsPerPage);
+  const pageNumbers = Array.from({ length: maxPage }, (_, index) => index + 1);
+
+
+  const goToPage = (pageNumber) => {
+  setCurrentPage(pageNumber);
+};
+
+
   useEffect(() => {
     axios.get(`http://43.200.58.174:8080/api/v1/view-review/${theaterId}`)
       .then(response => {
@@ -56,14 +72,28 @@ function SeeyaDetail() {
       </div>
 
       <div className="SeeyaDetail-Container">
-        {reviews.map((review, index) => (
+        {paginatedReviews.map((review, index) => (
           <div key={index} className="SeeyaDetail-Wrap"> 
             <Link to={`/view-review/${theaterId}/${review.viewNo}`} className="SeeyaDetail-title">
               {review.title}
             </Link>
-            <p className="SeeyaDetail-createdAt">{review.createdAt} {review.nickName}</p>
+            <p className="SeeyaDetail-createdAt">{review.createdAt} </p>
+            <div className="SeeyaDetail-nickName">{review.nickName}</div>
           </div>
         ))}
+        
+        <div className = "SeeyaDetail-Pagination">
+        {pageNumbers.map((pageNumber) => (
+        <button className = "PageMoveButton"
+        key={pageNumber}
+        onClick={() => goToPage(pageNumber)}
+        disabled={pageNumber === currentPage}
+        >
+        {pageNumber}
+        </button>
+       ))}
+       </div>
+
       </div>
     </div>
   );

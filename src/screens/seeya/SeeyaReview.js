@@ -4,7 +4,7 @@ import axios from 'axios';
 import Header from "../../Header";
 import '../styles/SeeyaReview.css';
 import {AiOutlineQuestionCircle} from "react-icons/ai"
-import { FaHeart, FaRegHeart } from 'react-icons/fa';
+import { FaHeart } from 'react-icons/fa';
 
 function SeeyaReview() {
 
@@ -16,6 +16,7 @@ function SeeyaReview() {
   const [soundScore, setSoundScore] = useState("");
   const [averageScore, setAverageScore] = useState(0);
   const [showModal, setShowModal] = useState(false);
+
   const [heartCount, setHeartCount] = useState(0);
   const [heartedYN, setHeartedYN] = useState(false);
 
@@ -41,57 +42,67 @@ function SeeyaReview() {
         const average = totalScore / scores.length;
         setAverageScore(average.toFixed(1));
 
+        setHeartedYN(response.data.heartedYN);
+        setHeartCount(response.data.heartCount);
+
         console.log(response);
       })
       .catch(error => {
         console.error(error);
       });
-  }, [theaterId, viewNo]);
+  }, [theaterId, viewNo, token]);
+
+  useEffect(() => {
+    setHeartCount(review.heartCount);
+    setHeartedYN(review.heartedYN);
+  }, [review]);
 
   const handleHeartClick = () => {
-    axios.post('http://43.200.58.174:8080/api/v1/view-review/auth', {}, {headers : {'X-AUTH-TOKEN' : token}})
-    .then((response) => {
-      if(response.data === "SUCCESS") {
-        if(heartedYN) {
-          axios
-              .delete(
+    axios
+      .post('http://43.200.58.174:8080/api/v1/view-review/auth', {}, { headers: { 'X-AUTH-TOKEN': token } })
+      .then((response) => {
+        if (response.data === 'SUCCESS') {
+          if (heartedYN) {
+            axios
+              .delete(`http://43.200.58.174:8080/api/v1/view-review/${theaterId}/${viewNo}/heart`, {
+                headers: { 'X-AUTH-TOKEN': token },
+              })
+              .then((response) => {
+                console.log(response.data);
+                setHeartCount(response.data.heartCount);
+                setHeartedYN(false);
+              })
+              .catch((error) => {
+                console.log(error);
+              });
+          } else {
+            axios
+              .post(
                 `http://43.200.58.174:8080/api/v1/view-review/${theaterId}/${viewNo}/heart`,
-                { headers: { "X-AUTH-TOKEN": token } }
+                {},
+                { headers: { 'X-AUTH-TOKEN': token } }
               )
-          .then((response) => {
-            console.log(response.data);
-            setHeartedYN(false);
-            setHeartCount(response.data.heartCount);
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-      } else {
-        // 좋아요 추가 요청
-        axios
-          .post(
-            `http://43.200.58.174:8080/api/v1/view-review/${theaterId}/${viewNo}/heart`,
-            {},
-            { headers: { "X-AUTH-TOKEN": token } }
-          )
-          .then((response) => {
-            console.log(response.data);
-            setHeartedYN(true);
-            setHeartCount(response.data.heartCount);
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-      }
-    } else {
-      console.log(response.data);
-      // 실패 시 처리할 로직 추가
-    }
-  })
-  .catch((error) => {
-    console.log(error);
-  });
-};
+              .then((response) => {
+                console.log(response.data);
+                setHeartCount(response.data.heartCount);
+                setHeartedYN(response.data.heartedYN);
+              })
+              .catch((error) => {
+                console.log(error);
+              });
+          }
+        } else {
+          console.log(response.data);
+          // 실패 시 처리할 로직 추가
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  
+
+
   const handleEditClick = () => {
     axios.post(`http://43.200.58.174:8080/api/v1/view-review/${theaterId}/${viewNo}/auth`, {}, {headers: {'X-AUTH-TOKEN': token}})
       .then((response) => {
@@ -151,13 +162,15 @@ function SeeyaReview() {
               <p className="SeeyaReview-nickName">닉네임 [ {review.nickName} ]</p>
              
 
-              <div className = "Heart-Wrap">
+              <div className="Heart-Wrap">
               {heartedYN ? (
-              <FaHeart size = "25" className = "Heart" onClick={handleHeartClick} />
+                <FaHeart size="25" className="Heart-Filled" onClick={handleHeartClick} />
               ) : (
-              <FaHeart size = "25" className = "noneHeart" onClick={handleHeartClick} />
-              )}</div>
-              <p className = "Heart-Count">좋아요 수: {heartCount}</p>
+                <FaHeart size="25" className="Heart-Empty" onClick={handleHeartClick} />
+              )}
+             </div>
+             <p className="Heart-Count">좋아요 수: {heartCount}</p>
+
 
               <div className="SeeyaReview-Contents">
               <p className="SeeyaReview-content">{review.content}</p>
