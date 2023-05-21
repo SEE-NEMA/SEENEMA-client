@@ -1,7 +1,11 @@
+.SeeyaDetail-Container {
+  margin-left : 400px;
+}
+
+
 .SeeyaDetail-Wrap {
-  border-bottom: 1px solid #eeeeee;
   display: flex;
-  justify-content: center; 
+  left : 30%;
   margin: 10px 0 20px; /* 단위(px) 추가 */
   padding: 15px;
   width: 1500px; 
@@ -13,12 +17,13 @@
     font-weight: bold;
     color:black;
     width : 400px;
+    margin-top : 20px;
   }
   
   .SeeyaDetail-createdAt {
     font-size: 17px;
     color: #808080;
-    margin-left : 400px;
+    margin-left : 50px;
   }
 
   .SeeyaDetail-link {
