@@ -16,7 +16,7 @@ function SeeyaReview() {
   const [soundScore, setSoundScore] = useState("");
   const [averageScore, setAverageScore] = useState(0);
   const [showModal, setShowModal] = useState(false);
-  const [heartCount, setHeartCount] = useState();
+  const [heartCount, setHeartCount] = useState(0);
   const [heartedYN, setHeartedYN] = useState(false);
 
   const token = localStorage.getItem('token');
@@ -135,33 +135,36 @@ function SeeyaReview() {
         <hr />
 
         <p className="SeeyaReview-title">"{review.title}"</p>
-            <div className="SeeyaReview-Contents">
-            {heartedYN ? (
-            <button onClick={handleHeartClick}>좋아요 취소</button>
-            ) : (
-            <button onClick={handleHeartClick}>좋아요</button>
-            )}
 
-            {heartedYN ? (
-            <FaHeart className = "Heart" onClick={handleHeartClick} />
-            ) : (
-            <FaRegHeart className = "noneHeart" onClick={handleHeartClick} />
-            )}
-            <p>좋아요 수: {heartCount}</p>
-              <p className="SeeyaReview-content">{review.content}</p>
               <p className="Average-Score">평균별점 : {averageScore} 
               <AiOutlineQuestionCircle
               className = "Question-Score"
               onClick={toggleModal}
               />
-                {showModal && (
-                <div className="Question-Modal">
+
+              {showModal && (
+              <div className="Question-Modal">
               <p className= "Question-text">시야, 좌석, 조명, 음향 평점의 평균값입니다.</p>
-            </div>
-          )} </p> 
+              </div>
+                )} </p> 
               
               <p className="SeeyaReview-nickName">닉네임 [ {review.nickName} ]</p>
-            </div>
+             
+
+              <div className = "Heart-Wrap">
+              {heartedYN ? (
+              <FaHeart size = "25" className = "Heart" onClick={handleHeartClick} />
+              ) : (
+              <FaHeart size = "25" className = "noneHeart" onClick={handleHeartClick} />
+              )}</div>
+              <p className = "Heart-Count">좋아요 수: {heartCount}</p>
+
+              <div className="SeeyaReview-Contents">
+              <p className="SeeyaReview-content">{review.content}</p>
+              </div>
+
+             
+           
 
             <button className="SeeyaReview-modify" onClick={handleEditClick}>수정</button>
             <button className="SeeyaReview-delete" onClick={handleDeleteClick}>삭제</button>

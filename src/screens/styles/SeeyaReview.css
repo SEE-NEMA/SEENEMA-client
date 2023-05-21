@@ -29,7 +29,7 @@
     border-radius : 20px;
     border: none;
     height : 250px;
-    margin-top : 0px;
+    margin-top : 40px;
     padding-top : 50px;
 }
 
@@ -44,7 +44,6 @@
 
 .SeeyaReview-nickName {
     margin-left : 20px;
-    margin-top : 10px;
     color : gray;
     font-size : 12px;
 }
@@ -88,90 +87,11 @@
     margin-left : 20px;
 }
 
-
-
-.Modify-Wrap {
-    background-color: rgba(225, 225, 225, 0.718);
-    height : 430px;
-    line-height : 65px;
-    margin-top : 50px;
-    border-radius:10px;
-}
-
-.Modify-Wrap label {
-    font-weight: bold;
-    margin-left : 20px;
-}
-
-.Modify-title {
-    border : none;
-    border-radius:10px;
-    width : 600px;
-    height : 50px;
-    margin-top:30px;
-    margin-left : 30px;
-}
-
-.Modify-play {
-    border: none;
-    border-radius : 10px;
-    width : 600px;
-    height : 50px;
-    margin-left : 30px;
-}
-
-.Modify-seat {
-    border: none;
-    border-radius : 10px;
-    width : 600px;
-    height : 50px;
-    margin-left : 30px;
-}
-
-.Modify-content {
-    resize:none;
-    border: none;
-    border-radius:10px;
-    width : 600px;
-    height : 100px;
-    margin-top : 13px;
-    margin-left : 77px;
-    font-family: 'Raleway', sans-serif;
-}
-
-.modify-save {
-    margin-left : 260px;
-    border : none;
-    background-color: #000000;
-    color : white;
-    border-radius : 10px;
-    width : 70px;
-    height : 30px;
-    font-weight: bold;
-}
-
-.modify-save:hover {
-    background-color: gray;
-}
-
-.modify-cancel {
-    margin-top : -40px;
-    margin-left : 20px;
-    border : none;
-    background-color: #000000;
-    color : white;
-    border-radius : 10px;
-    width : 70px;
-    height : 30px;
-    font-weight: bold;
-}
-
-.modify-cancel:hover {
-    background-color: gray;
-}
-
 .Average-Score {
     margin-left : 20px;
+    font-size:13px;
+    color:gray;
+    margin-top : -68px;
 }
 
 .Question-Score {
@@ -196,6 +116,17 @@
 }
 
 .noneHeart {
-    border : 1px;
-    background-color : transparent;
+    color : rgb(207, 204, 204);
+}
+
+.Heart-Wrap {
+    margin-top: -32px;
+    margin-left : 650px;
+}
+
+.Heart-Count {
+    margin-left : 570px;
+    margin-top : -32px;
+    font-size : 12px;
+    color : gray;
 }
