@@ -202,14 +202,14 @@ function MyPage() {
         {theaterReview.map((review) => (
           <div key={review.post_no}>
             <Link to={`/Review/${review.post_no}`}>
-              <p style={{ marginRight: "20px", color: "#000" }}>{review.title}</p>
-              <p style={{ marginRight: "20px", color: "#000" }}>{review.createdAt}</p>
+              <p >{review.title}</p>
+              <p >{review.createdAt}</p>
             </Link>
           </div>
         ))}
       </div>
 
-      <div className="My-Post-Wrap">
+      <div className="My-Post-Comment-Wrap">
         <p className="My-Post-comment">내가 작성한 댓글</p>
         {theaterComment.map((comment) => (
   <div key={comment.commentId}>

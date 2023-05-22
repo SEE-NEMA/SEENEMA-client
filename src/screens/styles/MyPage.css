@@ -110,15 +110,23 @@
   }
 
   .My-Post-Wrap {
-    margin-left : 250px;
-    margin-top : 50px;
+    margin-left : 200px;
+    width : 250px;
+    height : 300px;
+    display: inline-block;
   }
 
   .My-Post {
-   
     font-weight : bold;
     font-size : 20px;
-    width : 230px;
+    width : 250px;
+  }
+
+  .My-Post-Comment-Wrap {
+    width : 250px;
+    height : 300px;
+    margin-left : 200px;
+    display: inline-block;
   }
 
   .My-Post-comment {
@@ -129,8 +137,11 @@
   }
 
   .My-Seeya-Wrap {
-    margin-left : 675px;
-    margin-top : -190px;
+    width : 250px;
+    height : 300px;
+    margin-left : 200px;
+    
+    display: inline-block;
   }
 
   .My-Seeya {

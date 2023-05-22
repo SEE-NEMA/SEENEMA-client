@@ -1,9 +1,8 @@
 img {
-    width: 650px;
-    height: 370px;
-    margin-top: 10px;
-    margin-left: 450px;
-    
+    width: 330px;
+    height: 360px;
+    margin-top: 0;
+    margin-left: 411px;
   }
   
   .mySlider {
@@ -11,4 +10,36 @@ img {
     height: 440px;
     margin-top: 10px;
     overflow-x: hidden; /* 스크롤바 제거 */
+  }
+  .ranking-container-h2 {
+    text-align : center;
+    margin-left : 20px;
+    font-size : 15px;
+    color : rgb(154, 154, 154);
+    font-weight : lighter;
+  }
+
+  .ranking-container{
+    margin-top : 40px;
+  }
+
+  .tab-bar {
+   margin-top : 30px;
+   text-align : center;
+   margin-left : 3px;
+  }
+
+  .tab-bar button {
+    border:none;
+    background-color: white;
+    color : rgb(154,154,154);
+    border-right : 3px solid lightgray;
+  }
+
+  .tab-bar button:last-child {
+    border:none;
+  }
+
+  .tab-bar button:hover {
+    color : rgb(241, 159, 159);
   }

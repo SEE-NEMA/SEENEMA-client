@@ -36,6 +36,65 @@ const ReviewDetail = () => {
       axios
         .get(`http://43.200.58.174:8080/api/v1/theater-review/${postNo}`)
         .then((response) => {
+  useEffect(() => {
+    setHeartCount(review.heartCount);
+    setHeartedYN(review.heartedYN);
+  }, [review]);
+
+  useEffect(() => {
+    const storedHeartedYN = localStorage.getItem("heartedYN") === "true";
+    setHeartedYN(storedHeartedYN);
+    console.log(storedHeartedYN);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("heartedYN", heartedYN);
+  }, [heartedYN]);
+
+  const handleLikeClick = () => {
+    axios
+      .post(
+        `http://43.200.58.174:8080/api/v1/theater-review/auth`,
+        {},
+        { headers: { "X-AUTH-TOKEN": token } }
+      )
+      .then((response) => {
+        if (response.data === "SUCCESS") {
+          if (heartedYN) {
+            // 이미 좋아요를 눌렀을 경우 좋아요 취소 요청
+            axios
+              .delete(
+                `http://43.200.58.174:8080/api/v1/theater-review/${postNo}/heart`,
+                { headers: { "X-AUTH-TOKEN": token } }
+              )
+              .then((response) => {
+                console.log(response.data);
+                setHeartedYN(response.data.heartedYN);
+                setHeartCount(response.data.heartCount);
+                localStorage.setItem("heartedYN", response.data.heartedYN);
+              })
+              .catch((error) => {
+                console.log(error);
+              });
+          } else {
+            // 좋아요 추가 요청
+            axios
+              .post(
+                `http://43.200.58.174:8080/api/v1/theater-review/${postNo}/heart`,
+                {},
+                { headers: { "X-AUTH-TOKEN": token } }
+              )
+              .then((response) => {
+                console.log(response.data);
+                setHeartedYN(response.data.heartedYN);
+                setHeartCount(response.data.heartCount);
+                localStorage.setItem("heartedYN", response.data.heartedYN);
+              })
+              .catch((error) => {
+                console.log(error);
+              });
+          }
+        } else {
           console.log(response.data);
           setReview(response.data);
           setContent(response.data.content);
@@ -203,6 +262,28 @@ const ReviewDetail = () => {
             <h6 className="RVDT-createdAt">작성 일자 : {review.createdAt}</h6>
             <h6 className="RVDT-viewCount">조회수 : {review.viewCount}</h6>
             {review.tagId}
+
+      {/* {heartedYN ? (
+                <FaHeart size="25" className="Heart-Filled" onClick={handleLikeClick} />
+              ) : (
+                <FaHeart size="25" className="Heart-Empty" onClick={handleLikeClick} />
+              )} */}
+        <div className="review-detail-like">
+  {heartedYN ? (
+    <FaHeart
+      size="25"
+      className="Heart-Filled"
+      onClick={handleLikeClick}
+    />
+  ) : (
+    <FaHeart
+      size="25"
+      className="Heart-Empty"
+      onClick={handleLikeClick}
+    />
+  )}
+  <span>좋아요 수 : {heartCount}</span>
+</div>
            
             <button className="RVDT-Modify" onClick={handleEditClick}>수정</button>
             <button className="RVDT-Modify" onClick={handleDeleteClick}>삭제</button>
