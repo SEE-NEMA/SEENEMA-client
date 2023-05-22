@@ -2,8 +2,7 @@ img {
     width: 330px;
     height: 360px;
     margin-top: 0;
-    margin-left: 420px;
-    
+    margin-left: 411px;
   }
   
   .mySlider {
@@ -29,7 +28,7 @@ img {
   .tab-bar {
    margin-top : 30px;
    text-align : center;
-   margin-left : 15px;
+   margin-left : 3px;
   }
 
   .tab-bar button {
