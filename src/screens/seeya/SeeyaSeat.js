@@ -32,13 +32,13 @@ const SeeyaSeat = () => {
       <div className="SeeyaSeat-modal-content">
         {modalData.map((item) => (
           <div key={item.viewNo}>
-            <p>{selectedSeat.z}층 {selectedSeat.x}열 {selectedSeat.y}번</p>
-            <p>닉네임: {item.nickName}</p>
-            <p>제목: {item.title}</p>
-            <p>작성일자: {item.createdAt}</p>
-            <p>좋아요 수: {item.heartCount}</p>
-            <p>시야평점: {item.viewScore}</p>
-            <hr/>
+            <p>{selectedSeat.z}층 {selectedSeat.x}열 {selectedSeat.z}번</p>
+            <p>닉네임 : {item.nickName}</p>
+            <p>제목 : {item.title}</p>
+            <p>작성일자 : {item.createdAt}</p>
+            <p>좋아요 수 : {item.heartCount}</p>
+            <p>시야평점 : {item.viewScore}</p>
+            <hr />
           </div>
         ))}
         <button onClick={handleModalClose}>닫기</button>
