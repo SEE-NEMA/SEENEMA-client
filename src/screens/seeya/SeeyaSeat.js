@@ -27,7 +27,7 @@ const SeeyaSeat = () => {
       <div className="SeeyaSeat-modal-content">
         {modalData.map((item) => (
           <div key={item.viewNo}>
-            <p>{selectedSeat.y}층 {selectedSeat.x}열 {selectedSeat.z}번</p>
+            <p>{selectedSeat.z}층 {selectedSeat.x}열 {selectedSeat.y}번</p>
             <p>닉네임 : {item.nickName}</p>
             <p>제목 : {item.title}</p>
             <p>작성일자 : {item.createdAt}</p>
