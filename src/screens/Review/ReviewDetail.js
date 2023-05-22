@@ -57,6 +57,16 @@ const ReviewDetail = () => {
     setHeartedYN(review.heartedYN);
   }, [review]);
 
+  useEffect(() => {
+    const storedHeartedYN = localStorage.getItem("heartedYN") === "true";
+    setHeartedYN(storedHeartedYN);
+    console.log(storedHeartedYN);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("heartedYN", heartedYN);
+  }, [heartedYN]);
+
   const handleLikeClick = () => {
     axios
       .post(
@@ -75,8 +85,9 @@ const ReviewDetail = () => {
               )
               .then((response) => {
                 console.log(response.data);
-                setHeartedYN(false);
+                setHeartedYN(response.data.heartedYN);
                 setHeartCount(response.data.heartCount);
+                localStorage.setItem("heartedYN", response.data.heartedYN);
               })
               .catch((error) => {
                 console.log(error);
@@ -91,8 +102,9 @@ const ReviewDetail = () => {
               )
               .then((response) => {
                 console.log(response.data);
-                setHeartedYN(true);
+                setHeartedYN(response.data.heartedYN);
                 setHeartCount(response.data.heartCount);
+                localStorage.setItem("heartedYN", response.data.heartedYN);
               })
               .catch((error) => {
                 console.log(error);
@@ -272,12 +284,28 @@ const ReviewDetail = () => {
             <h6 className="RVDT-createdAt">작성 일자 : {review.createdAt}</h6>
             <h6 className="RVDT-viewCount">조회수 : {review.viewCount}</h6>
 
-      {heartedYN ? (
+      {/* {heartedYN ? (
                 <FaHeart size="25" className="Heart-Filled" onClick={handleLikeClick} />
               ) : (
                 <FaHeart size="25" className="Heart-Empty" onClick={handleLikeClick} />
-              )}
-    <p>좋아요 수: {heartCount}</p>
+              )} */}
+        <div className="review-detail-like">
+  {heartedYN ? (
+    <FaHeart
+      size="25"
+      className="Heart-Filled"
+      onClick={handleLikeClick}
+    />
+  ) : (
+    <FaHeart
+      size="25"
+      className="Heart-Empty"
+      onClick={handleLikeClick}
+    />
+  )}
+  <span>좋아요 수 : {heartCount}</span>
+</div>
+
            
             <div className="RVDT-Modify-Wrap">
             <button className="RVDT-Modify" onClick={handleEditClick}>수정</button>
