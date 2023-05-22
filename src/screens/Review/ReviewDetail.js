@@ -341,7 +341,7 @@ const ReviewDetail = () => {
       </div>
       </div>
     );
-  };
+  });
   // 들어가야 할것 : tagName, comments
-  
+}
   export default ReviewDetail;
