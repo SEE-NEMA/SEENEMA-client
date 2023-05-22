@@ -20,7 +20,7 @@ const SeeyaSeat = () => {
       setSelectedSeat({ z, x, y });
       setIsModalOpen(true);
       console.log(response.data);
-      console.log(z, x, y);
+      console.log(z+"층"+ x+"열"+ y+"번");
     } catch (error) {
       console.error(error);
       alert(z+"층" + x+"열"+ y+"번"+" 좌석에 리뷰가 등록되어 있지 않습니다");
@@ -32,7 +32,7 @@ const SeeyaSeat = () => {
       <div className="SeeyaSeat-modal-content">
         {modalData.map((item) => (
           <div key={item.viewNo}>
-            <p>{selectedSeat.z}층 {selectedSeat.x}열 {selectedSeat.z}번</p>
+            <p>{selectedSeat.z}층 {selectedSeat.x}열 {selectedSeat.y}번</p>
             <p>닉네임 : {item.nickName}</p>
             <p>제목 : {item.title}</p>
             <p>작성일자 : {item.createdAt}</p>
@@ -90,7 +90,7 @@ const SeeyaSeat = () => {
                 <div
                   className="seat"
                   key={seatIndex}
-                  onClick={() => handleSeatClick(1, rowIndex + 1, seatIndex + 9)}
+                  onClick={() => handleSeatClick(rowIndex+1, seatIndex+10, 1)}
                 ></div>
               ))}
             </div>
