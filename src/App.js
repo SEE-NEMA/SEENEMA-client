@@ -17,6 +17,7 @@ import SeeyaReview from './screens/seeya/SeeyaReview';
 import SeeyaSeat from './screens/seeya/SeeyaSeat';
 import SeeyaEdit from './screens/seeya/SeeyaEdit';
 import SeeyaSeatMain from './screens/seeya/SeeyaSeatMain';
+import SeeyaSeatList from './screens/seeya/SeeyaSeatList';
 import Signup from './screens/signup/Signup';
 import ReviewEdit from './screens/Review/ReviewEdit';
 import Login from './screens/signup/Login';
@@ -45,12 +46,13 @@ function App() {
         <Route path={"/mypage"} element={<MyPage/>}/>
         <Route path={"/facility"} element={<Facility/>}/>
         <Route path={"/seeyamain"} element={<SeeyaMain/>}/>
-        <Route path={"/seeyaSeat/:theaterId"} element={<SeeyaSeat/>}/>
-        <Route path={"/seeyaseatmain"} element={<SeeyaSeatMain/>}/>
         <Route path="/view-review/:theaterId" element={<SeeyaDetail />} />
         <Route path={`/SeeyaUpload/:theaterId`} element = {<SeeyaUpload/>} />
         <Route path="/view-review/:theaterId/:viewNo" element = {<SeeyaReview/>} />
         <Route path="seeyaedit/:theaterId/:viewNo" element = {<SeeyaEdit/>}/>
+        <Route path="/SeeyaSeatList/:theaterId/:z/:x/:y" element = {<SeeyaSeatList/>}/>
+        <Route path={"/seeyaSeat/:theaterId"} element={<SeeyaSeat/>}/>
+        <Route path={"/seeyaseatmain"} element={<SeeyaSeatMain/>}/>
         </Routes>
       </Router>
     </AuthProvider>

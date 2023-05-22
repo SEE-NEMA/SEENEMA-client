@@ -6,6 +6,7 @@ import '../styles/SeeyaSeat.css';
 import { TbDisabled } from 'react-icons/tb';
 
 const SeeyaSeat = () => {
+  const navigate = useNavigate();
   const { theaterId } = useParams();
   const [modalData, setModalData] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -18,39 +19,19 @@ const SeeyaSeat = () => {
       );
       setModalData(response.data);
       setSelectedSeat({ z, x, y });
-      setIsModalOpen(true);
+      
+      //setIsModalOpen(true);
       console.log(response.data);
       console.log(z+"층"+ x+"열"+ y+"번");
+      navigate(`/SeeyaSeatList/${theaterId}/${z}/${x}/${y}`);
     } catch (error) {
       console.error(error);
       alert(z+"층" + x+"열"+ y+"번"+" 좌석에 리뷰가 등록되어 있지 않습니다");
     }
   };
+  
 
-  const ModalContent = () => {
-    return (
-      <div className="SeeyaSeat-modal-content">
-        {modalData.map((item) => (
-          <div key={item.viewNo}>
-            <p>{selectedSeat.z}층 {selectedSeat.x}열 {selectedSeat.y}번</p>
-            <p>닉네임 : {item.nickName}</p>
-            <p>제목 : {item.title}</p>
-            <p>작성일자 : {item.createdAt}</p>
-            <p>좋아요 수 : {item.heartCount}</p>
-            <p>시야평점 : {item.viewScore}</p>
-            <hr />
-          </div>
-        ))}
-        <button onClick={handleModalClose}>닫기</button>
-      </div>
-    );
-  };
-
-  const handleModalClose = () => {
-    setModalData([]);
-    setSelectedSeat({ z: 0, x: 0, y: 0 });
-    setIsModalOpen(false);
-  };
+  
 
   return (
     <div>
@@ -105,11 +86,11 @@ const SeeyaSeat = () => {
       </div>
 
       {/* 모달 */}
-      {isModalOpen && (
+      {/* {isModalOpen && (
         <div className="SeeyaSeat-modal">
           <ModalContent />
         </div>
-      )}
+      )} */}
     </div>
   );
 };
