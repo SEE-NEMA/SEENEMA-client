@@ -8,7 +8,7 @@ import { FaHeart } from 'react-icons/fa';
 
 function SeeyaReview() {
 
-  const { theaterId, viewNo } = useParams();
+  const {theaterId, viewNo } = useParams();
   const [review, setReview] = useState({});
   const [viewScore, setViewScore] = useState("");
   const [seatScore, setSeatScore] = useState("");
