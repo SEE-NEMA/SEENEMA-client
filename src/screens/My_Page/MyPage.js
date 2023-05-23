@@ -26,6 +26,11 @@ function MyPage() {
   const [postNo, setPostNo] = useState();
   const [heartTheater, setHeartTheater] = useState([]);
   const [heartSeeya, setHeartSeeya] = useState([]);
+  const [activeTab, setActiveTab] = useState("myconcertpost");
+
+  const handleTabClick = (tab) => {
+    setActiveTab(tab);
+  };
 
   useEffect(() => {
     axios
@@ -165,6 +170,7 @@ function MyPage() {
     setShowModal(true);
   }
 
+
   return (
     <div>
       <Header />
@@ -197,65 +203,105 @@ function MyPage() {
 
       <hr className="My-hr-wrap" />
 
-      <div className="My-Post-Wrap">
-        <p className="My-Post">내가 작성한 공연장 후기글</p>
-        {theaterReview.map((review) => (
-          <div key={review.post_no}>
+
+      <div className="Mypage-Tab-bar">
+        <button
+          className={activeTab === "mymusicalpost" ? "active" : ""}
+          onClick={() => handleTabClick("mymusicalpost")}
+        >
+          내가 작성한 공연 후기
+        </button>
+        <button
+          className={activeTab === "myseeyapost" ? "active" : ""}
+          onClick={() => handleTabClick("myseeyapost")}
+        >
+          내가 작성한 시야 후기
+        </button>
+        <button
+          className={activeTab === "mycomment" ? "active" : ""}
+          onClick={() => handleTabClick("mycomment")}
+        >
+          내가 작성한 댓글
+        </button>
+        <button
+          className={activeTab === "mymusicallike" ? "active" : ""}
+          onClick={() => handleTabClick("mymusicallike")}
+        >
+          좋아요한 공연후기
+        </button>
+        <button
+          className={activeTab === "myseeyalike" ? "active" : ""}
+          onClick={() => handleTabClick("myseeyalike")}
+        >
+          좋아요한 시야후기
+        </button>
+      </div>
+
+          {activeTab === "mymusicalpost" && (
+          <div className="My-Post-Wrap">
+            
+          {theaterReview.map((review) => (
+            <div key={review.post_no}>
             <Link to={`/Review/${review.post_no}`}>
               <p >{review.title}</p>
               <p >{review.createdAt}</p>
             </Link>
           </div>
-        ))}
-      </div>
+          ))}
+          </div>
+        )}
 
-      <div className="My-Post-Comment-Wrap">
-        <p className="My-Post-comment">내가 작성한 댓글</p>
-        {theaterComment.map((comment) => (
-  <div key={comment.commentId}>
-    <Link to={`/Review/${comment.postNo}`}>
-      <p style={{ marginRight: "20px", color: "#000" }}>{comment.content}</p>
-    </Link>
-  </div>
-))}
-
-      </div>
-
-      <div className="My-Seeya-Wrap">
-        <p className="My-Seeya">내가 작성한 시야 후기</p>
-        {seeyaReview.map((review) => (
-          <div key={review.post_no}>
-            <Link to={`/view-review/${review.theaterId}/${review.viewNo}`}>
+          {activeTab === "myseeyapost" && ( // musical 탭이 선택된 경우에만 표시
+          <div className="My-Post-Wrap">
+            
+            {seeyaReview.map((review) => (
+              <div key={review.post_no}>
+              <Link to={`/view-review/${review.theaterId}/${review.viewNo}`}>
               <p style={{ marginRight: "20px", color: "#000" }}>{review.title}</p>
               <p style={{ marginRight: "20px", color: "#000" }}>{review.createdAt}</p>
             </Link>
           </div>
         ))}
-      </div>
+        </div>
+        )}
 
-      <div className="My-Like-Musical-Wrap">
-  <p className="My-Like-Musical">좋아요한 공연 후기</p>
-  {heartTheater && heartTheater.map((heart) => (
-    <div key={heart.post_no}>
-      <Link to={`/Review/${heart.post_no}`}>
-        <p style={{ marginRight: "20px", color: "#000" }}>{heart.title}</p>
-      </Link>
-    </div>
-  ))}
-</div>
+          {activeTab === "mycomment" && ( // musical 탭이 선택된 경우에만 표시
+          <div className="My-Post-Wrap">
+            
+            {theaterComment.map((comment) => (
+              <div key={comment.commentId}>
+               <Link to={`/Review/${comment.postNo}`}>
+                <p style={{ marginRight: "20px", color: "#000" }}>{comment.content}</p>
+               </Link>
+               </div>
+          ))}
+          </div>
+        )}
 
+          {activeTab === "mymusicallike" && ( // musical 탭이 선택된 경우에만 표시
+          <div className="My-Post-Wrap">
+            
+            {heartTheater && heartTheater.map((heart) => (
+              <div key={heart.post_no}>
+              <Link to={`/Review/${heart.post_no}`}>
+              <p style={{ marginRight: "20px", color: "#000" }}>{heart.title}</p>
+              </Link>
+            </div>
+            ))}
+          </div>
+        )}
 
-      <div className="My-Like-Seeya-Wrap">
-        <p className="My-Like-Seeya">좋아요한 시야 후기</p>
-      </div>
-      {heartSeeya && heartSeeya.map((heart) => (
-  <div key={heart.viewNo}>
-    <Link to={`/view-review/${heart.theaterId}/${heart.viewNo}`}>
-      <p style={{ marginRight: "20px", color: "#000" }}>{heart.title}</p>
-    </Link>
-  </div>
-))}
-</div>
-  )}
+          {activeTab === "myseeyalike" && ( // musical 탭이 선택된 경우에만 표시
+          <div className="My-Post-Wrap">
+            
+            {heartSeeya && heartSeeya.map((heart) => (
+            <div key={heart.viewNo}>
+            <Link to={`/view-review/${heart.theaterId}/${heart.viewNo}`}>
+           <p style={{ marginRight: "20px", color: "#000" }}>{heart.title}</p>
+          </Link>
+          </div>
+        ))}
+          </div>
+        )}</div>)}
 
 export default MyPage;

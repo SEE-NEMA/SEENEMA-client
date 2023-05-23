@@ -109,75 +109,32 @@
     font-size : 12px;
   }
 
-  .My-Post-Wrap {
-    margin-left : 200px;
-    width : 250px;
-    height : 300px;
-    display: inline-block;
-  }
-
-  .My-Post {
-    font-weight : bold;
-    font-size : 20px;
-    width : 250px;
-  }
-
-  .My-Post-Comment-Wrap {
-    width : 250px;
-    height : 300px;
-    margin-left : 200px;
-    display: inline-block;
-  }
-
-  .My-Post-comment {
-    
-    font-weight : bold;
-    font-size : 20px;
-    width : 150px;
-  }
-
-  .My-Seeya-Wrap {
-    width : 250px;
-    height : 300px;
-    margin-left : 200px;
-    
-    display: inline-block;
-  }
-
-  .My-Seeya {
-   
-    font-weight : bold;
-    font-size : 20px;
-    width : 190px;
-  }
-
-  .My-Like-Musical-Wrap{
-    margin-left : 1045px;
-    margin-top : -44px;
-  }
-
-  .My-Like-Musical {
-    
-    font-weight : bold;
-    font-size : 20px;
-    width : 170px;
-  }
-
-  .My-Like-Seeya-Wrap {
-    margin-left : 1045px;
-    margin-top : 123px;
-  }
-
-  .My-Like-Seeya {
-    
-    font-weight : bold;
-    font-size : 20px;
-    width : 170px;
-  }
-
   .My-hr-wrap {
     height:2px;
     background-color: lightgray;
     border:none;
     margin-top : 30px;
+  }
+
+  .Mypage-Tab-bar {
+    margin-top : 30px;
+    text-align : center;
+    margin-left : 3px;
+  }
+
+  .Mypage-Tab-bar button {
+    border:none;
+    background-color: white;
+    color : rgb(154,154,154);
+    border-right : 3px solid lightgray;
+  }
+
+  .Mypage-Tab-bar button:last-child {
+    border:none;
+  }
+
+ 
+  .Mypage-Tab-bar button:active
+   {
+    color : rgb(241, 159, 159);
   }
