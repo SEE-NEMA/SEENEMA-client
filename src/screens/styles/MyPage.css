@@ -134,7 +134,22 @@
   }
 
  
-  .Mypage-Tab-bar button:active
+  .Mypage-Tab-bar button.active
    {
     color : rgb(241, 159, 159);
+  }
+
+  .My-Post-Wrap {
+    text-align: center;
+    margin-top : 50px;
+    line-height : 40px;
+  }
+
+  .Pagination button {
+    border : none;
+    background-color: white;
+  }
+
+  .Pagination button.active {
+    color : rgb(241,159,159);
   }
