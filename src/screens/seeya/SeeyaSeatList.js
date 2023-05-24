@@ -4,6 +4,7 @@ import axios from "axios";
 import Header from "../../Header";
 import modal from "modal";
 import '../styles/SeeyaSeatList.css';
+import { FaStar } from 'react-icons/fa';
 
 const SeeyaSeatList = () => {
   const token = localStorage.getItem('token');
@@ -132,7 +133,22 @@ const SeeyaSeatList = () => {
       );
   }
 
+  const renderStars = (score) => {
+    const filledStars = Math.floor(score);
   
+    const stars = [];
+    for (let i = 0; i < 5; i++) {
+      if (i < filledStars) {
+        stars.push(<FaStar key={i} style={{ color: 'yellow' }} />);
+      } else {
+        stars.push(<FaStar key={i} style={{ color: 'lightgray' }} />);
+      }
+    }
+  
+    return stars;
+  };
+
+
   return (
     <div>
       <Header />
@@ -141,7 +157,7 @@ const SeeyaSeatList = () => {
         <hr className = "SeeyaSeatList-hr"></hr>
         <button className = "SeeyaSeatReview-button" onClick={handleReviewModalOpen}>리뷰 작성하기</button>
         {seatReviews.length === 0 ? (
-          <div>등록된 리뷰가 없습니다. </div>
+          <div className = "Review-None">등록된 리뷰가 없습니다. </div>
         ) : (
           <div className = "List-Wrap">
           <ul>
@@ -163,41 +179,57 @@ const SeeyaSeatList = () => {
       </div>
     )}
 
-{seatReviews.length > itemsPerPage && (
-  <div  style={{ display: "flex", justifyContent: "center", marginTop: "10px" }}>
-    {Array.from({ length: Math.ceil(seatReviews.length / itemsPerPage) }, (_, index) => (
-      <button className = "SeeyaSeatList-Page" key={index} onClick={() => changePage(index + 1)}>
-        {index + 1}
-      </button>
-    ))}
-  </div>
-)}
+        {seatReviews.length > itemsPerPage && (
+          <div  style={{ display: "flex", justifyContent: "center", marginTop: "10px" }}>
+            {Array.from({ length: Math.ceil(seatReviews.length / itemsPerPage) }, (_, index) => (
+              <button className = "SeeyaSeatList-Page" key={index} onClick={() => changePage(index + 1)}>
+                {index + 1}
+              </button>
+            ))}
+          </div>
+        )}
     
 
 
         {isModalOpen && modalData && (
           <div className="SeeyaSeat-modal">
             <div className="SeeyaSeat-modal-content">
-              <p>{selectedSeat.z}층 {selectedSeat.x}열 {selectedSeat.y}번</p>
-              <p>닉네임: {modalData.nickName}</p>
+              <p className = "SS-Modal-Seat">{selectedSeat.z}층 {selectedSeat.x}열 {selectedSeat.y}번</p>
+              <p className = "SS-Modal-Info">닉네임: {modalData.nickName}<Span></Span>작성일자: {modalData.createAt}</p>
+             
+             <div className = "SS-Modal-Content">
               <p>공연 : {modalData.play}</p>
               <p>제목: {modalData.title}</p>
-              <p>작성일자: {modalData.createdAt}</p>
               <p>좋아요 수: {modalData.heartCount}</p>
-              <p>{modalData.content}</p>
-              <p>시야평점: {modalData.viewScore}</p>
-              <p>좌석평점 : {modalData.seatScore}</p>
-              <p>조명평점 : {modalData.lightScore}</p>
-              <p>음향평점 : {modalData.soundScore}</p>
-              <hr />
-              <button onClick={handleModalClose}>닫기</button>
+              <p>내용 : {modalData.content}</p>
+              </div>
+
+              <div className="star-rating">
+              <p>시야평점 : </p>
+              {renderStars(modalData.viewScore)}
+              </div>
+              <div className="star-rating">
+              <p>좌석평점 : </p>
+              {renderStars(modalData.seatScore)}
+              </div>
+              <div className="star-rating">
+              <p>조명평점 : </p>
+              {renderStars(modalData.lightScore)}
+              </div>
+              <div className="star-rating">
+              <p>음향평점 : </p>
+              {renderStars(modalData.soundScore)}
+              </div>
+              <button className = "SS-Modal-button" onClick={handleModalClose}>닫기</button>
             </div>
           </div>
         )}
+
+
         {isReviewModalOpen && (
           <div className="SeeyaSeat-modal">
             <div className="SeeyaSeat-modal-content">
-              <h3>리뷰 작성</h3>
+              <h3 className = "SS-Modal-Edit-Title">리뷰 작성</h3>
               리뷰 : <textarea
                 value={content}
                 onChange={(e) => setContent(e.target.value)}
@@ -221,7 +253,7 @@ const SeeyaSeatList = () => {
                 onChange={(e) => setImages(e.target.files[0])}
               />
               <div>
-                <label>시야평점:</label>
+                <label>시야평점 : </label>
                 <input
                   type="number"
                   value={viewScore}
