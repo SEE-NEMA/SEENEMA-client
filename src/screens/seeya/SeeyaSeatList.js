@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import axios from "axios";
 import Header from "../../Header";
 import modal from "modal";
+import '../styles/SeeyaSeatList.css';
 
 const SeeyaSeatList = () => {
   const token = localStorage.getItem('token');
@@ -21,6 +22,18 @@ const SeeyaSeatList = () => {
   const [lightScore, setLightScore] = useState(0);
   const [soundScore, setSoundScore] = useState(0);
   const [images, setImages] = useState(null);
+  const [page, setPage] = useState(1); // 현재 페이지 번호
+  const [itemsPerPage, setItemsPerPage] = useState(5); // 페이지 당 아이템 수
+  
+  const getPaginatedReviews = () => {
+    const startIndex = (page - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    return seatReviews.slice(startIndex, endIndex);
+  };
+
+  const changePage = (pageNumber) => {
+    setPage(pageNumber);
+  };
 
   const fetchData = async () => {
     try {
@@ -113,28 +126,55 @@ const SeeyaSeatList = () => {
     }
   };
 
+  function Span({ space = 15 }){
+    return (
+        <span style={{ paddingRight: space }}></span>
+      );
+  }
+
+  
   return (
     <div>
       <Header />
       <div>
-        <p>{selectedSeat.z}층 {selectedSeat.x}열 {selectedSeat.y}번</p>
-        <hr/>
+        <p className = "SeeyaSeatList-Seat">" {selectedSeat.z}층 {selectedSeat.x}열 {selectedSeat.y}번 "</p>
+        <hr className = "SeeyaSeatList-hr"></hr>
+        <button className = "SeeyaSeatReview-button" onClick={handleReviewModalOpen}>리뷰 작성하기</button>
         {seatReviews.length === 0 ? (
           <div>등록된 리뷰가 없습니다. </div>
         ) : (
+          <div className = "List-Wrap">
           <ul>
-            {seatReviews.map((review) => (
-              <li key={review.viewNo}>
-                <button onClick={() => handleSeatClick(review)}>
-                  {review.title}
-                </button>
-                <p>닉네임: {review.nickName}</p>
-                <p>작성일자: {review.creatAt}</p>
-                <hr />
-              </li>
-            ))}
-          </ul>
-        )}
+        {getPaginatedReviews().map((review) => (
+          <li className="SeeyaSeatList-Wrap" key={review.viewNo}>
+            <button onClick={() => handleSeatClick(review)}>
+              제목 : {review.title}<Span></Span>닉네임 : {review.nickName}
+            </button>
+            <p className="SeeyaSeatList-nickname"></p>
+            <p className="SeeyaSeatList-created">
+              닉네임: {review.nickName}
+              <Span></Span>
+              작성일자: {review.createdAt}
+            </p>
+           
+          </li>
+        ))}
+      </ul>
+      </div>
+    )}
+
+{seatReviews.length > itemsPerPage && (
+  <div  style={{ display: "flex", justifyContent: "center", marginTop: "10px" }}>
+    {Array.from({ length: Math.ceil(seatReviews.length / itemsPerPage) }, (_, index) => (
+      <button className = "SeeyaSeatList-Page" key={index} onClick={() => changePage(index + 1)}>
+        {index + 1}
+      </button>
+    ))}
+  </div>
+)}
+    
+
+
         {isModalOpen && modalData && (
           <div className="SeeyaSeat-modal">
             <div className="SeeyaSeat-modal-content">
@@ -218,7 +258,7 @@ const SeeyaSeatList = () => {
           </div>
         )}
         {/* 추가한 리뷰 작성 버튼 */}
-        <button onClick={handleReviewModalOpen}>리뷰 작성하기</button>
+        
       </div>
     </div>
   );
