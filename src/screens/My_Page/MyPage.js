@@ -26,6 +26,25 @@ function MyPage() {
   const [postNo, setPostNo] = useState();
   const [heartTheater, setHeartTheater] = useState([]);
   const [heartSeeya, setHeartSeeya] = useState([]);
+  const [activeTab, setActiveTab] = useState("mymusicalpost");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [pageSize, setPageSize] = useState(5);
+
+  const handleTabClick = (tab) => {
+    setActiveTab(tab);
+    setCurrentPage(1); 
+  };
+
+  const getCurrentPageItems = (items) => {
+    const startIndex = (currentPage - 1) * pageSize;
+    const endIndex = startIndex + pageSize;
+    return items.slice(startIndex, endIndex);
+  };
+
+  
+  const getTotalPages = (items) => {
+    return Math.ceil(items.length / pageSize);
+  };
 
   useEffect(() => {
     axios
@@ -165,6 +184,7 @@ function MyPage() {
     setShowModal(true);
   }
 
+
   return (
     <div>
       <Header />
@@ -197,65 +217,172 @@ function MyPage() {
 
       <hr className="My-hr-wrap" />
 
-      <div className="My-Post-Wrap">
-        <p className="My-Post">내가 작성한 공연장 후기글</p>
-        {theaterReview.map((review) => (
-          <div key={review.post_no}>
-            <Link to={`/Review/${review.post_no}`}>
-              <p >{review.title}</p>
-              <p >{review.createdAt}</p>
-            </Link>
-          </div>
-        ))}
+
+      <div className="Mypage-Tab-bar">
+        <button
+          className={activeTab === "mymusicalpost" ? "active" : ""}
+          onClick={() => handleTabClick("mymusicalpost")}
+        >
+          내가 작성한 공연 후기
+        </button>
+        <button
+          className={activeTab === "myseeyapost" ? "active" : ""}
+          onClick={() => handleTabClick("myseeyapost")}
+        >
+          내가 작성한 시야 후기
+        </button>
+        <button
+          className={activeTab === "mycomment" ? "active" : ""}
+          onClick={() => handleTabClick("mycomment")}
+        >
+          내가 작성한 댓글
+        </button>
+        <button
+          className={activeTab === "mymusicallike" ? "active" : ""}
+          onClick={() => handleTabClick("mymusicallike")}
+        >
+          좋아요한 공연후기
+        </button>
+        <button
+          className={activeTab === "myseeyalike" ? "active" : ""}
+          onClick={() => handleTabClick("myseeyalike")}
+        >
+          좋아요한 시야후기
+        </button>
       </div>
 
-      <div className="My-Post-Comment-Wrap">
-        <p className="My-Post-comment">내가 작성한 댓글</p>
-        {theaterComment.map((comment) => (
-  <div key={comment.commentId}>
-    <Link to={`/Review/${comment.postNo}`}>
-      <p style={{ marginRight: "20px", color: "#000" }}>{comment.content}</p>
-    </Link>
-  </div>
-))}
+          {activeTab === "mymusicalpost" && (
+        <div className="My-Post-Wrap">
+          {getCurrentPageItems(theaterReview).map((review) => (
+            <div key={review.post_no}>
+              <Link to={`/Review/${review.post_no}`}>
+                <p style={{ marginRight: "20px", color: "#000" }}>{review.title} {review.createdAt}</p>
+              </Link>
+            </div>
+          ))}
+          {/* 페이징 컴포넌트 추가 */}
+          {getTotalPages(theaterReview) > 1 && (
+            <div className="Pagination">
+              {Array.from({ length: getTotalPages(theaterReview) }, (_, index) => (
+                <button
+                  key={index + 1}
+                  className={currentPage === index + 1 ? "active" : ""}
+                  onClick={() => setCurrentPage(index + 1)}
+                >
+                  {index + 1}
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
 
-      </div>
-
-      <div className="My-Seeya-Wrap">
-        <p className="My-Seeya">내가 작성한 시야 후기</p>
-        {seeyaReview.map((review) => (
+        {activeTab === "myseeyapost" && (
+        <div className="My-Post-Wrap">
+        {getCurrentPageItems(seeyaReview).map((review) => (
           <div key={review.post_no}>
             <Link to={`/view-review/${review.theaterId}/${review.viewNo}`}>
-              <p style={{ marginRight: "20px", color: "#000" }}>{review.title}</p>
-              <p style={{ marginRight: "20px", color: "#000" }}>{review.createdAt}</p>
+              <p style={{ marginRight: "20px", color: "#000" }}>{review.title}   {review.createdAt}</p>
             </Link>
           </div>
         ))}
+        {/* 페이징 컴포넌트 추가 */}
+        {getTotalPages(seeyaReview) > 1 && (
+          <div className="Pagination">
+            {Array.from({ length: getTotalPages(seeyaReview) }, (_, index) => (
+              <button
+                key={index + 1}
+                className={currentPage === index + 1 ? "active" : ""}
+                onClick={() => setCurrentPage(index + 1)}
+              >
+                {index + 1}
+              </button>
+            ))}
+          </div>
+        )}
       </div>
+    )}
 
-      <div className="My-Like-Musical-Wrap">
-  <p className="My-Like-Musical">좋아요한 공연 후기</p>
-  {heartTheater && heartTheater.map((heart) => (
-    <div key={heart.post_no}>
-      <Link to={`/Review/${heart.post_no}`}>
-        <p style={{ marginRight: "20px", color: "#000" }}>{heart.title}</p>
-      </Link>
-    </div>
-  ))}
-</div>
-
-
-      <div className="My-Like-Seeya-Wrap">
-        <p className="My-Like-Seeya">좋아요한 시야 후기</p>
+    {/* 내가 작성한 댓글 탭 */}
+    {activeTab === "mycomment" && (
+      <div className="My-Post-Wrap">
+        {getCurrentPageItems(theaterComment).map((comment) => (
+          <div key={comment.commentId}>
+            <Link to={`/Review/${comment.postNo}`}>
+              <p style={{ marginRight: "20px", color: "#000" }}>{comment.content}</p>
+            </Link>
+          </div>
+        ))}
+        {/* 페이징 컴포넌트 추가 */}
+        {getTotalPages(theaterComment) > 1 && (
+          <div className="Pagination">
+            {Array.from({ length: getTotalPages(theaterComment) }, (_, index) => (
+              <button
+                key={index + 1}
+                className={currentPage === index + 1 ? "active" : ""}
+                onClick={() => setCurrentPage(index + 1)}
+              >
+                {index + 1}
+              </button>
+            ))}
+          </div>
+        )}
       </div>
-      {heartSeeya && heartSeeya.map((heart) => (
-  <div key={heart.viewNo}>
-    <Link to={`/view-review/${heart.theaterId}/${heart.viewNo}`}>
-      <p style={{ marginRight: "20px", color: "#000" }}>{heart.title}</p>
-    </Link>
-  </div>
-))}
-</div>
-  )}
+    )}
+
+    {/* 좋아요한 공연후기 탭 */}
+    {activeTab === "mymusicallike" && (
+      <div className="My-Post-Wrap">
+        {getCurrentPageItems(heartTheater).map((heart) => (
+          <div key={heart.post_no}>
+            <Link to={`/Review/${heart.post_no}`}>
+              <p style={{ marginRight: "20px", color: "#000" }}>{heart.title}</p>
+            </Link>
+          </div>
+        ))}
+        {/* 페이징 컴포넌트 추가 */}
+        {getTotalPages(heartTheater) > 1 && (
+          <div className="Pagination">
+            {Array.from({ length: getTotalPages(heartTheater) }, (_, index) => (
+              <button
+                key={index + 1}
+                className={currentPage === index + 1 ? "active" : ""}
+                onClick={() => setCurrentPage(index + 1)}
+              >
+                {index + 1}
+              </button>
+            ))}
+          </div>
+        )}
+      </div>
+    )}
+
+    {/* 좋아요한 시야후기 탭 */}
+    {activeTab === "myseeyalike" && (
+      <div className="My-Post-Wrap">
+        {getCurrentPageItems(heartSeeya).map((heart) => (
+          <div key={heart.viewNo}>
+            <Link to={`/view-review/${heart.theaterId}/${heart.viewNo}`}>
+              <p style={{ marginRight: "20px", color: "#000" }}>{heart.title}</p>
+            </Link>
+          </div>
+        ))}
+        {/* 페이징 컴포넌트 추가 */}
+        {getTotalPages(heartSeeya) > 1 && (
+          <div className="Pagination">
+            {Array.from({ length: getTotalPages(heartSeeya) }, (_, index) => (
+              <button
+                key={index + 1}
+                className={currentPage === index + 1 ? "active" : ""}
+                onClick={() => setCurrentPage(index + 1)}
+              >
+                {index + 1}
+              </button>
+            ))}
+          </div>
+        )}
+      </div>
+    )}
+    </div>)}
 
 export default MyPage;

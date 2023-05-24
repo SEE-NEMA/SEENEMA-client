@@ -13,9 +13,12 @@ const Review = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [selectedTag, setSelectedTag] = useState(null);
+  const [activeTag, setActiveTag] = useState(1);
 
   const { authenticated } = useContext(AuthContext);
   const navigate = useNavigate();
+
+ 
 
   const validateUser = async () => {
     const token = localStorage.getItem('token');
@@ -95,10 +98,13 @@ const Review = () => {
 
   const handleTagClick = (tagId) => {
     setSelectedTag(tagId);
+    setActiveTag(tagId);
     setCurrentPage(1);
     fetchData();
     console.log(tagId);
   };
+
+  
 
   return (
     <div>
@@ -118,13 +124,43 @@ const Review = () => {
           <FaSearch size="30" />
         </button>
         <div className="tag-button-wrap">
-        <button className = "tag-button" onClick={() => handleTagClick(1)}>맛집</button>
-        <button className = "tag-button" onClick={() => handleTagClick(2)}>카페</button>
-        <button className = "tag-button" onClick={() => handleTagClick(3)}>대여</button>
-        <button className = "tag-button" onClick={() => handleTagClick(4)}>물품 보관소</button>
-        <button className = "tag-button" onClick={() => handleTagClick(5)}>주차장</button>
-        <button className = "tag-button" onClick={() => handleTagClick(6)}>화장실</button>
-      </div>
+  <button
+    className={`tag-button ${activeTag === 1 ? "active" : ""}`}
+    onClick={() => handleTagClick(1)}
+  >
+    맛집
+  </button>
+  <button
+    className={`tag-button ${activeTag === 2 ? "active" : ""}`}
+    onClick={() => handleTagClick(2)}
+  >
+    카페
+  </button>
+  <button
+    className={`tag-button ${activeTag === 3 ? "active" : ""}`}
+    onClick={() => handleTagClick(3)}
+  >
+    대여
+  </button>
+  <button
+    className={`tag-button ${activeTag === 4 ? "active" : ""}`}
+    onClick={() => handleTagClick(4)}
+  >
+    물품 보관소
+  </button>
+  <button
+    className={`tag-button ${activeTag === 5 ? "active" : ""}`}
+    onClick={() => handleTagClick(5)}
+  >
+    주차장
+  </button>
+  <button
+    className={`tag-button ${activeTag === 6 ? "active" : ""}`}
+    onClick={() => handleTagClick(6)}
+  >
+    화장실
+  </button>
+</div>
         <button className="Review-WriteBtn" onClick={validateUser}>
           글쓰기
         </button>

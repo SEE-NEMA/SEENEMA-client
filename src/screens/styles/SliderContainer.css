@@ -42,6 +42,6 @@ img {
     border:none;
   }
 
-  .tab-bar button:hover {
+  .tab-bar button.active {
     color : rgb(241, 159, 159);
   }

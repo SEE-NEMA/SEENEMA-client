@@ -97,6 +97,6 @@ input::placeholder {
     border:none;
 }
 
-.tag-button:hover {
+.tag-button-wrap button.active {
     color:rgb(251, 157, 157);
 }
