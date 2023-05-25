@@ -8,7 +8,7 @@ import '../styles/SeeyaSeatList.css';
 const SeeyaSeatList = () => {
   const token = localStorage.getItem('token');
   const navigate = useNavigate();
-  const { theaterId, x, y, z } = useParams();
+  const { theaterId, x, y, z, viewNo } = useParams();
   const [selectedSeat, setSelectedSeat] = useState({ z: parseInt(z), x: parseInt(x), y: parseInt(y) });
   const [modalData, setModalData] = useState(null);
   const [seatReviews, setSeatReviews] = useState([]);
@@ -24,7 +24,7 @@ const SeeyaSeatList = () => {
   const [images, setImages] = useState(null);
   const [page, setPage] = useState(1); // 현재 페이지 번호
   const [itemsPerPage, setItemsPerPage] = useState(5); // 페이지 당 아이템 수
-  
+
   const getPaginatedReviews = () => {
     const startIndex = (page - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
@@ -42,7 +42,6 @@ const SeeyaSeatList = () => {
       );
       setSelectedSeat({ z: parseInt(z), x: parseInt(x), y: parseInt(y) });
       setSeatReviews(response.data.postingList); // Update the state with the postingList array
-      console.log(seatReviews);
       console.log(z + "층" + x + "열" + y + "번");
     } catch (error) {
       console.error(error);
@@ -51,7 +50,7 @@ const SeeyaSeatList = () => {
 
   useEffect(() => {
     fetchData();
-  }, [theaterId, x, y, z]);
+  }, [theaterId, x, y, z, viewNo]);
 
   const handleSeatClick = async (review) => {
     // 해당 리스트 클릭하면 모달창에 해당 리뷰 띄우기
@@ -110,6 +109,7 @@ const SeeyaSeatList = () => {
           })
           .then((response) => {
             console.log(response.data);
+            console.log(viewNo);
             handleReviewModalClose();
             navigate(`/SeeyaSeatList/${theaterId}/${z}/${x}/${y}`);
           })
@@ -126,18 +126,88 @@ const SeeyaSeatList = () => {
     }
   };
 
+  const handleEditModalOpen = (review) => {
+    setModalData(review);
+    //setIsEditModalOpen(true);
+  };
+
+  const handleEditModalClose = () => {
+    //setIsEditModalOpen(false);
+  };
+
+  const handleEditSubmit = async () => {
+    try {
+      const { viewNo } = modalData;
+
+      const formData = new FormData();
+      formData.append("images", images);
+      formData.append("play", play);
+      formData.append("title", title);
+      formData.append("content", content);
+      formData.append("viewScore", viewScore);
+      formData.append("seatScore", seatScore);
+      formData.append("lightScore", lightScore);
+      formData.append("soundScore", soundScore);
+
+      axios.post(`http://43.200.58.174:8080/api/v1/seats/${theaterId}/${z}/${x}/${y}/${viewNo}/auth`, {}, 
+    {headers : {'X-AUTH-TOKEN' : token}})
+    .then((response) => {
+      if(response.data === "SUCCESS") {
+        axios.put(`http://43.200.58.174:8080/api/v1/seats/${theaterId}/${z}/${x}/${y}/${viewNo}`, {
+          headers : {'X-AUTH-TOKEN' : token}
+        }, formData)
+        .then((response) => {
+          console.log(response.data);
+          alert("게시물 삭제가 완료되었습니다!");
+          handleReviewModalClose();
+          navigate(`/SeeyaSeatList/${theaterId}/${z}/${x}/${y}`);
+        })
+      }
+    })
+      .then((response) => {
+        console.log(response.data);
+        handleEditModalClose();
+        fetchData(); // Fetch updated data after editing
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleDelete = async (review) => {
+    console.log(review.viewNo);
+    axios.post(`http://43.200.58.174:8080/api/v1/seats/${theaterId}/${z}/${x}/${y}/${review.viewNo}/auth`, {}, 
+    {headers : {'X-AUTH-TOKEN' : token}})
+    .then((response) => {
+      if(response.data === "SUCCESS") {
+        axios.delete(`http://43.200.58.174:8080/api/v1/seats/${theaterId}/${z}/${x}/${y}/${review.viewNo}`, {
+          headers : {'X-AUTH-TOKEN' : token}
+        })
+        .then((response) => {
+          console.log(response.data);
+          alert("게시물 삭제가 완료되었습니다!");
+          handleReviewModalClose();
+          navigate(`/SeeyaSeatList/${theaterId}/${z}/${x}/${y}`);
+        })
+      }
+    })
+  };
+
+
   function Span({ space = 15 }){
     return (
         <span style={{ paddingRight: space }}></span>
       );
   }
 
-  
   return (
     <div>
       <Header />
       <div>
-        <p className = "SeeyaSeatList-Seat">" {selectedSeat.z}층 {selectedSeat.x}열 {selectedSeat.y}번 "</p>
+      <p className = "SeeyaSeatList-Seat">" {selectedSeat.z}층 {selectedSeat.x}열 {selectedSeat.y}번 "</p>
         <hr className = "SeeyaSeatList-hr"></hr>
         <button className = "SeeyaSeatReview-button" onClick={handleReviewModalOpen}>리뷰 작성하기</button>
         {seatReviews.length === 0 ? (
@@ -156,7 +226,7 @@ const SeeyaSeatList = () => {
               <Span></Span>
               작성일자: {review.createdAt}
             </p>
-           
+
           </li>
         ))}
       </ul>
@@ -172,9 +242,6 @@ const SeeyaSeatList = () => {
     ))}
   </div>
 )}
-    
-
-
         {isModalOpen && modalData && (
           <div className="SeeyaSeat-modal">
             <div className="SeeyaSeat-modal-content">
@@ -190,6 +257,8 @@ const SeeyaSeatList = () => {
               <p>조명평점 : {modalData.lightScore}</p>
               <p>음향평점 : {modalData.soundScore}</p>
               <hr />
+              <button onClick={handleEditSubmit}>수정하기</button>
+              <button onClick={handleDelete}>삭제하기</button>
               <button onClick={handleModalClose}>닫기</button>
             </div>
           </div>
@@ -207,7 +276,7 @@ const SeeyaSeatList = () => {
               제목 : <textarea
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
-                placeholder="리뷰를 작성해주세요."
+                placeholder="제목을 작성해주세요."
               />
               <br/>
               공연 : <textarea
@@ -257,8 +326,6 @@ const SeeyaSeatList = () => {
             </div>
           </div>
         )}
-        {/* 추가한 리뷰 작성 버튼 */}
-        
       </div>
     </div>
   );
