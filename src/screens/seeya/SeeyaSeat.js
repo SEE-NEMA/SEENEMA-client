@@ -40,15 +40,15 @@ const SeeyaSeat = () => {
     if (seatAverage) {
       switch (seatAverage) {
         case 1:
-          return 'red';
+          return '#f22713';
         case 2:
-          return 'orange';
+          return '#ff9924';
         case 3:
-          return 'yellow';
+          return '#ffe647';
         case 4:
-          return 'lime';
+          return '#87d37c';
         case 5:
-          return 'green';
+          return '#00b16a';
         default:
           return ''; // Default color
       }
@@ -102,7 +102,7 @@ const SeeyaSeat = () => {
               })}
             </div>
           ))}
-          <div className="row-last">
+          <div className="row-lastB">
             {Array.from({ length: 10 }, (_, seatIndex) => (
               <div className="seat" key={seatIndex}></div>
             ))}
@@ -131,7 +131,7 @@ const SeeyaSeat = () => {
               })}
             </div>
           ))}
-          <div className="row-last">
+          <div className="row-lastA">
             {Array.from({ length: 10 }, (_, seatIndex) => (
               <div className="seat" key={seatIndex}></div>
             ))}

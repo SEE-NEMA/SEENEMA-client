@@ -26,6 +26,21 @@ const SeeyaSeatList = () => {
   const [page, setPage] = useState(1); // 현재 페이지 번호
   const [itemsPerPage, setItemsPerPage] = useState(5); // 페이지 당 아이템 수
   
+
+  const renderStarScore = (score, setStars) => {
+    const stars = [];
+    for (let i = 1; i <= 5; i++) {
+      stars.push(
+        <FaStar
+          key={i}
+          style={{ color: i <= score ? 'yellow' : 'lightgray' }}
+          onClick={() => setStars(i)}
+        />
+      );
+    }
+    return stars;
+  };
+
   const getPaginatedReviews = () => {
     const startIndex = (page - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
@@ -219,7 +234,7 @@ const SeeyaSeatList = () => {
   return (
     <div>
       <Header />
-      <div>
+      
       <p className = "SeeyaSeatList-Seat">" {selectedSeat.z}층 {selectedSeat.x}열 {selectedSeat.y}번 "</p>
         <hr className = "SeeyaSeatList-hr"></hr>
         <button className = "SeeyaSeatReview-button" onClick={handleReviewModalOpen}>리뷰 작성하기</button>
@@ -246,17 +261,16 @@ const SeeyaSeatList = () => {
       </div>
     )}
 
-{seatReviews.length > itemsPerPage && (
-  <div  style={{ display: "flex", justifyContent: "center", marginTop: "10px" }}>
-    {Array.from({ length: Math.ceil(seatReviews.length / itemsPerPage) }, (_, index) => (
-      <button className = "SeeyaSeatList-Page" key={index} onClick={() => changePage(index + 1)}>
-        {index + 1}
-      </button>
-    ))}
-  </div>
-)}
+      {seatReviews.length > itemsPerPage && (
+        <div  style={{ display: "flex", justifyContent: "center", marginTop: "10px" }}>
+          {Array.from({ length: Math.ceil(seatReviews.length / itemsPerPage) }, (_, index) => (
+            <button className = "SeeyaSeatList-Page" key={index} onClick={() => changePage(index + 1)}>
+              {index + 1}
+            </button>
+          ))}
+        </div>
+      )}
     
-
 
         {isModalOpen && modalData && (
           <div className="SeeyaSeat-modal">
@@ -268,13 +282,26 @@ const SeeyaSeatList = () => {
               <p>공연 : {modalData.play}</p>
               <p>제목: {modalData.title}</p>
               <p>좋아요 수: {modalData.heartCount}</p>
-              <p>{modalData.content}</p>
-              <p>시야평점: {modalData.viewScore}</p>
-              <p>좌석평점 : {modalData.seatScore}</p>
-              <p>조명평점 : {modalData.lightScore}</p>
-              <p>음향평점 : {modalData.soundScore}</p>
-              <hr />
-              <button onClick={handleModalClose}>닫기</button>
+              <p>내용 : {modalData.content}</p>
+              </div>
+
+              <div className="star-rating">
+              <p>시야평점 : </p>
+              {renderStarScore(modalData.viewScore)}
+              </div>
+              <div className="star-rating">
+              <p>좌석평점 : </p>
+              {renderStarScore(modalData.seatScore)}
+              </div>
+              <div className="star-rating">
+              <p>조명평점 : </p>
+              {renderStarScore(modalData.lightScore)}
+              </div>
+              <div className="star-rating">
+              <p>음향평점 : </p>
+              {renderStarScore(modalData.soundScore)}
+              </div>
+              <button className = "SS-Modal-button" onClick={handleModalClose}>닫기</button>
             </div>
           </div>
         )}
@@ -351,7 +378,7 @@ const SeeyaSeatList = () => {
           </div>
         )}
       </div>
-    </div>
+   
   );
 };
 
