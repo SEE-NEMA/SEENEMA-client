@@ -14,6 +14,8 @@ const SeeyaSeatBlueSquare = ({ average, handleSeatClick }) => {
 
     <Header />
 
+      <p className = "SeeyaSeatBlueSquare-title">1층</p>
+      
       {/* [A] 구역 */}
 
       <div className="area-left">
@@ -45,7 +47,7 @@ const SeeyaSeatBlueSquare = ({ average, handleSeatClick }) => {
                 <div
                   className="seat"
                   key={seatIndex}
-                  style={{
+                  style={{ 
                     backgroundColor: seatColor,
                   }}
                   onClick={() => handleSeatClick(rowIndex + 1, seatIndex + 1, 1)}

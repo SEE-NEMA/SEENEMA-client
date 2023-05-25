@@ -1,3 +1,9 @@
+  .SeeyaSeatBlueSquare-title {
+    text-align:center;
+    margin-left : 38px;
+    font-weight: bold;
+  }
+  
   .area-left {
     float: left;
     margin-right: -130px;
@@ -127,7 +133,7 @@
     margin-top : -731px;
   }
   
-/*C구역 2열 ~ 6열 위치 조정*/
+  /*C구역 2열 ~ 6열 위치 조정*/
 
   .area-right .row-2 {
     margin-left : 30px;
