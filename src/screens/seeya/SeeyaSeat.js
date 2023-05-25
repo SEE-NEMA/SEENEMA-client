@@ -91,6 +91,11 @@ const SeeyaSeat = () => {
               ))}
             </div>
           ))}
+          <div className="row-last">
+            {Array.from({ length: 10 }, (_, seatIndex) => (
+              <div className="seat" key={seatIndex}></div>
+            ))}
+          </div>
         </div>
         {/* [나] 구역 끝 */}
 

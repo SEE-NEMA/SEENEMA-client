@@ -26,6 +26,25 @@ const SeeyaSeatList = () => {
   const [page, setPage] = useState(1); // 현재 페이지 번호
   const [itemsPerPage, setItemsPerPage] = useState(5); // 페이지 당 아이템 수
   
+  const [viewStars, setViewStars] = useState(0);
+  const [seatStars, setSeatStars] = useState(0);
+  const [lightStars, setLightStars] = useState(0);
+  const [soundStars, setSoundStars] = useState(0);
+
+  const renderStarScore = (score, setStars) => {
+    const stars = [];
+    for (let i = 1; i <= 5; i++) {
+      stars.push(
+        <FaStar
+          key={i}
+          style={{ color: i <= score ? 'yellow' : 'lightgray' }}
+          onClick={() => setStars(i)}
+        />
+      );
+    }
+    return stars;
+  };
+
   const getPaginatedReviews = () => {
     const startIndex = (page - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
@@ -230,62 +249,69 @@ const SeeyaSeatList = () => {
           <div className="SeeyaSeat-modal">
             <div className="SeeyaSeat-modal-content">
               <h3 className = "SS-Modal-Edit-Title">리뷰 작성</h3>
-              리뷰 : <textarea
-                value={content}
-                onChange={(e) => setContent(e.target.value)}
-                placeholder="리뷰를 작성해주세요."
-              />
-              <br/>
-              제목 : <textarea
+
+              <form>
+              <label>제목 : </label>
+              <input
+                className="SS-Modal-Edit-Content"
+                type="text"
+                id="title"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
-                placeholder="리뷰를 작성해주세요."
+                placeholder="제목을 작성해주세요."
               />
-              <br/>
-              공연 : <textarea
+              </form>
+
+              <form>
+              <label>공연 : </label>
+              <input
+                className="SS-Modal-Edit-Content"
                 value={play}
                 onChange={(e) => setPlay(e.target.value)}
-                placeholder="공연을 작성해주세요."
+                placeholder="공연 이름을 작성해주세요."
               />
+              </form>
+
+              <form>
+              <textarea
+                className="SS-Modal-Edit-Review"
+                value={content}
+                onChange={(e) => setContent(e.target.value)}
+              />
+              </form>
+              <br/>
+              
+              <form>
+              <label>사진 : </label>
               <input
+                className = "SS-Modal-Edit-Image"
                 type="file"
                 accept="image/*"
                 onChange={(e) => setImages(e.target.files[0])}
               />
-              <div>
+              </form>
+
+              <div className = "SS-Modal-Edit-StarRating">
+              <div className = "SS-Modal-Edit-Star">
                 <label>시야평점 : </label>
-                <input
-                  type="number"
-                  value={viewScore}
-                  onChange={(e) => setViewScore(e.target.value)}
-                />
+                {renderStarScore(viewStars, setViewStars)}
               </div>
-              <div>
-                <label>좌석평점:</label>
-                <input
-                  type="number"
-                  value={seatScore}
-                  onChange={(e) => setSeatScore(e.target.value)}
-                />
+              <div className = "SS-Modal-Edit-Star">
+                <label>좌석평점 : </label>
+                {renderStarScore(seatStars, setSeatStars)}
               </div>
-              <div>
-                <label>조명평점:</label>
-                <input
-                  type="number"
-                  value={lightScore}
-                  onChange={(e) => setLightScore(e.target.value)}
-                />
+              <div className = "SS-Modal-Edit-Star">
+                <label>조명평점 : </label>
+                {renderStarScore(lightStars, setLightStars)}
               </div>
-              <div>
-                <label>음향평점:</label>
-                <input
-                  type="number"
-                  value={soundScore}
-                  onChange={(e) => setSoundScore(e.target.value)}
-                />
+              <div className = "SS-Modal-Edit-Star">
+                <label>음향평점 : </label>
+                {renderStarScore(soundStars, setSoundStars)}
               </div>
-              <button onClick={handleReviewSubmit}>작성</button>
-              <button onClick={handleReviewModalClose}>취소</button>
+
+              <button className = "SS-Modal-Edit-Modify" onClick={handleReviewSubmit}>작성</button>
+              <button className = "SS-Modal-Edit-Cancel" onClick={handleReviewModalClose}>취소</button>
+            </div>
             </div>
           </div>
         )}
