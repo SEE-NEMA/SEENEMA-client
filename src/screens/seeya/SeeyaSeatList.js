@@ -132,7 +132,18 @@ const SeeyaSeatList = () => {
             console.log(response.data);
             handleReviewModalClose();
             navigate(`/SeeyaSeatList/${theaterId}/${z}/${x}/${y}`);
+            const newReview = {
+              viewScore: viewScore,
+              seatScore: seatScore,
+              lightScore: lightScore,
+              soundScore: soundScore,
+            };
+            setModalData((prevData) => ({
+              ...prevData,
+              ...newReview,
+            }));
           })
+          
           .catch((error) => {
             console.log(error);
           });
@@ -294,19 +305,19 @@ const SeeyaSeatList = () => {
               <div className = "SS-Modal-Edit-StarRating">
               <div className = "SS-Modal-Edit-Star">
                 <label>시야평점 : </label>
-                {renderStarScore(viewStars, setViewStars)}
+                {renderStarScore(viewScore, setViewScore)}
               </div>
               <div className = "SS-Modal-Edit-Star">
                 <label>좌석평점 : </label>
-                {renderStarScore(seatStars, setSeatStars)}
+                {renderStarScore(seatScore, setSeatScore)}
               </div>
               <div className = "SS-Modal-Edit-Star">
                 <label>조명평점 : </label>
-                {renderStarScore(lightStars, setLightStars)}
+                {renderStarScore(lightScore, setLightScore)}
               </div>
               <div className = "SS-Modal-Edit-Star">
                 <label>음향평점 : </label>
-                {renderStarScore(soundStars, setSoundStars)}
+                {renderStarScore(soundScore, setSoundScore)}
               </div>
 
               <button className = "SS-Modal-Edit-Modify" onClick={handleReviewSubmit}>작성</button>
