@@ -4,6 +4,7 @@ import axios from "axios";
 import Header from "../../Header";
 import modal from "modal";
 import '../styles/SeeyaSeatList.css';
+import { FaStar } from 'react-icons/fa';
 
 const SeeyaSeatList = () => {
   const token = localStorage.getItem('token');
@@ -24,7 +25,7 @@ const SeeyaSeatList = () => {
   const [images, setImages] = useState(null);
   const [page, setPage] = useState(1); // 현재 페이지 번호
   const [itemsPerPage, setItemsPerPage] = useState(5); // 페이지 당 아이템 수
-
+  
   const getPaginatedReviews = () => {
     const startIndex = (page - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
@@ -112,7 +113,18 @@ const SeeyaSeatList = () => {
             console.log(viewNo);
             handleReviewModalClose();
             navigate(`/SeeyaSeatList/${theaterId}/${z}/${x}/${y}`);
+            const newReview = {
+              viewScore: viewScore,
+              seatScore: seatScore,
+              lightScore: lightScore,
+              soundScore: soundScore,
+            };
+            setModalData((prevData) => ({
+              ...prevData,
+              ...newReview,
+            }));
           })
+          
           .catch((error) => {
             console.log(error);
           });
@@ -203,6 +215,7 @@ const SeeyaSeatList = () => {
       );
   }
 
+  
   return (
     <div>
       <Header />
@@ -211,7 +224,7 @@ const SeeyaSeatList = () => {
         <hr className = "SeeyaSeatList-hr"></hr>
         <button className = "SeeyaSeatReview-button" onClick={handleReviewModalOpen}>리뷰 작성하기</button>
         {seatReviews.length === 0 ? (
-          <div>등록된 리뷰가 없습니다. </div>
+          <div className = "Review-None">등록된 리뷰가 없습니다. </div>
         ) : (
           <div className = "List-Wrap">
           <ul>
@@ -242,14 +255,18 @@ const SeeyaSeatList = () => {
     ))}
   </div>
 )}
+    
+
+
         {isModalOpen && modalData && (
           <div className="SeeyaSeat-modal">
             <div className="SeeyaSeat-modal-content">
-              <p>{selectedSeat.z}층 {selectedSeat.x}열 {selectedSeat.y}번</p>
-              <p>닉네임: {modalData.nickName}</p>
+              <p className = "SS-Modal-Seat">{selectedSeat.z}층 {selectedSeat.x}열 {selectedSeat.y}번</p>
+              <p className = "SS-Modal-Info">닉네임: {modalData.nickName}<Span></Span>작성일자: {modalData.createAt}</p>
+             
+             <div className = "SS-Modal-Content">
               <p>공연 : {modalData.play}</p>
               <p>제목: {modalData.title}</p>
-              <p>작성일자: {modalData.createdAt}</p>
               <p>좋아요 수: {modalData.heartCount}</p>
               <p>{modalData.content}</p>
               <p>시야평점: {modalData.viewScore}</p>
@@ -257,72 +274,79 @@ const SeeyaSeatList = () => {
               <p>조명평점 : {modalData.lightScore}</p>
               <p>음향평점 : {modalData.soundScore}</p>
               <hr />
-              <button onClick={handleEditSubmit}>수정하기</button>
-              <button onClick={handleDelete}>삭제하기</button>
               <button onClick={handleModalClose}>닫기</button>
             </div>
           </div>
         )}
+
+
         {isReviewModalOpen && (
           <div className="SeeyaSeat-modal">
             <div className="SeeyaSeat-modal-content">
-              <h3>리뷰 작성</h3>
-              리뷰 : <textarea
-                value={content}
-                onChange={(e) => setContent(e.target.value)}
-                placeholder="리뷰를 작성해주세요."
-              />
-              <br/>
-              제목 : <textarea
+              <h3 className = "SS-Modal-Edit-Title">리뷰 작성</h3>
+
+              <form>
+              <label>제목 : </label>
+              <input
+                className="SS-Modal-Edit-Content"
+                type="text"
+                id="title"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
                 placeholder="제목을 작성해주세요."
               />
-              <br/>
-              공연 : <textarea
+              </form>
+
+              <form>
+              <label>공연 : </label>
+              <input
+                className="SS-Modal-Edit-Content"
                 value={play}
                 onChange={(e) => setPlay(e.target.value)}
-                placeholder="공연을 작성해주세요."
+                placeholder="공연 이름을 작성해주세요."
               />
+              </form>
+
+              <form>
+              <textarea
+                className="SS-Modal-Edit-Review"
+                value={content}
+                onChange={(e) => setContent(e.target.value)}
+              />
+              </form>
+              <br/>
+              
+              <form>
+              <label>사진 : </label>
               <input
+                className = "SS-Modal-Edit-Image"
                 type="file"
                 accept="image/*"
                 onChange={(e) => setImages(e.target.files[0])}
               />
-              <div>
-                <label>시야평점:</label>
-                <input
-                  type="number"
-                  value={viewScore}
-                  onChange={(e) => setViewScore(e.target.value)}
-                />
+              </form>
+
+              <div className = "SS-Modal-Edit-StarRating">
+              <div className = "SS-Modal-Edit-Star">
+                <label>시야평점 : </label>
+                {renderStarScore(viewScore, setViewScore)}
               </div>
-              <div>
-                <label>좌석평점:</label>
-                <input
-                  type="number"
-                  value={seatScore}
-                  onChange={(e) => setSeatScore(e.target.value)}
-                />
+              <div className = "SS-Modal-Edit-Star">
+                <label>좌석평점 : </label>
+                {renderStarScore(seatScore, setSeatScore)}
               </div>
-              <div>
-                <label>조명평점:</label>
-                <input
-                  type="number"
-                  value={lightScore}
-                  onChange={(e) => setLightScore(e.target.value)}
-                />
+              <div className = "SS-Modal-Edit-Star">
+                <label>조명평점 : </label>
+                {renderStarScore(lightScore, setLightScore)}
               </div>
-              <div>
-                <label>음향평점:</label>
-                <input
-                  type="number"
-                  value={soundScore}
-                  onChange={(e) => setSoundScore(e.target.value)}
-                />
+              <div className = "SS-Modal-Edit-Star">
+                <label>음향평점 : </label>
+                {renderStarScore(soundScore, setSoundScore)}
               </div>
-              <button onClick={handleReviewSubmit}>작성</button>
-              <button onClick={handleReviewModalClose}>취소</button>
+
+              <button className = "SS-Modal-Edit-Modify" onClick={handleReviewSubmit}>작성</button>
+              <button className = "SS-Modal-Edit-Cancel" onClick={handleReviewModalClose}>취소</button>
+            </div>
             </div>
           </div>
         )}
