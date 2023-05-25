@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Header from '../../Header';
 import '../styles/SeeyaSeat.css';
-import { TbDisabled } from 'react-icons/tb';
+
 
 const SeeyaSeat = () => {
   const navigate = useNavigate();
@@ -91,7 +91,7 @@ const SeeyaSeat = () => {
                 const seatColor = getSeatColor(average, rowIndex, seatIndex, 1);
                 return (
                   <div
-                    className="seat"
+                    className="arco-seat"
                     key={seatIndex}
                     style={{
                       backgroundColor: seatColor,
@@ -104,7 +104,7 @@ const SeeyaSeat = () => {
           ))}
           <div className="row-lastB">
             {Array.from({ length: 10 }, (_, seatIndex) => (
-              <div className="seat" key={seatIndex}></div>
+              <div className="arco-seat" key={seatIndex}></div>
             ))}
           </div>
         </div>
@@ -120,7 +120,7 @@ const SeeyaSeat = () => {
                 const seatColor = getSeatColor(average, rowIndex, seatIndex + 9, 1);
                 return (
                   <div
-                    className="seat"
+                    className="arco-seat"
                     key={seatIndex}
                     style={{
                       backgroundColor: seatColor,
@@ -133,7 +133,7 @@ const SeeyaSeat = () => {
           ))}
           <div className="row-lastA">
             {Array.from({ length: 10 }, (_, seatIndex) => (
-              <div className="seat" key={seatIndex}></div>
+              <div className="arco-seat" key={seatIndex}></div>
             ))}
           </div>
         </div>

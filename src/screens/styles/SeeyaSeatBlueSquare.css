@@ -1,0 +1,123 @@
+  .area-left {
+    float: left;
+    margin-right: -90px;
+    margin-left : 10px;
+  }
+  
+  .area-left-tag {
+    text-align: center;
+  }
+  
+  .area-center {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width : 500px;
+    
+  }
+  
+  .area-center-tag {
+    text-align: center;
+    width: 100%; 
+  }
+  
+  .area-center .row-7 {
+    flex-direction: row;
+  }
+
+  .area-left .row-7,
+  .area-center .row-7,
+  .area-right .row-7 {
+    display : flex;
+    justify-content: center;
+  }
+  
+  .area-center .row-1,
+  .area-center .row-3,
+  .area-center .row-5,
+  .area-center .row-7 {
+  width: calc(100% - 20px); 
+  }
+  
+  /*A구역 2열 ~ 6열 위치 조정*/
+
+ .area-left .row-2 {
+    margin-right : 30px;
+ }
+
+ .area-left .row-3 {
+    margin-right : 60px;
+ }
+
+ .area-left .row-4 {
+    margin-right : 90px;
+ }
+
+ .area-left .row-5 {
+    margin-right : 120px;
+ }
+
+ .area-left .row-6 {
+    margin-right : 150px;
+ }
+
+ .area-left .row-7 {
+    margin-right : 180px;
+ }
+
+  /*A구역 2열 ~ 6열 위치 조정 끝*/
+
+  .area-right {
+    float: right;
+    margin-right: 20px;
+    margin-top : -260px;
+  }
+  
+/*C구역 2열 ~ 6열 위치 조정*/
+
+  .area-right .row-2 {
+    margin-left : 30px;
+  }
+
+  .area-right .row-3 {
+    margin-left : 60px;
+  }
+  
+  .area-right .row-4 {
+    margin-left : 90px;
+  }
+
+  .area-right .row-5 {
+    margin-left : 120px;
+  }
+
+  .area-right .row-6 {
+    margin-left : 150px;
+  }
+
+  .area-right .row-7 {
+    margin-left : 180px;
+  }
+
+  /*C구역 2열 ~ 6열 위치 조정 끝*/
+
+  .area-right-tag {
+    text-align: center;
+  }
+  
+  .row {
+    display: flex;
+  }
+  
+  .seat {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    margin-top : 10px;
+    background-color: #ccc;
+    border-radius : 5px;
+  }
+  
+
+  

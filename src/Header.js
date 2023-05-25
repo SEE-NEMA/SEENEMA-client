@@ -54,7 +54,7 @@ return (
   </div>
 
   <div className="Header-Facility">
-    <a href="/facility">주변시설</a>
+    <a href="/seeyaSeatBluesquare">주변시설</a>
   </div>
   
   <div className="Header-Mypage">
