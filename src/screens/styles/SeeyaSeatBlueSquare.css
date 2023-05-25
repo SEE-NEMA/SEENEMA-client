@@ -1,7 +1,7 @@
   .area-left {
     float: left;
-    margin-right: -90px;
-    margin-left : 10px;
+    margin-right: -130px;
+    margin-left : 60px;
   }
   
   .area-left-tag {
@@ -17,6 +17,32 @@
     
   }
   
+  .area-center .row-8,
+  .area-center .row-9,
+  .area-center .row-10,
+  .area-center .row-11,
+  .area-center .row-12,
+  .area-center .row-13,
+  .area-center .row-14,
+  .area-center .row-15,
+  .area-center .row-16,
+  .area-center .row-17,
+  .area-center .row-18,
+  .area-center .row-19,
+  .area-center .row-20,
+  .area-center .row-21,
+  .area-center .row-22
+  {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width : 500px;
+  }
+
+ .area-center .row-8 {
+  margin-top : 20px;
+ }
+
   .area-center-tag {
     text-align: center;
     width: 100%; 
@@ -66,12 +92,39 @@
     margin-right : 180px;
  }
 
+
+ .area-left .row-8,
+ .area-left .row-9,
+ .area-left .row-10,
+ .area-left .row-11,
+ .area-left .row-12,
+ .area-left .row-13,
+ .area-left .row-14,
+ .area-left .row-15,
+ .area-left .row-16,
+ .area-left .row-17,
+ .area-left .row-18,
+ .area-left .row-19,
+ .area-left .row-20,
+ .area-left .row-21,
+ .area-left .row-22 {
+   display: flex;
+   margin-left : -30px;
+ }
+
+ .area-left .row-8 {
+  margin-top : 20px;
+ }
+
+ .area-left .row-22 { 
+  margin-bottom : 20px;
+ }
   /*A구역 2열 ~ 6열 위치 조정 끝*/
 
   .area-right {
     float: right;
     margin-right: 20px;
-    margin-top : -260px;
+    margin-top : -731px;
   }
   
 /*C구역 2열 ~ 6열 위치 조정*/
@@ -101,6 +154,29 @@
   }
 
   /*C구역 2열 ~ 6열 위치 조정 끝*/
+
+  .area-right .row-8,
+  .area-right .row-9,
+  .area-right .row-10,
+  .area-right .row-11,
+  .area-right .row-12,
+  .area-right .row-13,
+  .area-right .row-14,
+  .area-right .row-15,
+  .area-right .row-16,
+  .area-right .row-17,
+  .area-right .row-18,
+  .area-right .row-19,
+  .area-right .row-20,
+  .area-right .row-21,
+  .area-right .row-22 {
+    display: flex;
+    margin-left : 210px;
+  }
+
+  .area-right .row-8 {
+    margin-top : 20px;
+  }
 
   .area-right-tag {
     text-align: center;
