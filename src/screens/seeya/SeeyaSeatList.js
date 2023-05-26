@@ -153,56 +153,21 @@ const SeeyaSeatList = () => {
     }
   };
 
-  const handleEditModalOpen = (review) => {
-    setModalData(review);
-    //setIsEditModalOpen(true);
-  };
-
-  const handleEditModalClose = () => {
-    //setIsEditModalOpen(false);
-  };
-
-  const handleEditSubmit = async () => {
-    try {
-      const { viewNo } = modalData;
-
-      const formData = new FormData();
-      formData.append("images", images);
-      formData.append("play", play);
-      formData.append("title", title);
-      formData.append("content", content);
-      formData.append("viewScore", viewScore);
-      formData.append("seatScore", seatScore);
-      formData.append("lightScore", lightScore);
-      formData.append("soundScore", soundScore);
-
-      axios.post(`http://43.200.58.174:8080/api/v1/seats/${theaterId}/${z}/${x}/${y}/${viewNo}/auth`, {}, 
-    {headers : {'X-AUTH-TOKEN' : token}})
-    .then((response) => {
-      if(response.data === "SUCCESS") {
-        axios.put(`http://43.200.58.174:8080/api/v1/seats/${theaterId}/${z}/${x}/${y}/${viewNo}`, {
-          headers : {'X-AUTH-TOKEN' : token}
-        }, formData)
-        .then((response) => {
-          console.log(response.data);
-          alert("게시물 삭제가 완료되었습니다!");
-          handleReviewModalClose();
-          navigate(`/SeeyaSeatList/${theaterId}/${z}/${x}/${y}`);
-        })
-      }
-    })
+ 
+  const handleEdit = async (modalData) => {
+    axios.post(`http://43.200.58.174:8080/api/v1/seats/${theaterId}/${z}/${x}/${y}/${modalData.viewNo}/auth`, {}, 
+    {headers: {'X-AUTH-TOKEN': token}})
       .then((response) => {
-        console.log(response.data);
-        handleEditModalClose();
-        fetchData(); // Fetch updated data after editing
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  };
+        if (response.data === "SUCCESS") {
+          navigate(`/seeyaseatedit/${theaterId}/${z}/${x}/${y}/${modalData.viewNo}`);
+        } 
+        else {
+          console.log(response.data);
+          alert("본인이 작성한 게시물만 수정할 수 있습니다");
+        }
+      }
+      )
+  }
 
   const handleDelete = async (modalData) => {
    
@@ -284,7 +249,8 @@ const SeeyaSeatList = () => {
             <div className="SeeyaSeat-modal-content">
               <p className = "SS-Modal-Seat">{selectedSeat.z}층 {selectedSeat.x}열 {selectedSeat.y}번</p>
               <p className = "SS-Modal-Info">닉네임: {modalData.nickName}<Span></Span>작성일자: {modalData.createdAt}</p>
-             
+              <button className="SS-Modal-Delete-button" onClick={() => handleDelete(modalData)}>삭제</button>
+              <button className="SS-Modal-Edit-button" onClick={() => handleEdit(modalData)}>수정</button>
              <div className = "SS-Modal-Content">
               <p>공연 : {modalData.play}</p>
               <p>제목: {modalData.title}</p>
@@ -309,7 +275,7 @@ const SeeyaSeatList = () => {
               {renderStarScore(modalData.soundScore)}
               </div>
               <button className = "SS-Modal-button" onClick={handleModalClose}>닫기</button>
-              <button className="SS-Modal-Delete-button" onClick={() => handleDelete(modalData)}>삭제</button>
+              
             </div>
           </div>
         )}

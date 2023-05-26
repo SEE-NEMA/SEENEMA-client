@@ -19,6 +19,7 @@ import SeeyaSeatBlueSquare from './screens/seeya/SeeyaSeatBlueSquare';
 import SeeyaEdit from './screens/seeya/SeeyaEdit';
 import SeeyaSeatMain from './screens/seeya/SeeyaSeatMain';
 import SeeyaSeatList from './screens/seeya/SeeyaSeatList';
+import SeeyaSeatEdit from './screens/seeya/SeeyaSeatEdit';
 import Signup from './screens/signup/Signup';
 import ReviewEdit from './screens/Review/ReviewEdit';
 import Login from './screens/signup/Login';
@@ -55,6 +56,7 @@ function App() {
         <Route path={"/seeyaSeat/:theaterId"} element={<SeeyaSeat/>}/>
         <Route path={"/seeyaSeatBluesquare"} element ={<SeeyaSeatBlueSquare/>}/>
         <Route path={"/seeyaseatmain"} element={<SeeyaSeatMain/>}/>
+        <Route path={"/seeyaseatedit/:theaterId/:z/:x/:y/:viewNo"} element = {<SeeyaSeatEdit/>}/>
         </Routes>
       </Router>
     </AuthProvider>

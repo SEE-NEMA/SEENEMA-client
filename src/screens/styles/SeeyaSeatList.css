@@ -90,10 +90,21 @@
 
 .SS-Modal-button {
     border : none;
-    margin-top : 60px;
-    width : 120px;
+    margin-top : 50px;
+    width : 80px;
     height : 30px;
-    margin-left : 190px;
+    margin-left : 200px;
+    background-color: gray;
+    color : white;
+    border-radius : 10px;
+}
+
+.SS-Modal-Delete-button {
+    border : none;
+    margin-top : -30px;
+    width : 80px;
+    height : 30px;
+    margin-left : 250px;
     background-color: gray;
     color : white;
     border-radius : 10px;
