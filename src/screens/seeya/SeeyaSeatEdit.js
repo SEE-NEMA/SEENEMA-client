@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { useParams, useNavigate  } from 'react-router-dom';
 import axios from "axios";
+import Header from '../../Header';
+import '../styles/SeeyaSeatEdit.css';
+import { FaStar } from "react-icons/fa";
 
 const SeeyaSeatEdit = () => {
   const [play, setPlay] = useState("");
@@ -14,6 +17,38 @@ const SeeyaSeatEdit = () => {
   const token = localStorage.getItem("token");
   const { theaterId, x, y, z, viewNo } = useParams();
   const navigate = useNavigate();
+
+  const StarRating = ({ value, onChange }) => {
+    const stars = [1, 2, 3, 4, 5];
+
+    return (
+      <div className="star-rating">
+        {stars.map((star) => (
+          <FaStar
+            key={star}
+            className={star <= value ? "star-icon active" : "star-icon"}
+            onClick={() => onChange(star)}
+          />
+        ))}
+      </div>
+    );
+  };
+
+  const handleViewScoreChange = (value) => {
+    setViewScore(value.toString());
+  };
+
+  const handleSeatScoreChange = (value) => {
+    setSeatScore(value.toString());
+  };
+
+  const handleLightScoreChange = (value) => {
+    setLightScore(value.toString());
+  };
+
+  const handleSoundScoreChange = (value) => {
+    setSoundScore(value.toString());
+  };
 
   const handleEditSubmit = async (e) => {
     e.preventDefault();
@@ -50,64 +85,81 @@ const SeeyaSeatEdit = () => {
 
   return (
     <div>
-      <h3>Edit Seeya Seat</h3>
-      <form onSubmit={handleEditSubmit}>
-        <label>공연:</label>
-        <input
-          type="text"
-          value={play}
-          onChange={(e) => setPlay(e.target.value)}
-        />
-        <br />
-        <label>제목:</label>
-        <input
-          type="text"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-        <br />
-        <label>내용:</label>
-        <textarea
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-        ></textarea>
-        <br />
-        <label>시야평점:</label>
-        <input
-          type="number"
-          value={viewScore}
-          onChange={(e) => setViewScore(e.target.value)}
-        />
-        <br />
-        <label>좌석평점:</label>
-        <input
-          type="number"
-          value={seatScore}
-          onChange={(e) => setSeatScore(e.target.value)}
-        />
-        <br />
-        <label>조명평점:</label>
-        <input
-          type="number"
-          value={lightScore}
-          onChange={(e) => setLightScore(e.target.value)}
-        />
-        <br />
-        <label>음향평점:</label>
-        <input
-          type="number"
-          value={soundScore}
-          onChange={(e) => setSoundScore(e.target.value)}
-        />
-        <br />
-        <label>사진:</label>
-        <input
-          type="file"
-          onChange={(e) => setImages(e.target.files[0])}
-        />
-        <button className="SeeyaEdit-Button" type="submit"></button>
-      </form>
-    </div>
+        <Header/>
+      <h3>시야 후기 수정</h3>
+        <form onSubmit={handleEditSubmit}>
+            
+            <label>공연:</label>
+            <input
+            type="text"
+            value={play}
+            onChange={(e) => setPlay(e.target.value)}
+            />
+
+            <br />
+
+            <label>제목:</label>
+            <input
+            type="text"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            />
+
+            <br />
+
+            <label>내용:</label>
+            <textarea
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+            ></textarea>
+
+            <br />
+
+            <label htmlFor="title" className="SeeyaEdit-StarRating-label">
+              시야평점
+            </label>
+            <span className="SeeyaUpload-rating">
+              <StarRating value={parseInt(viewScore)} onChange={handleViewScoreChange} />
+            </span>
+
+            <br />
+
+            <label htmlFor="title" className="SeeyaEdit-StarRating-label">
+              시야평점
+            </label>
+            <span className="SeeyaUpload-rating">
+              <StarRating value={parseInt(viewScore)} onChange={handleViewScoreChange} />
+            </span>
+
+            <br />
+
+            <label htmlFor="title" className="SeeyaEdit-StarRating-label">
+              조명평점
+            </label>
+            <span className="SeeyaUpload-rating">
+              <StarRating value={parseInt(lightScore)} onChange={handleLightScoreChange} />
+            </span>
+
+            <br />
+
+            <label htmlFor="title" className="SeeyaEdit-StarRating-label">
+              음향평점
+            </label>
+            <span className="SeeyaUpload-rating">
+              <StarRating value={parseInt(soundScore)} onChange={handleSoundScoreChange} />
+            </span>
+
+            <br />
+
+            <label>사진:</label>
+            <input
+            type="file"
+            onChange={(e) => setImages(e.target.files[0])}
+            />
+
+            <button className="SeeyaEdit-Button" type="submit"></button>
+        </form>
+        </div>
   );
 }
 

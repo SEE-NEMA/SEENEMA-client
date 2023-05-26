@@ -226,7 +226,6 @@ const SeeyaSeatList = () => {
               <Span></Span>
               작성일자: {review.createdAt}
             </p>
-           
           </li>
         ))}
       </ul>
@@ -249,8 +248,9 @@ const SeeyaSeatList = () => {
             <div className="SeeyaSeat-modal-content">
               <p className = "SS-Modal-Seat">{selectedSeat.z}층 {selectedSeat.x}열 {selectedSeat.y}번</p>
               <p className = "SS-Modal-Info">닉네임: {modalData.nickName}<Span></Span>작성일자: {modalData.createdAt}</p>
-              <button className="SS-Modal-Delete-button" onClick={() => handleDelete(modalData)}>삭제</button>
+              
               <button className="SS-Modal-Edit-button" onClick={() => handleEdit(modalData)}>수정</button>
+              <button className="SS-Modal-Delete-button" onClick={() => handleDelete(modalData)}>삭제</button>
              <div className = "SS-Modal-Content">
               <p>공연 : {modalData.play}</p>
               <p>제목: {modalData.title}</p>
@@ -275,7 +275,6 @@ const SeeyaSeatList = () => {
               {renderStarScore(modalData.soundScore)}
               </div>
               <button className = "SS-Modal-button" onClick={handleModalClose}>닫기</button>
-              
             </div>
           </div>
         )}

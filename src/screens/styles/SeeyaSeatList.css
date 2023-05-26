@@ -18,7 +18,7 @@
 .SeeyaSeatList-Wrap{
     width : 1440px;
     text-align : center;
-    line-height: 20px;
+    line-height: 10px;
 }
 
 .SeeyaSeatList-Wrap button {
@@ -92,7 +92,7 @@
     border : none;
     margin-top : 50px;
     width : 80px;
-    height : 30px;
+    height : 40px;
     margin-left : 200px;
     background-color: gray;
     color : white;
@@ -101,11 +101,22 @@
 
 .SS-Modal-Delete-button {
     border : none;
-    margin-top : -30px;
-    width : 80px;
+    margin-top :-20px;
+    width : 60px;
     height : 30px;
-    margin-left : 250px;
-    background-color: gray;
+    margin-left : 400px;
+    background-color: rgb(164, 164, 164);
+    color : white;
+    border-radius : 10px;
+}
+
+.SS-Modal-Edit-button {
+    border : none;
+    margin-top : 10px;
+    width : 60px;
+    height : 30px;
+    margin-left : 330px;
+    background-color: rgb(164, 164, 164);
     color : white;
     border-radius : 10px;
 }
@@ -113,8 +124,13 @@
 .SS-Modal-button:hover {
     background-color : rgb(0, 0, 0);
 }
+
+.SS-Modal-Edit-button:hover,
+.SS-Modal-Delete-button:hover {
+    background-color : rgb(0, 0, 0);
+}
 .star-rating {
-    margin-top : 10px;
+    margin-top : 5px;
 }
 
 /*리뷰 작성 모달*/
