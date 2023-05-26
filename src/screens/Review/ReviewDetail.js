@@ -284,27 +284,26 @@ const ReviewDetail = () => {
             <h6 className="RVDT-createdAt">작성 일자 : {review.createdAt}</h6>
             <h6 className="RVDT-viewCount">조회수 : {review.viewCount}</h6>
 
-      {/* {heartedYN ? (
-                <FaHeart size="25" className="Heart-Filled" onClick={handleLikeClick} />
-              ) : (
-                <FaHeart size="25" className="Heart-Empty" onClick={handleLikeClick} />
-              )} */}
-        <div className="review-detail-like">
-  {heartedYN ? (
-    <FaHeart
-      size="25"
-      className="Heart-Filled"
-      onClick={handleLikeClick}
-    />
-  ) : (
-    <FaHeart
-      size="25"
-      className="Heart-Empty"
-      onClick={handleLikeClick}
-    />
-  )}
-  <span>좋아요 수 : {heartCount}</span>
-</div>
+     
+            <form className="review-detail-like">
+             
+              <label className = "RVDT-Hear-Count">좋아요 수 : {heartCount}</label>
+              {heartedYN ? (
+             <FaHeart
+              size="20"
+              className="Heart-Filled"
+              onClick={handleLikeClick}
+            />
+          ) : (
+            
+            <FaHeart
+              size="20"
+              className="Heart-Empty"
+              onClick={handleLikeClick}
+              />
+            )}
+          
+            </form>
 
            
             <div className="RVDT-Modify-Wrap">

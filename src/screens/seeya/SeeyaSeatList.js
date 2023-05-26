@@ -206,21 +206,24 @@ const SeeyaSeatList = () => {
 
   const handleDelete = async (review) => {
     console.log(review.viewNo);
-    axios.post(`http://43.200.58.174:8080/api/v1/seats/${theaterId}/${z}/${x}/${y}/${review.viewNo}/auth`, {}, 
-    {headers : {'X-AUTH-TOKEN' : token}})
-    .then((response) => {
-      if(response.data === "SUCCESS") {
-        axios.delete(`http://43.200.58.174:8080/api/v1/seats/${theaterId}/${z}/${x}/${y}/${review.viewNo}`, {
-          headers : {'X-AUTH-TOKEN' : token}
-        })
-        .then((response) => {
-          console.log(response.data);
-          alert("게시물 삭제가 완료되었습니다!");
-          handleReviewModalClose();
-          navigate(`/SeeyaSeatList/${theaterId}/${z}/${x}/${y}`);
-        })
-      }
-    })
+    axios
+      .post(`http://43.200.58.174:8080/api/v1/seats/${theaterId}/${z}/${x}/${y}/${review.viewNo}/auth`, {}, {
+        headers: {'X-AUTH-TOKEN': token}
+      })
+      .then((response) => {
+        if (response.data === "SUCCESS") {
+          axios
+            .delete(`http://43.200.58.174:8080/api/v1/seats/${theaterId}/${z}/${x}/${y}/${review.viewNo}`, {
+              headers: {'X-AUTH-TOKEN': token}
+            })
+            .then((response) => {
+              console.log(response.data);
+              alert("게시물 삭제가 완료되었습니다!");
+              handleReviewModalClose();
+              navigate(`/SeeyaSeatList/${theaterId}/${z}/${x}/${y}`);
+            });
+        }
+      });
   };
 
 
