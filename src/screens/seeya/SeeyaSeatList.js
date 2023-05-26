@@ -204,16 +204,16 @@ const SeeyaSeatList = () => {
     }
   };
 
-  const handleDelete = async (review) => {
-    console.log(review.viewNo);
+  const handleDelete = async (modalData) => {
+   
     axios
-      .post(`http://43.200.58.174:8080/api/v1/seats/${theaterId}/${z}/${x}/${y}/${review.viewNo}/auth`, {}, {
+      .post(`http://43.200.58.174:8080/api/v1/seats/${theaterId}/${z}/${x}/${y}/${modalData.viewNo}/auth`, {}, {
         headers: {'X-AUTH-TOKEN': token}
       })
       .then((response) => {
         if (response.data === "SUCCESS") {
           axios
-            .delete(`http://43.200.58.174:8080/api/v1/seats/${theaterId}/${z}/${x}/${y}/${review.viewNo}`, {
+            .delete(`http://43.200.58.174:8080/api/v1/seats/${theaterId}/${z}/${x}/${y}/${modalData.viewNo}`, {
               headers: {'X-AUTH-TOKEN': token}
             })
             .then((response) => {
@@ -222,6 +222,10 @@ const SeeyaSeatList = () => {
               handleReviewModalClose();
               navigate(`/SeeyaSeatList/${theaterId}/${z}/${x}/${y}`);
             });
+        }
+
+        else {
+          alert("본인이 작성한 게시글만 삭제 할 수 있습니다!");
         }
       });
   };
@@ -257,7 +261,7 @@ const SeeyaSeatList = () => {
               <Span></Span>
               작성일자: {review.createdAt}
             </p>
-
+           
           </li>
         ))}
       </ul>
@@ -305,7 +309,7 @@ const SeeyaSeatList = () => {
               {renderStarScore(modalData.soundScore)}
               </div>
               <button className = "SS-Modal-button" onClick={handleModalClose}>닫기</button>
-              <button className = "SS-Modal-Delete-button" onClick = {handleDelete}>삭제</button>
+              <button className="SS-Modal-Delete-button" onClick={() => handleDelete(modalData)}>삭제</button>
             </div>
           </div>
         )}
