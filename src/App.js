@@ -54,7 +54,7 @@ function App() {
         <Route path="seeyaedit/:theaterId/:viewNo" element = {<SeeyaEdit/>}/>
         <Route path="/SeeyaSeatList/:theaterId/:z/:x/:y" element = {<SeeyaSeatList/>}/>
         <Route path={"/seeyaSeat/:theaterId"} element={<SeeyaSeat/>}/>
-        <Route path={"/seeyaSeatBluesquare"} element ={<SeeyaSeatBlueSquare/>}/>
+        <Route path={"/seeyaSeatBluesquare/:theaterId"} element ={<SeeyaSeatBlueSquare/>}/>
         <Route path={"/seeyaseatmain"} element={<SeeyaSeatMain/>}/>
         <Route path={"/seeyaseatedit/:theaterId/:z/:x/:y/:viewNo"} element = {<SeeyaSeatEdit/>}/>
         </Routes>
