@@ -254,7 +254,6 @@ const SeeyaSeatList = () => {
              <div className = "SS-Modal-Content">
               <p>공연 : {modalData.play}</p>
               <p>제목: {modalData.title}</p>
-              <p>좋아요 수: {modalData.heartCount}</p>
               <p>내용 : {modalData.content}</p>
               </div>
 

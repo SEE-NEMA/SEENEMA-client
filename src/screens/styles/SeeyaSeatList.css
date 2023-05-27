@@ -101,9 +101,9 @@
 
 .SS-Modal-Delete-button {
     border : none;
-    margin-top :-20px;
+    margin-top :-25px;
     width : 60px;
-    height : 30px;
+    height : 25px;
     margin-left : 400px;
     background-color: rgb(164, 164, 164);
     color : white;
@@ -112,9 +112,9 @@
 
 .SS-Modal-Edit-button {
     border : none;
-    margin-top : 10px;
+    margin-top : 35px;
     width : 60px;
-    height : 30px;
+    height : 25px;
     margin-left : 330px;
     background-color: rgb(164, 164, 164);
     color : white;

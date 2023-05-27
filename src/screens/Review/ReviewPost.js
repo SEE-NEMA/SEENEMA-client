@@ -88,13 +88,14 @@ function ReviewPost() {
           <div className="ReviewWrite-Content">
             <textarea
               className="ReviewWrite-Text"
-              name="content"
               value={content}
               onChange={(event) => setContent(event.target.value)}
             ></textarea>
 
+            <form className = "ReviewWrite-Image-Wrap">
             <label htmlFor="image">사진</label>
-            <input type="file" onChange={handleImageChange} />
+            <input className = "ReviewWrite-Image" type="file" onChange={handleImageChange} />
+            </form>
           </div>
 
           <div className="tag-buttons">

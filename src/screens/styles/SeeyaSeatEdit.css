@@ -1,0 +1,74 @@
+.SeeyaSeatEdit-ContentWrap {
+    position : absolute;
+    top: 180px;
+    bottom: 100px;
+    width: 100%;
+    max-width: 550px;
+    padding: 0 20px;
+    border-radius: 10px;
+  
+    left: 50%;
+    transform: translate(-50%, 0);
+
+    border: none;
+    border-radius: 10px;
+    background-color: rgba(225, 225, 225, 0.718);
+  
+    overflow: hidden;
+  
+    display:flex;
+    flex-direction: column;
+}
+
+.SeeyaSeatEdit-Play {
+    border : none;
+    border-radius : 5px;
+    margin-top : 20px;
+    margin-left : 30px;
+    height : 30px;
+    width : 450px;
+}
+
+.SeeyaSeatEdit-Content {
+    margin-left : 60px;
+    height : 120px;
+    border : none;
+    border-radius : 5px;
+    margin-top : 20px;
+    width : 450px;
+    resize:none;
+}
+
+.SeeyaSeatEdit-StarRating-Label {
+    display: inline-block;
+    width: 100px;
+    text-align: right;
+    margin-right: 10px;
+    margin-left : -40px;
+    margin-top : 10px;
+}
+
+.SeeyaSeatEdit-Image-Label {
+    margin-top : 10px;
+}
+
+.SeeyaSeatEdit-Image {
+    margin-top : 20px;
+    margin-left : 20px;
+}
+
+.SeeyaSeatEdit-Button {
+    border : none;
+    text-align : center;
+    width : 80px;
+    height : 30px;
+    border-radius : 20px;
+    background-color: rgb(103, 102, 102);
+    color : white;
+    margin-left : 220px;
+    margin-top : 10px;
+}
+
+.SeeyaSeatEdit-Button:hover {
+    background-color: black;
+}

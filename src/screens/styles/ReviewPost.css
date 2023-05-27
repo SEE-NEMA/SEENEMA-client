@@ -59,23 +59,25 @@
     vertical-align: top;
 }
 
+.ReviewWrite-Image {
+    margin-left : 34px;
+}
 
 .ReviewWrite-Text {
     margin-left:65px;
     width : 80%;
-    margin-top: 40px;
+    margin-top: 30px;
     border-radius : 5px;
     border : none;
     background-color: #ffffff;
 
-    height : 250px;
+    height : 220px;
     font-size : 16px;
     font-weight : 400;
 
     text-transform: 5px;
 
     resize:none;
-    font-family : 'Raleway', sans-serif;
        
 }
 
@@ -85,12 +87,20 @@
     transform: translateX(-50%);
     border: none;
     border-radius: 10px;
-    background-color: #000000;
+    background-color: #646464;
     color : white;
     font-weight: bold;
     width : 10%;
-    height : 40px;
-    margin-top : 40px
+    height : 30px;
+    margin-top : 30px;
+}
+
+.ReviewWrite-Image-Wrap {
+    margin-top : 20px;
+}
+
+.ReviewWrite-Upload:hover {
+    background-color: black;
 }
 
 .tag_btn {
@@ -114,8 +124,7 @@
   
 
   .tag-buttons button.selected {
-    /* Add your selected button styles here */
-    background-color: #ff0000; /* Set the background color to red for selected buttons */
-    color: #ffffff; /* Set the text color to white for selected buttons */
+    background-color: #000000; 
+    color: #ffffff; 
   }
   

@@ -3,6 +3,7 @@ import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import Header from "../../Header";
 import { AuthContext } from "../../contexts/AuthContext";
+import "../styles/ReviewEdit.css";
 
 const ReviewEdit = () => {
   const { postNo } = useParams();
@@ -98,8 +99,7 @@ const ReviewEdit = () => {
 
           <div className="ReviewWrite-Content">
             <textarea
-              className="ReviewWrite-Text"
-              name="content"
+              className="ReviewEdit-Textarea"
               value={content}
               onChange={(event) => setContent(event.target.value)}
             ></textarea>
@@ -108,35 +108,36 @@ const ReviewEdit = () => {
             <button
               onClick={() => handleTagClick(1)}
               className={tags.includes(1) ? "selected" : ""}
-              type="button" // Add type="button" to prevent form submission
+              
+              type="button" 
             >
               맛집
             </button>
             <button
               onClick={() => handleTagClick(2)}
               className={tags.includes(2) ? "selected" : ""}
-              type="button" // Add type="button" to prevent form submission
+              type="button" 
             >
               카페
             </button>
             <button
               onClick={() => handleTagClick(3)}
               className={tags.includes(3) ? "selected" : ""}
-              type="button" // Add type="button" to prevent form submission
+              type="button" 
             >
               대여
             </button>
             <button
               onClick={() => handleTagClick(4)}
               className={tags.includes(4) ? "selected" : ""}
-              type="button" // Add type="button" to prevent form submission
+              type="button" 
             >
               물품 보관소
             </button>
             <button
               onClick={() => handleTagClick(5)}
               className={tags.includes(5) ? "selected" : ""}
-              type="button" // Add type="button" to prevent form submission
+              type="button" 
             >
               주차장
             </button>
@@ -148,7 +149,7 @@ const ReviewEdit = () => {
               화장실
             </button>
           </div>
-          <button className="ReviewWrite-Upload" type="submit">
+          <button className="ReviewEdit-Upload" type="submit">
             수정
           </button>
         </form>

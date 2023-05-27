@@ -86,11 +86,14 @@ const SeeyaSeatEdit = () => {
   return (
     <div>
         <Header/>
-      <h3>시야 후기 수정</h3>
-        <form onSubmit={handleEditSubmit}>
+
+            <div className="SeeyaSeatEdit-ContentWrap">
+
+            <form onSubmit={handleEditSubmit}>
             
-            <label>공연:</label>
+            <label>제목</label>
             <input
+            className = "SeeyaSeatEdit-Play"
             type="text"
             value={play}
             onChange={(e) => setPlay(e.target.value)}
@@ -98,24 +101,24 @@ const SeeyaSeatEdit = () => {
 
             <br />
 
-            <label>제목:</label>
+            <label>공연</label>
             <input
+            className = "SeeyaSeatEdit-Play"
             type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             />
 
-            <br />
 
-            <label>내용:</label>
             <textarea
+            className = "SeeyaSeatEdit-Content"
             value={content}
             onChange={(e) => setContent(e.target.value)}
             ></textarea>
 
             <br />
 
-            <label htmlFor="title" className="SeeyaEdit-StarRating-label">
+            <label htmlFor="title" className="SeeyaSeatEdit-StarRating-Label">
               시야평점
             </label>
             <span className="SeeyaUpload-rating">
@@ -124,16 +127,16 @@ const SeeyaSeatEdit = () => {
 
             <br />
 
-            <label htmlFor="title" className="SeeyaEdit-StarRating-label">
-              시야평점
+            <label htmlFor="title" className="SeeyaSeatEdit-StarRating-Label">
+              좌석평점
             </label>
             <span className="SeeyaUpload-rating">
-              <StarRating value={parseInt(viewScore)} onChange={handleViewScoreChange} />
+              <StarRating value={parseInt(seatScore)} onChange={handleViewScoreChange} />
             </span>
 
             <br />
 
-            <label htmlFor="title" className="SeeyaEdit-StarRating-label">
+            <label htmlFor="title" className="SeeyaSeatEdit-StarRating-Label">
               조명평점
             </label>
             <span className="SeeyaUpload-rating">
@@ -142,7 +145,7 @@ const SeeyaSeatEdit = () => {
 
             <br />
 
-            <label htmlFor="title" className="SeeyaEdit-StarRating-label">
+            <label htmlFor="title" className="SeeyaSeatEdit-StarRating-Label">
               음향평점
             </label>
             <span className="SeeyaUpload-rating">
@@ -151,14 +154,16 @@ const SeeyaSeatEdit = () => {
 
             <br />
 
-            <label>사진:</label>
+            <label className="SeeyaSeatEdit-Image-Label">사진:</label>
             <input
+            className="SeeyaSeatEdit-Image"
             type="file"
             onChange={(e) => setImages(e.target.files[0])}
             />
 
-            <button className="SeeyaEdit-Button" type="submit"></button>
+            <button className="SeeyaSeatEdit-Button" type="submit">수정하기</button>
         </form>
+        </div>
         </div>
   );
 }

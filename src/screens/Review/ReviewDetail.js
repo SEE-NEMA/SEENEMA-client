@@ -314,6 +314,14 @@ const ReviewDetail = () => {
         </div>
         <p/>
 
+        {imageUrls.length > 0 && (
+        <div>
+          {imageUrls.map((imageUrl, index) => (
+            <img className="RVDT-Content-Image" key={index} src={imageUrl} alt="" />
+          ))}
+        </div>
+          )}
+
         <div className="RVDT-Content">
         {review.content}
         {review.tags && review.tags.map(tag => (
@@ -323,14 +331,7 @@ const ReviewDetail = () => {
         <div>
 
 
-        {imageUrls.length > 0 && (
-  <div>
-    {imageUrls.map((imageUrl, index) => (
-      <img key={index} src={imageUrl} alt="" />
-    ))}
-  </div>
-)}
-
+       
 </div>
 
 
