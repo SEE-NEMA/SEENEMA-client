@@ -1,6 +1,6 @@
   .SeeyaSeatBlueSquare-title {
     text-align:center;
-    margin-left : 38px;
+    margin-left : 5px;
     font-weight: bold;
   }
   
@@ -23,6 +23,7 @@
     
   }
   
+  .area-center .row-6,
   .area-center .row-8,
   .area-center .row-9,
   .area-center .row-10,
@@ -91,7 +92,9 @@
  }
 
  .area-left .row-6 {
-    margin-right : 150px;
+    display:flex;
+    margin-left : 30px;
+      
  }
 
  .area-left .row-7 {
@@ -152,7 +155,8 @@
   }
 
   .area-right .row-6 {
-    margin-left : 150px;
+    margin-left : 210px;
+    display:flex;
   }
 
   .area-right .row-7 {
@@ -202,4 +206,67 @@
   }
   
 
+
+
+  .area-left-2 {
+    float: left;
+    margin-right: 40px;
+    margin-left : 35px;
+  }
   
+  .area-left-tag-2 {
+    text-align: center;
+  }
+
+  .area-left-2 .row-6,
+  .area-left-2 .row-7,
+  .area-left-2 .row-8,
+  .area-left-2 .row-9 {
+    display : flex;
+    justify-content : right;
+  }
+
+  .area-left-2 .row-10 {
+    display : flex;
+  }
+
+
+  .area-center-2 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width : 500px;
+    
+  }
+
+  .area-center-2 .row-6 {
+    display:flex;
+  }
+
+  .area-center-2 .row-7 {
+    display:flex;
+  }
+
+  .area-center-2 .row-8,
+  .area-center-2 .row-9,
+  .area-center-2 .row-10 {
+    display:flex;
+  }
+
+  .area-right-2 {
+    float: right;
+    margin-right: 20px;
+    margin-top : -351px;
+  }
+
+  .area-right-2 .row-6,
+  .area-right-2 .row-7,
+  .area-right-2 .row-8,
+  .area-right-2 .row-9 {
+    display:flex;
+  }
+
+  .area-right-2 .row-10 {
+    display:flex;
+  }
