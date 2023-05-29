@@ -363,8 +363,8 @@ const SeeyaSeatBlueSquare = ({ average, handleSeatClick }) => {
           <div>
              <p className="SeeyaSeatBlueSquare-title">3층</p>
 
-             <div className="area-left-2">
-              <p className="area-left-tag-2">[A]</p>
+             <div className="area-left-3">
+              <p className="area-left-tag">[A]</p>
               {Array.from({ length: 2 }, (_, rowIndex) => (
                 <div className={`row-${rowIndex + 1}`} key={rowIndex}>
                   {Array.from({ length: 16}, (_, seatIndex) => {
@@ -438,6 +438,136 @@ const SeeyaSeatBlueSquare = ({ average, handleSeatClick }) => {
               ))} 
             </div>
 
+            <div className="area-center-3">
+            <p className="area-center-tag">[B]</p>
+            {Array.from({ length: 5 }, (_, rowIndex) => (
+                <div className={`row-${rowIndex + 1}`} key={rowIndex}>
+                  {Array.from({ length: 16}, (_, seatIndex) => {
+                    const seatColor = getSeatColor(average, rowIndex, seatIndex, 1);
+                    return (
+                      <div
+                        className="seat"
+                        key={seatIndex}
+                        style={{
+                          backgroundColor: seatColor,
+                        }}
+                        onClick={() => handleSeatClick(rowIndex + 1, seatIndex + 1, 1)}
+                      ></div>
+                    );
+                  })}
+                </div>
+              ))}
+
+          
+
+{Array.from({ length: 1 }, (_, rowIndex) => (
+  <div className={`row-${rowIndex + 6}`} key={rowIndex}>
+    {Array.from({ length: 7 }, (_, seatIndex) => {
+      const seatColor = getSeatColor(average, rowIndex, seatIndex, 1);
+      return (
+        <div
+          className="seat"
+          key={seatIndex}
+          style={{
+            backgroundColor: seatColor,
+          }}
+          onClick={() => handleSeatClick(rowIndex + 1, seatIndex + 1, 1)}
+        ></div>
+      );
+    })}
+    <div className="area-center-3-empty-seat-1" />
+    <div className="area-center-3-empty-seat-2" />
+    {Array.from({ length: 7 }, (_, seatIndex) => {
+      const seatColor = getSeatColor(average, rowIndex, seatIndex + 9, 1);
+      return (
+        <div
+          className="seat"
+          key={seatIndex + 9}
+          style={{
+            backgroundColor: seatColor,
+          }}
+          onClick={() => handleSeatClick(rowIndex + 1, seatIndex + 9, 1)}
+        ></div>
+      );
+    })}
+  </div>
+))}
+          </div>
+
+            <div className="area-right-3">
+              <p className="area-right-tag">[C]</p>
+               {Array.from({ length: 2 }, (_, rowIndex) => (
+                <div className={`row-${rowIndex + 1}`} key={rowIndex}>
+                  {Array.from({ length: 16}, (_, seatIndex) => {
+                    const seatColor = getSeatColor(average, rowIndex, seatIndex, 1);
+                    return (
+                      <div
+                        className="seat"
+                        key={seatIndex}
+                        style={{
+                          backgroundColor: seatColor,
+                        }}
+                        onClick={() => handleSeatClick(rowIndex + 1, seatIndex + 1, 1)}
+                      ></div>
+                    );
+                  })}
+                </div>
+              ))}
+
+              {Array.from({ length: 1 }, (_, rowIndex) => (
+                <div className={`row-${rowIndex + 3}`} key={rowIndex}>
+                  {Array.from({ length: 12 }, (_, seatIndex) => {
+                    const seatColor = getSeatColor(average, rowIndex, seatIndex, 1);
+                    return (
+                      <div
+                        className="seat"
+                        key={seatIndex}
+                        style={{
+                          backgroundColor: seatColor,
+                        }}
+                        onClick={() => handleSeatClick(rowIndex + 1, seatIndex + 1, 1)}
+                      ></div>
+                    );
+                  })}
+                </div>
+              ))}
+
+                {Array.from({ length: 2 }, (_, rowIndex) => (
+                  <div className={`row-${rowIndex + 4}`} key={rowIndex}>
+                  {Array.from({ length: 15 }, (_, seatIndex) => {
+                    const seatColor = getSeatColor(average, rowIndex, seatIndex, 1);
+                    return (
+                      <div
+                        className="seat"
+                        key={seatIndex}
+                        style={{
+                          backgroundColor: seatColor,
+                        }}
+                        onClick={() => handleSeatClick(rowIndex + 1, seatIndex + 1, 1)}
+                      ></div>
+                    );
+                  })}
+                </div>
+              ))}
+
+              {Array.from({ length: 1 }, (_, rowIndex) => (
+                  <div className={`row-${rowIndex + 6}`} key={rowIndex}>
+                  {Array.from({ length: 16 }, (_, seatIndex) => {
+                    const seatColor = getSeatColor(average, rowIndex, seatIndex, 1);
+                    return (
+                      <div
+                        className="seat"
+                        key={seatIndex}
+                        style={{
+                          backgroundColor: seatColor,
+                        }}
+                        onClick={() => handleSeatClick(rowIndex + 1, seatIndex + 1, 1)}
+                      ></div>
+                    );
+                  })}
+                </div>
+              ))}
+            </div>
           </div>
          )}   
     </div>

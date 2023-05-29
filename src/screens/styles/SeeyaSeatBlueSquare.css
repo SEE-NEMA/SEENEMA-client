@@ -4,6 +4,9 @@
     font-weight: bold;
   }
   
+   /* 1층 */
+
+
   .area-left {
     float: left;
     margin-right: -130px;
@@ -53,6 +56,7 @@
   .area-center-tag {
     text-align: center;
     width: 100%; 
+    margin-right : 32px;
   }
   
   .area-center .row-7 {
@@ -206,7 +210,7 @@
   }
   
 
-
+ /* 2층 */
 
   .area-left-2 {
     float: left;
@@ -268,5 +272,71 @@
   }
 
   .area-right-2 .row-10 {
+    display:flex;
+  }
+
+  /* 3층 */
+
+  .area-left-3 {
+   float: left;
+    margin-right: 10px;
+    margin-left : 35px;
+}
+
+.area-left-3 .row-3 {
+  margin-left : 120px;
+}
+
+.area-left-3 .row-4,
+.area-left-3 .row-5 {
+  margin-left : 30px;
+}
+
+
+  .area-left-3 .row-6 {
+    display : flex;
+  }
+
+  .area-center-3-empty-seat-1 {
+    width: 20px;
+    height: 20px;
+    margin-left : 20px;
+  }
+
+  .area-center-3-empty-seat-2 {
+    width: 20px;
+    height: 20px;
+  }
+
+  .area-center-3 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width : 500px;
+  }
+
+  .area-center-3 .row-6 {
+    display : flex;
+  }
+
+  /*3층 C구역*/
+
+  .area-right-3 {
+    float: right;
+    margin-right: 20px;
+    margin-top : -230px;
+  }
+
+  .area-right-3 .row-3 {
+    margin-left : 120px;
+  }
+
+  .area-right-3 .row-4,
+  .area-right-3 .row-5 {
+    margin-left : 30px;
+  }
+
+  .area-right-3 .row-6 { 
     display:flex;
   }
