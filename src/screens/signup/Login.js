@@ -9,14 +9,14 @@ function Login() {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const { login } = useContext(AuthContext);
-  const token = localStorage.getItem('token');
+  const token = localStorage.getItem("token");
 
   const handleLogin = async () => {
     const data = {
       email: email,
       password: password,
     };
-  
+
     try {
       const response = await axios.post(
         "http://43.200.58.174:8080/api/v1/user/login",
@@ -28,21 +28,28 @@ function Login() {
           },
         }
       );
-  
+
       console.log(response);
-  
-      if (token != null) {
+
+      if (response.data != '가입되지 않은 아이디 입니다.' && response.data != "잘못된 비밀번호 입니다.") {
+        const { token } = response.data;
         localStorage.setItem("token", token);
         localStorage.setItem("email", email);
+        login(email, token);
         navigate("/");
-      } else {
-        alert(response.data);
+      } 
+      else if (response.data === '가입되지 않은 아이디 입니다.')
+      {
+        alert("로그인 실패");
+      }
+      else if (response.data === "잘못된 비밀번호 입니다.")
+      {
+        alert("로그인 실패");
       }
     } catch (error) {
       console.error(error);
     }
   };
-  
 
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
