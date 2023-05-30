@@ -7,7 +7,7 @@ const RecommendMain = () => {
   const token = localStorage.getItem('token');
   const [userInfo, setUserInfo] = useState("");
   const [selectedStep, setSelectedStep] = useState(1);
-  const [selectedGenre, setSelectedGenre] = useState("");
+  const [selectedGenre, setSelectedGenre] = useState(""); // 추가: 선택한 장르 상태값 추가
   const [favoriteActor, setFavoriteActor] = useState("");
   const [favoriteSinger, setFavoriteSinger] = useState("");
   const [recommendations, setRecommendations] = useState([]);
@@ -155,15 +155,14 @@ const RecommendMain = () => {
           <div>
             <h4>추천 결과</h4>
             <ul>
-            {recommendations.map((recommendation) => (
-            <div key={recommendation.no}>
-            <li key={recommendation.no}>
-            <span style={{ marginRight: "20px", color: "#000" }}>{recommendation.title}</span>
-            <img src={recommendation.imgUrl} alt={recommendation.title} />
-            </li>
-            {/* 나머지 데이터 표시 */}
-            </div>
-            ))}
+              {recommendations.map((recommendation) => (
+                <div key={recommendation.no}>
+                  <li key={recommendation.no}>
+                    <span style={{ marginRight: "20px", color: "#000" }}>{recommendation.title}</span>
+                    <img src={recommendation.imgUrl} alt={recommendation.title} />
+                  </li>
+                </div>
+              ))}
             </ul>
           </div>
         )}

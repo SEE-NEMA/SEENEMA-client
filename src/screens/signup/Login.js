@@ -9,6 +9,7 @@ function Login() {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const { login } = useContext(AuthContext);
+  const token = localStorage.getItem('token');
 
   const handleLogin = async () => {
     const data = {
@@ -16,24 +17,28 @@ function Login() {
       password: password,
     };
 
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
-
     try {
       const response = await axios.post(
         "http://43.200.58.174:8080/api/v1/user/login",
         data,
-        config
+        {
+          headers: {
+            "X-AUTH-TOKEN" : token
+          }
+        }
       );
-      const token = response.data;
+      console.log(response.data);
+
+      if(response.data === "hi") {
       localStorage.setItem("token", token);
       login(email, token);
       localStorage.setItem("email", email);
       alert(`${email}님 안녕하세요!`);
       navigate("/");
+      }
+      else {
+        alert("가입되지 않은 아이디입니다");
+      }
     } catch (error) {
       console.error(error);
     }
