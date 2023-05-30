@@ -1,138 +1,60 @@
-import React, { useState, useEffect } from "react";
-import { useParams, useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import { useParams, useNavigate  } from 'react-router-dom';
 import axios from "axios";
-import Header from "../../Header";
-import modal from "modal";
-import '../styles/SeeyaSeatList.css';
-import { FaStar } from 'react-icons/fa';
+import Header from '../../Header';
+import '../styles/SeeyaSeatEdit.css';
+import { FaStar } from "react-icons/fa";
 
-const SeeyaSeatList = () => {
-  const token = localStorage.getItem('token');
-  const navigate = useNavigate();
-  const { theaterId, x, y, z, viewNo } = useParams();
-  const [selectedSeat, setSelectedSeat] = useState({ z: parseInt(z), x: parseInt(x), y: parseInt(y) });
-  const [modalData, setModalData] = useState(null);
-  const [seatReviews, setSeatReviews] = useState([]);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isReviewModalOpen, setIsReviewModalOpen] = useState(false);
-  const [content, setContent] = useState("");
+const SeeyaSeatEdit = () => {
   const [play, setPlay] = useState("");
   const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
   const [viewScore, setViewScore] = useState(0);
   const [seatScore, setSeatScore] = useState(0);
   const [lightScore, setLightScore] = useState(0);
   const [soundScore, setSoundScore] = useState(0);
-  const [images, setImages] = useState([null]);
-  const [page, setPage] = useState(1); // 현재 페이지 번호
-  const [itemsPerPage, setItemsPerPage] = useState(5); // 페이지 당 아이템 수
-  
-  const [ticketImage, setTicketImage] = useState(null);
+  const [images, setImages] = useState(null);
+  const token = localStorage.getItem("token");
+  const { theaterId, x, y, z, viewNo } = useParams();
+  const navigate = useNavigate();
 
-  const handleFileChange = (event) => {
-    const ticketImage = event.target.files[0];
-    setTicketImage(ticketImage);
+  const StarRating = ({ value, onChange }) => {
+    const stars = [1, 2, 3, 4, 5];
+
+    return (
+      <div className="star-rating">
+        {stars.map((star) => (
+          <FaStar
+            key={star}
+            className={star <= value ? "star-icon active" : "star-icon"}
+            onClick={() => onChange(star)}
+          />
+        ))}
+      </div>
+    );
   };
 
-  const handleTicketUpload = async () => {
-    if (ticketImage) {
-      const formData = new FormData();
-      formData.append("ticket", ticketImage);
-  
-      try {
-        const response = await axios.post(
-          `http://localhost:8081/api/v1/seats/ticket`,
-          formData,
-          {
-            headers: {
-              'Content-Type' : 'multipart/form-data'
-            }
-          }
-        );
-        console.log(response.data);
-      } catch (error) {
-        console.log(formData);
-        console.log(error);
-      }
-    } else {
-      console.log("No ticket image selected");
-    }
-  };
-  
-
- 
-
-    
-  const renderStarScore = (score, setStars) => {
-    const stars = [];
-    for (let i = 1; i <= 5; i++) {
-      stars.push(
-        <FaStar
-          key={i}
-          style={{ color: i <= score ? 'yellow' : 'lightgray' }}
-          onClick={() => setStars(i)}
-        />
-      );
-    }
-    return stars;
+  const handleViewScoreChange = (value) => {
+    setViewScore(value.toString());
   };
 
-  const getPaginatedReviews = () => {
-    const startIndex = (page - 1) * itemsPerPage;
-    const endIndex = startIndex + itemsPerPage;
-    return seatReviews.slice(startIndex, endIndex);
+  const handleSeatScoreChange = (value) => {
+    setSeatScore(value.toString());
   };
 
-  const changePage = (pageNumber) => {
-    setPage(pageNumber);
+  const handleLightScoreChange = (value) => {
+    setLightScore(value.toString());
   };
 
-  const fetchData = async () => {
-    try {
-      const response = await axios.get(
-        `http://43.200.58.174:8080/api/v1/seats/${theaterId}/${z}/${x}/${y}`
-      );
-      setSelectedSeat({ z: parseInt(z), x: parseInt(x), y: parseInt(y) });
-      setSeatReviews(response.data.postingList); // Update the state with the postingList array
-      console.log(z + "층" + x + "열" + y + "번");
-    } catch (error) {
-      console.error(error);
-    }
+  const handleSoundScoreChange = (value) => {
+    setSoundScore(value.toString());
   };
 
-  useEffect(() => {
-    fetchData();
-  }, [theaterId, x, y, z, viewNo]);
+  const handleEditSubmit = async (e) => {
+    e.preventDefault();
 
-  const handleSeatClick = async (review) => {
-    // 해당 리스트 클릭하면 모달창에 해당 리뷰 띄우기
-    try {
-      const response = await axios.get(
-        `http://43.200.58.174:8080/api/v1/seats/${theaterId}/${z}/${x}/${y}/${review.viewNo}`
-      );
-      setModalData(response.data);
-      setIsModalOpen(true);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  const handleModalClose = () => {
-    setModalData(null);
-    setIsModalOpen(false);
-  };
-
-  const handleReviewModalOpen = () => {
-    setIsReviewModalOpen(true);
-  };
-
-  const handleReviewModalClose = () => {
-    setIsReviewModalOpen(false);
-  };
-
-  const handleReviewSubmit = async () => {
     try {
       const formData = new FormData();
-      formData.append("images", images);
       formData.append("play", play);
       formData.append("title", title);
       formData.append("content", content);
@@ -140,265 +62,110 @@ const SeeyaSeatList = () => {
       formData.append("seatScore", seatScore);
       formData.append("lightScore", lightScore);
       formData.append("soundScore", soundScore);
+      formData.append("images", images);
 
-      axios
-      .post(`http://43.200.58.174:8080/api/v1/seats/auth`, {}, {
-        headers : {
-          "X-AUTH-TOKEN" : token
-        }
-      })
-      .then((response) => {
-        console.log(response.data);
-        console.log(formData);
-        if(response.data === "SUCCESS")
+      const response = await axios.put(
+        `http://43.200.58.174:8080/api/v1/seats/${theaterId}/${z}/${x}/${y}/${viewNo}`,
+        formData,
         {
-          axios.post(`http://43.200.58.174:8080/api/v1/seats/${theaterId}/${z}/${x}/${y}/upload`, 
-          formData, {
-            headers: {
-              "Content-Type" : "multipart/form-data",
-              "X-AUTH-TOKEN" : token
-            }
-          })
-          .then((response) => {
-            console.log(response.data);
-            console.log(viewNo);
-            handleReviewModalClose();
-            navigate(`/SeeyaSeatList/${theaterId}/${z}/${x}/${y}`);
-            const newReview = {
-              viewScore: viewScore,
-              seatScore: seatScore,
-              lightScore: lightScore,
-              soundScore: soundScore,
-            };
-            setModalData((prevData) => ({
-              ...prevData,
-              ...newReview,
-            }));
-          })
-          
-          .catch((error) => {
-            console.log(error);
-          });
+          headers: {
+            "X-AUTH-TOKEN": token
+          },
         }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+      );
+
+      console.log(response.data);
+      navigate(`/SeeyaSeatList/${theaterId}/${z}/${x}/${y}`);
+      alert("게시물 수정이 완료되었습니다!");
     } catch (error) {
-      console.log(error);
+      console.error(error);
+      // 에러 처리 로직 추가
     }
   };
 
- 
-  const handleEdit = async (modalData) => {
-    axios.post(`http://43.200.58.174:8080/api/v1/seats/${theaterId}/${z}/${x}/${y}/${modalData.viewNo}/auth`, {}, 
-    {headers: {'X-AUTH-TOKEN': token}})
-      .then((response) => {
-        if (response.data === "SUCCESS") {
-          navigate(`/seeyaseatedit/${theaterId}/${z}/${x}/${y}/${modalData.viewNo}`);
-        } 
-        else {
-          console.log(response.data);
-          alert("본인이 작성한 게시물만 수정할 수 있습니다");
-        }
-      }
-      )
-  }
-
-  const handleDelete = async (modalData) => {
-   
-    axios
-      .post(`http://43.200.58.174:8080/api/v1/seats/${theaterId}/${z}/${x}/${y}/${modalData.viewNo}/auth`, {}, {
-        headers: {'X-AUTH-TOKEN': token}
-      })
-      .then((response) => {
-        if (response.data === "SUCCESS") {
-          axios
-            .delete(`http://43.200.58.174:8080/api/v1/seats/${theaterId}/${z}/${x}/${y}/${modalData.viewNo}`, {
-              headers: {'X-AUTH-TOKEN': token}
-            })
-            .then((response) => {
-              console.log(response.data);
-              alert("게시물 삭제가 완료되었습니다!");
-              handleReviewModalClose();
-              navigate(`/SeeyaSeatList/${theaterId}/${z}/${x}/${y}`);
-            });
-        }
-
-        else {
-          alert("본인이 작성한 게시글만 삭제 할 수 있습니다!");
-        }
-      });
-  };
-
-
-  function Span({ space = 15 }){
-    return (
-        <span style={{ paddingRight: space }}></span>
-      );
-  }
-
-  
   return (
     <div>
-      <Header />
-      
-      <p className = "SeeyaSeatList-Seat">" {selectedSeat.z}층 {selectedSeat.x}열 {selectedSeat.y}번 "</p>
-        <hr className = "SeeyaSeatList-hr"></hr>
-        <button className = "SeeyaSeatReview-button" onClick={handleReviewModalOpen}>리뷰 작성하기</button>
-        
-        
-        <input
-        type="file"
-        onChange={handleFileChange}
-          />
-<button className="SeeyaSeatTicket" onClick={handleTicketUpload}>
-        티켓 인증하기
-      </button>
-      
+        <Header/>
+
+            <div className="SeeyaSeatEdit-ContentWrap">
+
+            <form onSubmit={handleEditSubmit}>
+            
+            <label>제목</label>
+            <input
+            className = "SeeyaSeatEdit-Play"
+            type="text"
+            value={play}
+            onChange={(e) => setPlay(e.target.value)}
+            />
+
+            <br />
+
+            <label>공연</label>
+            <input
+            className = "SeeyaSeatEdit-Play"
+            type="text"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            />
 
 
-        {seatReviews.length === 0 ? (
-          <div className = "Review-None">등록된 리뷰가 없습니다. </div>
-        ) : (
-          <div className = "List-Wrap">
-          <ul>
-        {getPaginatedReviews().map((review) => (
-          <li className="SeeyaSeatList-Wrap" key={review.viewNo}>
-            <button onClick={() => handleSeatClick(review)}>
-              제목 : {review.title}<Span></Span>닉네임 : {review.nickName}
-            </button>
-            <p className="SeeyaSeatList-nickname"></p>
-            <p className="SeeyaSeatList-created">
-              닉네임: {review.nickName}
-              <Span></Span>
-              작성일자: {review.createdAt}
-            </p>
-          </li>
-        ))}
-      </ul>
-      </div>
-    )}
+            <textarea
+            className = "SeeyaSeatEdit-Content"
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+            ></textarea>
 
-      {seatReviews.length > itemsPerPage && (
-        <div  style={{ display: "flex", justifyContent: "center", marginTop: "10px" }}>
-          {Array.from({ length: Math.ceil(seatReviews.length / itemsPerPage) }, (_, index) => (
-            <button className = "SeeyaSeatList-Page" key={index} onClick={() => changePage(index + 1)}>
-              {index + 1}
-            </button>
-          ))}
+            <br />
+
+            <label htmlFor="title" className="SeeyaSeatEdit-StarRating-Label">
+              시야평점
+            </label>
+            <span className="SeeyaUpload-rating">
+              <StarRating value={parseInt(viewScore)} onChange={handleViewScoreChange} />
+            </span>
+
+            <br />
+
+            <label htmlFor="title" className="SeeyaSeatEdit-StarRating-Label">
+              좌석평점
+            </label>
+            <span className="SeeyaUpload-rating">
+              <StarRating value={parseInt(seatScore)} onChange={handleViewScoreChange} />
+            </span>
+
+            <br />
+
+            <label htmlFor="title" className="SeeyaSeatEdit-StarRating-Label">
+              조명평점
+            </label>
+            <span className="SeeyaUpload-rating">
+              <StarRating value={parseInt(lightScore)} onChange={handleLightScoreChange} />
+            </span>
+
+            <br />
+
+            <label htmlFor="title" className="SeeyaSeatEdit-StarRating-Label">
+              음향평점
+            </label>
+            <span className="SeeyaUpload-rating">
+              <StarRating value={parseInt(soundScore)} onChange={handleSoundScoreChange} />
+            </span>
+
+            <br />
+
+            <label className="SeeyaSeatEdit-Image-Label">사진:</label>
+            <input
+            className="SeeyaSeatEdit-Image"
+            type="file"
+            onChange={(e) => setImages(e.target.files[0])}
+            />
+
+            <button className="SeeyaSeatEdit-Button" type="submit">수정하기</button>
+        </form>
         </div>
-      )}
-    
-
-        {isModalOpen && modalData && (
-          <div className="SeeyaSeat-modal">
-            <div className="SeeyaSeat-modal-content">
-              <p className = "SS-Modal-Seat">{selectedSeat.z}층 {selectedSeat.x}열 {selectedSeat.y}번</p>
-              <p className = "SS-Modal-Info">닉네임: {modalData.nickName}<Span></Span>작성일자: {modalData.createdAt}</p>
-              
-              <button className="SS-Modal-Edit-button" onClick={() => handleEdit(modalData)}>수정</button>
-              <button className="SS-Modal-Delete-button" onClick={() => handleDelete(modalData)}>삭제</button>
-             <div className = "SS-Modal-Content">
-              <p>공연 : {modalData.play}</p>
-              <p>제목: {modalData.title}</p>
-              <p>내용 : {modalData.content}</p>
-              </div>
-
-              <div className="star-rating">
-              <p>시야평점 : </p>
-              {renderStarScore(modalData.viewScore)}
-              </div>
-              <div className="star-rating">
-              <p>좌석평점 : </p>
-              {renderStarScore(modalData.seatScore)}
-              </div>
-              <div className="star-rating">
-              <p>조명평점 : </p>
-              {renderStarScore(modalData.lightScore)}
-              </div>
-              <div className="star-rating">
-              <p>음향평점 : </p>
-              {renderStarScore(modalData.soundScore)}
-              </div>
-              <button className = "SS-Modal-button" onClick={handleModalClose}>닫기</button>
-            </div>
-          </div>
-        )}
-
-
-        {isReviewModalOpen && (
-          <div className="SeeyaSeat-modal">
-            <div className="SeeyaSeat-modal-content">
-              <h3 className = "SS-Modal-Edit-Title">리뷰 작성</h3>
-
-              <form>
-              <label>제목 : </label>
-              <input
-                className="SS-Modal-Edit-Content"
-                type="text"
-                id="title"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-                placeholder="제목을 작성해주세요."
-              />
-              </form>
-
-              <form>
-              <label>공연 : </label>
-              <input
-                className="SS-Modal-Edit-Content"
-                value={play}
-                onChange={(e) => setPlay(e.target.value)}
-                placeholder="공연 이름을 작성해주세요."
-              />
-              </form>
-
-              <form>
-              <textarea
-                className="SS-Modal-Edit-Review"
-                value={content}
-                onChange={(e) => setContent(e.target.value)}
-              />
-              </form>
-              <br/>
-              
-              <form>
-              <label>사진 : </label>
-              <input
-                className = "SS-Modal-Edit-Image"
-                type="file"
-                onChange={setImages}
-              />
-              </form>
-
-              <div className = "SS-Modal-Edit-StarRating">
-              <div className = "SS-Modal-Edit-Star">
-                <label>시야평점 : </label>
-                {renderStarScore(viewScore, setViewScore)}
-              </div>
-              <div className = "SS-Modal-Edit-Star">
-                <label>좌석평점 : </label>
-                {renderStarScore(seatScore, setSeatScore)}
-              </div>
-              <div className = "SS-Modal-Edit-Star">
-                <label>조명평점 : </label>
-                {renderStarScore(lightScore, setLightScore)}
-              </div>
-              <div className = "SS-Modal-Edit-Star">
-                <label>음향평점 : </label>
-                {renderStarScore(soundScore, setSoundScore)}
-              </div>
-
-              <button className = "SS-Modal-Edit-Modify" onClick={handleReviewSubmit}>작성</button>
-              <button className = "SS-Modal-Edit-Cancel" onClick={handleReviewModalClose}>취소</button>
-            </div>
-            </div>
-          </div>
-        )}
-      </div>
-   
+        </div>
   );
-};
+}
 
-export default SeeyaSeatList;
+export default SeeyaSeatEdit;
