@@ -39,7 +39,7 @@ return (
     {showReviewDropdown && (
       <div className="Header-Dropdown">
         <ul>
-          <li><a href="/seeyamain">시야후기</a></li>
+          <li><a href="/seeyamain">시야 후기</a></li>
           <li><a href="/seeyaseatmain">좌석 보기</a></li>
           <li><a href="/Review">공연 후기</a></li>
         </ul>
@@ -54,7 +54,7 @@ return (
   </div>
 
   <div className="Header-Facility">
-    <a href="/seeyaSeatBluesquare">주변시설</a>
+    <a href="/seeyaSeatBluesquare">맞춤 추천</a>
   </div>
   
   <div className="Header-Mypage">
