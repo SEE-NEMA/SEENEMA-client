@@ -1,0 +1,37 @@
+
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    height : 100vh;
+}
+
+.SS-Ticket-Link,
+.SS-Review-Write-Link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(104, 104, 104);
+    width: 300px;
+    height: 80px;
+    border-radius: 30px;
+    margin-top : -200px;
+}
+
+.SS-Ticket-Link {
+    margin-right : 100px;
+}
+
+.SS-Review-Write-Link {
+    margin-left: 100px;
+    font-size : 15px;
+}
+
+.SS-Review-Write-Link button {
+    border : none;
+    background-color: rgb(104, 104, 104);
+    color : white;
+    font-size : 15px;
+}
