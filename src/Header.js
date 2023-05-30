@@ -54,7 +54,7 @@ return (
   </div>
 
   <div className="Header-Facility">
-    <a href="/seeyaSeatBluesquare">맞춤 추천</a>
+    <a href="/RecommendMain">맞춤 추천</a>
   </div>
   
   <div className="Header-Mypage">

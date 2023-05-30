@@ -29,6 +29,7 @@ import ReviewPost from "./screens/Review/ReviewPost";
 import MusicalList from "./screens/SB_Components/MusicalList";
 import ConcertDetail from "./screens/SB_Components/ConcertDetail";
 import MusicalDetail from "./screens/SB_Components/MusicalDetail";
+import RecommendMain from "./screens/SB_Components/Recommend/RecommendMain"
 
 function App() {
   return (
@@ -47,7 +48,7 @@ function App() {
         <Route path={"/concertlist"} element={<ConcertList/>}/>
         <Route path={"/concerts/:no"} element={<ConcertDetail/>}/>
         <Route path={"/mypage"} element={<MyPage/>}/>
-        <Route path={"/facility"} element={<Facility/>}/>
+        <Route path={"/RecommendMain"} element={<RecommendMain/>}/>
         <Route path={"/seeyamain"} element={<SeeyaMain/>}/>
         <Route path="/view-review/:theaterId" element={<SeeyaDetail />} />
         <Route path={`/SeeyaUpload/:theaterId`} element = {<SeeyaUpload/>} />
