@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import axios from "axios";
 import Header from "../../Header";
 import modal from "modal";
@@ -245,7 +246,8 @@ const SeeyaSeatList = () => {
       
       <p className = "SeeyaSeatList-Seat">" {selectedSeat.z}층 {selectedSeat.x}열 {selectedSeat.y}번 "</p>
         <hr className = "SeeyaSeatList-hr"></hr>
-        <button className = "SeeyaSeatReview-button" onClick={handleReviewModalOpen}>리뷰 작성하기</button>
+
+        <Link to = {'http://localhost:3000/seeyaseatupload/'}className = "SeeyaSeatReview-button">글쓰기</Link>
         
         
         <input
