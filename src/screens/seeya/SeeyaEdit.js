@@ -181,10 +181,10 @@ const SeeyaEdit = () => {
 
             <div>
             <label htmlFor="title" className="SeeyaEdit-StarRating-label">
-              시야평점
+              좌석평점
             </label>
             <span className="SeeyaUpload-rating">
-              <StarRating value={parseInt(viewScore)} onChange={handleViewScoreChange} />
+              <StarRating value={parseInt(seatScore)} onChange={handleSeatScoreChange} />
             </span>
             </div>
 

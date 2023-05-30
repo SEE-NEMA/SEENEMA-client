@@ -22,11 +22,46 @@ const SeeyaSeatList = () => {
   const [seatScore, setSeatScore] = useState(0);
   const [lightScore, setLightScore] = useState(0);
   const [soundScore, setSoundScore] = useState(0);
-  const [images, setImages] = useState(null);
+  const [images, setImages] = useState([null]);
   const [page, setPage] = useState(1); // 현재 페이지 번호
   const [itemsPerPage, setItemsPerPage] = useState(5); // 페이지 당 아이템 수
   
+  const [ticketImage, setTicketImage] = useState(null);
 
+  const handleFileChange = (event) => {
+    const ticketImage = event.target.files[0];
+    setTicketImage(ticketImage);
+  };
+
+  const handleTicketUpload = async () => {
+    if (ticketImage) {
+      const formData = new FormData();
+      formData.append("ticket", ticketImage);
+  
+      try {
+        const response = await axios.post(
+          `http://localhost:8081/api/v1/seats/ticket`,
+          formData,
+          {
+            headers: {
+              'Content-Type' : 'multipart/form-data'
+            }
+          }
+        );
+        console.log(response.data);
+      } catch (error) {
+        console.log(formData);
+        console.log(error);
+      }
+    } else {
+      console.log("No ticket image selected");
+    }
+  };
+  
+
+ 
+
+    
   const renderStarScore = (score, setStars) => {
     const stars = [];
     for (let i = 1; i <= 5; i++) {
@@ -114,6 +149,7 @@ const SeeyaSeatList = () => {
       })
       .then((response) => {
         console.log(response.data);
+        console.log(formData);
         if(response.data === "SUCCESS")
         {
           axios.post(`http://43.200.58.174:8080/api/v1/seats/${theaterId}/${z}/${x}/${y}/upload`, 
@@ -210,6 +246,18 @@ const SeeyaSeatList = () => {
       <p className = "SeeyaSeatList-Seat">" {selectedSeat.z}층 {selectedSeat.x}열 {selectedSeat.y}번 "</p>
         <hr className = "SeeyaSeatList-hr"></hr>
         <button className = "SeeyaSeatReview-button" onClick={handleReviewModalOpen}>리뷰 작성하기</button>
+        
+        
+        <input
+        type="file"
+        onChange={handleFileChange}
+          />
+<button className="SeeyaSeatTicket" onClick={handleTicketUpload}>
+        티켓 인증하기
+      </button>
+      
+
+
         {seatReviews.length === 0 ? (
           <div className = "Review-None">등록된 리뷰가 없습니다. </div>
         ) : (
@@ -320,8 +368,7 @@ const SeeyaSeatList = () => {
               <input
                 className = "SS-Modal-Edit-Image"
                 type="file"
-                accept="image/*"
-                onChange={(e) => setImages(e.target.files[0])}
+                onChange={setImages}
               />
               </form>
 

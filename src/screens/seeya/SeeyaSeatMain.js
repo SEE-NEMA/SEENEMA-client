@@ -102,7 +102,8 @@ function SeeyaSeatMain() {
       <ul>
   {getItemsForCurrentPage().map((item, index) => (
     <Link
-      to={`/seeyaSeat${item.theaterId === 12 ? 'BlueSquare' : ''}/${item.theaterId}`}
+    to={`/seeyaSeat${item.theaterId === 12 ? 'BlueSquare' : item.theaterId === 30 ? 'Chungmu' : ''}/${item.theaterId}`}
+      
       className="SeeyaMain-Link"
       key={index}
     >
