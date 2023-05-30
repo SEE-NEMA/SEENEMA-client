@@ -16,33 +16,33 @@ function Login() {
       email: email,
       password: password,
     };
-
+  
     try {
       const response = await axios.post(
         "http://43.200.58.174:8080/api/v1/user/login",
         data,
         {
           headers: {
-            "X-AUTH-TOKEN" : token
-          }
+            "X-AUTH-TOKEN": token,
+            "Content-Type": "application/json",
+          },
         }
       );
-      console.log(response.data);
-
-      if(response.data === "hi") {
-      localStorage.setItem("token", token);
-      login(email, token);
-      localStorage.setItem("email", email);
-      alert(`${email}님 안녕하세요!`);
-      navigate("/");
-      }
-      else {
-        alert("가입되지 않은 아이디입니다");
+  
+      console.log(response);
+  
+      if (token != null) {
+        localStorage.setItem("token", token);
+        localStorage.setItem("email", email);
+        navigate("/");
+      } else {
+        alert(response.data);
       }
     } catch (error) {
       console.error(error);
     }
   };
+  
 
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
