@@ -3,13 +3,11 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "../styles/Login.css";
 import { AuthContext } from "../../contexts/AuthContext";
-
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const { login } = useContext(AuthContext);
-  const token = localStorage.getItem("token");
 
   const handleLogin = async () => {
     const data = {
@@ -17,34 +15,33 @@ function Login() {
       password: password,
     };
 
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
     try {
       const response = await axios.post(
         "http://43.200.58.174:8080/api/v1/user/login",
         data,
-        {
-          headers: {
-            "X-AUTH-TOKEN": token,
-            "Content-Type": "application/json",
-          },
-        }
+        config
       );
-
-      console.log(response);
-
-      if (response.data != '가입되지 않은 아이디 입니다.' && response.data != "잘못된 비밀번호 입니다.") {
-        const { token } = response.data;
-        localStorage.setItem("token", token);
-        localStorage.setItem("email", email);
-        login(email, token);
-        navigate("/");
-      } 
-      else if (response.data === '가입되지 않은 아이디 입니다.')
-      {
-        alert("로그인 실패");
+      const token = response.data;
+      if(token ==="가입되지 않은 아이디 입니다.") {
+        alert(`${token}\n아이디 오류라네요`);
+        navigate("/login");
       }
-      else if (response.data === "잘못된 비밀번호 입니다.")
-      {
-        alert("로그인 실패");
+      else if(token === "잘못된 비밀번호 입니다."){
+        alert(`${token}\n 비밀번호가 틀렸다네요`);
+        navigate("/login");
+      }
+      else{
+        localStorage.setItem("token", token);
+        login(email, token);
+        localStorage.setItem("email", email);
+        alert(`${email}님 안녕하세요!`);
+        navigate("/");  
       }
     } catch (error) {
       console.error(error);
