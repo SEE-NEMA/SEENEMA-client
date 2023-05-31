@@ -18,6 +18,7 @@ function MyPage() {
 
   const [theaterReview, setTheaterReview] = useState([]);
   const [theaterComment, setTheaterComment] = useState([]);
+  const [seatReview, setSeatReview] = useState([]);
   const [theaterCommentId, setTheaterCommentId] = useState(null);
   const [theaterCommentContent, setTheaterCommentContent] = useState("");
   const [seeyaReview, setSeeyaReview] = useState([]);
@@ -89,6 +90,22 @@ function MyPage() {
       })
       .then((response) => {
         setTheaterComment(response.data);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [token]);
+
+  useEffect(() => {
+    axios
+      .get('http://43.200.58.174:8080/api/v1/user/my-review/seat', {
+        headers: {
+          "X-AUTH-TOKEN": token
+        }
+      })
+      .then((response) => {
+        setSeatReview(response.data);
         console.log(response.data);
       })
       .catch((error) => {
@@ -197,7 +214,13 @@ function MyPage() {
         <div className="Info-wrap">
           <table>
             <p className="Mypage-Info">{userInfo ? `${userInfo.nickname} 님, 안녕하세요!` : null}</p>
-            <p className="Mypage-Info-ID">{userInfo ? `아이디 : ${userInfo.email}` : null}</p>
+            <p className="Mypage-Info-ID">
+            {userInfo ? (
+              <>
+                아이디 : {userInfo.email} <span className="Point-Class"> 포인트 : {userInfo.points}</span>
+              </>
+            ) : null}
+          </p>
           </table>
         </div>
       </div>
@@ -230,6 +253,12 @@ function MyPage() {
           onClick={() => handleTabClick("myseeyapost")}
         >
           내가 작성한 시야 후기
+        </button>
+        <button
+          className={activeTab === "myseatpost" ? "active" : ""}
+          onClick={() => handleTabClick("myseatpost")}
+        >
+          내가 작성한 좌석후기
         </button>
         <button
           className={activeTab === "mycomment" ? "active" : ""}
@@ -282,6 +311,32 @@ function MyPage() {
         {getCurrentPageItems(seeyaReview).map((review) => (
           <div key={review.post_no}>
             <Link to={`/view-review/${review.theaterId}/${review.viewNo}`}>
+              <p style={{ marginRight: "20px", color: "#000" }}>{review.title}   {review.createdAt}</p>
+            </Link>
+          </div>
+        ))}
+        {/* 페이징 컴포넌트 추가 */}
+        {getTotalPages(seeyaReview) > 1 && (
+          <div className="Pagination">
+            {Array.from({ length: getTotalPages(seeyaReview) }, (_, index) => (
+              <button
+                key={index + 1}
+                className={currentPage === index + 1 ? "active" : ""}
+                onClick={() => setCurrentPage(index + 1)}
+              >
+                {index + 1}
+              </button>
+            ))}
+          </div>
+        )}
+      </div>
+    )}
+
+      {activeTab === "myseatpost" && (
+        <div className="My-Post-Wrap">
+        {getCurrentPageItems(seatReview).map((review) => (
+          <div key={review.post_no}>
+            <Link to={`/SeeyaSeatList/${review.theaterId}/${review.z}/${review.x}/${review.y}`}>
               <p style={{ marginRight: "20px", color: "#000" }}>{review.title}   {review.createdAt}</p>
             </Link>
           </div>

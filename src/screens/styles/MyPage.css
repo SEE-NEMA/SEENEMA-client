@@ -19,6 +19,11 @@
     width: 250px;
 }
 
+.Point-Class {
+  color:rgb(71, 71, 71);
+  font-weight: bold;
+  margin-left : 10px;
+}
 
 .Mypage-Info {
     font-size : 20px;
@@ -28,7 +33,7 @@
 
 .Mypage-Info-ID {
   font-size : 13px;
-  margin-top : 30px;
+  margin-top : 20px;
   margin-left : -200px;
   color:gray;
 }
