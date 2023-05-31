@@ -1,68 +1,68 @@
 .RecommendMain {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 70vh;
-    text-align: center;
-  }
-
-.selectSteps {
-  padding-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 70vh;
+  text-align: center;
 }
 
-  .Genre-Musical {
-    width: 100px;
-    height: 50px;
-    background: transparent;
-    border: none;
-  }
+.selectSteps {
+padding-top: 30px;
+}
 
-  .Genre-Concert {
-    width: 100px;
-    height: 50px;
-    background: transparent;
-    border: none;
-  }
+.Genre-Musical {
+  width: 100px;
+  height: 50px;
+  background: transparent;
+  border: none;
+}
 
-  .Genre-Musical:hover {
-    color: rgb(241, 159, 159);
-  }
+.Genre-Concert {
+  width: 100px;
+  height: 50px;
+  background: transparent;
+  border: none;
+}
 
-  .Genre-Concert:hover {
-    color: rgb(241, 159, 159);
-  }
+.Genre-Musical:hover {
+  color: rgb(241, 159, 159);
+}
 
-  .hr-recommend {
-    margin-top : 20px;
-    margin-bottom: 20px;
-    background-color: black;
-    height: 3px;
-    border: none;
-  }
+.Genre-Concert:hover {
+  color: rgb(241, 159, 159);
+}
 
-  .recommend-select {
-    border : none;
-    width: 30%;
-  }
+.hr-recommend {
+  margin-top : 20px;
+  margin-bottom: 20px;
+  background-color: black;
+  height: 3px;
+  border: none;
+}
 
-  .input-recommend {
-    margin-left: 20px;
-    border-left: none;
-    border-right: none;
-    border-top: none;
-    outline: none;
-    width : 20vh;
-    text-align: center;
-  }
+.recommend-select {
+  border : none;
+  width: 30%;
+}
+
+.input-recommend {
+  margin-left: 20px;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  outline: none;
+  width : 20vh;
+  text-align: center;
+}
 
 .arrow-next {
- width : 30px;
- height : 30px;
- margin-top : 70px;
+width : 30px;
+height : 30px;
+margin-top : 70px;
 }
 
 .recommend-img {
-  height : 100px;
-  width: 75px;
+height : 100px;
+width: 75px;
 }

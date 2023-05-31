@@ -7,6 +7,8 @@ import axios from "axios";
 function ConcertList () {
     const {no} = useParams();
     const [musical, setMusical] = useState([]);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [musicalsPerPage] = useState(6);
 
     useEffect(() => {
         axios({
@@ -21,27 +23,61 @@ function ConcertList () {
         })
     })
 
+    const indexOfLastMusical = currentPage * musicalsPerPage;
+    const indexOfFirstMusical = indexOfLastMusical - musicalsPerPage;
+    const currentMusicals = musical.slice(indexOfFirstMusical, indexOfLastMusical);
+    const totalMusicals = musical.length;
+    const totalPages = Math.ceil(totalMusicals / musicalsPerPage);
+    const maxPagesToShow = 5;
+    const startPage = Math.max(currentPage - Math.floor(maxPagesToShow / 2), 1);
+    const endPage = Math.min(startPage + maxPagesToShow - 1, totalPages);
+    const hasPreviousPage = currentPage > 1;
+    const hasNextPage = currentPage < totalPages;
+    const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
     return (
         <div>
-        <Header/>
+            <Header/>
             <div className="musical-WrapContent">
-          
-            {musical.map((musicals) => (
+                {currentMusicals.map((musicals) => (
+                    <li key={musicals.no} >
+                        <Link to={`/concerts/${musicals.no}`}>
+                            <img src={musicals.imgUrl} alt={musicals.title} />
+                            <h4>{musicals.title}</h4>
+                            <h6>{musicals.place}</h6>
+                        </Link>
+                    </li>
+                ))}
+            </div>
 
-            <li key={musicals.no} >
-        
-            <Link to={`/concerts/${musicals.no}`}>
-            <img src={musicals.imgUrl} alt={musicals.title} />
-            <h4>{musicals.title}</h4>
-            <h6>{musicals.place}</h6>
-            </Link>
-
-            </li>
-            ))}
-           
+            <div className="pagination">
+                {hasPreviousPage && (
+                    <button
+                        className="pagination-button"
+                        onClick={() => paginate(currentPage - 1)}
+                    >
+                        {"<"}
+                    </button>
+                )}
+                {Array.from({ length: endPage - startPage + 1 }).map((_, index) => (
+                    <button
+                        key={startPage + index}
+                        className={`pagination-button ${currentPage === startPage + index ? "active" : ""}`}
+                        onClick={() => paginate(startPage + index)}
+                    >
+                        {startPage + index}
+                    </button>
+                ))}
+                {hasNextPage && (
+                    <button
+                        className="pagination-button"
+                        onClick={() => paginate(currentPage + 1)}
+                    >
+                        {">"}
+                    </button>
+                )}
             </div>
         </div>
-        
     )
 }
 

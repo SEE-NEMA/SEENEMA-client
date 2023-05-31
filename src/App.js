@@ -59,7 +59,7 @@ function App() {
         <Route path="/SeeyaSeatList/:theaterId/:z/:x/:y" element = {<SeeyaSeatList/>}/>
         <Route path={"/seeyaSeat/:theaterId"} element={<SeeyaSeat/>}/>
         <Route path={"/seeyaseatupload/:theaterId/:z/:x/:y"} element={<SeeyaSeatUpload/>}/>
-        <Route path={"/seeyaseatticket"} element={<SeeyaSeatTicket/>}/>
+        <Route path={"/seeyaseatticket/:theaterId/:z/:x/:y"} element={<SeeyaSeatTicket/>}/>
         <Route path={"/seeyaSeatBluesquare/:theaterId"} element ={<SeeyaSeatBlueSquare/>}/>
         <Route path={"/seeyaSeatChungmu/:theaterId"} element ={<SeeyaSeatChungmu/>}/>
         <Route path={"/seeyaseatmain"} element={<SeeyaSeatMain/>}/>

@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Header from "../../../Header";
 import axios from "axios";
-import { IoIosArrowDropright } from "react-icons/io";
-import "../../styles/RecommendMain.css"
-// 단계별 프로그레스 바
+import { AiOutlineConsoleSql } from "react-icons/ai";
 
 const RecommendMain = () => {
   const token = localStorage.getItem('token');
@@ -52,56 +50,55 @@ const RecommendMain = () => {
 
   const renderStep1 = () => (
     <div className="RM-Select">
-      <h5>원하는 공연의 종류를 선택해주세요.</h5>
-      <button className="Genre-Musical" onClick={() => handleGenreSelect('뮤지컬')}>뮤지컬</button>
-      <button className="Genre-Concert" onClick={() => handleGenreSelect('콘서트')}>콘서트</button>
+      <h4>원하는 공연을 선택해주세요.</h4>
+      <button onClick={() => handleGenreSelect('뮤지컬')}>뮤지컬</button>
+      <button onClick={() => handleGenreSelect('콘서트')}>콘서트</button>
     </div>
   );
 
-  const renderStep3Musical = () => {
-    if (selectedGenre !== '뮤지컬') return null;
-  
-    const handleGenreChange = (e) => {
-      setSelectedMusicalGenre(e.target.value);
-    };
-  
-    return (
-      <div className="genre-component musical">
-        <div>
-        <p>뮤지컬의 장르 또는 좋아하는 배우를 입력해보세요!</p>
-        <br/><br/>
-        <select className="recommend-select" value={selectedMusicalGenre} onChange={handleGenreChange}>
-          {genres['뮤지컬'].map((option) => (
-            <option key={option} value={option}>{option}</option>
+  const renderGenreSelect = () => (
+    <div className="genre-container">
+      <button className="back-button" onClick={() => handleStepChange(1)}>
+        뒤로 가기
+      </button>
+      <div className="genre-component">
+        <h4>장르 선택</h4>
+        <select value={selectedGenre} onChange={e => setSelectedGenre(e.target.value)}>
+          <option value="">장르 선택</option>
+          {Object.keys(genres).map(genre => (
+            <option key={genre} value={genre}>{genre}</option>
           ))}
         </select>
-        <input type="text" className="input-recommend" placeholder="좋아하는 배우" value={favoriteActor} onChange={handleActorInput} />
-        </div>
-        <IoIosArrowDropright className="arrow-next" onClick={handleRecommend}/>
+        <button onClick={handleRecommend}>다음</button>
       </div>
-    );
-  };
-  
-  const renderStep3Concert = () => {
-    if (selectedGenre !== '콘서트') return null;
-  
-    const handleGenreChange = (e) => {
-      setSelectedConcertGenre(e.target.value);
-    };
-  
-    return (
-      <div className="genre-component concert">
-        <h4>장르 : 콘서트</h4>
-        <select value={selectedConcertGenre} onChange={handleGenreChange}>
-          {genres['콘서트'].map((option) => (
-            <option key={option} value={option}>{option}</option>
-          ))}
-        </select>
-        <input type="text" placeholder="좋아하는 가수" value={favoriteSinger} onChange={handleSingerInput} />
-        <IoIosArrowDropright className="arrow-next" onClick={handleRecommend}/>
-      </div>
-    );
-  };
+    </div>
+  );
+
+  const renderStep3Musical = () => (
+    <div className="genre-component musical">
+      <h4>장르 : 뮤지컬</h4>
+      <select value={selectedGenre} onChange={e => setSelectedGenre(e.target.value)}>
+        {genres['뮤지컬'].map((option) => (
+          <option key={option} value={option}>{option}</option>
+        ))}
+      </select>
+      <input type="text" placeholder="좋아하는 배우" value={favoriteActor} onChange={handleActorInput} />
+      <button onClick={handleRecommend}>다음</button>
+    </div>
+  );
+
+  const renderStep3Concert = () => (
+    <div className="genre-component concert">
+      <h4>장르 : 콘서트</h4>
+      <select value={selectedGenre} onChange={e => setSelectedGenre(e.target.value)}>
+        {genres['콘서트'].map((option) => (
+          <option key={option} value={option}>{option}</option>
+        ))}
+      </select>
+      <input type="text" placeholder="좋아하는 가수" value={favoriteSinger} onChange={handleSingerInput} />
+      <button onClick={handleRecommend}>다음</button>
+    </div>
+  );
 
   const handleRecommend = () => {
     const data = {
@@ -200,9 +197,8 @@ const RecommendMain = () => {
       <Header userInfo={userInfo} />
       <div className="RecommendMain">
         <div className="User-NickName">
-          <h1 className = "Recommend-Title">{userInfo.nickname}님, 안녕하세요!</h1>
-          <hr className="hr-recommend"/>
-          <p className = "Recommend-NickName">{userInfo.nickname}님에게 맞춤 공연을 추천해드리겠습니다.</p>
+          <h1>{userInfo.nickname}님, 안녕하세요!</h1>
+          <p>{userInfo.nickname}님에게 맞춤 공연을 추천해드리겠습니다.</p>
         </div>
         <div className="selectSteps">
         {selectedStep === 1 && renderStep1()}
