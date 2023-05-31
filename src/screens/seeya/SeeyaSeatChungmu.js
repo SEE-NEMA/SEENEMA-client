@@ -7,7 +7,6 @@ import '../styles/SeeyaSeatChungmu.css';
 const SeeyaSeatChungmu = () => {
   const navigate = useNavigate();
   const {theaterId} = useParams();
-  const [average, setAverage] = useState({});
   const [seatColors, setSeatColors] = useState([]);
 
   useEffect(() => {
@@ -16,6 +15,7 @@ const SeeyaSeatChungmu = () => {
         const response = await axios.get('http://43.200.58.174:8080/api/v1/seats/30');
         const seatColorsData = response.data;
         setSeatColors(seatColorsData);
+        console.log(seatColors)
       } catch (error) {
         console.log('Error fetching seat colors:', error);
       }
@@ -24,9 +24,13 @@ const SeeyaSeatChungmu = () => {
     fetchSeatColors();
   }, []);
 
-  const getSeatColor = (rowIndex, seatIndex) => {
+  const getSeatColor = (z, x, y) => {
     const seatAverage = seatColors.find(
-      (seatColor) => seatColor.areaIndex === 1 && seatColor.rowIndex === rowIndex + 1 && seatColor.seatIndex === seatIndex + 1
+      (seatColor) => 
+      seatColor.z === z &&
+      seatColor.y === y &&
+      seatColor.x === x &&
+      seatColor.postedYN
     );
 
     if (seatAverage) {
@@ -114,7 +118,7 @@ const SeeyaSeatChungmu = () => {
           } else {
             seatNumber = seatIndex + 1;
           }
-          const seatColor = getSeatColor(average, rowIndex, seatNumber - 1, 1);
+          const seatColor = getSeatColor(1, rowIndex+1, seatNumber);
           return (
             <div
               className="seat"
@@ -147,7 +151,7 @@ const SeeyaSeatChungmu = () => {
                   { length: rowIndex % 2 === 0 ? 17 : 16 },
                   (_, seatIndex) => {
                     const seatNumber = seatIndex + 10;
-                    const seatColor = getSeatColor(rowIndex, seatNumber, 2);
+                    const seatColor = getSeatColor(1, rowIndex+1, seatNumber);
                     return (
                       <div
                         className="seat"
@@ -181,7 +185,8 @@ const SeeyaSeatChungmu = () => {
                       else {
                         seatNumber = seatIndex % 2 === 0 ? 26 + seatIndex : 27 + seatIndex;
                       }
-                    const seatColor = getSeatColor(average, rowIndex, seatIndex, 1);
+                      const seatColor = getSeatColor(1, rowIndex+1, seatNumber);
+
                     return (
                         <div
                         className="seat"
