@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Header from "../../../Header";
 import axios from "axios";
 import { AiOutlineConsoleSql } from "react-icons/ai";
+import "../../styles/RecommendMain.css"
 
 const RecommendMain = () => {
   const token = localStorage.getItem('token');
@@ -146,8 +147,9 @@ const RecommendMain = () => {
       <Header />
       <div className="RecommendMain">
         <div className="User-NickName">
-          <h1>{userInfo.nickname}님, 안녕하세요!</h1>
-          <p>{userInfo.nickname}님에게 맞춤 공연을 추천해드리겠습니다.</p>
+          <h1 className = "Recommend-Title">{userInfo.nickname}님, 안녕하세요!</h1>
+          <p className = "Recommend-NickName">{userInfo.nickname}님에게 맞춤 공연을 추천해드리겠습니다.</p>
+          
         </div>
         {selectedStep === 1 && renderStep1()}
         {selectedStep === 2 && (selectedGenre === '뮤지컬' ? renderStep3Musical() : renderStep3Concert())}
