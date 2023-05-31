@@ -10,12 +10,58 @@
   .Recommend-Title {
     margin-top : -250px;
     text-align: center;
+    margin-left : 10px;
   }
   
   .Recommend-NickName {
     text-align: center;
+    margin-left : 15px;
   }
 
   .RM-Select {
     margin-top : -100px;
+  }
+
+  .RM-Select-Button {
+    border:none;
+    margin-right : 10px;
+    background-color : gray;
+    color : white;
+    height : 30px;
+    width : 70px;
+    border-radius : 5px;
+  }
+
+  .RM-Select-Button:hover {
+    background-color : black;
+  }
+
+  .genre-component-musical,
+  .genre-component-concert {
+    margin-top : -100px;
+  }
+
+  .Genre-Input {
+    border:none;
+    height : 30px;
+    border : 2px solid lightgray;
+    border-radius : 5px;
+  }
+
+  .Genre-Select {
+    height : 35px;
+    margin-right : 10px;
+    border : none;
+    background-color: rgb(224, 224, 224);
+  }
+
+  .Genre-Next-Button {
+    height : 35px;
+    width : 60px;
+    margin-left : 10px;
+    border : none;
+  }
+
+  .Genre-Next-Button:hover {
+    background-color: rgb(192, 192, 192);
   }

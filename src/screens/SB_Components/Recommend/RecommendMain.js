@@ -50,8 +50,8 @@ const RecommendMain = () => {
   const renderStep1 = () => (
     <div className="RM-Select">
       <h4>원하는 공연을 선택해주세요.</h4>
-      <button onClick={() => handleGenreSelect('뮤지컬')}>뮤지컬</button>
-      <button onClick={() => handleGenreSelect('콘서트')}>콘서트</button>
+      <button className = "RM-Select-Button" onClick={() => handleGenreSelect('뮤지컬')}>뮤지컬</button>
+      <button className = "RM-Select-Button" onClick={() => handleGenreSelect('콘서트')}>콘서트</button>
     </div>
   );
 
@@ -74,20 +74,20 @@ const RecommendMain = () => {
   );
 
   const renderStep3Musical = () => (
-    <div className="genre-component musical">
-      <h4>장르 : 뮤지컬</h4>
-      <select value={selectedGenre} onChange={e => setSelectedGenre(e.target.value)}>
+    <div className="genre-component-musical">
+      <h4 className = "Genre-Musical">장르 : 뮤지컬</h4>
+      <select className = "Genre-Select" value={selectedGenre} onChange={e => setSelectedGenre(e.target.value)}>
         {genres['뮤지컬'].map((option) => (
           <option key={option} value={option}>{option}</option>
         ))}
       </select>
-      <input type="text" placeholder="좋아하는 배우" value={favoriteActor} onChange={handleActorInput} />
-      <button onClick={handleRecommend}>다음</button>
+      <input className = "Genre-Input" type="text" placeholder="좋아하는 배우" value={favoriteActor} onChange={handleActorInput} />
+      <button className = "Genre-Next-Button" onClick={handleRecommend}>다음</button>
     </div>
   );
 
   const renderStep3Concert = () => (
-    <div className="genre-component concert">
+    <div className="genre-component-concert">
       <h4>장르 : 콘서트</h4>
       <select value={selectedGenre} onChange={e => setSelectedGenre(e.target.value)}>
         {genres['콘서트'].map((option) => (
