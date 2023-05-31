@@ -116,13 +116,14 @@ const SeeyaSeatUpload = () => {
 
             <div className="center">
                 <div className="SS-Ticket-Link">
-                    <Link to={"http://localhost:3000/seeyaseatticket"}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;티켓 인증하기 <br/> (인증 시 포인트 지급)</Link>
+                    <Link to={`/seeyaseatticket/${theaterId}/${z}/${x}/${y}`}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;티켓 인증하기 <br/> (인증 시 포인트 지급)</Link>
                 </div>
                 <div className="SS-Review-Write-Link">
                     <button onClick={handleReviewModalOpen}>리뷰 작성하기</button>
                 </div>
+
                 {isReviewModalOpen && (
-          <div className="SeeyaSeat-modal">
+            <div className="SeeyaSeat-modal">
             <div className="SeeyaSeat-modal-content">
               <h3 className = "SS-Modal-Edit-Title">리뷰 작성</h3>
 

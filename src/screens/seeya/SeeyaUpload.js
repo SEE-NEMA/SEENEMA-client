@@ -5,23 +5,10 @@ import '../styles/SeeyaUpload.css';
 import { useNavigate, useParams} from 'react-router-dom';
 import { FaStar } from "react-icons/fa";
 
-const StarRating = ({ value, onChange }) => {
-  const stars = [1, 2, 3, 4, 5];
 
-  return (
-    <div className="star-rating">
-      {stars.map((star) => (
-        <FaStar
-          key={star}
-          className={star <= value ? "star-icon active" : "star-icon"}
-          onClick={() => onChange(star)}
-        />
-      ))}
-    </div>
-  );
-};
 
 function SeeyaUpload() {
+
 
     const [play, setPlay] = useState("");
     const [seat, setSeat] = useState("");
@@ -32,7 +19,23 @@ function SeeyaUpload() {
     const [viewScore, setViewScore] = useState("");
     const [seatScore, setSeatScore] = useState("");
     const [lightScore, setLightScore] = useState("");
-    const [soundScore, setSoundScore] = useState("");    
+    const [soundScore, setSoundScore] = useState("");   
+    
+    const StarRating = ({ value, onChange }) => {
+      const stars = [1, 2, 3, 4, 5];
+    
+      return (
+        <div className="star-rating">
+          {stars.map((star) => (
+            <FaStar
+              key={star}
+              className={star <= value ? "star-icon active" : "star-icon"}
+              onClick={() => onChange(star)}
+            />
+          ))}
+        </div>
+      );
+    };
 
     const handleViewScoreChange = (value) => {
       setViewScore(value.toString());
