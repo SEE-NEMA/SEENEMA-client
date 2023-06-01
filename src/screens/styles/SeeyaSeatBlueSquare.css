@@ -340,3 +340,14 @@
   .area-right-3 .row-6 { 
     display:flex;
   }
+
+  .seeyaseat-reward-alert {
+    position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 20px;
+  }

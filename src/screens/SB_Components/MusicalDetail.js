@@ -34,7 +34,7 @@ function MusicalDetail () {
     }, [no]);
 
     return (
-        <div>
+        <div className="Musical-Detail">
         <Header/>
             <img className="Musical-Image" src={imgUrl} alt="Musical Image"/>
           

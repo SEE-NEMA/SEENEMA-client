@@ -5,9 +5,12 @@ import Header from '../../Header';
 import '../styles/SeeyaSeatChungmu.css';
 
 const SeeyaSeatChungmu = () => {
+  const token = localStorage.getItem('token');
   const navigate = useNavigate();
   const {theaterId} = useParams();
   const [seatColors, setSeatColors] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalData, setModalData] = useState({z:null, x:null, y:null})
 
   useEffect(() => {
     const fetchSeatColors = async () => {
@@ -62,13 +65,40 @@ const SeeyaSeatChungmu = () => {
     const handleSeatClick = async (z, x, y) => {
       try {
         const response = await axios.get(
-          `http://43.200.58.174:8080/api/v1/seats/${theaterId}/${z}/${x}/${y}`
+          `http://43.200.58.174:8080/api/v1/seats/${theaterId}/${z}/${x}/${y}`, {
+            headers : {
+              "X-AUTH-TOKEN" : token
+            }
+          }
         );
         console.log(z + '층' + x + '열' + y + '번');
-        navigate(`/SeeyaSeatList/${theaterId}/${z}/${x}/${y}`);
+        setModalData({z, x, y});
+        setIsModalOpen(true);
+        if(response.data === "not_enough_token") {
+          alert("남은 포인트 부족");
+          return '';
+        }
+        //navigate(`/SeeyaSeatList/${theaterId}/${z}/${x}/${y}`);
       } catch (error) {
         console.error(error);
       }
+    };
+
+    const handleYesButtonClick = () => {
+      const {z, x, y} = modalData
+      try {
+        const response = axios.get (
+          `http://43.200.58.174:8080/api/v1/seats/${theaterId}/${z}/${x}/${y}`
+        );
+        navigate(`/SeeyaSeatList/${theaterId}/${z}/${x}/${y}`);
+      }
+      catch (error) {
+        console.error(error);
+      }
+    };
+  
+    const handleNoButtonClick = () => {
+      setIsModalOpen(false);
     };
 
     return (
@@ -127,7 +157,7 @@ const SeeyaSeatChungmu = () => {
                               backgroundColor: seatColor,
                             }}
                             onClick={() => handleSeatClick(1, rowIndex + 1, seatNumber)}
-                          ></div>
+                          >{seatNumber}</div>
                         );
                       }
                     )}
@@ -156,7 +186,7 @@ const SeeyaSeatChungmu = () => {
                         onClick={() =>
                           handleSeatClick(1, rowIndex + 1, seatNumber)
                         }
-                      ></div>
+                      >{seatNumber}</div>
                     );
                   }
                 )}
@@ -167,33 +197,30 @@ const SeeyaSeatChungmu = () => {
                 {/* 1층 C구역 */}
 
                 <div className="C-Area-Right-1">
-                <p className="C-Area-Right-Tag">[C]</p>
-                {Array.from({ length: 20 }, (_, rowIndex) => (
-                <div className={`row-${rowIndex + 1}`} key={rowIndex}>
-                    {Array.from({ length: rowIndex < 3 ? 7 : rowIndex === 3 ? 8 : 9 }, (_, seatIndex) => {
-                      let seatNumber;
-                      if (rowIndex % 2 === 0) {
-                        seatNumber = seatIndex % 2 === 0 ? 27 + seatIndex : 26 + seatIndex;
-                      }
-                      else {
-                        seatNumber = seatIndex % 2 === 0 ? 26 + seatIndex : 27 + seatIndex;
-                      }
-                      const seatColor = getSeatColor(1, rowIndex+1, seatNumber);
+  <p className="C-Area-Right-Tag">[C]</p>
+  {Array.from({ length: 20 }, (_, rowIndex) => (
+    <div className={`row-${rowIndex + 1}`} key={rowIndex}>
+      {Array.from({ length: rowIndex < 3 ? 7 : rowIndex === 3 ? 8 : 9 }, (_, seatIndex) => {
+        const seatNumber = rowIndex % 2 === 0 ? seatIndex + 27 : seatIndex + 26;
+        const seatColor = getSeatColor(1, rowIndex + 1, seatNumber);
 
-                    return (
-                        <div
-                        className="seat"
-                        key={seatIndex}
-                        style={{
-                            backgroundColor: seatColor,
-                        }}
-                        onClick={() => handleSeatClick(1, rowIndex + 1, seatNumber)}
-                        ></div>
-                    );
-                    })}
-                </div>
-                ))}
+        return (
+          <div
+            className="seat"
+            key={seatIndex}
+            style={{
+              backgroundColor: seatColor,
+            }}
+            onClick={() => handleSeatClick(1, rowIndex + 1, seatNumber)}
+          >
+            {seatNumber}
           </div>
+        );
+      })}
+    </div>
+  ))}
+</div>
+
             </div>
          )}
 
@@ -225,7 +252,7 @@ const SeeyaSeatChungmu = () => {
                               backgroundColor: seatColor,
                           }}
                             onClick={() => handleSeatClick(2, rowIndex + 1, seatNumber)}
-                          ></div>
+                          >{seatNumber}</div>
                         );
                       }
                     )}
@@ -255,7 +282,7 @@ const SeeyaSeatChungmu = () => {
                         onClick={() =>
                           handleSeatClick(2, rowIndex + 1, seatNumber)
                         }
-                      ></div>
+                      >{seatNumber}</div>
                     );
                   }
                 )}
@@ -279,7 +306,7 @@ const SeeyaSeatChungmu = () => {
                         onClick={() =>
                           handleSeatClick(2, rowIndex + 9, seatNumber)
                         }
-                      ></div>
+                      >{seatNumber}</div>
                     );
                   }
                 )}
@@ -303,7 +330,7 @@ const SeeyaSeatChungmu = () => {
                         onClick={() =>
                           handleSeatClick(2, rowIndex + 11, seatNumber)
                         }
-                      ></div>
+                      >{seatNumber}</div>
                     );
                   }
                 )}
@@ -312,35 +339,32 @@ const SeeyaSeatChungmu = () => {
           </div>
                 {/* 2층 C구역 */}
 
-
                 <div className="C-Area-Right-2">
-                <p className="C-Area-Right-Tag">[C]</p>
-                {Array.from({ length: 6 }, (_, rowIndex) => (
-                <div className={`row-${rowIndex + 1}`} key={rowIndex}>
-                    {Array.from({ length: 9}, (_, seatIndex) => {
-                      let seatNumber;
-                      if (rowIndex % 2 === 0) { // 짝수줄
-                        seatNumber = seatIndex % 2 === 0 ? 27 + seatIndex : 26 + seatIndex;
-                      }
-                      else { // 홀수줄
-                        seatNumber = seatIndex % 2 === 0 ? 26 + seatIndex : 27 + seatIndex;
-                      }
-                      const seatColor = getSeatColor(2, rowIndex+1, seatNumber+26);
+  <p className="C-Area-Right-Tag">[C]</p>
+  {Array.from({ length: 6 }, (_, rowIndex) => (
+    <div className={`row-${rowIndex + 1}`} key={rowIndex}>
+      {Array.from({ length: 9 }, (_, seatIndex) => {
+        const seatNumber = rowIndex % 2 === 0 ? seatIndex + 27 : seatIndex + 26;
+        const seatColor = getSeatColor(2, rowIndex + 1, seatNumber + 26);
 
-                    return (
-                        <div
-                        className="seat"
-                        key={seatIndex}
-                        style={{
-                            backgroundColor: seatColor,
-                        }}
-                        onClick={() => handleSeatClick(2, rowIndex + 1, seatNumber)}
-                        ></div>
-                    );
-                    })}
-                </div>
-                ))}
-            </div>
+        return (
+          <div
+            className="seat"
+            key={seatIndex}
+            style={{
+              backgroundColor: seatColor,
+            }}
+            onClick={() => handleSeatClick(2, rowIndex + 1, seatNumber)}
+          >
+            {seatNumber}
+          </div>
+        );
+      })}
+    </div>
+  ))}
+</div>
+
+
             </div>
          )}
 
@@ -365,7 +389,7 @@ const SeeyaSeatChungmu = () => {
                             backgroundColor: seatColor,
                         }}
                         onClick={() => handleSeatClick(3, rowIndex + 1, seatNumber)}
-                        ></div>
+                        >{seatNumber}</div>
                     );
                     })}
                 </div>
@@ -392,7 +416,7 @@ const SeeyaSeatChungmu = () => {
                         onClick={() =>
                           handleSeatClick(3, rowIndex + 1, seatNumber)
                         }
-                      ></div>
+                      >{seatNumber}</div>
                     );
                   }
                 )}
@@ -403,40 +427,49 @@ const SeeyaSeatChungmu = () => {
                 {/* 3층 C구역 */}
 
                 <div className="C-Area-Right-3">
-                <p className="C-Area-Right-Tag">[C]</p>
-                {Array.from({ length: 8 }, (_, rowIndex) => (
-                <div className={`row-${rowIndex + 1}`} key={rowIndex}>
-                    {Array.from({ length: 9}, (_, seatIndex) => {
-                      let seatNumber;
-                      if (rowIndex % 2 === 0) {
-                        seatNumber = seatIndex % 2 === 0 ? 27 + seatIndex : 26 + seatIndex;
-                      }
-                      else {
-                        seatNumber = seatIndex % 2 === 0 ? 26 + seatIndex : 27 + seatIndex;
-                      }
-                      const seatColor = getSeatColor(3, rowIndex+1, seatNumber);
+  <p className="C-Area-Right-Tag">[C]</p>
+  {Array.from({ length: 8 }, (_, rowIndex) => (
+    <div className={`row-${rowIndex + 1}`} key={rowIndex}>
+      {Array.from({ length: 9 }, (_, seatIndex) => {
+        let seatNumber;
+        if (rowIndex % 2 === 0) {
+          seatNumber = seatIndex + 27;
+        } else {
+          seatNumber = seatIndex + 26;
+        }
+        const seatColor = getSeatColor(3, rowIndex + 1, seatNumber);
 
-                    return (
-                        <div
-                        className="seat"
-                        key={seatIndex}
-                        style={{
-                            backgroundColor: seatColor,
-                        }}
-                        onClick={() => handleSeatClick(3, rowIndex + 1, seatNumber)}
-                        ></div>
-                    );
-                    })}
-                </div>
-                ))}
-            </div>
+        return (
+          <div
+            className="seat"
+            key={seatIndex}
+            style={{
+              backgroundColor: seatColor,
+            }}
+            onClick={() => handleSeatClick(3, rowIndex + 1, seatNumber)}
+          >
+            {seatNumber}
+          </div>
+        );
+      })}
+    </div>
+  ))}
+</div>
+
 
 
 
             </div>
          )}
 
-
+        {isModalOpen && (
+          <div className='seeyaseat-reward-alert'>
+            좌석 리뷰를 보기 위해 리워드가 차감됩니다.
+            <button onClick={handleYesButtonClick}>네
+            </button>
+            <button onClick={handleNoButtonClick}>아니오</button>
+          </div>
+        )}
 
         </div>
     )

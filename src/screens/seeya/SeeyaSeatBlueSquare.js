@@ -5,9 +5,12 @@ import Header from '../../Header';
 import '../styles/SeeyaSeatBlueSquare.css';
 
 const SeeyaSeatBlueSquare = () => {
+  const token = localStorage.getItem('token');
   const navigate = useNavigate();
   const { theaterId } = useParams();
   const [average, setAverage] = useState({});
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalData, setModalData] = useState({z:null, x:null, y:null})
 
   useEffect(() => {
     const fetchData = async () => {
@@ -55,14 +58,49 @@ const SeeyaSeatBlueSquare = () => {
 
   const handleSeatClick = async (z, x, y) => {
     try {
+      if(token === null) {
+        alert("로그인 한 사용자만 상세 리뷰를 열람할 수 있습니다");
+        navigate('/login');
+        return '';
+      }
+      else {
+        
       const response = await axios.get(
-        `http://43.200.58.174:8080/api/v1/seats/${theaterId}/${z}/${x}/${y}`
+        `http://43.200.58.174:8080/api/v1/seats/${theaterId}/${z}/${x}/${y}`, {
+          headers : {
+            "X-AUTH-TOKEN" : token
+          }
+        }
       );
       console.log(z + '층' + x + '열' + y + '번');
-      navigate(`/SeeyaSeatList/${theaterId}/${z}/${x}/${y}`);
+      setModalData({z, x, y});
+      setIsModalOpen(true);
+      if(response.data === "not_enough_token") {
+        alert("남은 포인트 부족");
+        return '';
+      }
+      //navigate(`/SeeyaSeatList/${theaterId}/${z}/${x}/${y}`);
+      }
     } catch (error) {
       console.error(error);
     }
+  };
+
+  const handleYesButtonClick = () => {
+    const {z, x, y} = modalData
+    try {
+      const response = axios.get (
+        `http://43.200.58.174:8080/api/v1/seats/${theaterId}/${z}/${x}/${y}`
+      );
+      navigate(`/SeeyaSeatList/${theaterId}/${z}/${x}/${y}`);
+    }
+    catch (error) {
+      console.error(error);
+    }
+  };
+
+  const handleNoButtonClick = () => {
+    setIsModalOpen(false);
   };
 
   return (
@@ -86,7 +124,7 @@ const SeeyaSeatBlueSquare = () => {
                     backgroundColor: seatColor,
                   }}
                   onClick={() => handleSeatClick(1, rowIndex + 1, seatIndex+8)}
-                ></div>
+                >{seatIndex}</div>
               );
             })}
           </div>
@@ -94,6 +132,7 @@ const SeeyaSeatBlueSquare = () => {
         {Array.from({ length: 15 }, (_, rowIndex) => (
           <div className={`row-${rowIndex + 8}`} key={rowIndex}>
             {Array.from({ length: 15 }, (_, seatIndex) => {
+              let seatNumber = seatIndex+7;
               const seatColor = getSeatColor(average, rowIndex+8, seatIndex, 1);
               return (
                 <div
@@ -103,7 +142,7 @@ const SeeyaSeatBlueSquare = () => {
                     backgroundColor: seatColor,
                   }}
                   onClick={() => handleSeatClick(1, rowIndex + 8, seatIndex + 1)}
-                ></div>
+                >{seatNumber}</div>
               );
             })}
           </div>
@@ -118,8 +157,8 @@ const SeeyaSeatBlueSquare = () => {
       {Array.from(
         { length: rowIndex % 2 === 0 ? 16 : 17 },
         (_, seatIndex) => {
-          const seatNumber = seatIndex + 16 + rowIndex * 1;
-          const seatColor = getSeatColor(average, rowIndex, seatIndex + 8, 1);
+          const seatNumber = seatIndex + 17
+          const seatColor = getSeatColor(average, rowIndex, seatIndex + 17, 1);
           return (
             <div
               className="seat"
@@ -128,7 +167,7 @@ const SeeyaSeatBlueSquare = () => {
                 backgroundColor: seatColor,
               }}
               onClick={() => handleSeatClick(1, rowIndex + 1, seatNumber)}
-            ></div>
+            >{seatNumber}</div>
           );
         }
       )}
@@ -149,7 +188,7 @@ const SeeyaSeatBlueSquare = () => {
               backgroundColor: seatColor,
             }}
             onClick={() => handleSeatClick(1, rowIndex + 8, seatIndex+16)}
-          ></div>
+          >{seatIndex}</div>
         );
       }
     )}
@@ -176,7 +215,7 @@ const SeeyaSeatBlueSquare = () => {
             backgroundColor: seatColor,
           }}
           onClick={() => handleSeatClick(1, rowIndex + 1, seatNumber)}
-        ></div>
+        >{seatNumber}</div>
       );
     })}
   </div>
@@ -197,11 +236,20 @@ const SeeyaSeatBlueSquare = () => {
                     backgroundColor: seatColor,
                   }}
                   onClick={() => handleSeatClick(1, rowIndex + 8, seatNumber)}
-                ></div>
+                >{seatNumber}</div>
               );
             })}
           </div>
         ))}
+
+        {isModalOpen && (
+          <div className='seeyaseat-reward-alert'>
+            좌석 리뷰를 보기 위해 리워드가 차감됩니다.
+            <button onClick={handleYesButtonClick}>네
+            </button>
+            <button onClick={handleNoButtonClick}>아니오</button>
+          </div>
+        )}
       </div>
     </div>
   );

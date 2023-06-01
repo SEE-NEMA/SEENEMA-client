@@ -138,7 +138,8 @@ const RecommendMain = () => {
           setRecommendations(recommendations);
           setNo(recommendations.no);
           setSelectedStep(3);
-          console.log(recommendations.no);
+          console.log(recommendedConcerts.no);
+          console.log(recommendedMusicals.no);
         } else {
           console.error("Invalid recommendations data:", response.data);
         }

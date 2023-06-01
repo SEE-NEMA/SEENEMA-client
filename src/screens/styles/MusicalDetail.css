@@ -2,17 +2,21 @@
 
 .Musical-Image {
     background-color: rgb(255, 255, 255);
-    height : 300px;
-    width : 400px;
+    height : 400px;
+    width : 320px;
     border : none;
     border-radius : 20px;
-    margin-top : 150px;
-    margin-left : 180px;
+    margin-top : 80px;
+    margin-left : 300px;
+}
+
+.Musical-Detail {
+    margin-top : 100px;
 }
 
 .Musical-Detail-Info {
-    margin-left : 650px;
-    margin-top : -300px;
+    margin-left : 700px;
+    margin-top : -370px;
 }
 
 .Musical-T {
