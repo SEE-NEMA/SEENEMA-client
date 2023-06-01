@@ -53,10 +53,15 @@ const SeeyaSeatList = () => {
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        `http://43.200.58.174:8080/api/v1/seats/${theaterId}/${z}/${x}/${y}`
+        `http://43.200.58.174:8080/api/v1/seats/${theaterId}/${z}/${x}/${y}`, {
+          headers : {
+            'X-AUTH-TOKEN' : token
+          }
+        }
       );
       setSelectedSeat({ z: parseInt(z), x: parseInt(x), y: parseInt(y) });
       setSeatReviews(response.data.postingList); // Update the state with the postingList array
+      console.log(seatReviews);
       console.log(z + "층" + x + "열" + y + "번");
     } catch (error) {
       console.error(error);
@@ -71,10 +76,15 @@ const SeeyaSeatList = () => {
     // 해당 리스트 클릭하면 모달창에 해당 리뷰 띄우기
     try {
       const response = await axios.get(
-        `http://43.200.58.174:8080/api/v1/seats/${theaterId}/${z}/${x}/${y}/${review.viewNo}`
+        `http://43.200.58.174:8080/api/v1/seats/${theaterId}/${z}/${x}/${y}/${review.viewNo}`, {
+          headers : {
+            'X-AUTH-TOKEN' : token
+          }
+        }
       );
       setModalData(response.data);
       setIsModalOpen(true);
+      console.log(response.data);
     } catch (error) {
       console.error(error);
     }

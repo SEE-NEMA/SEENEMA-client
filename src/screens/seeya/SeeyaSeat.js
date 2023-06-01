@@ -7,6 +7,7 @@ import '../styles/SeeyaSeat.css';
 
 const SeeyaSeat = () => {
   const navigate = useNavigate();
+  const token = localStorage.getItem('token');
   const { theaterId, x, y, z } = useParams();
   const [modalData, setModalData] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -59,17 +60,33 @@ const SeeyaSeat = () => {
 
   const handleSeatClick = async (x, y, z) => {
     try {
-      const response = await axios.get(
-        `http://43.200.58.174:8080/api/v1/seats/${theaterId}/${z}/${x}/${y}`
-      );
-      setModalData(response.data);
-      setSelectedSeat({ z, x, y });
-      console.log(z + '층' + x + '열' + y + '번');
-      navigate(`/SeeyaSeatList/${theaterId}/${z}/${x}/${y}`);
-    } catch (error) {
-      console.error(error);
-      alert(z + '층' + x + '열' + y + '번 좌석에 리뷰가 등록되어 있지 않습니다');
-    }
+      if(token === null) {
+        alert("로그인하셈");
+        navigate('/login');
+        return '';
+      }
+      else {
+        const response = await axios.get(
+          `http://43.200.58.174:8080/api/v1/seats/${theaterId}/${z}/${x}/${y}`, {
+            headers : {
+              "X-AUTH-TOKEN" : token
+            }
+          }
+        );
+        setModalData(response.data);
+        if(response.data === "not_enough_token") {
+          alert("남은 포인트 부족");
+          return '';
+        }
+        setSelectedSeat({ z, x, y });
+        console.log(z + '층' + x + '열' + y + '번');
+        navigate(`/SeeyaSeatList/${theaterId}/${z}/${x}/${y}`);
+      } 
+      }
+      catch (error) {
+        console.error(error);
+        alert(z + '층' + x + '열' + y + '번 좌석에 리뷰가 등록되어 있지 않습니다');
+      }
   };
 
   return (

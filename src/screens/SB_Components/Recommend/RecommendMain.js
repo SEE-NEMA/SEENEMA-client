@@ -15,6 +15,7 @@ const RecommendMain = () => {
   const [favoriteActor, setFavoriteActor] = useState("");
   const [favoriteSinger, setFavoriteSinger] = useState("");
   const [recommendations, setRecommendations] = useState([]);
+  const [no, setNo] = useState();
 
   useEffect(() => {
     axios
@@ -130,11 +131,14 @@ const RecommendMain = () => {
         }
       })
       .then((response) => {
+        console.log(response);
         const { recommendedConcerts, recommendedMusicals } = response.data;
         if (Array.isArray(recommendedConcerts) && Array.isArray(recommendedMusicals)) {
           const recommendations = [...recommendedConcerts, ...recommendedMusicals];
           setRecommendations(recommendations);
+          setNo(recommendations.no);
           setSelectedStep(3);
+          console.log(recommendations.no);
         } else {
           console.error("Invalid recommendations data:", response.data);
         }
@@ -183,7 +187,7 @@ const RecommendMain = () => {
                   )}
                   </>
                 ) : (
-                  <span style={{ marginRight: "20px", color: "#000" }}>해당 취향에 부합한 공연이 없습니다.</span>
+                  <span style={{ marginRight: "20px", color: "#000" }}>현재 {recommendation.cast}님이 출연하는 공연이 없습니다.</span>
                 )}
               </li>
             ))}

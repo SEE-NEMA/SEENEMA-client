@@ -56,7 +56,7 @@ function Login() {
 
   return (
     <div>
-      <h4 className="Login-Title">seeNEMA에 다시 오신걸 환영해요!</h4>
+      <h4 className="Login-Title">SEE-NEMA에 다시 오신걸 환영해요!</h4>
 
       <div className="Login-page">
         <div className="Login-contentWrap">
