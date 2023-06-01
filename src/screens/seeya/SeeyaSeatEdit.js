@@ -4,16 +4,18 @@ import axios from "axios";
 import Header from '../../Header';
 import '../styles/SeeyaSeatEdit.css';
 import { FaStar } from "react-icons/fa";
+import { useLocation } from 'react-router-dom';
 
 const SeeyaSeatEdit = () => {
-  const [play, setPlay] = useState("");
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
-  const [viewScore, setViewScore] = useState(0);
-  const [seatScore, setSeatScore] = useState(0);
-  const [lightScore, setLightScore] = useState(0);
-  const [soundScore, setSoundScore] = useState(0);
-  const [images, setImages] = useState(null);
+const location = useLocation();
+const [content, setContent] = useState(location.state?.content || "");
+const [play, setPlay] = useState(location.state?.play || "");
+const [title, setTitle] = useState(location.state?.title || "");
+const [viewScore, setViewScore] = useState(location.state?.viewScore || 0);
+const [seatScore, setSeatScore] = useState(location.state?.seatScore || 0);
+const [lightScore, setLightScore] = useState(location.state?.lightScore || 0);
+const [soundScore, setSoundScore] = useState(location.state?.soundScore || 0);
+const [images, setImages] = useState(location.state?.images || null);
   const token = localStorage.getItem("token");
   const { theaterId, x, y, z, viewNo } = useParams();
   const navigate = useNavigate();

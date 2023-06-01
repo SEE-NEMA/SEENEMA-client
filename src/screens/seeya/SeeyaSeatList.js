@@ -106,18 +106,28 @@ const SeeyaSeatList = () => {
  
   const handleEdit = async (modalData) => {
     axios.post(`http://43.200.58.174:8080/api/v1/seats/${theaterId}/${z}/${x}/${y}/${modalData.viewNo}/auth`, {}, 
-    {headers: {'X-AUTH-TOKEN': token}})
+      {headers: {'X-AUTH-TOKEN': token}})
       .then((response) => {
         if (response.data === "SUCCESS") {
-          navigate(`/seeyaseatedit/${theaterId}/${z}/${x}/${y}/${modalData.viewNo}`);
-        } 
-        else {
+          navigate(`/seeyaseatedit/${theaterId}/${z}/${x}/${y}/${modalData.viewNo}`, {
+            state: {
+              content: modalData.content,
+              play: modalData.play,
+              title: modalData.title,
+              viewScore: modalData.viewScore,
+              seatScore: modalData.seatScore,
+              lightScore: modalData.lightScore,
+              soundScore: modalData.soundScore,
+              images,
+            },
+          });
+        } else {
           console.log(response.data);
           alert("본인이 작성한 게시물만 수정할 수 있습니다");
         }
-      }
-      )
-  }
+      });
+  };
+  
 
   const handleDelete = async (modalData) => {
    
