@@ -1,6 +1,6 @@
 .RVDT-Wrap {
     position: absolute;
-    left : 57%;
+    left : 52%;
     transform: translateX(-50%);
     top : 160px;
     width: 800px;
@@ -8,7 +8,8 @@
 
 .RVDT-Modify-Wrap {
     margin-left : 500px;
-    margin-top : -50px;
+    margin-top : -70px;
+    margin-bottom : 30px;
 }
 
 .RVDT-Modify {
@@ -47,7 +48,7 @@
 
 .RVDT-hr {
     height:1px;
-    width:750px;
+    width:900px;
     margin-left:-50px;
     margin-top:60px;
 }
@@ -65,7 +66,7 @@
 }
 
 .RVDT-Comment {
-    margin-left:-60px;
+    margin-left:-40px;
     color:rgb(0, 0, 0);
     font-size:15px;
     width:600px;
@@ -92,7 +93,7 @@
 
 .RVDT-comments {
     margin-top:40px;
-   margin-left:-20px;
+   margin-left:50px;
 }
 
 .RVDT-input {
