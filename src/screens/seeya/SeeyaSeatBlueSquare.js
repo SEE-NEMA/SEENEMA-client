@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Header from '../../Header';
 import '../styles/SeeyaSeatBlueSquare.css';
+import { IoIosArrowBack } from 'react-icons/io'
 
 const SeeyaSeatBlueSquare = () => {
   const token = localStorage.getItem('token');
@@ -11,6 +12,10 @@ const SeeyaSeatBlueSquare = () => {
   const [average, setAverage] = useState({});
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalData, setModalData] = useState({z:null, x:null, y:null})
+  
+  const handleGoBack = () => {
+    navigate(`/seeyaseatmain`);
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -107,7 +112,9 @@ const SeeyaSeatBlueSquare = () => {
     <div>
       <Header />
 
-      <p className="SeeyaSeatBlueSquare-title">1층</p>
+      <button className="back-button2" onClick={handleGoBack}>
+        <IoIosArrowBack size="30"/> 
+      </button> <p className="SeeyaSeatBlueSquare-title">1층</p>
 
       {/* [A] 구역 */}
       <div className="area-left">

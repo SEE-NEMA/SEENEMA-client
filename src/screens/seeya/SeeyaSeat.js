@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Header from '../../Header';
 import '../styles/SeeyaSeat.css';
-
+import { IoIosArrowBack } from 'react-icons/io'
 
 const SeeyaSeat = () => {
   const navigate = useNavigate();
@@ -13,6 +13,11 @@ const SeeyaSeat = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedSeat, setSelectedSeat] = useState({ z: 0, x: 0, y: 0 });
   const [average, setAverage] = useState({});
+
+  const handleGoBack = () => {
+    navigate(`/seeyaseatmain`);
+  };
+  
 
   useEffect(() => {
     const fetchData = async () => {
@@ -92,9 +97,11 @@ const SeeyaSeat = () => {
   return (
     <div>
       <Header />
-
+      
       {/* 스테이지 */}
-      <div className="Stage">Stage</div>
+      <button className="back-button2" onClick={handleGoBack}>
+        <IoIosArrowBack size="30"/> 
+      </button> <div className="Stage">Stage</div>
 
       {/* [1층] */}
       <div className="Floor-1">
