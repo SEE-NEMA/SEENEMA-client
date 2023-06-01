@@ -178,7 +178,7 @@ const SeeyaSeatList = () => {
     )}
 
       {seatReviews.length > itemsPerPage && (
-        <div  style={{ display: "flex", justifyContent: "center", marginTop: "10px" }}>
+        <div style={{ display: "flex", justifyContent: "center", marginTop: "10px" }}>
           {Array.from({ length: Math.ceil(seatReviews.length / itemsPerPage) }, (_, index) => (
             <button className = "SeeyaSeatList-Page-Button" key={index} onClick={() => changePage(index + 1)}>
               {index + 1}

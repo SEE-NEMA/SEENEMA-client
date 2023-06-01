@@ -44,7 +44,7 @@
 }
 
 .SeeyaSeatTicket-Modify {
-    margin-left : 180px;
+    margin-left : 130px;
     margin-top : 80px;
     margin-right : 20px;
     border : none;
@@ -53,6 +53,19 @@
     height : 25px;
     border-radius : 5px;
 }
+
+.SeeyaSeatTicket-Review {  
+    border : none;
+    background-color: gray;
+    color:white;
+    height : 25px;
+    border-radius : 5px;
+}
+
+.SeeyaSeatTicket-Review:hover {
+    background-color : black;
+}
+
 
 .Ticket-Label {
     margin-left : 10px;
