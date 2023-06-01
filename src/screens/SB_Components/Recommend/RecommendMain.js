@@ -158,32 +158,30 @@ const RecommendMain = () => {
                 {recommendation ? (
                   <>
                     {index === 0 ? (
-                      <span>해당 가수/배우에 대한 예정된 공연:</span>
+                      <span className = "recommend-result-Span">해당 가수/배우에 대한 예정된 공연 : </span>
                     ) : (
-                      <span>추천 공연:</span>
+                      <span className = "recommend-result-Span">추천 공연:</span>
                     )}
                     {recommendation.title && (
-                      <span style={{ marginRight: "20px", color: "#000" }}>
+                      <span className = "recommend-result-Title" style={{ marginRight: "20px", color: "#000" }}>
                         {recommendation.title}
                       </span>
                     )}
-                    {recommendation.cast && (
-                      <span style={{ marginRight: "20px", color: "#000" }}>
-                        {recommendation.cast}
-                      </span>
-                    )}
+              
+                    <form>
                     {recommendation.genre && (
-                      <span style={{ marginRight: "20px", color: "#000" }}>
-                        {recommendation.genre}
+                      <span className = "recommend-result-Genre" style={{ marginRight: "20px" }}>
+                        장르 : {recommendation.genre}
                       </span>
                     )}
                     {recommendation.date && (
-                      <span style={{ marginRight: "20px", color: "#000" }}>
+                      <span className = "recommend-result-Data" style={{ marginRight: "20px" }}>
                         {recommendation.date}
                       </span>
                     )}
+                    </form>
                     {recommendation.imgUrl && (
-                    <img src={recommendation.imgUrl} style={{width : "225px", height : "300px"}} alt={recommendation.title} />
+                    <img className="recommend-result-Image" src={recommendation.imgUrl} style={{width : "225px", height : "300px"}} alt={recommendation.title} />
                   )}
                   </>
                 ) : (
