@@ -3,11 +3,17 @@ import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Header from '../../Header';
 import '../styles/SeeyaSeatMasterCard.css';
+import { IoIosArrowBack } from 'react-icons/io'
+
 
 const SeeyaSeatMasterCard = () => {
     const navigate = useNavigate();
     const {theaterId} = useParams();
     const [seatColors, setSeatColors] = useState([]);
+
+    const handleGoBack = () => {
+      navigate(`/seeyaseatmain`);
+    };
 
     useEffect(() => {
         const fetchSeatColors = async () => {
@@ -91,7 +97,9 @@ const SeeyaSeatMasterCard = () => {
             2층
             </button>
          </div>
-
+         <button className="back-button2" onClick={handleGoBack}>
+        <IoIosArrowBack size="30"/> 
+      </button>
         {activeTab === "M-Floor1" && (
             <div>
                <p className = "M-Area-Left-1-Title">1층은 스탠딩석이므로 좌석 정보를 제공하지 않습니다.</p>

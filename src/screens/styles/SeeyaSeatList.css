@@ -2,7 +2,16 @@
     text-align : center;
     font-weight : bold;
     font-size : 25px;
+    margin-top : -40px;
 }
+
+.back-button {
+    margin-top :80px;
+    margin-left : 450px;
+    border: none;
+    color:gray;
+}
+
 
 .List-Wrap {
     margin-top : 50px;
@@ -84,19 +93,30 @@
 }
 
 .SS-Modal-Content {
-   margin-top : 20px;
-   line-height : 40px;
+   color : rgb(231,147,147);
+   font-weight: bold;
+   line-height: 30px;
 }
 
 .SS-Modal-button {
     border : none;
-    
+    margin-top : 20px;
     width : 80px;
-    height : 40px;
+    height : 30px;
     margin-left : 200px;
     background-color: gray;
     color : white;
     border-radius : 10px;
+}
+
+.modalData-Content-Wrap {
+    color : rgb(9,9,9);
+    margin-top : -10px;
+    font-size : 12px;
+    height : 130px;
+    overflow: auto;
+    margin-bottom : 1px;
+    line-height: 25spx;
 }
 
 .SS-Modal-Delete-button {
@@ -146,7 +166,18 @@
 }
 
 .SS-Modal-Button-Wrap {
-    margin-top : 10px;
+    margin-top : 20px;
     margin-left: 300px;
+}
+
+.SeeyaSeatTicket-Goback {
+   margin-top : 450px;
+   margin-left : 730px;
+   border : none;
+   background-color: rgb(164, 164, 164);
+   color : white;
+   border-radius : 10px;
+   width : 80px;
+   height : 25px;
 }
 

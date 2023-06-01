@@ -3,11 +3,19 @@
     width : 800px;
     height : 50px;
     margin-left : 360px;
-    margin-top : 20px;
+    margin-top : -32px;
     text-align : center;
     padding-top : 35px;
     border-radius : 5px;
     font-weight: bold;
+}
+
+.back-button2 {
+  border : none;
+  color : rgb(67, 67, 67);
+  margin-left : 300px;
+  margin-top : 30px;
+  background-color: white;
 }
 
   .seatmapA {

@@ -5,6 +5,7 @@ import Header from "../../Header";
 import modal from "modal";
 import '../styles/SeeyaSeatList.css';
 import { FaStar } from 'react-icons/fa';
+import { IoIosArrowBack } from 'react-icons/io'
 
 const SeeyaSeatList = () => {
   const token = localStorage.getItem('token');
@@ -25,6 +26,10 @@ const SeeyaSeatList = () => {
   const [images, setImages] = useState([null]);
   const [page, setPage] = useState(1); // 현재 페이지 번호
   const [itemsPerPage, setItemsPerPage] = useState(5); // 페이지 당 아이템 수
+
+  const handleGoBack = () => {
+    navigate(`/seeyaSeat${theaterId === 12 ? 'BlueSquare' : theaterId === 30 ? 'Chungmu' : theaterId === 11? 'MasterCard' : theaterId === 37 ? '': 'BlueSquare'}/${theaterId}`);
+  };
 
   const renderStarScore = (score, setStars) => {
     const stars = [];
@@ -106,18 +111,28 @@ const SeeyaSeatList = () => {
  
   const handleEdit = async (modalData) => {
     axios.post(`http://43.200.58.174:8080/api/v1/seats/${theaterId}/${z}/${x}/${y}/${modalData.viewNo}/auth`, {}, 
-    {headers: {'X-AUTH-TOKEN': token}})
+      {headers: {'X-AUTH-TOKEN': token}})
       .then((response) => {
         if (response.data === "SUCCESS") {
-          navigate(`/seeyaseatedit/${theaterId}/${z}/${x}/${y}/${modalData.viewNo}`);
-        } 
-        else {
+          navigate(`/seeyaseatedit/${theaterId}/${z}/${x}/${y}/${modalData.viewNo}`, {
+            state: {
+              content: modalData.content,
+              play: modalData.play,
+              title: modalData.title,
+              viewScore: modalData.viewScore,
+              seatScore: modalData.seatScore,
+              lightScore: modalData.lightScore,
+              soundScore: modalData.soundScore,
+              images,
+            },
+          });
+        } else {
           console.log(response.data);
           alert("본인이 작성한 게시물만 수정할 수 있습니다");
         }
-      }
-      )
-  }
+      });
+  };
+  
 
   const handleDelete = async (modalData) => {
    
@@ -157,6 +172,9 @@ const SeeyaSeatList = () => {
     <div>
       <Header />
       
+      <button className="back-button" onClick={handleGoBack}>
+        <IoIosArrowBack /> 뒤로가기
+      </button>
       <p className = "SeeyaSeatList-Seat">" {selectedSeat.z}층 {selectedSeat.x}열 {selectedSeat.y}번 "</p>
         <hr className = "SeeyaSeatList-hr"></hr>
         <Link to={`/seeyaseatupload/${theaterId}/${z}/${x}/${y}`}>
@@ -208,8 +226,15 @@ const SeeyaSeatList = () => {
               </div>
              <div className = "SS-Modal-Content">
               <p>공연 : {modalData.play}</p>
-              <p>제목: {modalData.title}</p>
-              <p>내용 : {modalData.content}</p>
+              <p>제목 : {modalData.title}</p>
+              <div className = "modalData-Content-Wrap">
+              <p>내용 : {modalData && modalData.content && modalData.content.split('\n').map((item, index) => (
+                <React.Fragment key={index}>
+                  {item}
+                  <br />
+                </React.Fragment>
+              ))}</p>
+              </div>
               </div>
 
               <div className="star-rating">

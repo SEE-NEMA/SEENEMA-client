@@ -91,15 +91,15 @@ const RecommendMain = () => {
     };
   
     return (
-      <div className="genre-component concert">
+      <div className="genre-component-concert">
         <h4>장르 : 콘서트</h4>
-        <select value={selectedConcertGenre} onChange={handleGenreChange}>
+        <select className="recommend-select2" value={selectedConcertGenre} onChange={handleGenreChange}>
           {genres['콘서트'].map((option) => (
             <option key={option} value={option}>{option}</option>
           ))}
         </select>
-        <input type="text" placeholder="좋아하는 가수" value={favoriteSinger} onChange={handleSingerInput} />
-        <IoIosArrowDropright className="arrow-next" onClick={handleRecommend}/>
+        <input type="text" className="input-recommend2" placeholder="좋아하는 가수" value={favoriteSinger} onChange={handleSingerInput} />
+        <IoIosArrowDropright className="arrow-next2" onClick={handleRecommend}/>
       </div>
     );
   };

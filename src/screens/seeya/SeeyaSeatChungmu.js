@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Header from '../../Header';
 import '../styles/SeeyaSeatChungmu.css';
+import { IoIosArrowBack } from 'react-icons/io'
 
 const SeeyaSeatChungmu = () => {
   const token = localStorage.getItem('token');
@@ -11,6 +12,11 @@ const SeeyaSeatChungmu = () => {
   const [seatColors, setSeatColors] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalData, setModalData] = useState({z:null, x:null, y:null})
+
+  const handleGoBack = () => {
+    navigate(`/seeyaseatmain`);
+  };
+
 
   useEffect(() => {
     const fetchSeatColors = async () => {
@@ -104,7 +110,7 @@ const SeeyaSeatChungmu = () => {
     return (
         <div>
             <Header/>
-
+ 
             <div className="tab-bar">
             <button
             className={activeTab === "C-Floor1" ? "active" : ""}
@@ -125,7 +131,9 @@ const SeeyaSeatChungmu = () => {
             3층
             </button>
          </div>
-
+         <button className="back-button2" onClick={handleGoBack}>
+        <IoIosArrowBack size="30"/> 
+      </button>
 
          {activeTab === "C-Floor1" && (
             <div>
