@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './screens/styles/Header.css';
+import { useNavigate } from 'react-router-dom';
 import { RxGear } from "react-icons/rx";
 import Modal from './components/Modal';
 
@@ -7,6 +8,7 @@ const Header = (props) => {
 const [modal, setmodal]= useState(false);
 const [showPlayDropdown, setShowPlayDropdown] = useState(false);
 const [showReviewDropdown, setShowReviewDropdown] = useState(false);
+const navigate = useNavigate();
 
 const togglePlayDropdown = () => {
 setShowPlayDropdown(!showPlayDropdown);
@@ -19,6 +21,27 @@ setShowReviewDropdown(!showReviewDropdown);
 const handleMusicalClick = (event) => {
   event.stopPropagation();
   // 뮤지컬 항목 클릭 시 수행할 작업
+}
+
+const shouldLogin = () => {
+  const token = localStorage.getItem('token');
+  if(token===null){
+    alert("로그인한 사용자만 사용가능한 서비스입니다 !");
+    navigate("/login");
+  }
+  else{
+    navigate("/RecommendMain");
+  }
+}
+const shouldLoginForMypage = () => {
+  const token = localStorage.getItem('token');
+  if(token===null){
+    alert("로그인한 사용자만 사용가능한 서비스입니다 !");
+    navigate("/login");
+  }
+  else{
+    navigate("/mypage");
+  }
 }
 
 return (
@@ -54,11 +77,11 @@ return (
   </div>
 
   <div className="Header-Facility">
-    <a href="/RecommendMain">맞춤 추천</a>
+    <a href="" onClick={shouldLogin}>맞춤 추천</a>
   </div>
   
   <div className="Header-Mypage">
-    <a href="/mypage">마이페이지</a>
+    <a href="" onClick={shouldLoginForMypage}>마이페이지</a>
   </div>
 
   <button className="Header-User" onClick={() => setmodal(!modal)}>
