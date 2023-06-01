@@ -84,19 +84,25 @@
 }
 
 .SS-Modal-Content {
-   margin-top : 20px;
+   margin-top : 5px;
    line-height : 40px;
 }
 
 .SS-Modal-button {
     border : none;
-    
+    margin-top : 20px;
     width : 80px;
-    height : 40px;
+    height : 30px;
     margin-left : 200px;
     background-color: gray;
     color : white;
     border-radius : 10px;
+}
+
+.modalData-Content-Wrap {
+    height : 80px;
+    overflow: auto;
+    margin-bottom : 20px;
 }
 
 .SS-Modal-Delete-button {
@@ -146,7 +152,7 @@
 }
 
 .SS-Modal-Button-Wrap {
-    margin-top : 10px;
+    margin-top : 20px;
     margin-left: 300px;
 }
 

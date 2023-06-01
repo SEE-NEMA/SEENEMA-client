@@ -208,8 +208,10 @@ const SeeyaSeatList = () => {
               </div>
              <div className = "SS-Modal-Content">
               <p>공연 : {modalData.play}</p>
-              <p>제목: {modalData.title}</p>
+              <p>제목 : {modalData.title}</p>
+              <div className = "modalData-Content-Wrap">
               <p>내용 : {modalData.content}</p>
+              </div>
               </div>
 
               <div className="star-rating">
