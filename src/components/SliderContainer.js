@@ -19,40 +19,25 @@ export default function SliderContainer() {
   };
 
   useEffect(() => {
-    axios
-      .get("http://43.200.58.174:8080/api/v1/")
-      .then((response) => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("http://43.200.58.174:8080/api/v1/");
+        const musicalRank = response.data.musicalRank || [];
+        const extractedMusicalNo = musicalRank.map((item) => item.musical?.no || null);
         setConcertRanking(response.data.concertRank || []);
-        setMusicalRanking(response.data.musicalRank || []);
-      })
-      .catch((error) => {
+        setMusicalRanking(musicalRank);
+        setMusicalNo(extractedMusicalNo);
+      } catch (error) {
         console.log(error);
-      });
+      }
+    };
+
+    fetchData();
   }, []);
 
   useEffect(() => {
-    if (concertRanking.length > 0) {
-      console.log(concertRanking);
-      setConcertRanking([]); // 의존성 배열 비우기
-    }
-    if (musicalRanking.length > 0) {
-      console.log(musicalRanking);
-      setMusicalRanking([]); // 의존성 배열 비우기
-    }
-
-    const extractedMusicalNo = musicalRanking.reduce((acc, item) => {
-      if(item.musical && item.musical.hasOwnProperty('no')) {
-        acc.push(item.musical.no);
-      }
-      else {
-        acc.push(null);
-      }
-      return acc;
-    }, []);
-    setMusicalNo(extractedMusicalNo);
-  }, [concertRanking, musicalRanking]);
-
-  console.log(musicalNo)
+    console.log(musicalNo);
+  }, [musicalNo]);
 
   const settings = {
     dots: true,
@@ -84,10 +69,10 @@ export default function SliderContainer() {
   };
 
   function clickMusicalImage(musicalNo) {
-    navigate(`/musicals/${musicalNo}`)
+    navigate(`/musicals/${musicalNo}`);
   }
 
-   return (
+  return (
     <div className="mySlider">
       <div className="tab-bar">
         <button
@@ -105,22 +90,21 @@ export default function SliderContainer() {
       </div>
 
       <div className="parallel-slider">
-        {activeTab === "musical" && ( // musical 탭이 선택된 경우에만 표시
+        {activeTab === "musical" && (
           <div className="ranking-container">
-            
             <Slider {...settings}>
               {musicalRanking.map((item, index) => (
-                <div key={index}>
+                <div key={index} onClick={() => clickMusicalImage(item.musical?.no)}>
                   <img src={item.imgUrl} alt={`musical-slide-${index}`} />
+                 
                 </div>
               ))}
             </Slider>
           </div>
         )}
 
-        {activeTab === "concert" && ( // concert 탭이 선택된 경우에만 표시
+        {activeTab === "concert" && (
           <div className="ranking-container">
-           
             <Slider {...settings}>
               {concertRanking.map((item, index) => (
                 <div key={index}>
