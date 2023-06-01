@@ -94,11 +94,11 @@ const SeeyaSeatMasterCard = () => {
 
         {activeTab === "M-Floor1" && (
             <div>
-                <div className = "M-Area-Left-1"> </div>
+               <p className = "M-Area-Left-1-Title">1층은 스탠딩석이므로 좌석 정보를 제공하지 않습니다.</p>
             </div>
         )}
 
-        
+
         {activeTab === "M-Floor2" && (
             <div>
             <p className="SS-C-Title">블루스퀘어 마스터카드홀 2층</p>
