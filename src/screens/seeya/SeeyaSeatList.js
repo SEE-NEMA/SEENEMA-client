@@ -25,7 +25,6 @@ const SeeyaSeatList = () => {
   const [images, setImages] = useState([null]);
   const [page, setPage] = useState(1); // 현재 페이지 번호
   const [itemsPerPage, setItemsPerPage] = useState(5); // 페이지 당 아이템 수
-  const [isFetched, setIsFetched] = useState(false); // Check if seat reviews are already fetched
 
   const renderStarScore = (score, setStars) => {
     const stars = [];
@@ -62,7 +61,6 @@ const SeeyaSeatList = () => {
       );
       setSelectedSeat({ z: parseInt(z), x: parseInt(x), y: parseInt(y) });
       setSeatReviews(response.data.postingList); // Update the state with the postingList array
-      setIsFetched(true); // Mark seat reviews as fetched
       console.log(z + "층" + x + "열" + y + "번");
     } catch (error) {
       console.error(error);
@@ -70,10 +68,8 @@ const SeeyaSeatList = () => {
   };
 
   useEffect(() => {
-    if (!isFetched) {
-      fetchData();
-    }
-  }, [theaterId, x, y, z, viewNo, isFetched]);
+    fetchData();
+  }, [theaterId, x, y, z, viewNo]);
 
   const handleSeatClick = async (review) => {
     // 해당 리스트 클릭하면 모달창에 해당 리뷰 띄우기
@@ -105,23 +101,26 @@ const SeeyaSeatList = () => {
     setIsReviewModalOpen(false);
   };
 
+ 
+
+ 
   const handleEdit = async (modalData) => {
-    axios.post(`http://43.200.58.174:8080/api/v1/seats/${theaterId}/${z}/${x}/${y}/${modalData.viewNo}/auth`, {},
+    axios.post(`http://43.200.58.174:8080/api/v1/seats/${theaterId}/${z}/${x}/${y}/${modalData.viewNo}/auth`, {}, 
     {headers: {'X-AUTH-TOKEN': token}})
       .then((response) => {
         if (response.data === "SUCCESS") {
           navigate(`/seeyaseatedit/${theaterId}/${z}/${x}/${y}/${modalData.viewNo}`);
-        }
+        } 
         else {
           console.log(response.data);
           alert("본인이 작성한 게시물만 수정할 수 있습니다");
         }
       }
       )
-  };
+  }
 
   const handleDelete = async (modalData) => {
-
+   
     axios
       .post(`http://43.200.58.174:8080/api/v1/seats/${theaterId}/${z}/${x}/${y}/${modalData.viewNo}/auth`, {}, {
         headers: {'X-AUTH-TOKEN': token}
@@ -153,11 +152,11 @@ const SeeyaSeatList = () => {
       );
   }
 
-
+  
   return (
     <div>
       <Header />
-
+      
       <p className = "SeeyaSeatList-Seat">" {selectedSeat.z}층 {selectedSeat.x}열 {selectedSeat.y}번 "</p>
         <hr className = "SeeyaSeatList-hr"></hr>
         <Link to={`/seeyaseatupload/${theaterId}/${z}/${x}/${y}`}>
@@ -195,16 +194,18 @@ const SeeyaSeatList = () => {
           ))}
         </div>
       )}
-
+    
 
         {isModalOpen && modalData && (
           <div className="SeeyaSeat-modal">
             <div className="SeeyaSeat-modal-content">
               <p className = "SS-Modal-Seat">{selectedSeat.z}층 {selectedSeat.x}열 {selectedSeat.y}번</p>
               <p className = "SS-Modal-Info">닉네임: {modalData.nickName}<Span></Span>작성일자: {modalData.createdAt}</p>
-
+              
+              <div className="SS-Modal-Button-Wrap">
               <button className="SS-Modal-Edit-button" onClick={() => handleEdit(modalData)}>수정</button>
               <button className="SS-Modal-Delete-button" onClick={() => handleDelete(modalData)}>삭제</button>
+              </div>
              <div className = "SS-Modal-Content">
               <p>공연 : {modalData.play}</p>
               <p>제목: {modalData.title}</p>
@@ -232,7 +233,7 @@ const SeeyaSeatList = () => {
           </div>
         )}
       </div>
-
+   
   );
 };
 
