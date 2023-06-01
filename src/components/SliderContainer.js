@@ -27,7 +27,6 @@ export default function SliderContainer() {
         const extractedMusicalNo = musicalRank.map((item) => item.musical?.no || null);
         const extractedImgUrls = musicalRank.map((item) => item.imgUrl || null);
         setImgUrls(extractedImgUrls);
-        setConcertRanking(response.data.concertRank || []);
         setMusicalRanking(musicalRank);
         setMusicalNo(extractedMusicalNo);
       } catch (error) {
@@ -38,9 +37,30 @@ export default function SliderContainer() {
     fetchData();
   }, []);
 
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("http://43.200.58.174:8080/api/v1/");
+        const concertRank = response.data.concertRank || [];
+        const extractedConcertNo = concertRank.map((item) => item.concert?.no || null);
+        const extractedImgUrls = concertRank.map((item) => item.imgUrl || null);
+        setImgUrls(extractedImgUrls);
+        setConcertRanking(response.data.concertRank || []);
+        setConcertNo(extractedConcertNo);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   useEffect(() => {
     console.log(musicalNo);
-  }, [musicalNo]);
+    console.log(concertNo)
+  }, [musicalNo, concertNo]);
+
 
   const settings = {
     dots: true,
@@ -73,6 +93,10 @@ export default function SliderContainer() {
 
   function clickMusicalImage(musicalNo) {
     navigate(`/musicals/${musicalNo}`);
+  }
+
+  function clickConcertImage(concertNo) {
+    navigate(`/concerts/${concertNo}`);
   }
 
   return (
@@ -110,7 +134,7 @@ export default function SliderContainer() {
           <div className="ranking-container">
             <Slider {...settings}>
               {concertRanking.map((item, index) => (
-                <div key={index}>
+                <div key={index} onClick={() => clickConcertImage(item.concert?.no)}>
                   <img src={item.imgUrl} alt={`concert-slide-${index}`} />
                 </div>
               ))}
