@@ -3,8 +3,33 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 70vh;
   text-align: center;
+  
+}
+
+.recommend-result-Span {
+  color : black;
+  font-weight: bold;
+  
+}
+
+.recommend-result-Title {
+  font-weight: bold;
+}
+
+.recommend-result-Genre {
+  color : rgb(124, 124, 124);
+  font-size : 13px;
+}
+
+.recommend-result-Data {
+  color : rgb(124, 124, 124);
+  font-size : 13px;
+}
+
+.recommend-result li {
+  width : 900px;
+  margin-left : -160px;
 }
 
 .selectSteps {
@@ -16,6 +41,11 @@ padding-top: 30px;
   height: 50px;
   background: transparent;
   border: none;
+}
+
+.recommend-result-Image {
+  margin-top : 30px;
+  margin-left : -20px;
 }
 
 .Genre-Concert {
@@ -36,8 +66,8 @@ padding-top: 30px;
 .hr-recommend {
   margin-top : 20px;
   margin-bottom: 20px;
-  background-color: black;
-  height: 3px;
+  background-color: rgb(186, 186, 186);
+  height: 2px;
   border: none;
 }
 
