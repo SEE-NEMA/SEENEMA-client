@@ -5,6 +5,7 @@ import Header from "../../Header";
 import modal from "modal";
 import '../styles/SeeyaSeatList.css';
 import { FaStar } from 'react-icons/fa';
+import { IoIosArrowBack } from 'react-icons/io'
 
 const SeeyaSeatList = () => {
   const token = localStorage.getItem('token');
@@ -25,6 +26,10 @@ const SeeyaSeatList = () => {
   const [images, setImages] = useState([null]);
   const [page, setPage] = useState(1); // 현재 페이지 번호
   const [itemsPerPage, setItemsPerPage] = useState(5); // 페이지 당 아이템 수
+
+  const handleGoBack = () => {
+    navigate(`/seeyaSeat/${theaterId}`);
+  };
 
   const renderStarScore = (score, setStars) => {
     const stars = [];
@@ -167,6 +172,9 @@ const SeeyaSeatList = () => {
     <div>
       <Header />
       
+      <button className="back-button" onClick={handleGoBack}>
+        <IoIosArrowBack /> 뒤로가기
+      </button>
       <p className = "SeeyaSeatList-Seat">" {selectedSeat.z}층 {selectedSeat.x}열 {selectedSeat.y}번 "</p>
         <hr className = "SeeyaSeatList-hr"></hr>
         <Link to={`/seeyaseatupload/${theaterId}/${z}/${x}/${y}`}>

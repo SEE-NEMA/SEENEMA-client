@@ -34,6 +34,10 @@ const SeeyaSeatTicket = () => {
         좌석: ""
     });
     
+    const handleGoBack = () => {
+      navigate(`/seeyaseatupload/${theaterId}/${z}/${x}/${y}`);
+    };
+
     
     const handleFileChange = (event) => {
         const ticketImage = event.target.files[0];
@@ -273,14 +277,21 @@ const renderStarScore = (score, setStars) => {
                                 <button className="SeeyaSeatTicket-Modify" onClick={handleEdit}>
                                     수정하기
                                 </button>
+                               
                                 <button className="SeeyaSeatTicket-Review" onClick={handleReviewModalOpen}>글 작성하기</button>
+                                                           
                             </>
 
                             
                         )}
+
+
                     </div>
+                    
                 )}
             </div>
+
+            <button className="SeeyaSeatTicket-Goback" onClick={handleGoBack}>뒤로가기</button>
 
             {isReviewModalOpen && (
             <div className="SeeyaSeat-modal">

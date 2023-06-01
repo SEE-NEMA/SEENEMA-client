@@ -2,7 +2,16 @@
     text-align : center;
     font-weight : bold;
     font-size : 25px;
+    margin-top : -40px;
 }
+
+.back-button {
+    margin-top :80px;
+    margin-left : 450px;
+    border: none;
+    color:gray;
+}
+
 
 .List-Wrap {
     margin-top : 50px;
@@ -154,5 +163,16 @@
 .SS-Modal-Button-Wrap {
     margin-top : 20px;
     margin-left: 300px;
+}
+
+.SeeyaSeatTicket-Goback {
+   margin-top : 450px;
+   margin-left : 730px;
+   border : none;
+   background-color: rgb(164, 164, 164);
+   color : white;
+   border-radius : 10px;
+   width : 80px;
+   height : 25px;
 }
 
