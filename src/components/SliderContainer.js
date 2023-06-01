@@ -12,6 +12,7 @@ export default function SliderContainer() {
   const [concertNo, setConcertNo] = useState();
   const [musicalNo, setMusicalNo] = useState([]);
   const [activeTab, setActiveTab] = useState("musical");
+  const [imgUrls, setImgUrls] = useState([]);
   const navigate = useNavigate();
 
   const handleTabClick = (tab) => {
@@ -24,9 +25,12 @@ export default function SliderContainer() {
         const response = await axios.get("http://43.200.58.174:8080/api/v1/");
         const musicalRank = response.data.musicalRank || [];
         const extractedMusicalNo = musicalRank.map((item) => item.musical?.no || null);
+        const extractedImgUrls = musicalRank.map((item) => item.imgUrl || null);
+        setImgUrls(extractedImgUrls);
         setConcertRanking(response.data.concertRank || []);
         setMusicalRanking(musicalRank);
         setMusicalNo(extractedMusicalNo);
+        console.log(imgUrls);
       } catch (error) {
         console.log(error);
       }
@@ -95,8 +99,8 @@ export default function SliderContainer() {
             <Slider {...settings}>
               {musicalRanking.map((item, index) => (
                 <div key={index} onClick={() => clickMusicalImage(item.musical?.no)}>
-                  <img src={item.imgUrl} alt={`musical-slide-${index}`} />
-                 
+                 <img src={item.imgUrl} alt={`musical-slide-${index}`} />
+                  <p>{item.musicalRank?.title}</p>
                 </div>
               ))}
             </Slider>
