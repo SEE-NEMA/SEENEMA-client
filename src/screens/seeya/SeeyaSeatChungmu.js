@@ -204,52 +204,56 @@ const SeeyaSeatChungmu = () => {
             {/* 2층 A구역 */}
             <div className="C-Area-left-2">
                 <p className="C-Area-left-Tag">[A]</p>
-                {Array.from({ length: 7 }, (_, rowIndex) => (
+                {Array.from({ length: 7 }, (_, rowIndex) => {
+                  return (
                   <div className={`row-${rowIndex + 1}`} key={rowIndex}>
                     {Array.from(
                       { length: rowIndex < 6 ? 9 : rowIndex === 7 ? 4 : 4 },
                       (_, seatIndex) => {
                         let seatNumber;
-                        if (rowIndex < 3) {
-                          seatNumber = 3 + seatIndex;
-                        } else if (rowIndex === 3) {
-                          seatNumber = seatIndex + 2;
-                        } else {
-                          seatNumber = seatIndex + 1;
+                        if (rowIndex < 6) {
+                          seatNumber = 2 + seatIndex;
+                        } else if (rowIndex === 6) {
+                          seatNumber = seatIndex + 7;
                         }
                         const seatColor = getSeatColor(1, rowIndex+1, seatNumber);
                         return (
                           <div
                             className="seat"
                             key={seatIndex}
-                            
-                            onClick={() => handleSeatClick(1, rowIndex + 1, seatNumber)}
+                            style={{
+                              backgroundColor: seatColor,
+                          }}
+                            onClick={() => handleSeatClick(2, rowIndex + 1, seatNumber)}
                           ></div>
                         );
                       }
                     )}
                   </div>
-                ))}
+                  )
+              })}
               </div>
 
                 {/* 2층 B구역 */}
 
                 <div className="C-Area-Center-2">
                  <p className="C-Area-Center-Tag">[B]</p>
-                 {Array.from({ length: 7 }, (_, rowIndex) => (
+                 {Array.from({ length: 8 }, (_, rowIndex) => (
               <div className={`row-${rowIndex + 1}`} key={rowIndex}>
                 {Array.from(
                   { length: rowIndex % 2 === 0 ? 16 : 15 },
                   (_, seatIndex) => {
-                    const seatNumber = seatIndex + 10;
+                    const seatNumber = seatIndex + 11;
                     const seatColor = getSeatColor(1, rowIndex+1, seatNumber);
                     return (
                       <div
                         className="seat"
                         key={seatIndex}
-                        
+                        style={{
+                          backgroundColor: seatColor,
+                      }}
                         onClick={() =>
-                          handleSeatClick(1, rowIndex + 1, seatNumber)
+                          handleSeatClick(2, rowIndex + 1, seatNumber)
                         }
                       ></div>
                     );
@@ -258,22 +262,46 @@ const SeeyaSeatChungmu = () => {
               </div>
             ))}
 
-              {Array.from({ length: 4 }, (_, rowIndex) => (
+              {Array.from({ length: 2 }, (_, rowIndex) => (
               <div className={`row-${rowIndex + 1}`} key={rowIndex}>
                 {Array.from(
-                  { length: rowIndex % 2 === 0 ? 11 : 12 },
+                  { length: 11},
                   (_, seatIndex) => {
                     const seatNumber = seatIndex + 10;
-                    const seatColor = getSeatColor(1, rowIndex+1, seatNumber);
+                    const seatColor = getSeatColor(2, rowIndex+9, seatNumber);
                     return (
                       <div
                         className="seat"
                         key={seatIndex}
                         style={{
-                          
+                          backgroundColor : seatColor
                         }}
                         onClick={() =>
-                          handleSeatClick(1, rowIndex + 1, seatNumber)
+                          handleSeatClick(2, rowIndex + 9, seatNumber)
+                        }
+                      ></div>
+                    );
+                  }
+                )}
+              </div>
+            ))}
+
+            {Array.from({ length: 1 }, (_, rowIndex) => (
+              <div className={`row-${rowIndex + 1}`} key={rowIndex}>
+                {Array.from(
+                  { length: 8},
+                  (_, seatIndex) => {
+                    const seatNumber = seatIndex + 11;
+                    const seatColor = getSeatColor(2, rowIndex+11, seatNumber);
+                    return (
+                      <div
+                        className="seat"
+                        key={seatIndex}
+                        style={{
+                          backgroundColor : seatColor
+                        }}
+                        onClick={() =>
+                          handleSeatClick(2, rowIndex + 11, seatNumber)
                         }
                       ></div>
                     );
@@ -291,13 +319,13 @@ const SeeyaSeatChungmu = () => {
                 <div className={`row-${rowIndex + 1}`} key={rowIndex}>
                     {Array.from({ length: 9}, (_, seatIndex) => {
                       let seatNumber;
-                      if (rowIndex % 2 === 0) {
+                      if (rowIndex % 2 === 0) { // 짝수줄
                         seatNumber = seatIndex % 2 === 0 ? 27 + seatIndex : 26 + seatIndex;
                       }
-                      else {
+                      else { // 홀수줄
                         seatNumber = seatIndex % 2 === 0 ? 26 + seatIndex : 27 + seatIndex;
                       }
-                      const seatColor = getSeatColor(1, rowIndex+1, seatNumber);
+                      const seatColor = getSeatColor(2, rowIndex+1, seatNumber+26);
 
                     return (
                         <div
@@ -306,7 +334,7 @@ const SeeyaSeatChungmu = () => {
                         style={{
                             backgroundColor: seatColor,
                         }}
-                        onClick={() => handleSeatClick(1, rowIndex + 1, seatNumber)}
+                        onClick={() => handleSeatClick(2, rowIndex + 1, seatNumber)}
                         ></div>
                     );
                     })}
@@ -326,14 +354,8 @@ const SeeyaSeatChungmu = () => {
                 {Array.from({ length: 8 }, (_, rowIndex) => (
                 <div className={`row-${rowIndex + 1}`} key={rowIndex}>
                     {Array.from({ length: 9}, (_, seatIndex) => {
-                      let seatNumber;
-                      if (rowIndex % 2 === 0) {
-                        seatNumber = seatIndex % 2 === 0 ? 27 + seatIndex : 26 + seatIndex;
-                      }
-                      else {
-                        seatNumber = seatIndex % 2 === 0 ? 26 + seatIndex : 27 + seatIndex;
-                      }
-                      const seatColor = getSeatColor(1, rowIndex+1, seatNumber);
+                      let seatNumber = seatIndex + 2;
+                      const seatColor = getSeatColor(3, rowIndex+1, seatNumber);
 
                     return (
                         <div
@@ -342,7 +364,7 @@ const SeeyaSeatChungmu = () => {
                         style={{
                             backgroundColor: seatColor,
                         }}
-                        onClick={() => handleSeatClick(1, rowIndex + 1, seatNumber)}
+                        onClick={() => handleSeatClick(3, rowIndex + 1, seatNumber)}
                         ></div>
                     );
                     })}
@@ -358,15 +380,17 @@ const SeeyaSeatChungmu = () => {
                 {Array.from(
                   { length: rowIndex % 2 === 0 ? 16 : 15 },
                   (_, seatIndex) => {
-                    const seatNumber = seatIndex + 10;
-                    const seatColor = getSeatColor(1, rowIndex+1, seatNumber);
+                    const seatNumber = seatIndex + 11;
+                    const seatColor = getSeatColor(3, rowIndex+1, seatNumber);
                     return (
                       <div
                         className="seat"
                         key={seatIndex}
-                        
+                        style={{
+                          backgroundColor: seatColor,
+                      }}
                         onClick={() =>
-                          handleSeatClick(1, rowIndex + 1, seatNumber)
+                          handleSeatClick(3, rowIndex + 1, seatNumber)
                         }
                       ></div>
                     );
@@ -390,7 +414,7 @@ const SeeyaSeatChungmu = () => {
                       else {
                         seatNumber = seatIndex % 2 === 0 ? 26 + seatIndex : 27 + seatIndex;
                       }
-                      const seatColor = getSeatColor(1, rowIndex+1, seatNumber);
+                      const seatColor = getSeatColor(3, rowIndex+1, seatNumber);
 
                     return (
                         <div
@@ -399,7 +423,7 @@ const SeeyaSeatChungmu = () => {
                         style={{
                             backgroundColor: seatColor,
                         }}
-                        onClick={() => handleSeatClick(1, rowIndex + 1, seatNumber)}
+                        onClick={() => handleSeatClick(3, rowIndex + 1, seatNumber)}
                         ></div>
                     );
                     })}
