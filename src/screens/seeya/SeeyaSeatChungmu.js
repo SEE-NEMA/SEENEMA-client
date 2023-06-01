@@ -216,11 +216,14 @@ const SeeyaSeatChungmu = () => {
                         } else if (rowIndex === 6) {
                           seatNumber = seatIndex + 7;
                         }
+                        const seatColor = getSeatColor(1, rowIndex+1, seatNumber);
                         return (
                           <div
                             className="seat"
                             key={seatIndex}
-                            
+                            style={{
+                              backgroundColor: seatColor,
+                          }}
                             onClick={() => handleSeatClick(2, rowIndex + 1, seatNumber)}
                           ></div>
                         );
@@ -246,7 +249,9 @@ const SeeyaSeatChungmu = () => {
                       <div
                         className="seat"
                         key={seatIndex}
-                        
+                        style={{
+                          backgroundColor: seatColor,
+                      }}
                         onClick={() =>
                           handleSeatClick(2, rowIndex + 1, seatNumber)
                         }
@@ -269,7 +274,7 @@ const SeeyaSeatChungmu = () => {
                         className="seat"
                         key={seatIndex}
                         style={{
-                          
+                          backgroundColor : seatColor
                         }}
                         onClick={() =>
                           handleSeatClick(2, rowIndex + 9, seatNumber)
@@ -293,7 +298,7 @@ const SeeyaSeatChungmu = () => {
                         className="seat"
                         key={seatIndex}
                         style={{
-                          
+                          backgroundColor : seatColor
                         }}
                         onClick={() =>
                           handleSeatClick(2, rowIndex + 11, seatNumber)
@@ -381,7 +386,9 @@ const SeeyaSeatChungmu = () => {
                       <div
                         className="seat"
                         key={seatIndex}
-                        
+                        style={{
+                          backgroundColor: seatColor,
+                      }}
                         onClick={() =>
                           handleSeatClick(3, rowIndex + 1, seatNumber)
                         }
