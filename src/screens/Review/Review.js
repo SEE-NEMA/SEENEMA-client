@@ -12,6 +12,7 @@ const Review = () => {
   const [searchTitle, setSearchTitle] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  const pageNumbers = Array.from({ length: totalPages }, (_, index) => index + 1);
   const [selectedTag, setSelectedTag] = useState(null);
   const [activeTag, setActiveTag] = useState(1);
 
@@ -167,39 +168,29 @@ const Review = () => {
         <hr className="Review-hr" />
 
         {review.length === 0 ? (
-          <div className = "Review-None-Title">리뷰가 없습니다.</div>
+          <div>리뷰가 없습니다.</div>
         ) : (
           <>
-            <ul className="Review-Content">
+            <div className="SeeyaDetail-Container">
               {paginateReviews(review).map((item, index) => (
-                <li key={index} className="Review-Item">
-                  <Link to={`/Review/${item.post_no}`}>
-                    <span style={{ marginRight: "20px", color: "#000" }}>
-                      {item.title}
-                    </span>
-                    <span style={{ marginRight: "20px", color: "#000" }}>
-                      {item.createdAt}
-                    </span>
-                    <span style={{ marginRight: "20px", color: "#000" }}>
-                      {item.nickname}
-                    </span>
-                  </Link>
-                </li>
+                <div key={index} className="SeeyaDetail-Wrap">
+                  <Link to={`/Review/${item.post_no}`} className="SeeyaDetail-title">{item.title}</Link>
+                  <p className="SeeyaDetail-createdAt">{item.createdAt} </p>
+                  <div className="SeeyaDetail-nickName">{item.nickname}</div>
+                </div>
               ))}
-            </ul>
-            <div className="Review-Pagination">
-              {Array.from({ length: totalPages }, (_, index) => (
-                <button
-                  key={index}
-                  className={`Review-PageBtn ${
-                    currentPage === index + 1 ? "active" : ""
-                  }`}
-                  onClick={() => handlePageChange(index + 1)}
-                >
-                  {index + 1}
-                </button>
-              ))}
+
+              <div className="SeeyaDetail-Pagination">
+                {pageNumbers.map((pageNumber) => (
+                <button className="PageMoveButton"
+                  key={pageNumber}
+                  onClick={() => handlePageChange(pageNumber + 1)}
+                  disabled={pageNumber === currentPage}>{pageNumber}</button>
+                ))}
+              </div>
             </div>
+
+
           </>
         )}
       </div>

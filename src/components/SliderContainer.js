@@ -3,12 +3,16 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import "../screens/styles/SliderContainer.css";
 
 export default function SliderContainer() {
   const [concertRanking, setConcertRanking] = useState([]);
   const [musicalRanking, setMusicalRanking] = useState([]);
+  const [concertNo, setConcertNo] = useState();
+  const [musicalNo, setMusicalNo] = useState([]);
   const [activeTab, setActiveTab] = useState("musical");
+  const navigate = useNavigate();
 
   const handleTabClick = (tab) => {
     setActiveTab(tab);
@@ -18,13 +22,37 @@ export default function SliderContainer() {
     axios
       .get("http://43.200.58.174:8080/api/v1/")
       .then((response) => {
-        setConcertRanking(response.data.concertRank);
-        setMusicalRanking(response.data.musicalRank);
+        setConcertRanking(response.data.concertRank || []);
+        setMusicalRanking(response.data.musicalRank || []);
       })
       .catch((error) => {
         console.log(error);
       });
   }, []);
+
+  useEffect(() => {
+    if (concertRanking.length > 0) {
+      console.log(concertRanking);
+      setConcertRanking([]); // 의존성 배열 비우기
+    }
+    if (musicalRanking.length > 0) {
+      console.log(musicalRanking);
+      setMusicalRanking([]); // 의존성 배열 비우기
+    }
+
+    const extractedMusicalNo = musicalRanking.reduce((acc, item) => {
+      if(item.musical && item.musical.hasOwnProperty('no')) {
+        acc.push(item.musical.no);
+      }
+      else {
+        acc.push(null);
+      }
+      return acc;
+    }, []);
+    setMusicalNo(extractedMusicalNo);
+  }, [concertRanking, musicalRanking]);
+
+  console.log(musicalNo)
 
   const settings = {
     dots: true,
@@ -54,6 +82,10 @@ export default function SliderContainer() {
       },
     ],
   };
+
+  function clickMusicalImage(musicalNo) {
+    navigate(`/musicals/${musicalNo}`)
+  }
 
    return (
     <div className="mySlider">

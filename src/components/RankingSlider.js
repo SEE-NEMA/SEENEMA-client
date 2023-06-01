@@ -14,7 +14,9 @@ function RankingSlider() {
       .catch(error => {
         console.log(error);
       });
-  }, []);
+  },[ranking]);
+
+
 
   useEffect(() => {
     const intervalId = setInterval(() => {

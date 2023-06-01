@@ -191,6 +191,11 @@ const ReviewDetail = () => {
     
     
     const deleteComment = (commentId) => {
+      if(localStorage.getItem('token') === null){
+        alert("로그인 해주세요 !");
+        navigate("/login");
+        return '';
+      }
       axios
         .post(
           `http://43.200.58.174:8080/api/v1/theater-review/${postNo}/${commentId}/auth`,
@@ -218,11 +223,11 @@ const ReviewDetail = () => {
               });
               console.log(response);
           } else {
+            alert("본인이 작성한 댓글만 삭제 가능합니다 !");
             console.log(response.data);
           }
         });
     };
-    
     const editComment = (commentId) => {
       const editedComment = "수정된 댓글 내용"; // 수정할 댓글 내용
     
@@ -323,7 +328,12 @@ const ReviewDetail = () => {
           )}
 
         <div className="RVDT-Content">
-        {review.content}
+        {review && review.content && review.content.split('\n').map((item, index) => (
+          <React.Fragment key={index}>
+            {item}
+            <br/>
+          </React.Fragment>
+        ))}
         {review.tags && review.tags.map(tag => (
         <span key={tag.tagId}><h5># {tag.tagName}</h5></span>
       ))}
@@ -342,7 +352,7 @@ const ReviewDetail = () => {
         <ul>
             {review.comments && review.comments.map(comment => (
               <li key={comment.commentId} className="RVDT-Comment">
-                <span className="RVDT-Comment-nickname">{comment.nickName}</span>
+                <span className="RVDT-Comment-nickname">{comment.nickname}</span>
                 <br/><br/><text className="RVDT-Comment-content">{comment.content}</text>
                 <button className="RVDT-button" onClick={() => openEditModal(comment.commentId, comment.content)}>수정</button>
                 <button className="RVDT-button" onClick={() => deleteComment(comment.commentId)}>삭제</button>
