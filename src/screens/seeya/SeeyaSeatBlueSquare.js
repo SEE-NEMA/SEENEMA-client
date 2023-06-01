@@ -125,7 +125,7 @@ const SeeyaSeatBlueSquare = () => {
                     backgroundColor: seatColor,
                   }}
                   onClick={() => handleSeatClick(1, rowIndex + 1, seatNumber)}
-                >{seatNumber}</div>
+                ></div>
               );
             })}
           </div>

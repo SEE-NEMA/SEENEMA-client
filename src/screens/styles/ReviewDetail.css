@@ -146,3 +146,13 @@
     width : 400px;
     height : 300px;
 }
+
+.RVDT-Comment-nickname {
+    color: rgb(197, 135, 135);
+    padding-right: 5px;
+}
+
+.RVDT-Comment-content {
+    font-size: 13px;
+    margin-left: 15px;
+}

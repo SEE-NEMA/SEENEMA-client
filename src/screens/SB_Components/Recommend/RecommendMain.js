@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Header from "../../../Header";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import { IoIosArrowDropright } from "react-icons/io";
 import "../../styles/RecommendMain.css"
 // 단계별 프로그레스 바
@@ -15,7 +16,6 @@ const RecommendMain = () => {
   const [favoriteActor, setFavoriteActor] = useState("");
   const [favoriteSinger, setFavoriteSinger] = useState("");
   const [recommendations, setRecommendations] = useState([]);
-  const [no, setNo] = useState();
 
   useEffect(() => {
     axios
@@ -136,13 +136,20 @@ const RecommendMain = () => {
         if (Array.isArray(recommendedConcerts) && Array.isArray(recommendedMusicals)) {
           const recommendations = [...recommendedConcerts, ...recommendedMusicals];
           setRecommendations(recommendations);
-          setNo(recommendations.no);
           setSelectedStep(3);
-          console.log(recommendedConcerts.no);
-          console.log(recommendedMusicals.no);
         } else {
           console.error("Invalid recommendations data:", response.data);
         }
+
+        console.log("콘서트 추천 : ");
+        recommendedConcerts.forEach((concert, index) => {
+          console.log(`concert ${index+1}: ${concert.no}`)
+        })
+
+        console.log("뮤지컬 추천 : ");
+        recommendedMusicals.forEach((musical, index) => {
+          console.log(`musical ${index+1}: ${musical.no}`)
+        })
       })
       .catch((error) => {
         console.error("Error while recommending:", error);
@@ -182,8 +189,28 @@ const RecommendMain = () => {
                     )}
                     </form>
                     {recommendation.imgUrl && (
-                    <img className="recommend-result-Image" src={recommendation.imgUrl} style={{width : "225px", height : "300px"}} alt={recommendation.title} />
-                  )}
+              <>
+                {selectedGenre === '뮤지컬' ? (
+                  <Link to={`/musicals/${recommendation.no}`}>
+                    <img
+                      className="recommend-result-Image"
+                      src={recommendation.imgUrl}
+                      style={{ width: "225px", height: "300px" }}
+                      alt={recommendation.title}
+                    />
+                  </Link>
+                ) : (
+                  <Link to={`/concerts/${recommendation.no}`}>
+                    <img
+                      className="recommend-result-Image"
+                      src={recommendation.imgUrl}
+                      style={{ width: "225px", height: "300px" }}
+                      alt={recommendation.title}
+                    />
+                  </Link>
+                )}
+              </>
+            )}
                   </>
                 ) : (
                   <span style={{ marginRight: "20px", color: "#000" }}>현재 {recommendation.cast}님이 출연하는 공연이 없습니다.</span>
@@ -209,9 +236,9 @@ const RecommendMain = () => {
         </div>
         <div className="selectSteps">
         {selectedStep === 1 && renderStep1()}
-        {selectedStep === 3 && renderStep3()}
         {selectedStep === 2 && selectedGenre === '뮤지컬' && renderStep3Musical()}
         {selectedStep === 2 && selectedGenre === '콘서트' && renderStep3Concert()}
+        {selectedStep === 3 && renderStep3()}
         </div>
       </div>
     </div>

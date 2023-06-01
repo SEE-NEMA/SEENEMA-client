@@ -342,7 +342,8 @@ const ReviewDetail = () => {
         <ul>
             {review.comments && review.comments.map(comment => (
               <li key={comment.commentId} className="RVDT-Comment">
-                <span>{comment.content} Id : {comment.commentId}</span>
+                <span className="RVDT-Comment-nickname">{comment.nickName}</span>
+                <br/><br/><text className="RVDT-Comment-content">{comment.content}</text>
                 <button className="RVDT-button" onClick={() => openEditModal(comment.commentId, comment.content)}>수정</button>
                 <button className="RVDT-button" onClick={() => deleteComment(comment.commentId)}>삭제</button>
               </li>
