@@ -1,0 +1,78 @@
+
+
+
+
+
+
+
+
+.M-Area-Left-2 {
+    float: left;
+    margin-right: 90px;
+    margin-left : 70px;
+    margin-bottom : 30px;
+}
+
+.M-Area-Left-2 .row-6,
+.M-Area-Left-2 .row-7,
+.M-Area-Left-2 .row-8 {
+    display:flex;
+}
+
+.M-Area-Left-2 .row-4,
+.M-Area-Left-2 .row-5,
+.M-Area-Left-2 .row-6,
+.M-Area-Left-2 .row-7,
+.M-Area-Left-2 .row-8 {
+    justify-content: right;
+}
+
+.M-Area-Center-2 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width : 500px;
+    margin-right : 30px;
+}
+
+.M-Area-Center-2 .row-6,
+.M-Area-Center-2 .row-7,
+.M-Area-Center-2 .row-8,
+.M-Area-Center-2 .row-9 {
+    justify-content: right;
+    display:flex;
+}
+
+.M-Area-Center-2 .row-2 {
+    margin-left : 30px;
+}
+
+.M-Area-Center-2 .row-5,
+.M-Area-Center-2 .row-6 {
+    margin-left : 30px;
+}
+
+.M-Area-Center-2 .row-8 {
+    margin-left : 30px;
+}
+
+.M-Area-Center-2 .row-9 {
+    margin-left : 300px;
+}
+
+.M-Area-Right-2 {
+    float: right;
+    margin-left : 30px;
+    margin-right: 70px;
+    margin-top : -320px;
+}
+
+.M-Area-Right-2 .row-4,
+.M-Area-Right-2 .row-5,
+.M-Area-Right-2 .row-6,
+.M-Area-Right-2 .row-7,
+.M-Area-Right-2 .row-8 {
+    display: flex;
+    justify-content: right;
+}
