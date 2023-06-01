@@ -96,7 +96,6 @@ export default function SliderContainer() {
               {musicalRanking.map((item, index) => (
                 <div key={index} onClick={() => clickMusicalImage(item.musical?.no)}>
                   <img src={item.imgUrl} alt={`musical-slide-${index}`} />
-                 
                 </div>
               ))}
             </Slider>

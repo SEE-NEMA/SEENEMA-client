@@ -134,31 +134,35 @@ const SeeyaSeatList = () => {
   };
   
 
-  const handleDelete = async (modalData) => {
-   
-    axios
-      .post(`http://43.200.58.174:8080/api/v1/seats/${theaterId}/${z}/${x}/${y}/${modalData.viewNo}/auth`, {}, {
-        headers: {'X-AUTH-TOKEN': token}
-      })
-      .then((response) => {
-        if (response.data === "SUCCESS") {
-          axios
-            .delete(`http://43.200.58.174:8080/api/v1/seats/${theaterId}/${z}/${x}/${y}/${modalData.viewNo}`, {
-              headers: {'X-AUTH-TOKEN': token}
-            })
-            .then((response) => {
-              console.log(response.data);
-              alert("게시물 삭제가 완료되었습니다!");
-              handleReviewModalClose();
-              navigate(`/SeeyaSeatList/${theaterId}/${z}/${x}/${y}`);
-            });
-        }
-
-        else {
-          alert("본인이 작성한 게시글만 삭제 할 수 있습니다!");
-        }
-      });
-  };
+    const handleDelete = async (modalData) => {
+      axios
+        .post(`http://43.200.58.174:8080/api/v1/seats/${theaterId}/${z}/${x}/${y}/${modalData.viewNo}/auth`, {}, {
+          headers: { 'X-AUTH-TOKEN': token }
+        })
+        .then((response) => {
+          if (response.data === "SUCCESS") {
+            axios
+              .delete(`http://43.200.58.174:8080/api/v1/seats/${theaterId}/${z}/${x}/${y}/${modalData.viewNo}`, {
+                headers: { 'X-AUTH-TOKEN': token }
+              })
+              .then((response) => {
+                console.log(response.data);
+                  alert("게시물 삭제가 완료되었습니다!123");
+                  // handleReviewModalClose();
+                  // navigate(`/SeeyaSeatList/${theaterId}/${z}/${x}/${y}`);
+                  window.location.reload();
+              })
+              .catch((error) => {
+                console.error(error);
+              });
+          } else {
+            alert("본인이 작성한 게시글만 삭제할 수 있습니다!");
+          }
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    };
 
 
   function Span({ space = 15 }){
