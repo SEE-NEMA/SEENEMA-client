@@ -30,7 +30,6 @@ export default function SliderContainer() {
         setConcertRanking(response.data.concertRank || []);
         setMusicalRanking(musicalRank);
         setMusicalNo(extractedMusicalNo);
-        console.log(imgUrls);
       } catch (error) {
         console.log(error);
       }
