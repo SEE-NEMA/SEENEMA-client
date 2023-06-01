@@ -28,7 +28,7 @@ const SeeyaSeatList = () => {
   const [itemsPerPage, setItemsPerPage] = useState(5); // 페이지 당 아이템 수
 
   const handleGoBack = () => {
-    navigate(`/seeyaSeat/${theaterId}`);
+    navigate(`/seeyaSeat${theaterId === 12 ? 'BlueSquare' : theaterId === 30 ? 'Chungmu' : theaterId === 11? 'MasterCard' : theaterId === 37 ? '': 'BlueSquare'}/${theaterId}`);
   };
 
   const renderStarScore = (score, setStars) => {
@@ -228,7 +228,12 @@ const SeeyaSeatList = () => {
               <p>공연 : {modalData.play}</p>
               <p>제목 : {modalData.title}</p>
               <div className = "modalData-Content-Wrap">
-              <p>내용 : {modalData.content}</p>
+              <p>내용 : {modalData && modalData.content && modalData.content.split('\n').map((item, index) => (
+                <React.Fragment key={index}>
+                  {item}
+                  <br />
+                </React.Fragment>
+              ))}</p>
               </div>
               </div>
 
