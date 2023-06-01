@@ -243,7 +243,7 @@ const SeeyaSeatChungmu = () => {
                         } else if (rowIndex === 6) {
                           seatNumber = seatIndex + 7;
                         }
-                        const seatColor = getSeatColor(1, rowIndex+1, seatNumber);
+                        const seatColor = getSeatColor(2, rowIndex+1, seatNumber);
                         return (
                           <div
                             className="seat"
@@ -271,7 +271,7 @@ const SeeyaSeatChungmu = () => {
                   { length: rowIndex % 2 === 0 ? 16 : 15 },
                   (_, seatIndex) => {
                     const seatNumber = seatIndex + 11;
-                    const seatColor = getSeatColor(1, rowIndex+1, seatNumber);
+                    const seatColor = getSeatColor(2, rowIndex+1, seatNumber);
                     return (
                       <div
                         className="seat"
@@ -345,7 +345,7 @@ const SeeyaSeatChungmu = () => {
     <div className={`row-${rowIndex + 1}`} key={rowIndex}>
       {Array.from({ length: 9 }, (_, seatIndex) => {
         const seatNumber = rowIndex % 2 === 0 ? seatIndex + 27 : seatIndex + 26;
-        const seatColor = getSeatColor(2, rowIndex + 1, seatNumber + 26);
+        const seatColor = getSeatColor(2, rowIndex + 1, seatNumber);
 
         return (
           <div

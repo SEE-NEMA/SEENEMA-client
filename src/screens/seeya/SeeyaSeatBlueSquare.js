@@ -115,7 +115,8 @@ const SeeyaSeatBlueSquare = () => {
         {Array.from({ length: 7 }, (_, rowIndex) => (
           <div className={`row-${rowIndex + 1}`} key={rowIndex}>
             {Array.from({ length: rowIndex + 8 }, (_, seatIndex) => {
-              const seatColor = getSeatColor(average, rowIndex, seatIndex+7, 1);
+              const seatNumber = 15 - seatIndex;
+              const seatColor = getSeatColor(average, rowIndex, seatNumber, 1);
               return (
                 <div
                   className="seat"
@@ -123,8 +124,8 @@ const SeeyaSeatBlueSquare = () => {
                   style={{
                     backgroundColor: seatColor,
                   }}
-                  onClick={() => handleSeatClick(1, rowIndex + 1, seatIndex+8)}
-                >{seatIndex}</div>
+                  onClick={() => handleSeatClick(1, rowIndex + 1, seatNumber)}
+                >{seatNumber}</div>
               );
             })}
           </div>
