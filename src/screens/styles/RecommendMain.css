@@ -76,6 +76,23 @@ padding-top: 30px;
   width: 30%;
 }
 
+.recommend-select2 {
+  border : none;
+  width: 30%;
+  margin-top : -80px;
+}
+
+.input-recommend2 {
+  margin-left: 20px;
+  margin-top : -50px;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  outline: none;
+  width : 20vh;
+  text-align: center;
+}
+
 .input-recommend {
   margin-left: 20px;
   border-left: none;
@@ -92,7 +109,17 @@ height : 30px;
 margin-top : 70px;
 }
 
+.arrow-next2 {
+  width : 30px;
+height : 30px;
+margin-top : 80px;
+}
+
 .recommend-img {
 height : 100px;
 width: 75px;
+}
+
+.genre-component-concert {
+  height : 100px;
 }
