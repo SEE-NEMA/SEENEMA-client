@@ -126,8 +126,14 @@ const renderStarScore = (score, setStars) => {
         setIsReviewModalOpen(false);
       };
 
-      const handleReviewSubmit = async () => {
-        try {
+   
+    
+          const handleReviewSubmit = async () => {
+            try {
+              // 좌석 정보 추출
+              const seatInfo = ticketInfo.좌석;
+          const [ticketZ, ticketX, ticketY] = seatInfo.split(" ");
+
           const formData = new FormData();
           formData.append("images", images);
           formData.append("play", play);
@@ -137,55 +143,65 @@ const renderStarScore = (score, setStars) => {
           formData.append("seatScore", seatScore);
           formData.append("lightScore", lightScore);
           formData.append("soundScore", soundScore);
-    
-          axios
-          .post(`http://43.200.58.174:8080/api/v1/seats/auth`, {}, {
-            headers : {
-              "X-AUTH-TOKEN" : token
+          
+              // 좌석 정보 비교
+              if (ticketZ === z && ticketX === x && ticketY === y) {
+                // 일치하는 경우 인증 요청 보내기
+                axios
+                  .post(`http://43.200.58.174:8080/api/v1/seats/auth`, {}, {
+                    headers: {
+                      "X-AUTH-TOKEN": token
+                    }
+                  })
+                  .then((response) => {
+                    console.log(response.data);
+                    console.log(formData);
+                    if (response.data === "SUCCESS") {
+                      // 인증 성공한 경우 글 작성 요청 보내기
+                      axios
+                        .post(`http://43.200.58.174:8080/api/v1/seats/ticket/${theaterId}/${z}/${x}/${y}/upload`,
+                          formData, {
+                            headers: {
+                              "Content-Type": "multipart/form-data",
+                              "X-AUTH-TOKEN": token
+                            }
+                          })
+                        .then((response) => {
+                          console.log(response.data);
+                          console.log(viewNo);
+                          handleReviewModalClose();
+                          navigate(`/SeeyaSeatList/${theaterId}/${z}/${x}/${y}`);
+                          const newReview = {
+                            viewScore: viewScore,
+                            seatScore: seatScore,
+                            lightScore: lightScore,
+                            soundScore: soundScore,
+                          };
+                          setModalData((prevData) => ({
+                            ...prevData,
+                            ...newReview,
+                          }));
+                        })
+                        .catch((error) => {
+                          console.log(error);
+                        });
+                    } else {
+                      // 인증 실패한 경우 알림 창 띄우기
+                      alert("인증에 실패하였습니다.");
+                    }
+                  })
+                  .catch((error) => {
+                    console.log(error);
+                  });
+              } else {
+                // 좌석 정보 불일치한 경우 알림 창 띄우기
+                alert("좌석 정보가 일치하지 않습니다.");
+              }
+            } catch (error) {
+              console.log(error);
             }
-          })
-          .then((response) => {
-            console.log(response.data);
-            console.log(formData);
-            if(response.data === "SUCCESS")
-            {
-              axios.post(`http://43.200.58.174:8080/api/v1/seats/ticket/${theaterId}/${z}/${x}/${y}/upload`, 
-              formData, {
-                headers: {
-                  "Content-Type" : "multipart/form-data",
-                  "X-AUTH-TOKEN" : token
-                }
-              })
-              .then((response) => {
-                console.log(response.data);
-                console.log(viewNo);
-                handleReviewModalClose();
-                navigate(`/SeeyaSeatList/${theaterId}/${z}/${x}/${y}`);
-                const newReview = {
-                  viewScore: viewScore,
-                  seatScore: seatScore,
-                  lightScore: lightScore,
-                  soundScore: soundScore,
-                };
-                setModalData((prevData) => ({
-                  ...prevData,
-                  ...newReview,
-                }));
-              })
-              
-              .catch((error) => {
-                console.log(error);
-              });
-            }
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-        } catch (error) {
-          console.log(error);
-        }
-      };
-
+          };
+          
 
     return(
         <div>

@@ -167,7 +167,7 @@ const Review = () => {
         <hr className="Review-hr" />
 
         {review.length === 0 ? (
-          <div>리뷰가 없습니다.</div>
+          <div className = "Review-None-Title">리뷰가 없습니다.</div>
         ) : (
           <>
             <ul className="Review-Content">
