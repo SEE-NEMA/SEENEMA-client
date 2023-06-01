@@ -70,6 +70,7 @@ const SeeyaSeatTicket = () => {
     const handleEdit = () => {
         setEditMode(true);
         setEditData(ticketInfo);
+        
     };
     
     const handleInputChange = (event) => {
@@ -132,7 +133,7 @@ const renderStarScore = (score, setStars) => {
             try {
               // 좌석 정보 추출
               const seatInfo = ticketInfo.좌석;
-          const [ticketZ, ticketX, ticketY] = seatInfo.split(" ");
+              const [ticketZ, ticketX, ticketY] = seatInfo.match(/\d+/g);
 
           const formData = new FormData();
           formData.append("images", images);
@@ -156,6 +157,7 @@ const renderStarScore = (score, setStars) => {
                   .then((response) => {
                     console.log(response.data);
                     console.log(formData);
+                  
                     if (response.data === "SUCCESS") {
                       // 인증 성공한 경우 글 작성 요청 보내기
                       axios
@@ -196,6 +198,7 @@ const renderStarScore = (score, setStars) => {
               } else {
                 // 좌석 정보 불일치한 경우 알림 창 띄우기
                 alert("좌석 정보가 일치하지 않습니다.");
+                console.log(ticketX, ticketY, ticketZ);
               }
             } catch (error) {
               console.log(error);
