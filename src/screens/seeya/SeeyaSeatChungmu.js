@@ -165,7 +165,7 @@ const SeeyaSeatChungmu = () => {
                               backgroundColor: seatColor,
                             }}
                             onClick={() => handleSeatClick(1, rowIndex + 1, seatNumber)}
-                          ><h10 style={{color : '#595959'}}>&nbsp;{seatNumber}</h10></div>
+                          ><h10 className = "ChungmuSeatNumber" style={{color : '#595959'}}>&nbsp;{seatNumber}</h10></div>
                         );
                       }
                     )}
@@ -194,7 +194,7 @@ const SeeyaSeatChungmu = () => {
                         onClick={() =>
                           handleSeatClick(1, rowIndex + 1, seatNumber)
                         }
-                      ><h10 style={{color : '#595959'}}>&nbsp;{seatNumber}</h10></div>
+                      ><h10 className = "ChungmuSeatCenterN" style={{color : '#595959'}}>&nbsp;{seatNumber}</h10></div>
                     );
                   }
                 )}
@@ -221,7 +221,7 @@ const SeeyaSeatChungmu = () => {
             }}
             onClick={() => handleSeatClick(1, rowIndex + 1, seatNumber)}
           >
-            <h10 style={{color : '#595959'}}>&nbsp;{seatNumber}</h10>
+            <h10 className = "ChungmuSeatCenterN" style={{color : '#595959'}}>&nbsp;{seatNumber}</h10>
           </div>
         );
       })}
@@ -290,7 +290,7 @@ const SeeyaSeatChungmu = () => {
                         onClick={() =>
                           handleSeatClick(2, rowIndex + 1, seatNumber)
                         }
-                      ><h10 style={{color : '#595959'}}>&nbsp;{seatNumber}</h10></div>
+                      ><h10 className = "ChungmuSeatCenterN" style={{color : '#595959'}}>&nbsp;{seatNumber}</h10></div>
                     );
                   }
                 )}
@@ -364,7 +364,7 @@ const SeeyaSeatChungmu = () => {
             }}
             onClick={() => handleSeatClick(2, rowIndex + 1, seatNumber)}
           >
-            <h10 style={{color : '#595959'}}>&nbsp;{seatNumber}</h10>
+            <h10 className = "ChungmuSeatCenterN" style={{color : '#595959'}}>&nbsp;{seatNumber}</h10>
           </div>
         );
       })}
@@ -397,7 +397,7 @@ const SeeyaSeatChungmu = () => {
                             backgroundColor: seatColor,
                         }}
                         onClick={() => handleSeatClick(3, rowIndex + 1, seatNumber)}
-                        ><h10 style={{color : '#595959'}}>&nbsp;{seatNumber}</h10></div>
+                        ><h10 className="ChungmuSeatNumber" style={{color : '#595959'}}>&nbsp;{seatNumber}</h10></div>
                     );
                     })}
                 </div>
@@ -424,7 +424,7 @@ const SeeyaSeatChungmu = () => {
                         onClick={() =>
                           handleSeatClick(3, rowIndex + 1, seatNumber)
                         }
-                      ><h10 style={{color : '#595959'}}>&nbsp;{seatNumber}</h10></div>
+                      ><h10 className = "ChungmuSeatCenterN" style={{color : '#595959'}}>&nbsp;{seatNumber}</h10></div>
                     );
                   }
                 )}
@@ -456,7 +456,7 @@ const SeeyaSeatChungmu = () => {
             }}
             onClick={() => handleSeatClick(3, rowIndex + 1, seatNumber)}
           >
-            <h10 style={{color : '#595959'}}>&nbsp;{seatNumber}</h10>
+            <h10 className = "ChungmuSeatCenterN" style={{color : '#595959'}}>&nbsp;{seatNumber}</h10>
           </div>
         );
       })}
