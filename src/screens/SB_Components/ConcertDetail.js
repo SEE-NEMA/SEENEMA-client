@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Header from "../../Header";
 import "../styles/ConcertDetail.css"
-import { NavLink, useParams } from "react-router-dom";
+import { NavLink, useParams, Link } from "react-router-dom";
 import axios from "axios";
 
 function ConcertDetail () {
@@ -13,6 +13,7 @@ function ConcertDetail () {
     const [date, setDate] = useState("");
     const [cast, setCast] = useState("")
     const [imgUrl, setImgUrl] = useState({});
+    const [detailUrl, setDetailUrl] = useState({});
 
     useEffect(() => {
         axios
@@ -25,6 +26,7 @@ function ConcertDetail () {
             setDate(response.data.date);
             setCast(response.data.cast);
             setImgUrl(response.data.imgUrl);
+            setDetailUrl(response.data.detailUrl);
             console.log(response.data.title)
             console.log(no)
         })
@@ -36,9 +38,14 @@ function ConcertDetail () {
     return (
         <div>
         <Header/>
+
+            <Link to = {detailUrl}>
             <img className="Musical-Image" src={imgUrl} alt="Musical Image"/>
-          
+            </Link>
+
             <div className = "Musical-Detail-Info">
+
+            <Link className="Musical-Detail-Info-Link" to = {detailUrl}>
                 <div className = "Musical-T">
                     <p className = "Musical-Catecory">
                     {genre}
@@ -47,6 +54,7 @@ function ConcertDetail () {
                     {title}
                     </p>
                 </div>
+                </Link>
 
                 <div className = "MusicalST">
                     <p className = "Musical-Place">장소 : {place}</p>
