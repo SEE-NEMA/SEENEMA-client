@@ -124,8 +124,19 @@ const renderStarScore = (score, setStars) => {
       };
     
       const handleReviewModalOpen = () => {
-        setIsReviewModalOpen(true);
+        const seatInfo = ticketInfo.좌석;
+        const [ticketZ, ticketX, ticketY] = seatInfo.match(/\d+/g);
+        // 좌석 정보 비교
+        if (ticketZ === z && ticketX === x && ticketY === y) {
+          setIsReviewModalOpen(true);
+         
+        } else {
+          // 좌석 정보 불일치한 경우 알림 창 띄우기
+          alert("좌석 정보가 일치하지 않습니다.");
+          console.log(ticketX, ticketY, ticketZ);
+        }
       };
+      
     
       const handleReviewModalClose = () => {
         setIsReviewModalOpen(false);
