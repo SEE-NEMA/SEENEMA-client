@@ -28,7 +28,20 @@ const SeeyaSeatList = () => {
   const [itemsPerPage, setItemsPerPage] = useState(5); // 페이지 당 아이템 수
 
   const handleGoBack = () => {
-    navigate(`/seeyaSeat${theaterId === 12 ? 'BlueSquare' : theaterId === 30 ? 'Chungmu' : theaterId === 11? 'MasterCard' : theaterId === 37 ? '': 'BlueSquare'}/${theaterId}`);
+    let theaterName = "";
+  
+    if (theaterId === "12") {
+      theaterName = "BlueSquare";
+    } else if (theaterId === "30") {
+      theaterName = "Chungmu";
+    } else if (theaterId === "11") {
+      theaterName = "MasterCard";
+    } else {
+      navigate(`/seeyaSeat/37`);
+      return;
+    }
+  
+    navigate(`/seeyaSeat${theaterName}/${theaterId}`);
   };
 
   const renderStarScore = (score, setStars) => {
