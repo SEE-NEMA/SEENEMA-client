@@ -160,7 +160,7 @@ const SeeyaSeatList = () => {
               })
               .then((response) => {
                 console.log(response.data);
-                  alert("게시물 삭제가 완료되었습니다!123");
+                  alert("게시물 삭제가 완료되었습니다!");
                   // handleReviewModalClose();
                   // navigate(`/SeeyaSeatList/${theaterId}/${z}/${x}/${y}`);
                   window.location.reload();

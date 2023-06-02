@@ -44,10 +44,23 @@ export default function SliderContainer() {
         const response = await axios.get("http://43.200.58.174:8080/api/v1/");
         const concertRank = response.data.concertRank || [];
         const extractedConcertNo = concertRank.map((item) => item.concert?.no || null);
+        const musicalRank = response.data.musicalRank || [];
+        const extractedMusicalNo = musicalRank.map((item) => item.musical?.no || null);
+        
         const extractedImgUrls = concertRank.map((item) => item.imgUrl || null);
         setImgUrls(extractedImgUrls);
+
+        const extractedImgUrl = musicalRank.map((item) => item.imgUrl || null);
+        setImgUrls(extractedImgUrl);
+
         setConcertRanking(response.data.concertRank || []);
         setConcertNo(extractedConcertNo);
+
+        setMusicalRanking(response.data.musicalRank || []);
+        setMusicalNo(extractedMusicalNo);
+
+        console.log(imgUrls);
+        
       } catch (error) {
         console.log(error);
       }
