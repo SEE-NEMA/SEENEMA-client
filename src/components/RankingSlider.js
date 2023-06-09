@@ -9,12 +9,13 @@ function RankingSlider() {
   useEffect(() => {
     axios.get('http://43.200.58.174:8080/api/v1/')
       .then(response => {
-        setRanking(response.data.musicalRank);
+        setRanking(response.data.musicalRank || []);
       })
       .catch(error => {
         console.log(error);
       });
-  }, []);
+  },[]);
+
 
   useEffect(() => {
     const intervalId = setInterval(() => {

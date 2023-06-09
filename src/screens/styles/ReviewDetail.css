@@ -1,9 +1,15 @@
 .RVDT-Wrap {
     position: absolute;
-    left : 60%;
+    left : 52%;
     transform: translateX(-50%);
     top : 160px;
-    width: 1000px;
+    width: 800px;
+}
+
+.RVDT-Modify-Wrap {
+    margin-left : 500px;
+    margin-top : -70px;
+    margin-bottom : 30px;
 }
 
 .RVDT-Modify {
@@ -11,47 +17,64 @@
     margin-left:15px;
     margin-top:45px;
     border:none;
-    width:50px;
+    width:70px;
     border-radius: 10px;
     background-color: rgb(168, 168, 168);
     color:rgb(255, 255, 255);
 }
 
 .RVDT-Detail {
-    display: flex;
-    flex-direction: row;
-    text-align: center;
-    margin-left:170px;
+    margin-left:20px;
 }
+
+.RVDT-createdAt {
+    margin-left : 140px;
+    margin-top : -38px;
+}
+
+.RVDT-viewCount {
+    margin-left : 340px;
+    margin-top : -38px;
+    width : 80px;
+}
+
 
 .RVDT-Detail h6 {
     color : #c9c9c9;
-    padding-right: 20px;
+    padding-right: 10px;
     font-weight :300;
     font-style: normal;
 }
 
 .RVDT-hr {
     height:1px;
-    width:720px;
-    margin-left:-20px;
+    width:900px;
+    margin-left:-50px;
     margin-top:60px;
 }
 
 .RVDT-content {
     width:500px;
     margin-top:40px;
+    color : lightgray;
 }
 
 .RVDT-Co {
     color:rgb(197, 197, 197);
     font-size:14px; 
+    margin-left:-60px;
 }
 
 .RVDT-Comment {
     margin-left:-40px;
     color:rgb(0, 0, 0);
     font-size:15px;
+    width:600px;
+}
+
+.RVDT-comment {
+    color:rgb(192, 192, 192);
+    margin-left : -40px;
 }
 
 .RVDT-button {
@@ -70,7 +93,7 @@
 
 .RVDT-comments {
     margin-top:40px;
-   
+   margin-left:50px;
 }
 
 .RVDT-input {
@@ -87,4 +110,50 @@
     background-color: rgb(168, 168, 168);
     color:rgb(255, 255, 255);
     border-radius:10px;
+}
+
+.RVDT-Image {
+    margin-left : -0px;
+}
+
+.review-detail-like {
+    margin-left : 500px;
+    height : 70px;
+    margin-top : -37px;
+    font-size : 10px;
+    color : gray;
+}
+
+.RVDT-Hear-Count {
+    margin-top : 35px;
+    width : 100px;
+    font-size : 15px;
+    color : gray;
+    margin-right : 10px;
+}
+
+.Heart-Empty {
+    margin-top : -52px;
+    margin-left : 10px;
+}
+
+.Heart-Filled {
+    margin-top : -60px;
+    margin-left : 10px;
+}
+
+.RVDT-Content-Image {
+    margin-left : 0px;
+    width : 400px;
+    height : 300px;
+}
+
+.RVDT-Comment-nickname {
+    color: rgb(197, 135, 135);
+    padding-right: 5px;
+}
+
+.RVDT-Comment-content {
+    font-size: 13px;
+    margin-left: 15px;
 }

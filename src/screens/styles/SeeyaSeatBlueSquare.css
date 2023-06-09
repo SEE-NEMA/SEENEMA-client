@@ -1,0 +1,354 @@
+  .SeeyaSeatBlueSquare-title {
+    text-align:center;
+    margin-left : 5px;
+    font-weight: bold;
+    margin-top : -30px;
+  }
+  
+   /* 1층 */
+
+
+  .area-left {
+    float: left;
+    margin-right: -130px;
+    margin-left : 60px;
+  }
+  
+  .area-left-tag {
+    text-align: center;
+  }
+  
+  .area-center {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width : 500px;
+    
+  }
+  
+  .area-center .row-6,
+  .area-center .row-8,
+  .area-center .row-9,
+  .area-center .row-10,
+  .area-center .row-11,
+  .area-center .row-12,
+  .area-center .row-13,
+  .area-center .row-14,
+  .area-center .row-15,
+  .area-center .row-16,
+  .area-center .row-17,
+  .area-center .row-18,
+  .area-center .row-19,
+  .area-center .row-20,
+  .area-center .row-21,
+  .area-center .row-22
+  {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width : 500px;
+  }
+
+ .area-center .row-8 {
+  margin-top : 20px;
+ }
+
+  .area-center-tag {
+    text-align: center;
+    width: 100%; 
+    margin-right : 32px;
+  }
+  
+  .area-center .row-7 {
+    flex-direction: row;
+  }
+
+  .area-left .row-7,
+  .area-center .row-7,
+  .area-right .row-7 {
+    display : flex;
+    justify-content: center;
+  }
+  
+  .area-center .row-1,
+  .area-center .row-3,
+  .area-center .row-5,
+  .area-center .row-7 {
+  width: calc(100% - 20px); 
+  }
+  
+  /*A구역 2열 ~ 6열 위치 조정*/
+
+ .area-left .row-2 {
+    margin-right : 30px;
+ }
+
+ .area-left .row-3 {
+    margin-right : 60px;
+ }
+
+ .area-left .row-4 {
+    margin-right : 90px;
+ }
+
+ .area-left .row-5 {
+    margin-right : 120px;
+ }
+
+ .area-left .row-6 {
+    display:flex;
+    margin-left : 30px;
+      
+ }
+
+ .area-left .row-7 {
+    margin-right : 180px;
+ }
+
+
+ .area-left .row-8,
+ .area-left .row-9,
+ .area-left .row-10,
+ .area-left .row-11,
+ .area-left .row-12,
+ .area-left .row-13,
+ .area-left .row-14,
+ .area-left .row-15,
+ .area-left .row-16,
+ .area-left .row-17,
+ .area-left .row-18,
+ .area-left .row-19,
+ .area-left .row-20,
+ .area-left .row-21,
+ .area-left .row-22 {
+   display: flex;
+   margin-left : -30px;
+ }
+
+ .area-left .row-8 {
+  margin-top : 20px;
+ }
+
+ .area-left .row-22 { 
+  margin-bottom : 20px;
+ }
+  /*A구역 2열 ~ 6열 위치 조정 끝*/
+
+  .area-right {
+    float: right;
+    margin-right: 20px;
+    margin-top : -731px;
+  }
+  
+  /*C구역 2열 ~ 6열 위치 조정*/
+
+  .area-right .row-2 {
+    margin-left : 30px;
+  }
+
+  .area-right .row-3 {
+    margin-left : 60px;
+  }
+  
+  .area-right .row-4 {
+    margin-left : 90px;
+  }
+
+  .area-right .row-5 {
+    margin-left : 120px;
+  }
+
+  .area-right .row-6 {
+    margin-left : 210px;
+    display:flex;
+  }
+
+  .area-right .row-7 {
+    margin-left : 180px;
+  }
+
+  /*C구역 2열 ~ 6열 위치 조정 끝*/
+
+  .area-right .row-8,
+  .area-right .row-9,
+  .area-right .row-10,
+  .area-right .row-11,
+  .area-right .row-12,
+  .area-right .row-13,
+  .area-right .row-14,
+  .area-right .row-15,
+  .area-right .row-16,
+  .area-right .row-17,
+  .area-right .row-18,
+  .area-right .row-19,
+  .area-right .row-20,
+  .area-right .row-21,
+  .area-right .row-22 {
+    display: flex;
+    margin-left : 210px;
+  }
+
+  .area-right .row-8 {
+    margin-top : 20px;
+  }
+
+  .area-right-tag {
+    text-align: center;
+  }
+  
+  .row {
+    display: flex;
+  }
+  
+  .seat {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    margin-top : 10px;
+    background-color: #ccc;
+    border-radius : 5px;
+  }
+  
+
+ /* 2층 */
+
+  .area-left-2 {
+    float: left;
+    margin-right: 40px;
+    margin-left : 35px;
+  }
+  
+  .area-left-tag-2 {
+    text-align: center;
+  }
+
+  .area-left-2 .row-6,
+  .area-left-2 .row-7,
+  .area-left-2 .row-8,
+  .area-left-2 .row-9 {
+    display : flex;
+    justify-content : right;
+  }
+
+  .area-left-2 .row-10 {
+    display : flex;
+  }
+
+
+  .area-center-2 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width : 500px;
+    
+  }
+
+  .area-center-2 .row-6 {
+    display:flex;
+  }
+
+  .area-center-2 .row-7 {
+    display:flex;
+  }
+
+  .area-center-2 .row-8,
+  .area-center-2 .row-9,
+  .area-center-2 .row-10 {
+    display:flex;
+  }
+
+  .area-right-2 {
+    float: right;
+    margin-right: 20px;
+    margin-top : -351px;
+  }
+
+  .area-right-2 .row-6,
+  .area-right-2 .row-7,
+  .area-right-2 .row-8,
+  .area-right-2 .row-9 {
+    display:flex;
+  }
+
+  .area-right-2 .row-10 {
+    display:flex;
+  }
+
+  /* 3층 */
+
+  .area-left-3 {
+   float: left;
+    margin-right: 10px;
+    margin-left : 35px;
+}
+
+.area-left-3 .row-3 {
+  margin-left : 120px;
+}
+
+.area-left-3 .row-4,
+.area-left-3 .row-5 {
+  margin-left : 30px;
+}
+
+
+  .area-left-3 .row-6 {
+    display : flex;
+  }
+
+  .area-center-3-empty-seat-1 {
+    width: 20px;
+    height: 20px;
+    margin-left : 20px;
+  }
+
+  .area-center-3-empty-seat-2 {
+    width: 20px;
+    height: 20px;
+  }
+
+  .area-center-3 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width : 500px;
+  }
+
+  .area-center-3 .row-6 {
+    display : flex;
+  }
+
+  /*3층 C구역*/
+
+  .area-right-3 {
+    float: right;
+    margin-right: 20px;
+    margin-top : -230px;
+  }
+
+  .area-right-3 .row-3 {
+    margin-left : 120px;
+  }
+
+  .area-right-3 .row-4,
+  .area-right-3 .row-5 {
+    margin-left : 30px;
+  }
+
+  .area-right-3 .row-6 { 
+    display:flex;
+  }
+
+  .seeyaseat-reward-alert {
+    position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 20px;
+  }

@@ -10,9 +10,9 @@
     left: 50%;
     transform: translate(-50%, 0);
 
-    border: 4px solid #830d15;
+    border: none;
     border-radius: 10px;
-    background-color: #ffffff;
+    background-color: rgba(225, 225, 225, 0.718);
   
     overflow: hidden;
   
@@ -39,7 +39,7 @@
     margin-top:40px;
     border : none;
     border-radius : 5px;
-    background-color: #e2dede;
+    background-color: #ffffff;
 
     height : 40px;
     font-size : 14px;
@@ -54,59 +54,77 @@
 
 .ReviewWrite-Label {
     margin-left : 3px;
+    
     font-weight: bold;
     vertical-align: top;
 }
 
+.ReviewWrite-Image {
+    margin-left : 34px;
+}
 
 .ReviewWrite-Text {
-    margin-left:30px;
+    margin-left:65px;
     width : 80%;
-    margin-top: 7px;
+    margin-top: 30px;
     border-radius : 5px;
     border : none;
-    background-color: #e2dede;
+    background-color: #ffffff;
 
-    height : 250px;
+    height : 220px;
     font-size : 16px;
     font-weight : 400;
 
     text-transform: 5px;
 
     resize:none;
-    font-family : 'Raleway', sans-serif;
        
 }
 
 .ReviewWrite-Upload {
     position : absolute;
     left: 50%;
-    transform: translate(-50%, 0);
-    margin-top : 600px;
+    transform: translateX(-50%);
     border: none;
     border-radius: 10px;
-    background-color: #000000;
+    background-color: #646464;
     color : white;
     font-weight: bold;
     width : 10%;
-    height : 40px;
+    height : 30px;
+    margin-top : 30px;
 }
 
-.MyDatePicker {
-    background-color : #e2dede;
-    border : none;
-    border-radius : 5px;
-    width : 15%;
-    margin-left : 65px;
-    height : 40px;
-   
+.ReviewWrite-Image-Wrap {
+    margin-top : 20px;
+}
+
+.ReviewWrite-Upload:hover {
+    background-color: black;
+}
+
+.tag_btn {
+    border: none;
+    border-radius: 5px;
+    background-color: #e2dede;
+    margin-right: 15px;
+    font-weight: 400;
+    font-family : 'Raleway', sans-serif;
+}
+
+
+.tag_btns {
+    margin-left:30px;
+}
+
+.tag {
+    display: flex;
 }
 
   
 
   .tag-buttons button.selected {
-    /* Add your selected button styles here */
-    background-color: #ff0000; /* Set the background color to red for selected buttons */
-    color: #ffffff; /* Set the text color to white for selected buttons */
+    background-color: #000000; 
+    color: #ffffff; 
   }
   

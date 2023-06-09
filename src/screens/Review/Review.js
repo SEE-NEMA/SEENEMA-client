@@ -1,19 +1,25 @@
-/*시야 후기 모아보기 화면 */
-
-import React from "react";
-import {Link} from 'react-router-dom';
+import React, { useContext, useEffect, useState } from "react";
+import { Link, useNavigate } from 'react-router-dom';
 import Header from "../../Header";
 import '../styles/Review.css';
-import {FaSearch} from "react-icons/fa";
+import { FaSearch } from "react-icons/fa";
+import axios from "axios";
+import { AiFillCaretDown } from 'react-icons/ai';
+import { AuthContext } from "../../contexts/AuthContext";
 
 const Review = () => {
   const [review, setReview] = useState([]);
   const [searchTitle, setSearchTitle] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  const pageNumbers = Array.from({ length: totalPages }, (_, index) => index + 1);
+  const [selectedTag, setSelectedTag] = useState(null);
+  const [activeTag, setActiveTag] = useState(1);
 
   const { authenticated } = useContext(AuthContext);
   const navigate = useNavigate();
+
+ 
 
   const validateUser = async () => {
     const token = localStorage.getItem('token');
@@ -44,9 +50,13 @@ const Review = () => {
   }, [authenticated, currentPage]);
 
   const fetchData = () => {
+    const url = selectedTag
+    ? `http://43.200.58.174:8080/api/v1/theater-review/tags?tagId=${selectedTag}`
+    : `http://43.200.58.174:8080/api/v1/theater-review/`
+
     axios({
       method: "GET",
-      url: `http://43.200.58.174:8080/api/v1/theater-review/`,
+      url: url,
     })
       .then((response) => {
         const sortedReview = response.data.sort(
@@ -54,7 +64,6 @@ const Review = () => {
         );
         setReview(sortedReview);
         setTotalPages(Math.ceil(sortedReview.length / 5));
-        console.log(localStorage);
       })
       .catch((error) => {
         console.error(error);
@@ -88,6 +97,16 @@ const Review = () => {
     return reviews.slice(startIndex, endIndex);
   };
 
+  const handleTagClick = (tagId) => {
+    setSelectedTag(tagId);
+    setActiveTag(tagId);
+    setCurrentPage(1);
+    fetchData();
+    console.log(tagId);
+  };
+
+  
+
   return (
     <div>
       <Header />
@@ -105,6 +124,44 @@ const Review = () => {
                 <button className="Review-Search" onClick={searchHandler}>
           <FaSearch size="30" />
         </button>
+        <div className="tag-button-wrap">
+  <button
+    className={`tag-button ${activeTag === 1 ? "active" : ""}`}
+    onClick={() => handleTagClick(1)}
+  >
+    맛집
+  </button>
+  <button
+    className={`tag-button ${activeTag === 2 ? "active" : ""}`}
+    onClick={() => handleTagClick(2)}
+  >
+    카페
+  </button>
+  <button
+    className={`tag-button ${activeTag === 3 ? "active" : ""}`}
+    onClick={() => handleTagClick(3)}
+  >
+    대여
+  </button>
+  <button
+    className={`tag-button ${activeTag === 4 ? "active" : ""}`}
+    onClick={() => handleTagClick(4)}
+  >
+    물품 보관소
+  </button>
+  <button
+    className={`tag-button ${activeTag === 5 ? "active" : ""}`}
+    onClick={() => handleTagClick(5)}
+  >
+    주차장
+  </button>
+  <button
+    className={`tag-button ${activeTag === 6 ? "active" : ""}`}
+    onClick={() => handleTagClick(6)}
+  >
+    화장실
+  </button>
+</div>
         <button className="Review-WriteBtn" onClick={validateUser}>
           글쓰기
         </button>
@@ -114,41 +171,31 @@ const Review = () => {
           <div>리뷰가 없습니다.</div>
         ) : (
           <>
-            <ul className="Review-Content">
+            <div className="SeeyaDetail-Container">
               {paginateReviews(review).map((item, index) => (
-                <li key={index} className="Review-Item">
-                  <Link to={`/Review/${item.post_no}`}>
-                    <span style={{ marginRight: "20px", color: "#000" }}>
-                      {item.title}
-                    </span>
-                    <span style={{ marginRight: "20px", color: "#000" }}>
-                      {item.createdAt}
-                    </span>
-                    <span style={{ marginRight: "20px", color: "#000" }}>
-                      {item.nickname}
-                    </span>
-                  </Link>
-                </li>
+                <div key={index} className="SeeyaDetail-Wrap">
+                  <Link to={`/Review/${item.post_no}`} className="SeeyaDetail-title">{item.title}</Link>
+                  <p className="SeeyaDetail-createdAt">{item.createdAt} </p>
+                  <div className="SeeyaDetail-nickName">{item.nickname}</div>
+                </div>
               ))}
-            </ul>
-            <div className="Review-Pagination">
-              {Array.from({ length: totalPages }, (_, index) => (
-                <button
-                  key={index}
-                  className={`Review-PageBtn ${
-                    currentPage === index + 1 ? "active" : ""
-                  }`}
-                  onClick={() => handlePageChange(index + 1)}
-                >
-                  {index + 1}
-                </button>
-            <Link to="/perform_review">
-                <button className="Review-WriteBtn">글쓰기</button>
-            </Link>
-            <hr className="Review-hr"/>
+
+              <div className="SeeyaDetail-Pagination">
+                {pageNumbers.map((pageNumber) => (
+                <button className="PageMoveButton"
+                  key={pageNumber}
+                  onClick={() => handlePageChange(pageNumber + 1)}
+                  disabled={pageNumber === currentPage}>{pageNumber}</button>
+                ))}
+              </div>
             </div>
-        </div>
-    );
-}
+
+
+          </>
+        )}
+      </div>
+    </div>
+  );
+};
 
 export default Review;

@@ -1,11 +1,16 @@
+.SeeyaDetail-Container {
+  margin-left : 350px;
+ 
+}
+
+
 .SeeyaDetail-Wrap {
-  border-bottom: 1px solid #eeeeee;
   display: flex;
-  justify-content: center; 
+  left : 30%;
   margin: 10px 0 20px; /* 단위(px) 추가 */
   padding: 15px;
-  width: 1500px; 
-  
+  width: 850px; 
+    border-bottom: 1px solid #eeeeee;
 }
  
  
@@ -13,12 +18,27 @@
     font-weight: bold;
     color:black;
     width : 400px;
+    margin-top : 20px;
+    text-align: left;
   }
   
   .SeeyaDetail-createdAt {
     font-size: 17px;
     color: #808080;
-    margin-left : 400px;
+    margin-left : 50px;
+   
+    width : 200px;
+  }
+
+  .SeeyaDetail-nickName {
+    font-size : 17px;
+    color : #808080;
+    margin-left : 30px;
+    margin-top : 17px;
+    text-align : right;
+   
+    height : 20px;
+
   }
 
   .SeeyaDetail-link {
@@ -43,4 +63,26 @@
     outline-color: transparent;
     outline-style:solid;
     box-shadow: 0 0 0 2px #911F27;
+}
+
+.PageMoveButton {
+  border : none;
+  background-color: white;
+  font-size : 15px;
+}
+
+.PageMoveButton:hover {
+  color:rgb(252, 161, 161);
+}
+
+.SeeyaDetail-Pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  margin-left : -380px;
+ 
+}
+
+.SeeyaDetail-Pagination .PageMoveButton {
+  margin: 0 5px;
 }

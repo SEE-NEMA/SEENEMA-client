@@ -3,6 +3,9 @@
     text-align: center;
 }
 
+.Review-None-Title {
+    margin-top : 80px;
+}
 
 .Review-Search {
     position: absolute;
@@ -29,8 +32,8 @@ input::placeholder {
 
 .Review-WriteBtn {
     position: absolute;
-    margin-left:90px;
-    margin-top: 120px;
+    margin-left:320px;
+    margin-top: 70px;
     margin-right: 40px;
     background-color: transparent;
     font-weight: bold;
@@ -43,7 +46,7 @@ input::placeholder {
 
 .Review-hr {
     margin-top: 50px;
-    height : 2px;
+    height : 1px;
     width:800px;
     background : #000;
 }
@@ -63,7 +66,8 @@ input::placeholder {
     list-style: none;
     width: 800px;
     font-weight: 300;
-    margin-top: 0px;
+    margin-top: 50px;
+    margin-left : 30px;
     margin-bottom: 40px;
     text-align: left;
     padding-left: 50%;
@@ -79,4 +83,23 @@ input::placeholder {
     background-color: transparent;
     border: none;
     margin-right:  5px;
+}
+
+.tag-button-wrap {
+    margin-top : 30px;
+}
+
+.tag-button {
+    border : none;
+    margin-left : 3px;
+    background-color: white;
+    border-right : 1px solid black;
+}
+
+.tag-button:last-child {
+    border:none;
+}
+
+.tag-button-wrap button.active {
+    color:rgb(251, 157, 157);
 }

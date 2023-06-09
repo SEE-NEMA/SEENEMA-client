@@ -1,0 +1,183 @@
+.SeeyaSeatList-Seat {
+    text-align : center;
+    font-weight : bold;
+    font-size : 25px;
+    margin-top : -40px;
+}
+
+.back-button {
+    margin-top :80px;
+    margin-left : 450px;
+    border: none;
+    color:gray;
+}
+
+
+.List-Wrap {
+    margin-top : 50px;
+}
+
+.SeeyaSeatList-hr {
+    height : 3px;
+    background-color: rgba(128, 128, 128, 0.293);
+    border : none;
+    width : 700px;
+}
+
+.SeeyaSeatList-Wrap{
+    width : 1440px;
+    text-align : center;
+    line-height: 10px;
+}
+
+.SeeyaSeatList-Wrap button {
+    border : none;
+    background-color: white;
+    font-size : 15px;
+}
+
+.SeeyaSeatList-nickname {
+    color : black;
+    font-size : 15px;
+}
+
+.SeeyaSeatList-created {
+    color : gray;
+    font-size : 10px;
+}
+
+.List-hr {
+    width : 300px;
+}
+
+.SeeyaSeatReview-button {
+    margin-left : 1000px;
+    border : none;
+    background-color: rgb(255, 255, 255);
+    color : rgb(0, 0, 0);
+    border-radius : 10px;
+    height : 30px;
+}
+
+.SeeyaSeatReview-button:hover {
+    color : rgb(225, 156, 156);
+}
+
+.SeeyaSeatList-Wrap button:hover {
+    color : rgb(225, 156, 156);
+}
+
+.SeeyaSeatList-Page {
+    border:none;
+    background-color: white;
+    margin-top : 30px;
+}
+
+.Review-None {
+    text-align : center;
+    margin-top : 50px;
+}
+
+/*모달창 스타일*/
+
+.SS-Modal-Seat {
+    text-align : center;
+    font-weight : bold;
+    font-size : 20px;
+}
+
+.SS-Modal-Info {
+    color : gray;
+    font-size : 10px;
+    text-align : center;
+}
+
+.SS-Modal-Content {
+   color : rgb(231,147,147);
+   font-weight: bold;
+   line-height: 30px;
+}
+
+.SS-Modal-button {
+    border : none;
+    margin-top : 20px;
+    width : 80px;
+    height : 30px;
+    margin-left : 200px;
+    background-color: gray;
+    color : white;
+    border-radius : 10px;
+}
+
+.modalData-Content-Wrap {
+    color : rgb(9,9,9);
+    margin-top : -10px;
+    font-size : 12px;
+    height : 130px;
+    overflow: auto;
+    margin-bottom : 1px;
+    line-height: 25spx;
+}
+
+.SS-Modal-Delete-button {
+    
+    border : none;
+    margin-top : 10px;
+    width : 60px;
+    height : 25px;
+    margin-left : 15px;
+    background-color: rgb(164, 164, 164);
+    color : white;
+    border-radius : 10px;
+}
+
+.SS-Modal-Edit-button {
+    border : none;
+    margin-top : 10px;
+    width : 60px;
+    height : 25px;
+    margin-left : 15px;
+    background-color: rgb(164, 164, 164);
+    color : white;
+    border-radius : 10px;
+}
+
+
+.SS-Modal-button:hover {
+    background-color : rgb(0, 0, 0);
+}
+
+.SS-Modal-Edit-button:hover,
+.SS-Modal-Delete-button:hover {
+    background-color : rgb(0, 0, 0);
+}
+.star-rating {
+    margin-top : 5px;
+}
+
+/*리뷰 작성 모달*/
+
+.SS-Modal-Edit-Title {
+    text-align : center;
+}
+
+.SeeyaSeatList-Page-Button {
+    border : none;
+}
+
+.SS-Modal-Button-Wrap {
+    margin-top : 20px;
+    margin-left: 300px;
+}
+
+.SeeyaSeatTicket-Goback {
+   margin-top : 450px;
+   margin-left : 730px;
+   border : none;
+   background-color: rgb(164, 164, 164);
+   color : white;
+   border-radius : 10px;
+   width : 80px;
+   height : 25px;
+}
+

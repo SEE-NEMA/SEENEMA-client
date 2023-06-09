@@ -3,7 +3,6 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "../styles/Login.css";
 import { AuthContext } from "../../contexts/AuthContext";
-
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -29,11 +28,21 @@ function Login() {
         config
       );
       const token = response.data;
-      localStorage.setItem("token", token);
-      login(email, token);
-      localStorage.setItem("email", email);
-      alert(`${email}님 안녕하세요!`);
-      navigate("/");
+      if(token ==="가입되지 않은 아이디 입니다.") {
+        alert(`${token}\n아이디 오류라네요`);
+        navigate("/login");
+      }
+      else if(token === "잘못된 비밀번호 입니다."){
+        alert(`${token}\n 비밀번호가 틀렸다네요`);
+        navigate("/login");
+      }
+      else{
+        localStorage.setItem("token", token);
+        login(email, token);
+        localStorage.setItem("email", email);
+        alert(`${email}님 안녕하세요!`);
+        navigate("/");  
+      }
     } catch (error) {
       console.error(error);
     }
@@ -47,7 +56,7 @@ function Login() {
 
   return (
     <div>
-      <h4 className="Login-Title">seeNEMA에 다시 오신걸 환영해요!</h4>
+      <h4 className="Login-Title">SEE-NEMA에 다시 오신걸 환영해요!</h4>
 
       <div className="Login-page">
         <div className="Login-contentWrap">
