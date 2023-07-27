@@ -39,7 +39,7 @@ function Signup() {
 
   return (
     <div>
-      <h4 className="Signup-titlename">seeNEMA에 오신걸 환영합니다!</h4>
+      <h4 className="Signup-titlename">SEE-NEMA에 오신걸 환영합니다!</h4>
 
       <div className="Signup-Page">
         <div className="Signup-ContentWrap">

@@ -1,12 +1,11 @@
 @font-face {
-  font-family: "GmarketM";
-  font-weight: 50;
-  src: url("GmarketSansTTFMedium.ttf") format("truetype");
+  font-family: 'SUITE-Regular';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/SUITE-Regular.woff2') format('woff2');
+  font-weight: 200;
+  font-style: normal;
 }
-
-
 *{
-  font-family:"GmarketM";
+  font-family:"SUITE-Regular";
 }
 
 
@@ -56,6 +55,7 @@
 .Header-Review a {
   color: black;
   text-decoration: none;
+  font-weight : 600;
 }
 
 .Header-Mypage {
@@ -71,10 +71,10 @@
 }
 
 .header-item {
-  margin-left: 30px;
+  margin-left: 50px;
   margin-right: 150px;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 20px;
 }
 
 .header-item:last-child {
@@ -82,7 +82,10 @@
 }
 
 .header-item a {
+  font-weight : 600;
+  font-size : 40px;
   color: black;
+  font-weight: bold;
   text-decoration: none;
 }
 
@@ -122,6 +125,7 @@
 .Header-Dropdown ul li {
   display: inline-block; /* inline-block으로 변경 */
   padding:10px;
+  font-weight: bold;
   margin-top : 10px;
   cursor: pointer;
   font-size: 18px;
@@ -130,7 +134,7 @@
 
 .Header-Dropdown ul li a {
   color: black;
-  font-weight : 300;
+  font-weight : 600;
   text-decoration: none;
 }
 
