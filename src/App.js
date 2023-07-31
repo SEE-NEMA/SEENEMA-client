@@ -2,7 +2,6 @@ import React from 'react';
 import Header from './Header';
 import { AiOutlineBars } from 'react-icons/ai';
 import { CgProfile } from 'react-icons/cg';
-import Sidebar from './components/Sidebar';
 import Main from './screens/Main';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Review from './screens/Review/Review';
@@ -33,6 +32,7 @@ import MusicalList from "./screens/SB_Components/MusicalList";
 import ConcertDetail from "./screens/SB_Components/ConcertDetail";
 import MusicalDetail from "./screens/SB_Components/MusicalDetail";
 import RecommendMain from "./screens/SB_Components/Recommend/RecommendMain"
+import MapMain from "./screens/maps/MapMain"
 
 function App() {
   return (
@@ -66,6 +66,7 @@ function App() {
         <Route path={"/seeyaSeatChungmu/:theaterId"} element ={<SeeyaSeatChungmu/>}/>
         <Route path={"/seeyaseatmain"} element={<SeeyaSeatMain/>}/>
         <Route path={"/seeyaseatedit/:theaterId/:z/:x/:y/:viewNo"} element = {<SeeyaSeatEdit/>}/>
+        <Route path={"/MapMain"} element={<MapMain/>}/>
         </Routes>
       </Router>
     </AuthProvider>

@@ -1,7 +1,7 @@
 {
   "name": "see-nema",
   "version": "0.1.0",
-  "homepage" : "https://SEE-NEMA.github.io/SEENEMA-client",
+  "homepage": "https://SEE-NEMA.github.io/SEENEMA-client",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
@@ -19,6 +19,7 @@
     "react-dropdown": "^1.11.0",
     "react-icons": "^4.8.0",
     "react-modal": "^3.16.1",
+    "react-naver-maps": "^0.1.2",
     "react-router-dom": "^6.7.0",
     "react-scripts": "5.0.1",
     "react-slick": "^0.29.0",
@@ -31,8 +32,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy" : "gh-pages -d build",
-    "predeploy" : "npm run build"
+    "deploy": "gh-pages -d build",
+    "predeploy": "npm run build"
   },
   "eslintConfig": {
     "extends": [

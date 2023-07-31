@@ -58,14 +58,14 @@
   font-weight : 600;
 }
 
-.Header-Mypage {
+.Header-Maps {
   margin-left: -30px;
   margin-right: 150px;
   font-weight: bold;
   font-size: 18px;
 }
 
-.Header-Mypage a {
+.Header-Maps a {
   color: black;
   text-decoration: none;
 }
