@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import '../styles/Signup.css';
+import '../styles/Login.css';
 import SignupModal from '../../SignupModal';
 import Login from './Login';
 
@@ -39,13 +39,13 @@ function Signup() {
 
   return (
     <div>
-      <h4 className="Signup-titlename">seeNEMA에 오신걸 환영합니다!</h4>
+      <h4 className="Login-Title">seeNEMA에 오신걸 환영합니다!</h4>
 
-      <div className="Signup-Page">
-        <div className="Signup-ContentWrap">
+      <div className="Login-page">
+        <div className="Login-contentWrap">
           <div className="EmailWrap">
             <input
-              className="Signup-ID"
+              className="Login-input"
               placeholder="ID"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -55,7 +55,7 @@ function Signup() {
           <p></p>
 
           <input
-            className="Signup-PW"
+            className="Login-input"
             placeholder="Password"
             type="password"
             value={password}
@@ -65,14 +65,14 @@ function Signup() {
       </div>
 
       <div>
-        <button className="Signup-Button" onClick={handleSubmit}>
+        <button className="Login-certify" onClick={handleSubmit}>
           회원가입
         </button>
       </div>
 
-      <h3 className="Signup-QuestionText">
+      <h3 className="QuestionText">
         이미 회원이신가요?
-        <a href="/login" className="Signup-LinktoLogin">
+        <a href="/login" className="signup_link">
           로그인
         </a>
       </h3>
