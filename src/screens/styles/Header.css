@@ -1,24 +1,11 @@
 @font-face {
-  font-family: "GmarketM";
-  font-weight: 50;
-  src: url("GmarketSansTTFMedium.ttf") format("truetype");
+  font-family: 'SUITE-Regular';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/SUITE-Regular.woff2') format('woff2');
+  font-weight: 200;
+  font-style: normal;
 }
-
-@font-face {
-  font-family: "GmarketL";
-  font-weight: 50;
-  src: url("GmarketSansTTFLight.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "GmarketB";
-  font-weight: 50;
-  src: url("GmarketSansTTFBold.ttf") format("truetype");
-}
-
-
 *{
-  font-family:"GmarketM";
+  font-family:"SUITE-Regular";
 }
 
 
@@ -27,13 +14,13 @@
   margin-left: 260px; /* SEE-NEMA 로고를 화면 가운데에 배치 */
   align-items: center;
   height: 70px;
+  padding : 8px;
   background-color: #ffffff;
-  padding: 8px;
   margin-top: 20px;
 }
 
 .Header-Play {
-  margin-top:5px;
+  margin-top : -5px;
   margin-left: 30px;
   margin-right: 90px;
   font-weight: bold;
@@ -43,7 +30,7 @@
 
 .Header-Play a {
   color: black;
- 
+  text-decoration: none;
 }
 
 .Header-Facility {
@@ -51,11 +38,11 @@
   margin-right: 150px;
   font-weight: bold;
   font-size: 18px;
-  font-family: "kim";
 }
 
 .Header-Facility a {
   color: black;
+  text-decoration: none;
 }
 
 .Header-Review {
@@ -63,32 +50,31 @@
   margin-right: 150px;
   font-weight: bold;
   font-size: 18px;
-  font-family: "kim";
 }
 
 .Header-Review a {
   color: black;
-  
+  text-decoration: none;
+  font-weight : 600;
 }
 
-.Header-Mypage {
+.Header-Maps {
   margin-left: -30px;
   margin-right: 150px;
   font-weight: bold;
   font-size: 18px;
-  font-family: "kim";
 }
 
-.Header-Mypage a {
+.Header-Maps a {
   color: black;
+  text-decoration: none;
 }
 
 .header-item {
-  margin-left: 30px;
+  margin-left: 50px;
   margin-right: 150px;
   font-weight: bold;
-  font-size: 18px;
-  font-family: "kimBold";
+  font-size: 20px;
 }
 
 .header-item:last-child {
@@ -96,7 +82,11 @@
 }
 
 .header-item a {
+  font-weight : 600;
+  font-size : 40px;
   color: black;
+  font-weight: bold;
+  text-decoration: none;
 }
 
 .Header-Logo {
@@ -134,7 +124,9 @@
 
 .Header-Dropdown ul li {
   display: inline-block; /* inline-block으로 변경 */
-  padding:5px;
+  padding:10px;
+  font-weight: bold;
+  margin-top : 10px;
   cursor: pointer;
   font-size: 18px;
   width:300px;
@@ -142,6 +134,8 @@
 
 .Header-Dropdown ul li a {
   color: black;
+  font-weight : 600;
+  text-decoration: none;
 }
 
 .Header-Dropdown ul li a:hover {
@@ -151,3 +145,4 @@
 .Header-Dropdown ul li:last-child {
   border-bottom: none;
 }
+

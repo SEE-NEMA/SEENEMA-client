@@ -1,0 +1,35 @@
+/* MapMain.css */
+
+.container {
+  display: flex;
+  width: 100%;
+  left: 50%;
+  right: 50%;
+}
+
+.mapElement {
+  height: 500px;
+  width: 400px;
+  border: 3px solid black;
+  margin-top: 10vh;
+  margin-left: 75%;
+}
+
+.mapBox {
+  position: absolute;
+  margin-top: 10vh;
+  width: 25%;
+  align-content: center;
+  right: 25%;
+}
+
+.mapSearchbar {
+  width: 200%;
+}
+
+
+.map-list {
+  color: black;
+  list-style: none;
+  margin-top : 20px;
+}

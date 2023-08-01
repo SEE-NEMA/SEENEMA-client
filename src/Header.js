@@ -80,8 +80,8 @@ return (
     <a href="" onClick={shouldLogin}>맞춤 추천</a>
   </div>
   
-  <div className="Header-Mypage">
-    <a href="" onClick={shouldLoginForMypage}>마이페이지</a>
+  <div className="Header-Maps">
+    <a href="/MapMain">지도로 보기</a>
   </div>
 
   <button className="Header-User" onClick={() => setmodal(!modal)}>
