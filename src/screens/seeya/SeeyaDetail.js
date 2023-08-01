@@ -68,3 +68,5 @@ function SeeyaDetail() {
     </div>
   );
 }
+
+export default SeeyaDetail;
