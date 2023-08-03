@@ -7,35 +7,75 @@ import SearchBar from '../../components/SearchBar.js';
 import PageHr from '../../components/PageHr';
 
 // Separate Map component
-const Map = () => {
+const Map = ({ theaters, selectedTheaterLocation, setSelectedTheater }) => {
   const mapElement = useRef(null);
   const { naver } = window;
+  const mapRef = useRef(null);
 
   useEffect(() => {
     if (!mapElement.current || !naver) return;
 
-    // 지도에 표시할 위치의 위도와 경도 좌표를 파라미터로 넣어줍니다.
-    const location = new naver.maps.LatLng(37.5656, 126.9769);
     const mapOptions = {
-      center: location,
+      center: new naver.maps.LatLng(37.5656, 126.9769),
       zoom: 15,
       zoomControl: true,
     };
 
-    const map = new naver.maps.Map(mapElement.current, mapOptions);
-    new naver.maps.Marker({
-      position: location,
-      map,
+    const newMap = new naver.maps.Map(mapElement.current, mapOptions);
+    mapRef.current = newMap;
+
+    theaters.forEach(theater => {
+      const marker = new naver.maps.Marker({
+        position: new naver.maps.LatLng(theater.lat, theater.lon),
+        map: newMap,
+      });
+
+      naver.maps.Event.addListener(marker, 'click', () => {
+        setSelectedTheater(theater);
+        console.log('Marker clicked:', theater.theaterName);
+      });
+
+      // Show the marker for the selected theater, if its location matches
+      if (
+        selectedTheaterLocation &&
+        selectedTheaterLocation.lat === theater.lat &&
+        selectedTheaterLocation.lon === theater.lon
+      ) {
+        setSelectedTheater(theater);
+        newMap.setCenter(new naver.maps.LatLng(theater.lat, theater.lon));
+      }
     });
-  }, []);
+  }, [theaters, naver, selectedTheaterLocation, setSelectedTheater]);
+
+  useEffect(() => {
+    if (mapRef && selectedTheaterLocation) {
+      const { lat, lon } = selectedTheaterLocation;
+      mapRef.current.setCenter(new naver.maps.LatLng(lat, lon));
+    }
+  }, [selectedTheaterLocation, naver]);
 
   return <div className="mapElement" ref={mapElement} />;
 };
+
+const TheaterDetails = ({theater}) => {
+  return (
+    <div>
+      <p>{theater.theaterName}</p>
+    </div>
+  )
+}
 
 const MapMain = () => {
   const [theaters, setTheaters] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredTheaters, setFilteredTheaters] = useState([]);
+  const [selectedTheaterLocation, setSelectedTheaterLocation] = useState(null);
+  const [selectedTheater, setSelectedTheater] = useState(null);
+
+  const handleTheaterClick = (theater) => {
+    setSelectedTheater(theater);
+    setSelectedTheaterLocation({lat:theater.lat, lon:theater.lon});
+  }
 
   useEffect(() => {
     fetch('http://43.200.58.174:8080/api/v1/theaters')
@@ -46,12 +86,11 @@ const MapMain = () => {
 
   const handleSearch = (searchQuery) => {
     setSearchQuery(searchQuery);
-    // Perform filtering here based on the searchQuery
     const filteredTheaters = theaters.filter(theater =>
       theater.theaterName.toLowerCase().includes(searchQuery.toLowerCase())
     );
     setFilteredTheaters(filteredTheaters);
-    console.log(filteredTheaters);
+    setSelectedTheaterLocation(null); // Reset selected theater location when a new search is performed
   };
 
   return (
@@ -59,8 +98,7 @@ const MapMain = () => {
       <Header />
       <div className="container">
         <div className="mapContainer">
-          {/* Render the Map component here */}
-          <Map />
+          <Map theaters={filteredTheaters} selectedTheaterLocation={selectedTheaterLocation} setSelectedTheater={setSelectedTheater}/>
         </div>
         <div className="mapBox">
           <SearchBar
@@ -69,16 +107,23 @@ const MapMain = () => {
             onSearch={handleSearch}
           />
           <div>
-          <br/><br/>
-          {filteredTheaters.length > 0 && (
-            <div>
-              <ul>
-                {filteredTheaters.map(theater => (
-                  <li key={theater.theaterId} className="map-list">{theater.theaterName}</li>
-                ))}
-              </ul>
-            </div>
-          )}
+            <br/><br/>
+            {filteredTheaters.length > 0 && (
+              <div>
+                <ul>
+                  {filteredTheaters.map(theater => (
+                    <li
+                      key={theater.theaterId}
+                      className="map-list"
+                      onClick={() => handleTheaterClick(theater)}
+                    >
+                      {theater.theaterName}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+            {selectedTheater && <TheaterDetails theater={selectedTheater} />}
           </div>
         </div>
       </div>
