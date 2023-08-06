@@ -42,7 +42,7 @@ function MusicalList() {
       <div className="musical-WrapContent">
         {currentMusicals.map((musicals) => (
           <li key={musicals.no}>
-            <Link to={`/musicals/${musicals.no}`} key={musicals.no}>
+            <Link to={`/musicals/${musicals.no}`} key={musicals.no} className="custom-link">
               <img src={musicals.imgUrl} alt={musicals.no} />
               <h4>{musicals.title}</h4>
               <h6>{musicals.place}</h6>

@@ -41,10 +41,10 @@ function ConcertList () {
             <div className="musical-WrapContent">
                 {currentMusicals.map((musicals) => (
                     <li key={musicals.no} >
-                        <Link to={`/concerts/${musicals.no}`}>
-                            <img src={musicals.imgUrl} alt={musicals.title} />
-                            <h4>{musicals.title}</h4>
-                            <h6>{musicals.place}</h6>
+                        <Link to={`/concerts/${musicals.no}`} className="custom-link">
+                        <img src={musicals.imgUrl} alt={musicals.title} />
+                        <h4>{musicals.title}</h4>
+                        <h6>{musicals.place}</h6>
                         </Link>
                     </li>
                 ))}

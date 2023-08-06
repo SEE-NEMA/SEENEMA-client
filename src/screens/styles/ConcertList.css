@@ -5,9 +5,19 @@
   text-align: center;
 }
 
+.musical-WrapContent li {
+  text-decoration: none;
+}
+
+
 .MusicalList {
   display: flex;
   flex-wrap: wrap;
+}
+
+.custom-link {
+  text-decoration: none; 
+  color: inherit; 
 }
 
 .musicalItem {
