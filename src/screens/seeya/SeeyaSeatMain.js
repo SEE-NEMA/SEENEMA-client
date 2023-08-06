@@ -99,14 +99,13 @@ function SeeyaSeatMain() {
         <hr className="SeeyaMain-hr" />
       </div>
       <div className="SeeyaMain-itemWrap">
-      <ul>
-  {getItemsForCurrentPage().map((item, index) => (
-    <Link
-    to={`/seeyaSeat${item.theaterId === 12 ? 'BlueSquare' : item.theaterId === 30 ? 'Chungmu' : item.theaterId === 11 ? 'MasterCard': item.theaterId === 37 ? '' : 'BlueSquare'}/${item.theaterId}`}
-      
+      <ul className = "SeeyaMain-ul">
+      {getItemsForCurrentPage().map((item, index) => (
+      <Link
+      to={`/seeyaSeat${item.theaterId === 12 ? 'BlueSquare' : item.theaterId === 30 ? 'Chungmu' : item.theaterId === 11 ? 'MasterCard': item.theaterId === 37 ? '' : 'BlueSquare'}/${item.theaterId}`}
       className="SeeyaMain-Link"
       key={index}
-    >
+      >
       <li className="SeeyaMain-li">{item.theaterName}</li>
     </Link>
   ))}
