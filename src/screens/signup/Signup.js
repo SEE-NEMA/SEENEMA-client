@@ -39,7 +39,7 @@ function Signup() {
 
   return (
     <div>
-      <h4 className="Login-Title">seeNEMA에 오신걸 환영합니다!</h4>
+      <h4 className="Login-Title">SEE-NEMA에 오신걸 환영합니다!</h4>
       <div className="Login-page">
         <div className="Login-contentWrap">
           <div className="EmailWrap">
