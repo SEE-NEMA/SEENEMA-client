@@ -6,30 +6,32 @@ import axios from "axios";
 
 function MusicalDetail () {
     const {no} = useParams();
-    const [content, setContent] = useState("");
     const [title, setTitle] = useState("");
     const [place, setPlace] = useState("");
     const [genre, setGenre] = useState("");
     const [date, setDate] = useState("");
     const [cast, setCast] = useState("")
     const [imgUrl, setImgUrl] = useState({});
-    const [detailUrl, setDetailUrl] = useState({});
+    const [interparkUrl, setInterparkUrl] = useState({});
+    const [melonUrl, setMelonUrl] = useState({});
+    const [elevenUrl, setElevenUrl] = useState({});
 
     useEffect(() => {
         axios
         .get(`http://43.200.58.174:8080/api/v1/musicals/${no}`)
         .then((response) => {
-            setContent(response.data.content);
             setTitle(response.data.title);
-            setPlace(response.data.place);
             setGenre(response.data.genre);
             setDate(response.data.date);
+            setPlace(response.data.place);
             setCast(response.data.cast);
             setImgUrl(response.data.imgUrl);
-            setDetailUrl(response.data.detailUrl);
-            console.log(response.data.detailUrl);
+            setInterparkUrl(response.data.interparkUrl);
+            setMelonUrl(response.data.melonUrl);
+            setElevenUrl(response.data.elevenUrl);
             console.log(response.data.title)
             console.log(no)
+            console.log(response.data.elevenUrl)
         })
         .catch((error) => {
             console.log(error)
@@ -37,16 +39,17 @@ function MusicalDetail () {
     }, [no]);
 
     return (
+        
         <div className="Musical-Detail">
         <Header/>
 
-            <Link to = {detailUrl}>
+            <Link to = {interparkUrl}>
             <img className="Musical-Image" src={imgUrl} alt="Musical Image"/>
             </Link>
           
             <div className = "Musical-Detail-Info">
 
-            <Link className="Musical-Detail-Info-Link" to = {detailUrl}>
+            <Link className="Musical-Detail-Info-Link" to = {interparkUrl}>
                 <div className = "Musical-T">
                     <p className = "Musical-Catecory">
                     {genre}
@@ -54,6 +57,7 @@ function MusicalDetail () {
                     <p className = "Musical-Title">
                     {title}
                     </p>
+                    <Link className="Musical-Reserve" to = {interparkUrl}>예매 하러가기</Link>
                 </div>
                 </Link>
 
