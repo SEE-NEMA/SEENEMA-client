@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/SEENEMA-clientW/static/css/main.233b2580.css",
-    "main.js": "/SEENEMA-clientW/static/js/main.2aa2e832.js",
-    "static/js/787.cf3abc74.chunk.js": "/SEENEMA-clientW/static/js/787.cf3abc74.chunk.js",
-    "static/media/slick.svg": "/SEENEMA-clientW/static/media/slick.2630a3e3eab21c607e21.svg",
-    "static/media/slick.eot": "/SEENEMA-clientW/static/media/slick.a4e97f5a2a64f0ab1323.eot",
-    "static/media/slick.ttf": "/SEENEMA-clientW/static/media/slick.c94f7671dcc99dce43e2.ttf",
-    "static/media/slick.woff": "/SEENEMA-clientW/static/media/slick.295183786cd8a1389865.woff",
-    "index.html": "/SEENEMA-clientW/index.html",
-    "main.233b2580.css.map": "/SEENEMA-clientW/static/css/main.233b2580.css.map",
-    "main.2aa2e832.js.map": "/SEENEMA-clientW/static/js/main.2aa2e832.js.map",
-    "787.cf3abc74.chunk.js.map": "/SEENEMA-clientW/static/js/787.cf3abc74.chunk.js.map"
+    "main.css": "/SEENEMA-client/static/css/main.5b7652dd.css",
+    "main.js": "/SEENEMA-client/static/js/main.35e30bc5.js",
+    "static/js/787.cf3abc74.chunk.js": "/SEENEMA-client/static/js/787.cf3abc74.chunk.js",
+    "static/media/slick.svg": "/SEENEMA-client/static/media/slick.2630a3e3eab21c607e21.svg",
+    "static/media/slick.eot": "/SEENEMA-client/static/media/slick.a4e97f5a2a64f0ab1323.eot",
+    "static/media/slick.ttf": "/SEENEMA-client/static/media/slick.c94f7671dcc99dce43e2.ttf",
+    "static/media/slick.woff": "/SEENEMA-client/static/media/slick.295183786cd8a1389865.woff",
+    "index.html": "/SEENEMA-client/index.html",
+    "main.5b7652dd.css.map": "/SEENEMA-client/static/css/main.5b7652dd.css.map",
+    "main.35e30bc5.js.map": "/SEENEMA-client/static/js/main.35e30bc5.js.map",
+    "787.cf3abc74.chunk.js.map": "/SEENEMA-client/static/js/787.cf3abc74.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.233b2580.css",
-    "static/js/main.2aa2e832.js"
+    "static/css/main.5b7652dd.css",
+    "static/js/main.35e30bc5.js"
   ]
 }
