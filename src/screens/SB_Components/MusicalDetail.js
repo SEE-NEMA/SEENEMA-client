@@ -14,6 +14,9 @@ function MusicalDetail () {
     const [cast, setCast] = useState("")
     const [imgUrl, setImgUrl] = useState({});
     const [detailUrl, setDetailUrl] = useState({});
+    const [melonUrl, setMelonUrl] = useState(null);
+    const [interparkUrl, setInterparkUrl] = useState(null);
+    const [elevenUrl, setElevenUrl] = useState(null);
 
     useEffect(() => {
         axios
@@ -27,9 +30,13 @@ function MusicalDetail () {
             setCast(response.data.cast);
             setImgUrl(response.data.imgUrl);
             setDetailUrl(response.data.detailUrl);
-            console.log(response.data.detailUrl);
-            console.log(response.data.title)
-            console.log(no)
+            setMelonUrl(response.data.melonUrl);
+            setInterparkUrl(response.data.interparkUrl);
+            setElevenUrl(response.data.elevenUrl);
+            console.log(response.data.title);
+            console.log(response.data.melonUrl);
+            console.log(response.data.elevenUrl);
+            console.log(response.data.interparkUrl);
         })
         .catch((error) => {
             console.log(error)
@@ -61,6 +68,25 @@ function MusicalDetail () {
                     <p className = "Musical-Place">장소 : {place}</p>
                     <p className = "Musical-Date">기간 : {date}</p>
                     <p className = "Musical-RunningTime">캐스트 : {cast}</p>
+
+                    {/* Check if the URLs are not null and display the corresponding buttons */}
+          {melonUrl && (
+            <a href={melonUrl} target="_self">
+              멜론 예매
+            </a>
+          )}
+          {interparkUrl && (
+            <img src="../static/img/interpark.png">
+                <a href={interparkUrl} target="_self">
+                    인터파크 예매
+                </a>
+            </img>
+          )}
+          {elevenUrl && (
+            <a href={elevenUrl} target="_self">
+              11번가 예매
+            </a>
+          )}
                 </div>
             </div>
 
