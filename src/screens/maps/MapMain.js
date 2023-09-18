@@ -107,35 +107,69 @@ const MapMain = () => {
   const [selectedTheaterLocation, setSelectedTheaterLocation] = useState(null);
   const [selectedTheater, setSelectedTheater] = useState(null);
   const [concerts, setConcerts] = useState([]);
+  const [musicals, setMusicals] = useState([]);
+  const [selectedTheaterConcerts, setSelectedTheaterConcerts] = useState([]);
+  const [selectedTheaterMusicals, setSelectedTheaterMusicals] = useState([]);
+
+
 
   const handleTheaterClick = (theater) => {
     setSelectedTheater(theater);
     setSelectedTheaterLocation({ lat: theater.lat, lon: theater.lon });
     console.log('선택한 극장', selectedTheater.theaterId);
   
-    // 사용자가 클릭한 극장의 theaterId를 사용하여 해당 극장의 공연 정보를 가져오는 API 요청
+    // Use axios to fetch the concerts for the selected theater
     axios
-      .get(`http://43.200.58.174:8080/api/v1/concerts` && `http://43.200.58.174:8080/api/v1/musicals`)
-      .then((response) => {
-        const allConcerts = response.data;
-
-      // Filter the concerts based on the selected theater's ID
-      const selectedTheaterConcerts = allConcerts.filter(
-        (concert) => {
-          if(concert.theaterId && concert.theaterId.theaterId === theater.theaterId) {
-            return true;
+      .get(`http://43.200.58.174:8080/api/v1/concerts`)
+      .then((concertResponse) => {
+        const allConcerts = concertResponse.data;
+  
+        // Filter the concerts based on the selected theater's ID
+        const selectedTheaterConcerts = allConcerts.filter(
+          (concert) => {
+            if (concert.theaterId && concert.theaterId.theaterId === theater.theaterId) {
+              return true;
+            }
+            return false;
           }
-          return false;
-        }
-      );
-      setConcerts(selectedTheaterConcerts);
-      console.log(selectedTheaterConcerts);
+        );
+  
+        setConcerts(selectedTheaterConcerts);
+  
+        // Fetch musicals for the selected theater
+        axios
+          .get(`http://43.200.58.174:8080/api/v1/musicals`)
+          .then((musicalResponse) => {
+            const allMusicals = musicalResponse.data;
+  
+            // Filter the musicals based on the selected theater's ID
+            const selectedTheaterMusicals = allMusicals.filter(
+              (musical) => {
+                if (musical.theaterId && musical.theaterId.theaterId === theater.theaterId) {
+                  return true;
+                }
+                return false;
+              }
+            );
+  
+            setMusicals(selectedTheaterMusicals);
+            setSelectedTheaterMusicals(selectedTheaterMusicals); // Set the selected theater's musicals
+            console.log(selectedTheaterMusicals);
+          })
+          .catch((musicalError) => {
+            console.error('Error fetching musicals:', musicalError);
+            setMusicals([]);
+            setSelectedTheaterMusicals([]); // Reset selected theater's musicals on error
+          });
       })
-      .catch((error) => {
-        console.error('Error fetching concerts:', error);
+      .catch((concertError) => {
+        console.error('Error fetching concerts:', concertError);
         setConcerts([]);
+        setSelectedTheaterMusicals([]); // Reset selected theater's musicals on error
       });
   };
+  
+  
   
 
   useEffect(() => {
@@ -197,14 +231,33 @@ const MapMain = () => {
                   ))}
                 </ul>
               )}
+              {selectedTheaterMusicals.length > 0 && (
+  <div>
+    <h2>Selected Theater Musicals:</h2>
+    <ul>
+      {selectedTheaterMusicals.map((musical) => (
+        <li key={musical.no}>{musical.title}</li>
+      ))}
+    </ul>
+  </div>
+)}
+
             </div>
           </div>
         </div>
       </div>
       {/* TheaterDetails 컴포넌트를 여기서 렌더링 */}
-      {selectedTheater && (
-        <ConcertList concerts={concerts} selectedTheaterId={selectedTheater.theaterId} />
-      )}
+      {selectedTheaterConcerts.length > 0 && (
+  <div>
+    <h2>Selected Theater Concerts:</h2>
+    <ul>
+      {selectedTheaterConcerts.map((concert) => (
+        <li key={concert.no}>{concert.title}</li>
+      ))}
+    </ul>
+  </div>
+)}
+
 
       <div className="tag-button-wrap">
         <button>현재 예매 중</button>

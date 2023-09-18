@@ -58,8 +58,7 @@ export default function SliderContainer() {
 
         setMusicalRanking(response.data.musicalRank || []);
         setMusicalNo(extractedMusicalNo);
-
-        console.log(imgUrls);
+        console.log(response.data);
         
       } catch (error) {
         console.log(error);
