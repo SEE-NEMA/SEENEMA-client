@@ -48,7 +48,7 @@ return (
 <div className="headerM">
   <div className="headerM-logo">
     <a href="/">
-      SEE-NEMA
+        SEE-NEMA
     </a>
   </div>
 
@@ -56,7 +56,7 @@ return (
     <div className="menuM" onMouseEnter={togglePlayDropdown} onMouseLeave={togglePlayDropdown}>
       <a href="#">공연</a>
       {showPlayDropdown && (
-        <div>
+        <div className="dropdownM">
           <ul>
             <li><a href="/musicallist" onClick={handleMusicalClick}>뮤지컬</a></li>
             <li><a href="/concertlist" onClick={handleMusicalClick}>콘서트</a></li>
@@ -68,7 +68,7 @@ return (
     <div className="menuM" onMouseEnter={toggleReviewDropdown} onMouseLeave={toggleReviewDropdown}>
       <a href="#">후기 모아보기</a>
         {showReviewDropdown && (
-          <div>
+          <div className="dropdownM">
             <ul>
               <li><a href="/seeyamain">시야 후기</a></li>
               <li><a href="/seeyaseatmain">좌석 보기</a></li>
