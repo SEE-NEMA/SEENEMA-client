@@ -47,7 +47,7 @@ const shouldLoginForMypage = () => {
 return (
 <div className="headerM">
   <div className="headerM-logo">
-    <a href="/">
+    <a href="/M">
         SEE-NEMA
     </a>
   </div>
@@ -58,7 +58,7 @@ return (
       {showPlayDropdown && (
         <div className="dropdownM">
           <ul>
-            <li><a href="/musicallist" onClick={handleMusicalClick}>뮤지컬</a></li>
+            <li><a href="/musicalListM" onClick={handleMusicalClick}>뮤지컬</a></li>
             <li><a href="/concertlist" onClick={handleMusicalClick}>콘서트</a></li>
           </ul>
         </div>
@@ -87,9 +87,9 @@ return (
     </div>
     
     <div className="menuM">
-    <button onClick={() => setmodal(!modal)}>
-      <RxGear size="30"/>
-    </button>
+      <button className="setting-btnM" onClick={() => setmodal(!modal)}>
+        <RxGear size="30"/>
+      </button>
     </div>
 
     {modal && (

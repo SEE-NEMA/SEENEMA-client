@@ -30,6 +30,7 @@ import Login from './screens/signup/Login';
 import { AuthProvider, AuthContext } from './contexts/AuthContext';
 import ReviewPost from "./screens/Review/ReviewPost";
 import MusicalList from "./screens/SB_Components/MusicalList";
+import MusicalListM from "./screens/SB_Components/MusicalListM";
 import ConcertDetail from "./screens/SB_Components/ConcertDetail";
 import MusicalDetail from "./screens/SB_Components/MusicalDetail";
 import RecommendMain from "./screens/SB_Components/Recommend/RecommendMain"
@@ -70,6 +71,7 @@ function App() {
         <Route path={"/seeyaseatedit/:theaterId/:z/:x/:y/:viewNo"} element = {<SeeyaSeatEdit/>}/>
         <Route path={"/MapMain"} element={<MapMain/>}/>
         <Route path={"/M"} element={<MainM/>}/>
+        <Route path={"/musicalListM"} element={<MusicalListM/>}/>
         </Routes>
       </Router>
     </AuthProvider>

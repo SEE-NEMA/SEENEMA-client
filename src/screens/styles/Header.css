@@ -20,8 +20,12 @@
 }
 
 .headerM {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   align-items: center;
-  height: 100px;
+  height: 130px;
   background-color: #ffffff;
 }
 
@@ -53,6 +57,7 @@
 }
 
 .headerM-logo {
+  margin-top: 10px;
   font-size: 40px;
   font-weight: bold;
   text-align: center;
@@ -144,6 +149,13 @@
 }
 
 .Header-User {
+  width: 60px;
+  height: 60px;
+  border: none;
+  background-color: white;
+}
+
+.headerM-Menu .menuM .setting-btnM {
   width: 60px;
   height: 60px;
   border: none;

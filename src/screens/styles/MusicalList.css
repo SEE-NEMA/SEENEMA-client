@@ -6,6 +6,34 @@
   margin-left : 170px;
 }
 
+.musical-WrapContentM {
+  padding-top: 130px;
+  margin-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.musical-WrapContentM li {
+  list-style: none;
+  margin : 0 50px;
+  width: 280px;
+  margin-bottom: 5%;
+}
+
+.musical-WrapContentM .musical-titleM {
+  color: black;
+  margin-top: 5%;
+  margin-bottom: 5px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 22px;
+}
+.musical-WrapContentM .musical-placeM {
+  color: #c88a99;
+  text-align: center;
+  font-size: 17px;
+}
 
 .musical-WrapContent img {
   width: 200px;

@@ -93,7 +93,7 @@ export default function SliderContainer() {
         },
       },
       {
-        breakpoint: 700,
+        breakpoint: 500,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,

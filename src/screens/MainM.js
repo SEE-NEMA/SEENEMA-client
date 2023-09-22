@@ -16,7 +16,7 @@ function Main () {
     <div>
       <HeaderM/>
 
-      <div>
+      <div className="Main-RankM">
         <p className="Main-Rank-titleM">실시간 랭킹</p>
         <RankingSlider/>
         <ConcertRankingSlider/>
