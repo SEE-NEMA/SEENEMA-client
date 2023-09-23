@@ -91,7 +91,7 @@ function SeeyaDetail() {
           ))}
         </div>
 
-        <div>
+        <div className="result-row-pageNumber">
             {pageNumbers.map((pageNumber) => (
               <button className = "PageMoveButton"
                       key={pageNumber}
