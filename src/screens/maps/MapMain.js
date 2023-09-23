@@ -221,15 +221,26 @@ const MapMain = () => {
         <h2>{selectedTheater.theaterName}</h2>
         <TabBar activeTab={activeTab} onTabChange={handleTabChange} className="TabBar"/>
           {currentStep === Step.THEATER_DETAILS && (
-            <div style={{maxHeight:'400px', overflowY: 'auto'}}>
+            <div style={{maxHeight:'500px', overflowY: 'auto'}}>
               {activeTab === 'direction' && (
                 <div>
                   <pre style={{width:'380px', whiteSpace:'pre-wrap'}}>{selectedTheater.direction}</pre>
+                  <br/>
+                  {selectedTheater.imgUrl && (
+                  <img
+                      className="map-img"
+                      style={{ width: '350px', height: '200px' }}
+                      src={selectedTheater.imgUrl}
+                      alt={selectedTheater.title}
+                  />
+                  )}
+
                 </div>
               )}
               {activeTab === 'parking' && (
             <div >
     <pre style={{ width: '350px', whiteSpace: 'pre-wrap' }}>{selectedTheater.parking}</pre>
+    
             </div>
 )}
 
@@ -240,7 +251,6 @@ const MapMain = () => {
                     {selectedTheaterMusicals.map((musical) => (
                     <li key={musical.no}>
                     <div className="map-content" style={{ display: 'flex', alignItems: 'center' }} >
-                    <img className="map-img" src={musical.imgUrl} alt={musical.title} />
                     <br/>
                     <span style={{ marginLeft: '10px' }}>
                       <h3>{musical.title}</h3>
