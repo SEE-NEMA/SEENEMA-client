@@ -70,9 +70,9 @@ return (
         {showReviewDropdown && (
           <div className="dropdownM">
             <ul>
-              <li><a href="/seeyamain">시야 후기</a></li>
+              <li><a href="/seeyamainM">시야 후기</a></li>
+              <li><a href="/ReviewM">공연 후기</a></li>
               <li><a href="/seeyaseatmain">좌석 보기</a></li>
-              <li><a href="/Review">공연 후기</a></li>
             </ul>
           </div>
         )}
