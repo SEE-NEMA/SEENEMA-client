@@ -219,41 +219,75 @@ const MapMain = () => {
       renderContent = (
         <>
         <h2>{selectedTheater.theaterName}</h2>
-        <TabBar activeTab={activeTab} onTabChange={handleTabChange} />
+        <TabBar activeTab={activeTab} onTabChange={handleTabChange} className="TabBar"/>
           {currentStep === Step.THEATER_DETAILS && (
-            <div>
+            <div style={{maxHeight:'400px', overflowY: 'auto'}}>
               {activeTab === 'direction' && (
                 <div>
-                  <pre>{selectedTheater.direction}</pre>
+                  <pre style={{width:'380px', whiteSpace:'pre-wrap'}}>{selectedTheater.direction}</pre>
                 </div>
               )}
               {activeTab === 'parking' && (
-                <div>
-                  <pre>{selectedTheater.parking}</pre>
-                </div>
-              )}
+            <div >
+    <pre style={{ width: '350px', whiteSpace: 'pre-wrap' }}>{selectedTheater.parking}</pre>
+            </div>
+)}
+
+              <br/><br/>
               {activeTab === 'musicals' && (
                 <div>
                   <ul>
                     {selectedTheaterMusicals.map((musical) => (
-                      <li key={musical.no}>
-                        <div className="map-content">
-                          <img className="map-img" style={{flex:1}} src={musical.imgUrl} alt={musical.title} />
-                            <span style={{flex:1}}>{musical.title} <br/>
-                            {musical.date}
-                            {musical.cast}
-                            </span>
-                        </div>
-                        <hr/>
-                      </li>
+                    <li key={musical.no}>
+                    <div className="map-content" style={{ display: 'flex', alignItems: 'center' }} >
+                    <img className="map-img" src={musical.imgUrl} alt={musical.title} />
+                    <br/>
+                    <span style={{ marginLeft: '10px' }}>
+                      <h3>{musical.title}</h3>
+                      {musical.date && (
+                      <>
+                      <br />
+                      {musical.date}
+                      </>
+                      )}
+                      {musical.cast && (
+                      <>
+                      <br />
+                      {musical.cast}
+                      </>
+                      )}
+                    </span>
+
+                    </div>
+                    <hr />
+                    </li>
                     ))} 
                   </ul>
                   <ul>
-                    {selectedTheaterConcerts.map((concert) => (
-                      <li key={concert.no}>
-                        {concert.title}
-                        <img className="map-img" src={concert.imgUrl} alt={concert.title} />
-                      </li>
+                  {selectedTheaterConcerts.map((concert) => (
+                    <li key={concert.no}>
+                    <div className="map-content" style={{ display: 'flex', alignItems: 'center' }} >
+                    <img className="map-img" src={concert.imgUrl} alt={concert.title} />
+                    <br/>
+                    <span style={{ marginLeft: '10px' }}>
+                      <h3>{concert.title}</h3>
+                      {concert.date && (
+                      <>
+                      <br />
+                      {concert.date}
+                      </>
+                      )}
+                      {concert.cast && (
+                      <>
+                      <br />
+                      {concert.cast}
+                      </>
+                      )}
+                    </span>
+
+                    </div>
+                    <hr />
+                    </li>
                     ))}
                   </ul>
                 </div>
