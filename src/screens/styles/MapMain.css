@@ -33,3 +33,19 @@
   list-style: none;
   margin-top : 20px;
 }
+
+li {
+  list-style: none;
+}
+
+.map-content {
+  display: 'flex';
+  align-items: 'center';
+}
+
+.map-img {
+  width: 90px;
+  height: 120px;
+  margin : 0;
+  padding : 0;
+}

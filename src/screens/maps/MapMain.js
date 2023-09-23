@@ -4,7 +4,7 @@ import Header from '../../Header';
 import '../styles/MapMain.css';
 import '../../components/SearchBar.js';
 import SearchBar from '../../components/SearchBar.js';
-import PageHr from '../../components/PageHr';
+import TabBar from '../../components/TabBar';
 
 const Step = {
   SEARCH: 'SEARCH',
@@ -66,9 +66,9 @@ const Map = ({ theaters, selectedTheaterLocation, setSelectedTheater }) => {
 const TheaterDetails = ({ theater }) => {
   return (
     <div>
-      <h2>Theater Details</h2>
-      <p>Theater Name: {theater.theaterName}</p>
-      <p>Address: {theater.address}</p>
+      <p>
+        <h2>{theater.theaterName}</h2>
+      </p>
       {/* Add more details here as needed */}
     </div>
   );
@@ -80,11 +80,18 @@ const MapMain = () => {
   const [filteredTheaters, setFilteredTheaters] = useState([]);
   const [selectedTheaterLocation, setSelectedTheaterLocation] = useState(null);
   const [selectedTheater, setSelectedTheater] = useState(null);
-  const [concerts, setConcerts] = useState([]);
-  const [musicals, setMusicals] = useState([]);
+  const [date, setDate] = useState();
+  const [cast, setCast] = useState();
+  const [musicals, setMusicals] = useState();
+  const [concert, setConcerts] = useState();
   const [selectedTheaterConcerts, setSelectedTheaterConcerts] = useState([]);
   const [selectedTheaterMusicals, setSelectedTheaterMusicals] = useState([]);
   const [currentStep, setCurrentStep] = useState(Step.SEARCH);
+  const [activeTab, setActiveTab] = useState('direction');
+
+  const handleTabChange = (tab) => {
+    setActiveTab(tab);
+  }
 
   const handleTheaterClick = (theater) => {
     setSelectedTheater(theater);
@@ -108,6 +115,9 @@ const MapMain = () => {
 
         setConcerts(selectedTheaterConcerts);
         setSelectedTheaterConcerts(selectedTheaterConcerts);
+        console.log(selectedTheaterConcerts);
+        console.log(date);
+        console.log(cast);
 
         // Fetch musicals for the selected theater
         axios
@@ -208,25 +218,49 @@ const MapMain = () => {
     case Step.THEATER_DETAILS:
       renderContent = (
         <>
-          <TheaterDetails theater={selectedTheater} concerts={concerts} />
-          {selectedTheaterMusicals.length > 0 && (
+        <h2>{selectedTheater.theaterName}</h2>
+        <TabBar activeTab={activeTab} onTabChange={handleTabChange} />
+          {currentStep === Step.THEATER_DETAILS && (
             <div>
-              <h2>Selected Theater Musicals:</h2>
-              <ul>
-                {selectedTheaterMusicals.map((musical) => (
-                  <li key={musical.no}>{musical.title}</li>
-                ))}
-              </ul>
+              {activeTab === 'direction' && (
+                <div>
+                  <pre>{selectedTheater.direction}</pre>
+                </div>
+              )}
+              {activeTab === 'parking' && (
+                <div>
+                  <pre>{selectedTheater.parking}</pre>
+                </div>
+              )}
+              {activeTab === 'musicals' && (
+                <div>
+                  <ul>
+                    {selectedTheaterMusicals.map((musical) => (
+                      <li key={musical.no}>
+                        <div className="map-content">
+                          <img className="map-img" style={{flex:1}} src={musical.imgUrl} alt={musical.title} />
+                            <span style={{flex:1}}>{musical.title} 
+                            {musical.date}
+                            {musical.cast}
+                            </span>
+                        </div>
+                        <hr/>
+                      </li>
+                    ))} 
+                  </ul>
+                  <ul>
+                    {selectedTheaterConcerts.map((concert) => (
+                      <li key={concert.no}>
+                        {concert.title}
+                        <img className="map-img" src={concert.imgUrl} alt={concert.title} />
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </div>
           )}
-          <div>
-            <h2>Selected Theater Concerts:</h2>
-            <ul>
-              {selectedTheaterConcerts.map((concert) => (
-                <li key={concert.no}>{concert.title}</li>
-              ))}
-            </ul>
-          </div>
+
         </>
       );
       break;
@@ -246,7 +280,7 @@ const MapMain = () => {
             setSelectedTheater={setSelectedTheater}
           />
         </div>
-        <div className="mapBox">
+        <div className="mapBox"> 
           {renderContent}
         </div>
       </div>
