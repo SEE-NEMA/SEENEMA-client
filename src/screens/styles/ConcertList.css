@@ -38,3 +38,8 @@
   margin-left:570px;
   width:150px;
 }
+
+.musical-WrapContent h4,
+.musical-WrapContent h6 {
+    text-decoration: none;
+}
