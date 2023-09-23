@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Review from './screens/Review/Review';
 import ReviewDetail from './screens/Review/ReviewDetail';
 import ConcertList from './screens/SB_Components/ConcertList';
+import ConcertListM from './screens/SB_Components/ConcertListM';
 import MyPage from './screens/My_Page/MyPage';
 import Facility from './screens/SB_Components/Facility';
 import SeeyaMain from './screens/seeya/SeeyaMain';
@@ -33,6 +34,7 @@ import MusicalList from "./screens/SB_Components/MusicalList";
 import MusicalListM from "./screens/SB_Components/MusicalListM";
 import ConcertDetail from "./screens/SB_Components/ConcertDetail";
 import MusicalDetail from "./screens/SB_Components/MusicalDetail";
+import MusicalDetailM from "./screens/SB_Components/MusicalDetailM";
 import RecommendMain from "./screens/SB_Components/Recommend/RecommendMain"
 import MapMain from "./screens/maps/MapMain"
 
@@ -72,6 +74,8 @@ function App() {
         <Route path={"/MapMain"} element={<MapMain/>}/>
         <Route path={"/M"} element={<MainM/>}/>
         <Route path={"/musicalListM"} element={<MusicalListM/>}/>
+        <Route path={"/musicalsM/:no"} element={<MusicalDetailM/>}/>
+        <Route path={"/concertListM"} element={<ConcertListM/>}/>
         </Routes>
       </Router>
     </AuthProvider>

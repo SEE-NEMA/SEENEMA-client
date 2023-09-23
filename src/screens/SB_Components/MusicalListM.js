@@ -14,14 +14,14 @@ function MusicalList() {
       method: "GET",
       url: "http://43.200.58.174:8080/api/v1/musicals"
     })
-      .then((response) => {
-        setMusical(response.data);
-        console.log(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
+    .then((response) => {
+      setMusical(response.data);
+      // console.log(response.data);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  })
 
 
   const indexOfLastMusical = currentPage * musicalsPerPage;
@@ -42,8 +42,8 @@ function MusicalList() {
       <div className="musical-WrapContentM">
         {currentMusicals.map((musicals) => (
           <li key={musicals.no}>
-            <Link to={`/musicals/${musicals.no}`} key={musicals.no} style={{ textDecoration: "none"}}>
-              <img src={musicals.imgUrl} alt={musicals.no} />
+            <Link to={`/musicalsM/${musicals.no}`} key={musicals.no} style={{ textDecoration: "none"}}>
+              <img src={musicals.imgUrl} alt={musicals.title} />
               <div className="musical-titleM">{musicals.title}</div>
               <div className="musical-placeM">{musicals.place}</div>
             </Link>
