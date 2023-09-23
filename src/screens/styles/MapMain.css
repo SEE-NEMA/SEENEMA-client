@@ -41,6 +41,7 @@ li {
 .map-content {
   display: 'flex';
   align-items: 'center';
+  margin-bottom: 20px;
 }
 
 .map-img {

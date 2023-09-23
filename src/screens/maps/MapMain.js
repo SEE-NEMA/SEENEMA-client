@@ -239,7 +239,7 @@ const MapMain = () => {
                       <li key={musical.no}>
                         <div className="map-content">
                           <img className="map-img" style={{flex:1}} src={musical.imgUrl} alt={musical.title} />
-                            <span style={{flex:1}}>{musical.title} 
+                            <span style={{flex:1}}>{musical.title} <br/>
                             {musical.date}
                             {musical.cast}
                             </span>
