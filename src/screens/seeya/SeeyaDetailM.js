@@ -11,7 +11,7 @@ function SeeyaDetail() {
   const [searchQuery, setSearchQuery] = useState('');
 
   const [currentPage, setCurrentPage] = useState(1); // 현재 페이지 번호
-  const itemsPerPage = 4; // 페이지당 항목 수
+  const itemsPerPage = 8 // 페이지당 항목 수
 
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
@@ -67,7 +67,7 @@ function SeeyaDetail() {
         </div>
 
         <div className="view-reivew-write-btn">
-          <Link to={`/SeeyaUpload/${theaterId}`}>
+          <Link to={`/SeeyaUploadM/${theaterId}`}>
             <button>
               글쓰기
             </button>
@@ -82,7 +82,7 @@ function SeeyaDetail() {
           </div>
           {paginatedReviews.map((review, index) => (
             <div key={index} className="search-result-rowM"> 
-              <Link to={`/view-review/${theaterId}/${review.viewNo}`} className="result-row-titleM">
+              <Link to={`/view-reviewM/${theaterId}/${review.viewNo}`} className="result-row-titleM">
                 {review.title}
               </Link>
               <p className="result-row-dateM">{review.createdAt} </p>
