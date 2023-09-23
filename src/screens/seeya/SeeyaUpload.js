@@ -88,7 +88,7 @@ function SeeyaUpload() {
           )
           .then((response) => {
             console.log(response.data);
-            navigate('/seeyamain');
+            navigate(`/view-review/${theaterId}`);
           })
           .catch((error) => {
             console.log(error);
