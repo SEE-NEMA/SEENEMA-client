@@ -14,6 +14,7 @@ import Facility from './screens/SB_Components/Facility';
 import SeeyaMain from './screens/seeya/SeeyaMain';
 import SeeyaMainM from './screens/seeya/SeeyaMainM';
 import SeeyaDetail from './screens/seeya/SeeyaDetail';
+import SeeyaDetailM from './screens/seeya/SeeyaDetailM';
 import SeeyaUpload from './screens/seeya/SeeyaUpload';
 import SeeyaReview from './screens/seeya/SeeyaReview';
 import SeeyaSeat from './screens/seeya/SeeyaSeat';
@@ -80,6 +81,7 @@ function App() {
         <Route path={"/concertsM/:no"} element={<ConcertDetailM/>}/>
         <Route path={"/concertListM"} element={<ConcertListM/>}/>
         <Route path={"/seeyamainM"} element={<SeeyaMainM/>}/>
+        <Route path="/view-reviewM/:theaterId" element={<SeeyaDetailM/>}/>
         </Routes>
       </Router>
     </AuthProvider>

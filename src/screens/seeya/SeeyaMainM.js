@@ -66,7 +66,7 @@ function SeeyaMain() {
         <div className="search-result-wrap">
           <ul>
             {items.map((item, index) => (
-              <Link to={`/view-review/${item.theaterId}`} key={index}>
+              <Link to={`/view-reviewM/${item.theaterId}`} key={index}>
                 <li>{item.theaterName}           <span>&gt;</span></li>
               </Link>
             ))}
