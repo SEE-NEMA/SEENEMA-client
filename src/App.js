@@ -33,6 +33,7 @@ import ReviewPost from "./screens/Review/ReviewPost";
 import MusicalList from "./screens/SB_Components/MusicalList";
 import MusicalListM from "./screens/SB_Components/MusicalListM";
 import ConcertDetail from "./screens/SB_Components/ConcertDetail";
+import ConcertDetailM from "./screens/SB_Components/ConcertDetailM";
 import MusicalDetail from "./screens/SB_Components/MusicalDetail";
 import MusicalDetailM from "./screens/SB_Components/MusicalDetailM";
 import RecommendMain from "./screens/SB_Components/Recommend/RecommendMain"
@@ -75,6 +76,7 @@ function App() {
         <Route path={"/M"} element={<MainM/>}/>
         <Route path={"/musicalListM"} element={<MusicalListM/>}/>
         <Route path={"/musicalsM/:no"} element={<MusicalDetailM/>}/>
+        <Route path={"/concertsM/:no"} element={<ConcertDetailM/>}/>
         <Route path={"/concertListM"} element={<ConcertListM/>}/>
         </Routes>
       </Router>
