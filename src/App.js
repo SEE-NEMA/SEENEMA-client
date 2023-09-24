@@ -8,6 +8,7 @@ import MainM from './screens/MainM';
 import Review from './screens/Review/Review';
 import ReviewM from './screens/Review/ReviewM';
 import ReviewDetail from './screens/Review/ReviewDetail';
+import ReviewDetailM from './screens/Review/ReviewDetailM';
 import ConcertList from './screens/SB_Components/ConcertList';
 import ConcertListM from './screens/SB_Components/ConcertListM';
 import MyPage from './screens/My_Page/MyPage';
@@ -31,8 +32,10 @@ import SeeyaSeatUpload from './screens/seeya/SeeyaSeatUpload';
 import SeeyaSeatTicket from './screens/seeya/SeeyaSeatTicket';
 import SeeyaSeatMasterCard from './screens/seeya/SeeyaSeatMasterCard';
 import Signup from './screens/signup/Signup';
+import SignupM from './screens/signup/SignupM';
 import ReviewEdit from './screens/Review/ReviewEdit';
 import Login from './screens/signup/Login';
+import LoginM from './screens/signup/LoginM';
 import { AuthProvider, AuthContext } from './contexts/AuthContext';
 import ReviewPost from "./screens/Review/ReviewPost";
 import MusicalList from "./screens/SB_Components/MusicalList";
@@ -89,6 +92,9 @@ function App() {
         <Route path={`/SeeyaUploadM/:theaterId`} element = {<SeeyaUploadM/>} />
         <Route path="/view-reviewM/:theaterId/:viewNo" element = {<SeeyaReviewM/>} />
         <Route path={"/ReviewM"} element={<ReviewM/>}/>
+        <Route path={"/ReviewM/:postNo"} element={<ReviewDetailM/>}/>
+        <Route path={"/loginM"} element={<LoginM/>}></Route>
+        <Route path={"/signupM"} element={<SignupM/>}></Route>
         <Route path={"MapMainM"} element={<MapMainM/>}/>
         </Routes>
       </Router>
