@@ -4,3 +4,8 @@
 
 [context.production.environment]
   CI = "false"
+
+[redirects]
+    from = "/SEENEMA-client/manifest.json"
+    to = "/"
+    
