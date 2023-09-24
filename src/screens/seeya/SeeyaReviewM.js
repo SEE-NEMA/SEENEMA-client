@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import Header from "../../Header";
+import HeaderM from "../../HeaderM";
 import '../styles/SeeyaReview.css';
 import {AiOutlineQuestionCircle} from "react-icons/ai"
 import { FaHeart } from 'react-icons/fa';
+import { FaStar } from "react-icons/fa";
+
 
 function SeeyaReview() {
 
@@ -140,47 +142,13 @@ function SeeyaReview() {
 
   return (
     <div>
-      <Header />
-      <div className="SeeyaReview-Container">
-        <p className="SeeyaReview-Review">극장 시야 후기</p>
-        <hr />
-
-        <p className="SeeyaReview-title">"{review.title}"</p>
-
-              <p className="Average-Score">평균별점 : {averageScore}
-              <AiOutlineQuestionCircle
-              onClick={toggleModal}
-              />
-
-              {showModal && (
-              <div className="Question-Modal">
-              <p className= "Question-text">시야, 좌석, 조명, 음향 평점의 평균값입니다.</p>
-              </div>
-                )} </p> 
-              
-              <p className="SeeyaReview-nickName">닉네임 [ {review.nickName} ]</p>
-             
-
-              <div className="Heart-Wrap">
-              {heartedYN ? (
-                <FaHeart size="25" className="Heart-Filled" onClick={handleHeartClick} />
-              ) : (
-                <FaHeart size="25" className="Heart-Empty" onClick={handleHeartClick} />
-              )}
-             </div>
-             <p className="Heart-Count">좋아요 수: {heartCount}</p>
-
-
-              <div className="SeeyaReview-Contents">
-              <p className="SeeyaReview-content">{review.content}</p>
-              </div>
-
-             
-           
-
-            <button className="SeeyaReview-modify" onClick={handleEditClick}>수정</button>
-            <button className="SeeyaReview-delete" onClick={handleDeleteClick}>삭제</button>
-
+      <HeaderM/>
+      <div className="seeya-review-container">
+        <div className="view-review-title"><span>{review.title}</span></div>
+          <p className="view-review-nickName">    작성자 : {review.nickName}</p>        
+          <p className="view-review-nickName">    <FaStar/>  평균별점 : {averageScore}    <AiOutlineQuestionCircle/></p>
+          <p className="view-review-nickName">    <FaHeart/>  좋아요 수 : {heartCount}</p>
+        <div className="view-review-content">{review.content}</div>
       </div>
     </div>
   );

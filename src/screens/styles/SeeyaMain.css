@@ -1,3 +1,9 @@
+.contentWrap {
+    padding-top: 130px;
+    margin-bottom: 10px;
+    text-align: center;
+    flex-wrap: wrap;
+}
 .SeeyaMain-Wrap {
     margin-top : 80px;
     text-align: center;
@@ -22,6 +28,9 @@
     border: 2px #000000 solid;
     text-align: center; 
 }
+.search-inputM .SeeyaMain-input {
+    font-size: 17px;
+}
 
 .SeeyaMain-hr {
     margin-top: 50px;
@@ -29,7 +38,13 @@
     width:800px;
     background : #000;
 }
-
+.contentWrap .hrM {
+    margin-top: 45px;
+    margin-bottom: 25px;
+    border-width: 2px;
+    border-color:  rgb(255, 224, 224);
+    border-style: double;
+}
 
 .SeeyaMain-Content {
     width: 200px;
@@ -60,4 +75,26 @@
 .SeeyaMain-Link {
     color : black;
     font-style: sans-serif;
+}
+
+.SeeyaMain-Link:hover {
+    color:rgb(203, 114, 114);
+}
+.search-result-wrap a {
+    color: black;
+    text-decoration: none;
+}
+.search-result-wrap ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+.search-result-wrap ul li {
+    font-size: 20px;
+    font-weight: bold;
+    padding: 20px;
+    white-space: pre;
+}
+.search-result-wrap ul li span {
+    color: rgb(255, 155, 155);
 }

@@ -1,9 +1,9 @@
 img {
     width: 280px;
     height: 300px;
-    margin-top: 20px;
+    /* margin-top: 20px;
     margin-left: 441px;
-    margin-bottom : 40px;
+    margin-bottom : 40px; */
   }
   
   .mySlider {
@@ -12,6 +12,13 @@ img {
     margin-top: 10px;
     overflow-x: hidden; /* 스크롤바 제거 */
   }
+
+  .mySliderM {
+    background-color: rgb(255, 255, 255);
+    height: 600px;
+    overflow-x: hidden; /* 스크롤바 제거 */
+  }
+
   .ranking-container-h2 {
     text-align : center;
     margin-left : 20px;
@@ -23,6 +30,13 @@ img {
   .ranking-container{
     margin-top : 40px;
   }
+  .ranking-containerM{
+    margin-top :50px;
+  }
+  .rank-div {
+    margin-left: 15%;
+    margin-bottom: 30px;
+  }
 
   .tab-bar {
    margin-top : 30px;
@@ -30,6 +44,25 @@ img {
    margin-left : 3px;
   }
 
+  .tab-barM {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+  }
+  .tab-barM button {
+    font-size: 18px;
+    border: none;
+    background-color: white;
+    color : rgb(154,154,154);
+    border-right : 3px solid lightgray;
+  }
+  .tab-barM button:last-child {
+    border: none;
+  }
+  .tab-barM button.active {
+    font-weight: bold;
+    color : rgb(241, 159, 159);
+  }
   .tab-bar button {
     border:none;
     background-color: white;

@@ -4,15 +4,22 @@ import { AiOutlineBars } from 'react-icons/ai';
 import { CgProfile } from 'react-icons/cg';
 import Main from './screens/Main';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import MainM from './screens/MainM';
 import Review from './screens/Review/Review';
+import ReviewM from './screens/Review/ReviewM';
 import ReviewDetail from './screens/Review/ReviewDetail';
 import ConcertList from './screens/SB_Components/ConcertList';
+import ConcertListM from './screens/SB_Components/ConcertListM';
 import MyPage from './screens/My_Page/MyPage';
 import Facility from './screens/SB_Components/Facility';
 import SeeyaMain from './screens/seeya/SeeyaMain';
+import SeeyaMainM from './screens/seeya/SeeyaMainM';
 import SeeyaDetail from './screens/seeya/SeeyaDetail';
+import SeeyaDetailM from './screens/seeya/SeeyaDetailM';
 import SeeyaUpload from './screens/seeya/SeeyaUpload';
+import SeeyaUploadM from './screens/seeya/SeeyaUploadM';
 import SeeyaReview from './screens/seeya/SeeyaReview';
+import SeeyaReviewM from './screens/seeya/SeeyaReviewM';
 import SeeyaSeat from './screens/seeya/SeeyaSeat';
 import SeeyaSeatBlueSquare from './screens/seeya/SeeyaSeatBlueSquare';
 import SeeyaSeatChungmu from './screens/seeya/SeeyaSeatChungmu';
@@ -29,10 +36,14 @@ import Login from './screens/signup/Login';
 import { AuthProvider, AuthContext } from './contexts/AuthContext';
 import ReviewPost from "./screens/Review/ReviewPost";
 import MusicalList from "./screens/SB_Components/MusicalList";
+import MusicalListM from "./screens/SB_Components/MusicalListM";
 import ConcertDetail from "./screens/SB_Components/ConcertDetail";
+import ConcertDetailM from "./screens/SB_Components/ConcertDetailM";
 import MusicalDetail from "./screens/SB_Components/MusicalDetail";
+import MusicalDetailM from "./screens/SB_Components/MusicalDetailM";
 import RecommendMain from "./screens/SB_Components/Recommend/RecommendMain"
 import MapMain from "./screens/maps/MapMain"
+
 
 function App() {
   return (
@@ -67,6 +78,16 @@ function App() {
         <Route path={"/seeyaseatmain"} element={<SeeyaSeatMain/>}/>
         <Route path={"/seeyaseatedit/:theaterId/:z/:x/:y/:viewNo"} element = {<SeeyaSeatEdit/>}/>
         <Route path={"/MapMain"} element={<MapMain/>}/>
+        <Route path={"/M"} element={<MainM/>}/>
+        <Route path={"/musicalListM"} element={<MusicalListM/>}/>
+        <Route path={"/musicalsM/:no"} element={<MusicalDetailM/>}/>
+        <Route path={"/concertsM/:no"} element={<ConcertDetailM/>}/>
+        <Route path={"/concertListM"} element={<ConcertListM/>}/>
+        <Route path={"/seeyamainM"} element={<SeeyaMainM/>}/>
+        <Route path="/view-reviewM/:theaterId" element={<SeeyaDetailM/>}/>
+        <Route path={`/SeeyaUploadM/:theaterId`} element = {<SeeyaUploadM/>} />
+        <Route path="/view-reviewM/:theaterId/:viewNo" element = {<SeeyaReviewM/>} />
+        <Route path={"/ReviewM"} element={<ReviewM/>}/>
         </Routes>
       </Router>
     </AuthProvider>
