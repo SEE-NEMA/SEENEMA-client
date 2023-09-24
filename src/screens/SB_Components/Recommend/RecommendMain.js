@@ -83,13 +83,15 @@ const RecommendMain = () => {
           <BallTriangle type="Puff" color="#00BFFF" height={100} width={100} />
         ) : (
           recommendations.map((recommendation) => (
-            <div key={recommendation.no} className="recommendation-card">
+            <Link to={`/concerts/${recommendation.no}`} key={recommendation.no} className="recommendation-card-link">
+              <div key={recommendation.no} className="recommendation-card">
               <img src={recommendation.imgUrl} alt={recommendation.title} className="recommendation-image" />
               <div className="recommendation-details">
                 <p className="recommendation-title">{recommendation.title}</p>
                 <p className="recommendation-date">{recommendation.date}</p>
               </div>
             </div>
+            </Link>
           ))
         )}
       </div>
