@@ -35,6 +35,7 @@
     /* padding-top: 5%; */
     padding: 5%;
     font-size: 22px;
+    white-space: pre;
 }
 
 .SeeyaReview-Review {

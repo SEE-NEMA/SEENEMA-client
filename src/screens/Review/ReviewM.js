@@ -180,12 +180,12 @@ const Review = () => {
           <>
             {paginateReviews(review).map((item, index) => (
             <div key={index} className="search-result-rowM">
-              <Link to={`/Review/${item.post_no}`} className="result-row-titleM">
+              <Link to={`/ReviewM/${item.post_no}`} className="result-row-titleM">
                 {item.title}
               </Link>
               <p className="result-row-dateM">{item.createdAt} </p>
               {/* <div className="SeeyaDetail-nickName">{item.nickname}</div> */}
-              <p className="result-row-writerM">{item.nickName}</p>
+              <p className="result-row-writerM">{item.nickname}</p>
             </div>
           ))}
 

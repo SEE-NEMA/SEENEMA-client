@@ -11,7 +11,13 @@
     margin-top : -70px;
     margin-bottom : 30px;
 }
-
+.review-detail-hrM {
+    margin-top: 45px;
+    margin-bottom: 25px;
+    border-width: 2px;
+    border-color:  rgb(255, 224, 224);
+    border-style: double;
+}
 .RVDT-Modify {
     height:25px;
     margin-left:15px;
@@ -152,8 +158,19 @@
     color: rgb(197, 135, 135);
     padding-right: 5px;
 }
-
+.RVDT-Comment-nicknameM {
+    font-size: 25px;
+    color: rgb(197, 135, 135);
+    /* padding-right: 5px; */
+    margin-left: 5%;
+    padding: 0;
+}
 .RVDT-Comment-content {
     font-size: 13px;
     margin-left: 15px;
+}
+.RVDT-Comment-contentM {
+    font-size: 18px;
+    /* margin-left: 15px; */
+    margin-left: 10%;
 }
