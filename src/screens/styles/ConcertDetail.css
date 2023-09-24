@@ -3,32 +3,34 @@
 .Musical-Image {
     background-color: rgb(255, 255, 255);
     height : 300px;
-    width : 400px;
-    border : none;
+    width : 450px;
+    border : 2px solid black;
     border-radius : 20px;
+    
     margin-top : 150px;
-    margin-left : 180px;
+    margin-left : 200px;
 }
 
 .Musical-Detail-Info {
-    margin-left : 650px;
-    margin-top : -300px;
+    margin-left : 800px;
+    margin-top : -310px;
+    
 }
 
 .Musical-T {
     line-height: 5px;
-    
+    font-family: 'Nanum Gothic', sans-serif;
 }
 
 .Musical-Catecory {
     color :rgb(169, 167, 167);
-    font-size : 15px;
+    font-size : 10px;
     
 }
 
 .Musical-Title {
     font-weight: bold;
-    font-size : 25px;
+    font-size : 20px;
    
 }
 

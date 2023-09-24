@@ -1,7 +1,9 @@
 .SeeyaMain-Wrap {
-    margin-top : 30px;
+    margin-top : 80px;
     text-align: center;
 }
+
+
 
 .SeeyaMain-Search {
     position: absolute;
@@ -58,8 +60,4 @@
 .SeeyaMain-Link {
     color : black;
     font-style: sans-serif;
-}
-
-.SeeyaMain-Link:hover {
-    color:rgb(203, 114, 114);
 }

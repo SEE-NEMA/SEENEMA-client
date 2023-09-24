@@ -8,12 +8,10 @@ img {
   
   .mySlider {
     background-color: rgb(255, 255, 255);
-    height: 488px;
+    height: 440px;
+    margin-top: 10px;
     overflow-x: hidden; /* 스크롤바 제거 */
   }
-
-
-
   .ranking-container-h2 {
     text-align : center;
     margin-left : 20px;
