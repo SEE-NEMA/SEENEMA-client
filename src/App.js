@@ -34,6 +34,7 @@ import SeeyaSeatMasterCard from './screens/seeya/SeeyaSeatMasterCard';
 import Signup from './screens/signup/Signup';
 import ReviewEdit from './screens/Review/ReviewEdit';
 import Login from './screens/signup/Login';
+import LoginM from './screens/signup/LoginM';
 import { AuthProvider, AuthContext } from './contexts/AuthContext';
 import ReviewPost from "./screens/Review/ReviewPost";
 import MusicalList from "./screens/SB_Components/MusicalList";
@@ -90,6 +91,7 @@ function App() {
         <Route path="/view-reviewM/:theaterId/:viewNo" element = {<SeeyaReviewM/>} />
         <Route path={"/ReviewM"} element={<ReviewM/>}/>
         <Route path={"/ReviewM/:postNo"} element={<ReviewDetailM/>}/>
+        <Route path={"/loginM"} element={<LoginM/>}></Route>
         </Routes>
       </Router>
     </AuthProvider>
