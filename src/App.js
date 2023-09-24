@@ -3,7 +3,7 @@ import Header from './Header';
 import { AiOutlineBars } from 'react-icons/ai';
 import { CgProfile } from 'react-icons/cg';
 import Main from './screens/Main';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { HashRouter as Router, Route, Routes } from "react-router-dom";
 import Review from './screens/Review/Review';
 import ReviewDetail from './screens/Review/ReviewDetail';
 import ConcertList from './screens/SB_Components/ConcertList';
