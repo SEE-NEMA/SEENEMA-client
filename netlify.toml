@@ -1,0 +1,6 @@
+[build]
+  command = "npm run build" # 또는 빌드 명령어
+  publish = "build" # 빌드 디렉토리
+
+[context.production.environment]
+  CI = "false"
