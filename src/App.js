@@ -3,8 +3,8 @@ import Header from './Header';
 import { AiOutlineBars } from 'react-icons/ai';
 import { CgProfile } from 'react-icons/cg';
 import Main from './screens/Main';
-import MainM from './screens/MainM';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import MainM from './screens/MainM';
 import Review from './screens/Review/Review';
 import ReviewM from './screens/Review/ReviewM';
 import ReviewDetail from './screens/Review/ReviewDetail';
@@ -45,7 +45,8 @@ import ConcertDetailM from "./screens/SB_Components/ConcertDetailM";
 import MusicalDetail from "./screens/SB_Components/MusicalDetail";
 import MusicalDetailM from "./screens/SB_Components/MusicalDetailM";
 import RecommendMain from "./screens/SB_Components/Recommend/RecommendMain"
-import MapMain from "./screens/maps/MapMain"
+import MapMain from "./screens/maps/MapMain";
+import MapMainM from "./screens/maps/MapMainM";
 
 
 function App() {
@@ -94,6 +95,7 @@ function App() {
         <Route path={"/ReviewM/:postNo"} element={<ReviewDetailM/>}/>
         <Route path={"/loginM"} element={<LoginM/>}></Route>
         <Route path={"/signupM"} element={<SignupM/>}></Route>
+        <Route path={"MapMainM"} element={<MapMainM/>}/>
         </Routes>
       </Router>
     </AuthProvider>

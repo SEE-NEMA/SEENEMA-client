@@ -116,8 +116,6 @@ const MapMain = () => {
         setConcerts(selectedTheaterConcerts);
         setSelectedTheaterConcerts(selectedTheaterConcerts);
         console.log(selectedTheaterConcerts);
-        console.log(date);
-        console.log(cast);
 
         // Fetch musicals for the selected theater
         axios
