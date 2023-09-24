@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Review from './screens/Review/Review';
 import ReviewM from './screens/Review/ReviewM';
 import ReviewDetail from './screens/Review/ReviewDetail';
+import ReviewDetailM from './screens/Review/ReviewDetailM';
 import ConcertList from './screens/SB_Components/ConcertList';
 import ConcertListM from './screens/SB_Components/ConcertListM';
 import MyPage from './screens/My_Page/MyPage';
@@ -88,6 +89,7 @@ function App() {
         <Route path={`/SeeyaUploadM/:theaterId`} element = {<SeeyaUploadM/>} />
         <Route path="/view-reviewM/:theaterId/:viewNo" element = {<SeeyaReviewM/>} />
         <Route path={"/ReviewM"} element={<ReviewM/>}/>
+        <Route path={"/ReviewM/:postNo"} element={<ReviewDetailM/>}/>
         </Routes>
       </Router>
     </AuthProvider>
