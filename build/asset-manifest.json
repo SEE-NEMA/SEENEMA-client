@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/SEENEMA-client/static/css/main.5d01611b.css",
-    "main.js": "/SEENEMA-client/static/js/main.e8da6cd9.js",
+    "main.css": "/SEENEMA-client/static/css/main.c8b48d07.css",
+    "main.js": "/SEENEMA-client/static/js/main.9ae461eb.js",
     "static/js/787.cf3abc74.chunk.js": "/SEENEMA-client/static/js/787.cf3abc74.chunk.js",
     "static/media/slick.svg": "/SEENEMA-client/static/media/slick.2630a3e3eab21c607e21.svg",
     "static/media/slick.eot": "/SEENEMA-client/static/media/slick.a4e97f5a2a64f0ab1323.eot",
     "static/media/slick.ttf": "/SEENEMA-client/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "/SEENEMA-client/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/SEENEMA-client/index.html",
-    "main.5d01611b.css.map": "/SEENEMA-client/static/css/main.5d01611b.css.map",
-    "main.e8da6cd9.js.map": "/SEENEMA-client/static/js/main.e8da6cd9.js.map",
+    "main.c8b48d07.css.map": "/SEENEMA-client/static/css/main.c8b48d07.css.map",
+    "main.9ae461eb.js.map": "/SEENEMA-client/static/js/main.9ae461eb.js.map",
     "787.cf3abc74.chunk.js.map": "/SEENEMA-client/static/js/787.cf3abc74.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.5d01611b.css",
-    "static/js/main.e8da6cd9.js"
+    "static/css/main.c8b48d07.css",
+    "static/js/main.9ae461eb.js"
   ]
 }
