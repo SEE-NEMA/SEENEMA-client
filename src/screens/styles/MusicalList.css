@@ -50,6 +50,7 @@
   color:black;
   margin-left:-20px;
   width:400px;
+  text-decoration: none;
 }
 
 
@@ -73,4 +74,9 @@
 .pagination button.active {
   background-color: gray;
   color:white;
+}
+
+.musical-WrapContent h4,
+.musical-WrapContent h6 {
+    text-decoration: none;
 }

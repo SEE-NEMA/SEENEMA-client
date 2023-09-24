@@ -43,9 +43,9 @@ function ConcertList () {
                     <li key={musicals.no} >
                         <Link to={`/concerts/${musicals.no}`}>
                             <img src={musicals.imgUrl} alt={musicals.title} />
+                        </Link>
                             <h4>{musicals.title}</h4>
                             <h6>{musicals.place}</h6>
-                        </Link>
                     </li>
                 ))}
             </div>

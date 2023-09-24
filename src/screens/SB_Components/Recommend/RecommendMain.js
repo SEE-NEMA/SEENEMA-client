@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import Header from "../../../Header";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { IoIosArrowDropright } from "react-icons/io";
+import { IoIosArrowDropleft } from "react-icons/io";
 import "../../styles/RecommendMain.css"
+import {BallTriangle} from 'react-loader-spinner'
 // 단계별 프로그레스 바
 
 const RecommendMain = () => {
@@ -16,6 +17,7 @@ const RecommendMain = () => {
   const [favoriteActor, setFavoriteActor] = useState("");
   const [favoriteSinger, setFavoriteSinger] = useState("");
   const [recommendations, setRecommendations] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     axios
@@ -53,9 +55,7 @@ const RecommendMain = () => {
 
   const renderStep1 = () => (
     <div className="RM-Select">
-      <h5>원하는 공연의 종류를 선택해주세요.</h5>
-      <button className="Genre-Musical" onClick={() => handleGenreSelect('뮤지컬')}>뮤지컬</button>
-      <button className="Genre-Concert" onClick={() => handleGenreSelect('콘서트')}>콘서트</button>
+      <button className="Genre-Musical" onClick={() => handleGenreSelect('뮤지컬')}>추천 받기</button>
     </div>
   );
 
@@ -66,45 +66,26 @@ const RecommendMain = () => {
       setSelectedMusicalGenre(e.target.value);
     };
   
-    return (
-      <div className="genre-component musical">
-        <div>
-        <p>뮤지컬의 장르 또는 좋아하는 배우를 입력해보세요!</p>
-        <br/><br/>
-        <select className="recommend-select" value={selectedMusicalGenre} onChange={handleGenreChange}>
-          {genres['뮤지컬'].map((option) => (
-            <option key={option} value={option}>{option}</option>
-          ))}
-        </select>
-        <input type="text" className="input-recommend" placeholder="좋아하는 배우" value={favoriteActor} onChange={handleActorInput} />
-        </div>
-        <IoIosArrowDropright className="arrow-next" onClick={handleRecommend}/>
-      </div>
-    );
-  };
-  
-  const renderStep3Concert = () => {
-    if (selectedGenre !== '콘서트') return null;
-  
-    const handleGenreChange = (e) => {
-      setSelectedConcertGenre(e.target.value);
+    const handleBackToStep1 = () => {
+      setSelectedStep(1); // 이 부분을 추가하여 화면을 Step 1로 변경합니다.
     };
   
     return (
-      <div className="genre-component-concert">
-        <h4>장르 : 콘서트</h4>
-        <select className="recommend-select2" value={selectedConcertGenre} onChange={handleGenreChange}>
-          {genres['콘서트'].map((option) => (
-            <option key={option} value={option}>{option}</option>
-          ))}
-        </select>
-        <input type="text" className="input-recommend2" placeholder="좋아하는 가수" value={favoriteSinger} onChange={handleSingerInput} />
-        <IoIosArrowDropright className="arrow-next2" onClick={handleRecommend}/>
+      <div className="genre-component musical">
+        <div>
+          <IoIosArrowDropleft className="arrow-next" onClick={handleBackToStep1} /> {/* 수정된 부분 */}
+        </div>
       </div>
     );
   };
+  
+  
+  const renderStep3Concert = () => {
+    
+  };
 
   const handleRecommend = () => {
+    setIsLoading(true);
     const data = {
       concertFavorites: [],
       musicalFavorites: []
@@ -137,6 +118,7 @@ const RecommendMain = () => {
           const recommendations = [...recommendedConcerts, ...recommendedMusicals];
           setRecommendations(recommendations);
           setSelectedStep(3);
+          setIsLoading(false);
         } else {
           console.error("Invalid recommendations data:", response.data);
         }
@@ -239,6 +221,14 @@ const RecommendMain = () => {
         {selectedStep === 2 && selectedGenre === '뮤지컬' && renderStep3Musical()}
         {selectedStep === 2 && selectedGenre === '콘서트' && renderStep3Concert()}
         {selectedStep === 3 && renderStep3()}
+        {isLoading && ( // isLoading이 true일 때만 Loader 표시
+            <BallTriangle
+              type="Puff"
+              color="#00BFFF"
+              height={100}
+              width={100}
+            />
+          )}
         </div>
       </div>
     </div>

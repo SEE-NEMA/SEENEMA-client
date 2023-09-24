@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { FaArrowUp, FaArrowDown, FaPlusCircle } from 'react-icons/fa'; 
+import { FaArrowUp, FaArrowDown } from 'react-icons/fa'; 
 import "../screens/styles/RankingSlider.css";
 
 function RankingSlider() {
@@ -27,13 +27,21 @@ function RankingSlider() {
       const rangeValue = ranking[nextIndex].range;
 
       if (upDownValue === 0 && rangeValue === 0) {
-        setRankingChange(<FaPlusCircle/>);
+        setRankingChange("NEW !");
       } else if (upDownValue === 1 && rangeValue === 0) {
-        setRankingChange(<FaPlusCircle/>);
+        setRankingChange("");
       } else if (upDownValue === 1 && rangeValue !== 0) {
-        setRankingChange(<FaArrowUp />);
+        setRankingChange(
+          <span style={{ color: 'red' }}>
+            <FaArrowUp /> {rangeValue}
+          </span>
+        );
       } else if (upDownValue === 2 && rangeValue !== 0) {
-        setRankingChange(<FaArrowDown />);
+        setRankingChange(
+          <span style={{ color: 'blue' }}>
+            <FaArrowDown /> {rangeValue}
+          </span>
+        );
       }
 
       setCurrentIndex(nextIndex);
