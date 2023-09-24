@@ -147,9 +147,8 @@ function SeeyaReview() {
 
         <p className="SeeyaReview-title">"{review.title}"</p>
 
-              <p className="Average-Score">평균별점 : {averageScore} 
+              <p className="Average-Score">평균별점 : {averageScore}
               <AiOutlineQuestionCircle
-              className = "Question-Score"
               onClick={toggleModal}
               />
 

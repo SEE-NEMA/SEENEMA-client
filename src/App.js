@@ -6,6 +6,7 @@ import Main from './screens/Main';
 import MainM from './screens/MainM';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Review from './screens/Review/Review';
+import ReviewM from './screens/Review/ReviewM';
 import ReviewDetail from './screens/Review/ReviewDetail';
 import ConcertList from './screens/SB_Components/ConcertList';
 import ConcertListM from './screens/SB_Components/ConcertListM';
@@ -86,6 +87,7 @@ function App() {
         <Route path="/view-reviewM/:theaterId" element={<SeeyaDetailM/>}/>
         <Route path={`/SeeyaUploadM/:theaterId`} element = {<SeeyaUploadM/>} />
         <Route path="/view-reviewM/:theaterId/:viewNo" element = {<SeeyaReviewM/>} />
+        <Route path={"/ReviewM"} element={<ReviewM/>}/>
         </Routes>
       </Router>
     </AuthProvider>
