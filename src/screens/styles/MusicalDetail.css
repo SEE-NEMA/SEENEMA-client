@@ -1,5 +1,41 @@
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
 
+.contentWrap-play-detailM {
+    padding-top: 130px;
+    margin-top: 5%;
+    text-align: center;
+}
+.play-detail-infoM .detail-titleM {
+    font-size: 35px;
+    font-weight: bold;
+    margin-top: 1%;
+    margin-bottom: 5%;
+}
+.play-detail-infoM .detail-dataM p {
+    /* 장소 / 기간 / 캐스트 */
+    margin: 8px 0;
+    font-size: 20px;
+}
+.play-detail-infoM .ticket-btnM {
+    margin-top: 7%;
+    display: flex;
+    justify-content: space-evenly;
+}
+.play-detail-infoM .ticket-btnM button {
+    /* 예매 버튼 */
+    border-radius: 8px;
+    box-shadow: 5px 5px 3px 0px rgba(179, 179, 179, 0.277);
+    border-color: rgb(255, 179, 179);
+    border-style: double;
+    background-color: white;
+    
+    font-size: 18px;
+    font-weight: bold;
+}
+.play-detail-infoM .ticket-btnM button a {
+    color: rgb(255, 126, 126);
+    text-decoration: none;
+}
 .Musical-Image {
     background-color: rgb(255, 255, 255);
     height : 400px;
@@ -8,6 +44,12 @@
     border-radius : 20px;
     margin-top : 80px;
     margin-left : 300px;
+}
+.play-detail-imgM {
+    /* 230 * 280 */
+    background-color: white;
+    height: 510px;
+    width: 400px;
 }
 
 .Musical-Detail-Info-Link {

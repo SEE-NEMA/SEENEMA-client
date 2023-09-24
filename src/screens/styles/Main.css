@@ -11,6 +11,17 @@
     font-size:20px;
 }
 
+.Main-RankM {
+    padding-top: 130px;
+}
+.Main-Rank-titleM {
+    text-align: center;
+    font-weight: bold;
+    font-size:35px;
+    margin: 40px;
+    /* margin-top: 20px; */
+}
+
 .Main-Rank p{
     text-align:center;
 }
