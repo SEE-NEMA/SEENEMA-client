@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 import Header from '../../Header';
-import '../styles/MapMain.css';
+import '../styles/MapMainM.css';
 import '../../components/SearchBar.js';
 import SearchBar from '../../components/SearchBar.js';
 import TabBar from '../../components/TabBar';
+import HeaderM from '../../HeaderM';
 
 const Step = {
   SEARCH: 'SEARCH',
@@ -60,18 +61,7 @@ const Map = ({ theaters, selectedTheaterLocation, setSelectedTheater }) => {
     }
   }, [selectedTheaterLocation, naver]);
 
-  return <div className="mapElement" ref={mapElement} />;
-};
-
-const TheaterDetails = ({ theater }) => {
-  return (
-    <div>
-      <p>
-        <h2>{theater.theaterName}</h2>
-      </p>
-      {/* Add more details here as needed */}
-    </div>
-  );
+  return <div className="mapElementM" ref={mapElement} />;
 };
 
 const MapMain = () => {
@@ -116,6 +106,8 @@ const MapMain = () => {
         setConcerts(selectedTheaterConcerts);
         setSelectedTheaterConcerts(selectedTheaterConcerts);
         console.log(selectedTheaterConcerts);
+        console.log(date);
+        console.log(cast);
 
         // Fetch musicals for the selected theater
         axios
@@ -187,11 +179,12 @@ const MapMain = () => {
   switch (currentStep) {
     case Step.SEARCH:
       renderContent = (
+        <div className="mapSearchbarM">
         <SearchBar
           placeholder="공연장 이름을 입력하세요"
-          className="mapSearchbar"
           onSearch={handleSearch}
         />
+        </div>
       );
       break;
     case Step.THEATER_LIST:
@@ -313,16 +306,16 @@ const MapMain = () => {
 
   return (
     <>
-      <Header />
-      <div className="container">
-        <div className="mapContainer">
-          <Map
+      <HeaderM />
+      <div className="containerM">
+        <div className="mapContainerM">
+          <Map className="mapElementM"
             theaters={filteredTheaters}
             selectedTheaterLocation={selectedTheaterLocation}
             setSelectedTheater={setSelectedTheater}
           />
         </div>
-        <div className="mapBox"> 
+        <div className="mapBoxM"> 
           {renderContent}
         </div>
       </div>

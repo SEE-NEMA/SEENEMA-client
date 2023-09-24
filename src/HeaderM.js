@@ -83,7 +83,7 @@ return (
     </div>
     
     <div className="menuM">
-      <a href="/MapMain">지도로 보기</a>
+      <a href="/MapMainM">지도로 보기</a>
     </div>
     
     <div className="menuM">

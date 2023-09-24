@@ -42,7 +42,8 @@ import ConcertDetailM from "./screens/SB_Components/ConcertDetailM";
 import MusicalDetail from "./screens/SB_Components/MusicalDetail";
 import MusicalDetailM from "./screens/SB_Components/MusicalDetailM";
 import RecommendMain from "./screens/SB_Components/Recommend/RecommendMain"
-import MapMain from "./screens/maps/MapMain"
+import MapMain from "./screens/maps/MapMain";
+import MapMainM from "./screens/maps/MapMainM";
 
 
 function App() {
@@ -88,6 +89,7 @@ function App() {
         <Route path={`/SeeyaUploadM/:theaterId`} element = {<SeeyaUploadM/>} />
         <Route path="/view-reviewM/:theaterId/:viewNo" element = {<SeeyaReviewM/>} />
         <Route path={"/ReviewM"} element={<ReviewM/>}/>
+        <Route path={"MapMainM"} element={<MapMainM/>}/>
         </Routes>
       </Router>
     </AuthProvider>
