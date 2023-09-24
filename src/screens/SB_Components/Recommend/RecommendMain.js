@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
 import Header from "../../../Header";
 import axios from "axios";
+import Slider from "react-slick";
 import { Link } from "react-router-dom";
 import { IoIosArrowDropleft } from "react-icons/io";
 import "../../styles/RecommendMain.css";
 import { BallTriangle } from "react-loader-spinner";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const RecommendMain = () => {
   const token = localStorage.getItem("token");
@@ -12,6 +15,16 @@ const RecommendMain = () => {
   const [selectedStep, setSelectedStep] = useState(1);
   const [recommendations, setRecommendations] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [imgUrl, setImgUrl] = useState({});
+  const [date, setDate] = useState("");
+
+  const settings = {
+    dots: true,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 1, // 한 번에 보여질 슬라이드 수
+    slidesToScroll: 1,
+  };
 
   useEffect(() => {
     axios
@@ -22,6 +35,9 @@ const RecommendMain = () => {
       })
       .then((response) => {
         setUserInfo(response.data);
+        setImgUrl(response.data.imgUrl);
+        setDate(response.data.date);
+        console.log(imgUrl);
       });
   }, [token]);
 
@@ -44,6 +60,7 @@ const RecommendMain = () => {
           setRecommendations(response.data);
           setIsLoading(false); // Set isLoading to false after data is loaded
           setSelectedStep(2); // Set selectedStep to 2 to display renderStep2
+          console.log(response.data);
         });
     }, 4000); // Adjust the delay duration as needed (4 seconds in this example)
   };
@@ -59,23 +76,25 @@ const RecommendMain = () => {
       )}
     </div>
   );
-
-  const renderStep2 = () => (
-    <div className="genre-component musical">
-      <div>
+ const renderStep2 = () => (
+  <div className="wrap-recommendation-container">
+      <div className="recommendation-container">
         {isLoading ? (
           <BallTriangle type="Puff" color="#00BFFF" height={100} width={100} />
         ) : (
           recommendations.map((recommendation) => (
-            <div key={recommendation.no}>
-              {/* Display the recommendation data here */}
-              <p>{recommendation.title}</p>
+            <div key={recommendation.no} className="recommendation-card">
+              <img src={recommendation.imgUrl} alt={recommendation.title} className="recommendation-image" />
+              <div className="recommendation-details">
+                <p className="recommendation-title">{recommendation.title}</p>
+                <p className="recommendation-date">{recommendation.date}</p>
+              </div>
             </div>
           ))
         )}
       </div>
     </div>
-  );
+ )
 
   return (
     <div>

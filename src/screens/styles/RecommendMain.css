@@ -7,81 +7,6 @@
   
 }
 
-.recommend-result-Span {
-  color : black;
-  font-weight: bold;
-  
-}
-
-.recommend-result-Title {
-  font-weight: bold;
-}
-
-.recommend-result-Genre {
-  color : rgb(124, 124, 124);
-  font-size : 13px;
-}
-
-.recommend-result-Data {
-  color : rgb(124, 124, 124);
-  font-size : 13px;
-}
-
-.recommend-result li {
-  width : 900px;
-  margin-left : -160px;
-}
-
-.selectSteps {
-padding-top: 30px;
-}
-
-.Genre-Musical {
-  width: 100px;
-  height: 50px;
-  background: transparent;
-  border: none;
-}
-
-.recommend-result-Image {
-  margin-top : 30px;
-  margin-left : -20px;
-}
-
-.Genre-Concert {
-  width: 100px;
-  height: 50px;
-  background: transparent;
-  border: none;
-}
-
-.Genre-Musical:hover {
-  color: rgb(241, 159, 159);
-}
-
-.Genre-Concert:hover {
-  color: rgb(241, 159, 159);
-}
-
-.hr-recommend {
-  margin-top : 20px;
-  margin-bottom: 20px;
-  background-color: rgb(186, 186, 186);
-  height: 2px;
-  border: none;
-}
-
-.recommend-select {
-  border : none;
-  width: 30%;
-}
-
-.recommend-select2 {
-  border : none;
-  width: 30%;
-  margin-top : -80px;
-}
-
 .input-recommend2 {
   margin-left: 20px;
   margin-top : -50px;
@@ -103,23 +28,46 @@ padding-top: 30px;
   text-align: center;
 }
 
-.arrow-next {
-width : 30px;
-height : 30px;
-margin-top : 70px;
-}
-
-.arrow-next2 {
-  width : 30px;
-height : 30px;
-margin-top : 80px;
-}
 
 .recommend-img {
 height : 100px;
 width: 75px;
 }
 
-.genre-component-concert {
-  height : 100px;
+.recommendation-container {
+  display: flex; /* Flexbox 레이아웃 사용 */
+  overflow-x: auto; /* 가로 스크롤 활성화 */
+  margin: 20px 0;
+  padding-bottom: 20px;
+}
+
+.recommendation-card {
+  flex: 0 0 calc(25% - 20px); /* 4개의 카드를 가로로 나열 (간격 포함) */
+  margin-right: 20px; /* 각 카드 사이의 간격 설정 */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-align: center;
+  background-color: #f8f8f8;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.recommendation-image {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.recommendation-title {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.recommendation-date {
+  font-size: 14px;
+  color: #555;
+}
+
+.wrap-recommendation-container {
+  width: 1500px;
 }
