@@ -32,6 +32,7 @@ import SeeyaSeatUpload from './screens/seeya/SeeyaSeatUpload';
 import SeeyaSeatTicket from './screens/seeya/SeeyaSeatTicket';
 import SeeyaSeatMasterCard from './screens/seeya/SeeyaSeatMasterCard';
 import Signup from './screens/signup/Signup';
+import SignupM from './screens/signup/SignupM';
 import ReviewEdit from './screens/Review/ReviewEdit';
 import Login from './screens/signup/Login';
 import LoginM from './screens/signup/LoginM';
@@ -92,6 +93,7 @@ function App() {
         <Route path={"/ReviewM"} element={<ReviewM/>}/>
         <Route path={"/ReviewM/:postNo"} element={<ReviewDetailM/>}/>
         <Route path={"/loginM"} element={<LoginM/>}></Route>
+        <Route path={"/signupM"} element={<SignupM/>}></Route>
         </Routes>
       </Router>
     </AuthProvider>
