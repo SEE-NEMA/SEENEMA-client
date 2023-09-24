@@ -42,7 +42,18 @@
 .profile-edit {
     border : none;
     position : absolute;
-    margin-left: 145px;
+    margin-left: 40px;
+    margin-top: 110px;
+    width: 100px;
+    height: 25px;
+    border-radius: 10px;
+    background-color: white;
+}
+
+.interpark-login {
+  border : none;
+    position : absolute;
+    margin-left: 250px;
     margin-top: 110px;
     width: 100px;
     height: 25px;

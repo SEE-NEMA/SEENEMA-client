@@ -7,12 +7,15 @@ import axios from "axios";
 import '../styles/MyPage.css';
 
 function MyPage() {
-  const [showModal, setShowModal] = useState(false);
+  const [showModal1, setShowModal1] = useState(false);
+  const [showModal2, setShowModal2] = useState(false);
   const [nickname, setNickname] = useState("");
   const [email, setEmail] = useState("");
   const [userInfo, setUserInfo] = useState(null);
   const [checkNicknameResponse, setCheckNicknameResponse] = useState(null);
   const modalRef = useRef(null);
+  const [interparkId, setInterparkId] = useState("");
+  const [interparkPwd, setInterparkPwd] = useState("");
 
   const token = localStorage.getItem('token');
 
@@ -163,7 +166,7 @@ function MyPage() {
       })
       .then((response) => {
         console.log(response.data);
-        setShowModal(false);
+        setShowModal1(false);
         setUserInfo({ ...userInfo, nickname: nickname, email: email });
         setEmail("");
         setNickname("");
@@ -189,8 +192,35 @@ function MyPage() {
       });
   }
 
+  const handleUpdateInterpark = () => {
+    const requestData = {
+      interparkId: interparkId,
+      interparkPwd: interparkPwd
+    };
+  
+    axios
+      .put('http://43.200.58.174:8080/api/v1/user/interpark-info', requestData, {
+        headers: {
+          "X-AUTH-TOKEN": token
+        }
+      })
+      .then((response) => {
+        console.log(response.data);
+        setShowModal2(false);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+  
+
+  const handleInterparkLogin = () => {
+    setShowModal2(true);
+  }
+
   const closeModal = () => {
-    setShowModal(false);
+    setShowModal1(false);
+    setShowModal2(false);
   }
 
   const handleModalClick = (e) => {
@@ -198,7 +228,7 @@ function MyPage() {
   }
 
   const handleEditButtonClick = () => {
-    setShowModal(true);
+    setShowModal1(true);
   }
 
 
@@ -209,6 +239,7 @@ function MyPage() {
       <div className="Mypage-profile-wrap">
         <div className="profile-wrap">
           <button className="profile-edit" onClick={handleEditButtonClick}>프로필 편집</button>
+          <button className="interpark-login" onClick={handleInterparkLogin}>인터파크 로그인</button>
         </div>
 
         <div className="Info-wrap">
@@ -225,7 +256,7 @@ function MyPage() {
         </div>
       </div>
 
-      {showModal && (
+      {showModal1 && (
         <div className="Profile-edit-modal" onClick={closeModal}>
           <div className="Profile-edit-modal-content" onClick={handleModalClick} ref={modalRef}>
             <p className="Profile-edit-title">닉네임 수정</p>
@@ -234,6 +265,17 @@ function MyPage() {
             <input className="Profile-edit-input" type="text" placeholder="수정할 닉네임을 입력해주세요" value={nickname} onChange={(e) => setNickname(e.target.value)} />
             <button className="Profile-edit-button1" onClick={handleCheckNickname}>중복확인</button>
             <button className="Profile-edit-button2" onClick={handleUpdateNickname}>수정완료</button>
+          </div>
+        </div>
+      )}
+
+      {showModal2 && (
+        <div className="Profile-edit-modal" onClick={closeModal}>
+          <div className="Profile-edit-modal-content" onClick={handleModalClick} ref={modalRef}>
+            <p className="Profile-edit-title">인터파크 로그인</p>
+            <input className="Profile-edit-input" type="text" placeholder="인터파크 아이디를 입력해주세요" value={interparkId} onChange={(e) => setInterparkId(e.target.value)} />
+            <input className="Profile-edit-input" type="password" placeholder="비밀번호를 입력해주세요" value={interparkPwd} onChange={(e) => setInterparkPwd(e.target.value)} />
+            <button className="Profile-edit-button2" onClick={handleUpdateInterpark}>수정완료</button>
           </div>
         </div>
       )}

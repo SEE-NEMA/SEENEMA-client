@@ -17,10 +17,14 @@ function ConcertDetail() {
   const [melonUrl, setMelonUrl] = useState(null);
   const [interparkUrl, setInterparkUrl] = useState(null);
   const [elevenUrl, setElevenUrl] = useState(null);
-
+  const token = localStorage.getItem('token');
   useEffect(() => {
     axios
-      .get(`http://43.200.58.174:8080/api/v1/concerts/${no}`)
+      .get(`http://43.200.58.174:8080/api/v1/concerts/${no}`, {
+        headers: {
+          "X-AUTH-TOKEN": token,
+        },
+      })
       .then((response) => {
         setContent(response.data.content);
         setTitle(response.data.title);
