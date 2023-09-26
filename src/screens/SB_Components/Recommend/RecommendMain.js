@@ -76,27 +76,29 @@ const RecommendMain = () => {
       )}
     </div>
   );
- const renderStep2 = () => (
-  <div className="wrap-recommendation-container">
+ 
+  const renderStep2 = () => (
+    <div className="wrap-recommendation-container">
       <div className="recommendation-container">
         {isLoading ? (
           <BallTriangle type="Puff" color="#00BFFF" height={100} width={100} />
         ) : (
           recommendations.map((recommendation) => (
-            <Link to={`/concerts/${recommendation.no}`} key={recommendation.no} className="recommendation-card-link">
-              <div key={recommendation.no} className="recommendation-card">
-              <img src={recommendation.imgUrl} alt={recommendation.title} className="recommendation-image" />
-              <div className="recommendation-details">
-                <p className="recommendation-title">{recommendation.title}</p>
-                <p className="recommendation-date">{recommendation.date}</p>
+              <div className="recommendation-card">
+                <img src={recommendation.imgUrl} alt={recommendation.title} className="recommendation-image" />
+                <Link to={`/concerts/${recommendation.no}`} >
+                <div className="recommendation-details">
+                  <p className="recommendation-title">{recommendation.title}</p>
+                  <p className="recommendation-date">{recommendation.date}</p>
+                </div>
+                </Link>
               </div>
-            </div>
-            </Link>
           ))
         )}
       </div>
     </div>
- )
+  );
+  
 
   return (
     <div>

@@ -65,24 +65,29 @@ function MusicalDetail () {
           <p className="Musical-Date">기간: {date}</p>
           <p className="Musical-RunningTime">캐스트: {cast}</p>
 
-          {/* Check if the URLs are not null and display the corresponding buttons */}
-          {melonUrl && (
-            <a href={melonUrl} target="_self">
-              멜론 예매
-            </a>
-          )}
-          {interparkUrl && (
-            <button>
-            <a href={interparkUrl} target="_self">
-              인터파크 예매
-            </a>
-            </button>
-          )}
-          {elevenUrl && (
-            <a href={elevenUrl} target="_self">
-              11번가 예매
-            </a>
-          )}
+          <div className="ticket-btnM">
+                        {melonUrl && (
+                            <button>
+                                <a href={melonUrl} target="_self">
+                                    멜론 예매 바로가기
+                                </a>
+                            </button>
+                        )}
+                        {interparkUrl && (
+                            <button>
+                                <a href={interparkUrl} target="_self">
+                                    인터파크 예매 바로가기
+                                </a>
+                            </button>
+                        )}
+                        {elevenUrl && (
+                            <button>
+                                <a href={elevenUrl} target="_self">
+                                    11번가 예매 바로가기
+                                </a>
+                            </button>
+                        )}
+                    </div>
         </div>
       </div>
     </div>

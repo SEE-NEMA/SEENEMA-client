@@ -16,12 +16,12 @@
     margin: 8px 0;
     font-size: 20px;
 }
-.play-detail-infoM .ticket-btnM {
+.ticket-btnM {
     margin-top: 7%;
     display: flex;
     justify-content: space-evenly;
 }
-.play-detail-infoM .ticket-btnM button {
+.ticket-btnM button {
     /* 예매 버튼 */
     border-radius: 8px;
     box-shadow: 5px 5px 3px 0px rgba(179, 179, 179, 0.277);
@@ -32,7 +32,7 @@
     font-size: 18px;
     font-weight: bold;
 }
-.play-detail-infoM .ticket-btnM button a {
+.ticket-btnM button a {
     color: rgb(255, 126, 126);
     text-decoration: none;
 }
